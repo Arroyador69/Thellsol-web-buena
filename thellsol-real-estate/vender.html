@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vender tu Propiedad | ThellSol Real Estate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fcf9f4;
+        }
+        .navbar {
+            width: 100%;
+            background: #181e29;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            height: 54px;
+            box-sizing: border-box;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .navbar-left, .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .navbar-center {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        .navbar-logo {
+            height: 36px;
+            width: 36px;
+            border-radius: 6px;
+            background: #fff;
+            object-fit: contain;
+        }
+        .navbar-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 4px 10px;
+            border-radius: 3px;
+            transition: background 0.2s;
+        }
+        .navbar-link:hover, .navbar-link.active {
+            background: #232a3a;
+        }
+        .navbar-title {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #fff;
+            text-shadow: 0 1px 2px #0002;
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #232a3a;
+            min-width: 140px;
+            box-shadow: 0 2px 8px #0002;
+            border-radius: 0 0 6px 6px;
+            overflow: hidden;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            display: block;
+            color: #fff;
+            padding: 10px 16px;
+            text-decoration: none;
+            font-size: 15px;
+            background: none;
+            border: none;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background: #181e29;
+        }
+        @media (max-width: 900px) {
+            .navbar { padding: 0 10px; }
+            .navbar-title { font-size: 16px; }
+            .navbar-link, .dropdown-content a { font-size: 13px; }
+        }
+        .vender-container {
+            max-width: 800px;
+            margin: 40px auto 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px #0001;
+            padding: 36px 32px 32px 32px;
+        }
+        .vender-titulo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 6px;
+        }
+        .vender-sub {
+            text-align: center;
+            color: #888;
+            font-size: 1.05rem;
+            margin-bottom: 28px;
+        }
+        .vender-intro {
+            background: #f7f8fa;
+            border-radius: 8px;
+            padding: 18px 22px 18px 22px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 24px;
+        }
+        .vender-intro-text {
+            color: #222;
+            font-size: 1rem;
+            flex: 1;
+        }
+        .vender-intro-ref {
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 1px 4px #0001;
+            padding: 12px 18px;
+            font-size: 0.98rem;
+            color: #222;
+            min-width: 180px;
+            max-width: 220px;
+        }
+        .vender-pasos {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-bottom: 24px;
+        }
+        .vender-paso {
+            background: #f7f8fa;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px #0001;
+            padding: 18px 22px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        .vender-paso-num {
+            font-weight: bold;
+            color: #0a53e4;
+            font-size: 1.2rem;
+            margin-right: 8px;
+            min-width: 28px;
+        }
+        .vender-paso-titulo {
+            font-weight: bold;
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+        .vender-paso-list {
+            margin: 0;
+            padding-left: 18px;
+            color: #444;
+            font-size: 0.97rem;
+        }
+        .vender-final {
+            background: #eaf4ff;
+            border-radius: 8px;
+            padding: 18px 22px;
+            font-weight: bold;
+            color: #0a53e4;
+            margin-top: 18px;
+            margin-bottom: 0;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .vender-final-text {
+            color: #222;
+            font-weight: normal;
+            font-size: 0.98rem;
+            margin-left: 8px;
+        }
+        @media (max-width: 900px) {
+            .vender-container { padding: 18px 6px; }
+            .vender-intro { flex-direction: column; gap: 10px; }
+        }
+        .pasos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .footer {
+            background: #181e29;
+            color: #fff;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        .footer-section h4 {
+            margin: 0 0 20px 0;
+            font-size: 1.1rem;
+            color: #fff;
+        }
+        .footer-section p {
+            margin: 0 0 10px 0;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        .footer-section a:hover {
+            color: #fff;
+        }
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+            z-index: 1000;
+        }
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+        .whatsapp-button img {
+            width: 35px;
+            height: 35px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
+            <a href="index.html" class="navbar-link">Inicio</a>
+            <div class="dropdown">
+                <a href="#" class="navbar-link active">Propiedades &#9662;</a>
+                <div class="dropdown-content">
+                    <a href="comprar.html">Comprar</a>
+                    <a href="vender.html">Vender</a>
+                </div>
+            </div>
+        </div>
+        <div class="navbar-center">
+            <span class="navbar-title">ThellSol Real Estate</span>
+        </div>
+        <div class="navbar-right">
+            <a href="#" class="navbar-link">Información Legal</a>
+            <a href="#" class="navbar-link">Contacto</a>
+        </div>
+    </nav>
+
+    <div class="vender-container">
+        <div class="vender-titulo">Vender tu Propiedad con ThellSol</div>
+        <div class="vender-sub">Proceso seguro, rápido y sin complicaciones</div>
+        <div class="vender-intro">
+            <div class="vender-intro-text">
+                En ThellSol, te acompañamos en todo el proceso de venta de tu propiedad en España, asegurando una experiencia segura, rápida y sin complicaciones.<br><br>
+                Además, contamos con el respaldo legal del prestigioso despacho de abogados Martínez-Echevarría, lo que nos permite ofrecerte una gestión completa y profesional con total garantía jurídica.
+            </div>
+            <div class="vender-intro-ref">
+                <b>Martínez-Echevarría Abogados</b>
+            </div>
+        </div>
+        <div class="vender-pasos">
+            <div class="vender-paso">
+                <div class="vender-paso-num">1.</div>
+                <div>
+                    <div class="vender-paso-titulo">Valoración y puesta en venta</div>
+                    Realizamos una valoración profesional de tu vivienda y la publicamos en los canales adecuados para atraer compradores solventes.
+                </div>
+            </div>
+            <div class="vender-paso">
+                <div class="vender-paso-num">2.</div>
+                <div>
+                    <div class="vender-paso-titulo">Reserva del comprador</div>
+                    El comprador efectúa un compromiso: interesado, este realiza un depósito de reserva (entre 6.000 y 10.000 euros), retirando así la vivienda del mercado.
+                </div>
+            </div>
+            <div class="vender-paso">
+                <div class="vender-paso-num">3.</div>
+                <div>
+                    <div class="vender-paso-titulo">Preparación legal de la venta</div>
+                    <ul class="vender-paso-list">
+                        <li>Escritura de la propiedad</li>
+                        <li>Certificados registral</li>
+                        <li>Licencia municipal y certificado de eficiencia energética</li>
+                        <li>Comprobación de que no existen cargas (hipotecas, embargos, deudas de IBI o suministros)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="vender-paso">
+                <div class="vender-paso-num">4.</div>
+                <div>
+                    <div class="vender-paso-titulo">Firma del contrato privado</div>
+                    Se redacta un contrato privado de compraventa, que suele incluir el pago de un porcentaje del precio (normalmente 10%). El documento fija condiciones, plazos y penalizaciones en caso de incumplimiento.
+                </div>
+            </div>
+            <div class="vender-paso">
+                <div class="vender-paso-num">5.</div>
+                <div>
+                    <div class="vender-paso-titulo">Firma de la escritura pública de compraventa</div>
+                    En un plazo de 4-6 semanas, se firma ante notario la escritura oficial. En ese momento, recibes el resto del dinero y se entrega la propiedad al comprador.
+                </div>
+            </div>
+            <div class="vender-paso">
+                <div class="vender-paso-num">6.</div>
+                <div>
+                    <div class="vender-paso-titulo">Liquidación de impuestos y gestiones finales</div>
+                    <ul class="vender-paso-list">
+                        <li>Cálculo y liquidación del Impuesto de Plusvalía Municipal</li>
+                        <li>Cancelación registral de hipotecas (si aplica)</li>
+                        <li>Cambio de titularidad en suministros</li>
+                        <li>Retención del 3% para no residentes (si corresponde según tu situación fiscal)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="vender-paso">
+                <div class="vender-paso-num">7.</div>
+                <div>
+                    <div class="vender-paso-titulo">Asistencia legal durante todo el proceso</div>
+                    Si no puedes estar presente, puedes otorgarnos un poder notarial y realizamos todas las firmas en tu nombre. Nos encargamos también de toda la gestión fiscal, declaraciones y pagos necesarios.
+                </div>
+            </div>
+        </div>
+        <div class="vender-final">
+            <span>✔</span> Vende tu casa con tranquilidad, respaldo legal y acompañamiento profesional
+            <span class="vender-final-text">Nosotros gestionamos todo. Tú solo te ocupas de recibir el dinero de tu venta.</span>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p><b>Andre Richard Tell</b><br>
+                Thellsol Real Estate</p>
+                <p>Fuengirola 29640<br>
+                Málaga, Spain</p>
+                <p><a href="mailto:andre@thellsol.com">andre@thellsol.com</a><br>
+                +34 676 335 313</p>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces Legales</h4>
+                <a href="politica-privacidad.html">Política de Privacidad</a>
+                <a href="politica-cookies.html">Política de Cookies</a>
+                <a href="aviso-legal.html">Aviso Legal</a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/34676335313" class="whatsapp-button" target="_blank">
+        <img src="./images/whatsapp-icon.png" alt="WhatsApp">
+    </a>
+</body>
+</html> 
