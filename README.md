@@ -12,4 +12,4 @@ Sitio web estático para la inmobiliaria TellSol, listo para desplegar en GitHub
 3. (Opcional) Añade un archivo `CNAME` con tu dominio personalizado.
 4. Apunta los DNS de tu dominio en Hostinger a GitHub Pages.
 
-¡Listo para estar online! 
+¡Listo para estar online!
