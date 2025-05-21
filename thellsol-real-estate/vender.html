@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vender tu Propiedad | ThellSol Real Estate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,29 +12,55 @@
             padding: 0;
             background: #fcf9f4;
         }
+        .navbar-title {
+            font-family: 'Cormorant Garamond', serif !important;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #fff;
+            text-shadow: 0 1px 2px #0002;
+        }
         .navbar {
             width: 100%;
             background: #181e29;
             color: #fff;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 0 32px;
+            justify-content: center;
+            padding: 0;
             height: 54px;
             box-sizing: border-box;
             position: sticky;
             top: 0;
             z-index: 100;
+            gap: 0;
+            position: relative;
         }
-        .navbar-left, .navbar-right {
+        .navbar-left {
             display: flex;
             align-items: center;
-            gap: 18px;
+            gap: 10px;
+            margin-right: 18px;
+            position: absolute;
+            left: 2cm;
+            top: 0;
+            height: 54px;
         }
         .navbar-center {
-            flex: 1;
+            flex: 0 0 auto;
             display: flex;
             justify-content: center;
+            align-items: center;
+        }
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 18px;
+            position: absolute;
+            right: 2cm;
+            top: 0;
+            height: 54px;
         }
         .navbar-logo {
             height: 36px;
@@ -54,46 +81,15 @@
         .navbar-link:hover, .navbar-link.active {
             background: #232a3a;
         }
-        .navbar-title {
-            font-size: 20px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            color: #fff;
-            text-shadow: 0 1px 2px #0002;
-        }
-        .dropdown {
-            position: relative;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: #232a3a;
-            min-width: 140px;
-            box-shadow: 0 2px 8px #0002;
-            border-radius: 0 0 6px 6px;
-            overflow: hidden;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        .dropdown-content a {
-            display: block;
-            color: #fff;
-            padding: 10px 16px;
-            text-decoration: none;
-            font-size: 15px;
-            background: none;
-            border: none;
-            text-align: left;
-        }
-        .dropdown-content a:hover {
-            background: #181e29;
+        .navbar-right::after {
+            content: '';
+            display: inline-block;
+            width: 60px;
+            height: 1px;
         }
         @media (max-width: 900px) {
             .navbar { padding: 0 10px; }
-            .navbar-title { font-size: 16px; }
+            .navbar-title { font-size: 20px; }
             .navbar-link, .dropdown-content a { font-size: 13px; }
         }
         .vender-container {
@@ -123,7 +119,7 @@
             margin-bottom: 24px;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
+            align-items: center;
             gap: 24px;
         }
         .vender-intro-text {
@@ -158,7 +154,7 @@
         }
         .vender-paso-num {
             font-weight: bold;
-            color: #0a53e4;
+            color: #111;
             font-size: 1.2rem;
             margin-right: 8px;
             min-width: 28px;
@@ -260,6 +256,36 @@
             width: 35px;
             height: 35px;
         }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #232a3a;
+            min-width: 140px;
+            box-shadow: 0 2px 8px #0002;
+            border-radius: 0 0 6px 6px;
+            overflow: hidden;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            display: block;
+            color: #fff;
+            padding: 10px 16px;
+            text-decoration: none;
+            font-size: 15px;
+            background: none;
+            border: none;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background: #181e29;
+        }
     </style>
 </head>
 <body>
@@ -293,75 +319,129 @@
                 Además, contamos con el respaldo legal del prestigioso despacho de abogados Martínez-Echevarría, lo que nos permite ofrecerte una gestión completa y profesional con total garantía jurídica.
             </div>
             <div class="vender-intro-ref">
-                <img src="../images/martinez-echevarria-logo.jpg" alt="Logo Martínez-Echevarría" style="width:120px;display:block;margin:0 auto 10px auto;" />
-                <b>Martínez-Echevarría Abogados</b>
+                <img src="./images/logo martinez echevarria.jpeg" alt="Logo Martínez-Echevarría" style="width:180px;display:block;margin:0 auto 10px auto;object-fit:contain;" />
             </div>
         </div>
         <div class="vender-pasos">
             <div class="vender-paso">
                 <div class="vender-paso-num">1.</div>
-                <div>
-                    <div class="vender-paso-titulo">Valoración y puesta en venta</div>
-                    Realizamos una valoración profesional de tu vivienda y la publicamos en los canales adecuados para atraer compradores solventes.
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;">
+                        <span style="filter: drop-shadow(0 2px 4px #bbb); display:inline-flex;">
+                        <!-- Euro personalizado -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12"/><path d="M4 14h9"/><path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"/></svg>
+                        </span>
+                    </span>
+                    <div>
+                        <div class="vender-paso-titulo">Valoración y puesta en venta</div>
+                        Realizamos una valoración profesional de tu vivienda y la publicamos en los canales adecuados para atraer compradores solventes.
+                    </div>
                 </div>
             </div>
             <div class="vender-paso">
                 <div class="vender-paso-num">2.</div>
-                <div>
-                    <div class="vender-paso-titulo">Reserva del comprador</div>
-                    El comprador efectúa un compromiso: interesado, este realiza un depósito de reserva (entre 6.000 y 10.000 euros), retirando así la vivienda del mercado.
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;">
+                        <!-- Lucide Icon: Credit Card en negro -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                    </span>
+                    <div>
+                        <div class="vender-paso-titulo">Reserva del comprador</div>
+                        El comprador efectúa un compromiso: interesado, este realiza un depósito de reserva (entre 6.000 y 10.000 euros), retirando así la vivienda del mercado.
+                    </div>
                 </div>
             </div>
             <div class="vender-paso">
                 <div class="vender-paso-num">3.</div>
-                <div>
-                    <div class="vender-paso-titulo">Preparación legal de la venta</div>
-                    <ul class="vender-paso-list">
-                        <li>Escritura de la propiedad</li>
-                        <li>Certificados registral</li>
-                        <li>Licencia municipal y certificado de eficiencia energética</li>
-                        <li>Comprobación de que no existen cargas (hipotecas, embargos, deudas de IBI o suministros)</li>
-                    </ul>
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;">
+                        <!-- Lucide Icon: Layers en negro -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                    </span>
+                    <div>
+                        <div class="vender-paso-titulo">Preparación legal de la venta</div>
+                        <ul class="vender-paso-list">
+                            <li>Escritura de la propiedad</li>
+                            <li>Certificados registral</li>
+                            <li>Licencia municipal y certificado de eficiencia energética</li>
+                            <li>Comprobación de que no existen cargas (hipotecas, embargos, deudas de IBI o suministros)</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="vender-paso">
                 <div class="vender-paso-num">4.</div>
-                <div>
-                    <div class="vender-paso-titulo">Firma del contrato privado</div>
-                    Se redacta un contrato privado de compraventa, que suele incluir el pago de un porcentaje del precio (normalmente 10%). El documento fija condiciones, plazos y penalizaciones en caso de incumplimiento.
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;">
+                        <!-- Lucide Icon: Receipt Text en negro -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l4-2 4 2 4-2 4 2V2"/><path d="M8 6h8"/><path d="M8 10h8"/><path d="M8 14h6"/></svg>
+                    </span>
+                    <div>
+                        <div class="vender-paso-titulo">Firma del contrato privado</div>
+                        Se redacta un contrato privado de compraventa, que suele incluir el pago de un porcentaje del precio (normalmente 10%). El documento fija condiciones, plazos y penalizaciones en caso de incumplimiento.
+                    </div>
                 </div>
             </div>
             <div class="vender-paso">
                 <div class="vender-paso-num">5.</div>
-                <div>
-                    <div class="vender-paso-titulo">Firma de la escritura pública de compraventa</div>
-                    En un plazo de 4-6 semanas, se firma ante notario la escritura oficial. En ese momento, recibes el resto del dinero y se entrega la propiedad al comprador.
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;">
+                        <!-- Pencil personalizado -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>
+                    </span>
+                    <div>
+                        <div class="vender-paso-titulo">Firma de la escritura pública de compraventa</div>
+                        En un plazo de 4-6 semanas, se firma ante notario la escritura oficial. En ese momento, recibes el resto del dinero y se entrega la propiedad al comprador.
+                    </div>
                 </div>
             </div>
             <div class="vender-paso">
                 <div class="vender-paso-num">6.</div>
-                <div>
-                    <div class="vender-paso-titulo">Liquidación de impuestos y gestiones finales</div>
-                    <ul class="vender-paso-list">
-                        <li>Cálculo y liquidación del Impuesto de Plusvalía Municipal</li>
-                        <li>Cancelación registral de hipotecas (si aplica)</li>
-                        <li>Cambio de titularidad en suministros</li>
-                        <li>Retención del 3% para no residentes (si corresponde según tu situación fiscal)</li>
-                    </ul>
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;">
+                        <!-- Lucide Icon: Percent en negro -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="5" x2="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>
+                    </span>
+                    <div>
+                        <div class="vender-paso-titulo">Liquidación de impuestos y gestiones finales</div>
+                        <ul class="vender-paso-list">
+                            <li>Cálculo y liquidación del Impuesto de Plusvalía Municipal</li>
+                            <li>Cancelación registral de hipotecas (si aplica)</li>
+                            <li>Cambio de titularidad en suministros</li>
+                            <li>Retención del 3% para no residentes (si corresponde según tu situación fiscal)</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="vender-paso">
                 <div class="vender-paso-num">7.</div>
-                <div>
-                    <div class="vender-paso-titulo">Asistencia legal durante todo el proceso</div>
-                    Si no puedes estar presente, puedes otorgarnos un poder notarial y realizamos todas las firmas en tu nombre. Nos encargamos también de toda la gestión fiscal, declaraciones y pagos necesarios.
+                <div style="display:flex;align-items:center;gap:10px;">
+                    <span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;">
+                        <!-- Handshake personalizado -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg>
+                    </span>
+                    <div>
+                        <div class="vender-paso-titulo">Asistencia legal durante todo el proceso</div>
+                        Si no puedes estar presente, puedes otorgarnos un poder notarial y realizamos todas las firmas en tu nombre. Nos encargamos también de toda la gestión fiscal, declaraciones y pagos necesarios.
+                    </div>
                 </div>
             </div>
         </div>
         <div class="vender-final">
             <span>✔</span> Vende tu casa con tranquilidad, respaldo legal y acompañamiento profesional
-            <span class="vender-final-text">Nosotros gestionamos todo. Tú solo te ocupas de recibir el dinero de tu venta.</span>
         </div>
+        <form class="vender-form" action="enviar-formulario.php" method="POST" style="max-width:500px;margin:48px auto 32px auto;background:#fff;border-radius:12px;box-shadow:0 2px 8px #0001;padding:32px 24px 24px 24px;">
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;text-align:center;margin-bottom:18px;letter-spacing:1px;">Solicita información personalizada sobre la venta de tu propiedad</h3>
+            <label style="display:block;font-weight:bold;margin-bottom:6px;">Nombre *</label>
+            <input type="text" name="nombre" required style="width:100%;padding:8px 10px;margin-bottom:16px;border-radius:6px;border:1px solid #ccc;font-size:1rem;">
+            <label style="display:block;font-weight:bold;margin-bottom:6px;">Teléfono *</label>
+            <input type="tel" name="telefono" required style="width:100%;padding:8px 10px;margin-bottom:16px;border-radius:6px;border:1px solid #ccc;font-size:1rem;">
+            <label style="display:block;font-weight:bold;margin-bottom:6px;">Email *</label>
+            <input type="email" name="email" required style="width:100%;padding:8px 10px;margin-bottom:16px;border-radius:6px;border:1px solid #ccc;font-size:1rem;">
+            <label style="display:block;font-weight:bold;margin-bottom:6px;">Mensaje (opcional)</label>
+            <textarea name="mensaje" rows="3" style="width:100%;padding:8px 10px;margin-bottom:18px;border-radius:6px;border:1px solid #ccc;font-size:1rem;"></textarea>
+            <button type="submit" style="width:100%;background:#181e29;color:#fff;font-weight:bold;padding:12px 0;border:none;border-radius:6px;font-size:1.1rem;cursor:pointer;">Enviar</button>
+        </form>
     </div>
 
     <footer class="footer">
