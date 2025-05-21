@@ -293,6 +293,7 @@
                 Además, contamos con el respaldo legal del prestigioso despacho de abogados Martínez-Echevarría, lo que nos permite ofrecerte una gestión completa y profesional con total garantía jurídica.
             </div>
             <div class="vender-intro-ref">
+                <img src="../images/martinez-echevarria-logo.jpg" alt="Logo Martínez-Echevarría" style="width:120px;display:block;margin:0 auto 10px auto;" />
                 <b>Martínez-Echevarría Abogados</b>
             </div>
         </div>
@@ -387,4 +388,89 @@
         <img src="./images/whatsapp-icon.png" alt="WhatsApp">
     </a>
 </body>
+<script>
+// Banner de cookies
+(function() {
+    function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        }
+        return null;
+    }
+    if (!getCookie('cookies_accepted')) {
+        var banner = document.createElement('div');
+        banner.id = 'cookie-banner';
+        banner.innerHTML = `
+            <div class="cookie-banner-content">
+                Utilizamos cookies propias y de terceros para mejorar tu experiencia y analizar el uso de la web. <a href="politica-cookies.html" style="color:#0a53e4;text-decoration:underline;">Más información</a>.
+                <button id="accept-cookies-btn">Aceptar</button>
+            </div>
+        `;
+        document.body.appendChild(banner);
+        document.getElementById('accept-cookies-btn').onclick = function() {
+            setCookie('cookies_accepted', 'yes', 30);
+            banner.style.display = 'none';
+        };
+        // Estilos
+        var style = document.createElement('style');
+        style.innerHTML = `
+        #cookie-banner {
+            position: fixed;
+            left: 0; right: 0; bottom: 0;
+            background: #181e29;
+            color: #fff;
+            padding: 18px 10px 18px 10px;
+            box-shadow: 0 -2px 12px #0003;
+            z-index: 2000;
+            font-size: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cookie-banner-content {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 18px;
+            justify-content: center;
+        }
+        #accept-cookies-btn {
+            background: #0a53e4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 22px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+            box-shadow: 0 1px 4px #0002;
+        }
+        #accept-cookies-btn:hover {
+            background: #003399;
+        }
+        @media (max-width: 600px) {
+            .cookie-banner-content { font-size: 0.95rem; gap: 8px; }
+            #accept-cookies-btn { padding: 8px 12px; font-size: 0.95rem; }
+        }
+        `;
+        document.head.appendChild(style);
+    }
+})();
+</script>
 </html> 
