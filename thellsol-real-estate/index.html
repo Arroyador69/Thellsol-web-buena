@@ -406,6 +406,48 @@
             border-radius: 0 12px 0 0;
             z-index: 3;
         }
+        @media (max-width: 900px) {
+            .hero {
+                height: 180px;
+            }
+            .presentacion {
+                padding: 18px 6px 18px 6px;
+            }
+            .presentacion-fotos {
+                gap: 12px;
+            }
+        }
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 8px 0;
+            }
+            .navbar-left, .navbar-center, .navbar-right {
+                position: static !important;
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                margin: 0;
+                height: auto;
+            }
+            .navbar-title {
+                font-size: 1.1rem;
+                text-align: center;
+                width: 100%;
+            }
+            .hero-img {
+                height: 120px;
+            }
+            .presentacion {
+                padding: 10px 2vw 10px 2vw;
+                border-radius: 8px;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+        }
     </style>
 </head>
 <body>

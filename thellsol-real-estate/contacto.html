@@ -220,6 +220,41 @@
         .dropdown-content a:hover {
             background: #181e29;
         }
+        @media (max-width: 900px) {
+            .contact-hero {
+                max-width: 100vw;
+                margin: 12px auto 0 auto;
+            }
+            .contact-card {
+                max-width: 98vw;
+                margin: 18px auto 0 auto;
+                padding: 18px 6px 12px 6px;
+            }
+        }
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 8px 0;
+            }
+            .navbar-left, .navbar-center, .navbar-right {
+                position: static !important;
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                margin: 0;
+                height: auto;
+            }
+            .navbar-title {
+                font-size: 1.1rem;
+                text-align: center;
+                width: 100%;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+        }
     </style>
 </head>
 <body>

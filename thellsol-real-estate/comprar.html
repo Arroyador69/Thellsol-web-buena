@@ -369,6 +369,70 @@
             width: 35px;
             height: 35px;
         }
+        @media (max-width: 900px) {
+            .main-content {
+                flex-direction: column !important;
+                gap: 16px;
+                padding: 24px 0 0 0;
+                max-width: 100vw;
+            }
+            .filtros {
+                max-width: 98vw !important;
+                margin: 0 auto 18px auto !important;
+                padding: 18px 6px 18px 6px !important;
+            }
+            .cards {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+            .card {
+                width: 98vw;
+                max-width: 350px;
+            }
+        }
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 8px 0;
+            }
+            .navbar-left, .navbar-center, .navbar-right {
+                position: static !important;
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                margin: 0;
+                height: auto;
+            }
+            .navbar-title {
+                font-size: 1.1rem;
+                text-align: center;
+                width: 100%;
+            }
+            .main-content {
+                padding: 10px 0 0 0;
+                gap: 8px;
+            }
+            .filtros {
+                padding: 10px 2vw 10px 2vw !important;
+                border-radius: 8px;
+            }
+            .resultados-titulo {
+                font-size: 1.3rem;
+                margin-bottom: 18px;
+            }
+            .card {
+                width: 98vw;
+                max-width: 98vw;
+                min-width: unset;
+                padding: 0 0 12px 0;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -393,58 +457,60 @@
         </div>
     </nav>
 
-    <div class="main-content">
+    <div class="main-content" style="display: block; max-width: 1300px; margin: 0 auto; padding: 48px 0 0 0; min-height: 80vh;">
         <!-- Filtros -->
-        <form class="filtros" onsubmit="return false;">
-            <label for="zona">Zona</label>
-            <select id="zona">
-                <option>Todas las zonas</option>
-                <option>Fuengirola</option>
-                <option>Málaga</option>
-                <option>Marbella</option>
-            </select>
-            <label for="tipo">Tipo de Propiedad</label>
-            <select id="tipo">
-                <option>Todos los tipos</option>
-                <option>Apartamento</option>
-                <option>Villa</option>
-                <option>Piso</option>
-            </select>
-            <div class="filtros-row">
-                <div>
-                    <label for="min">Precio Mínimo</label>
-                    <input type="text" id="min" placeholder="€">
-                </div>
-                <div>
-                    <label for="max">Precio Máximo</label>
-                    <input type="text" id="max" placeholder="€">
-                </div>
+        <form class="filtros" style="width: 100%; max-width: 1000px; margin: 0 auto 40px auto; display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; align-items: flex-end; box-sizing: border-box;">
+            <div style="flex: 1 1 180px; min-width: 180px; max-width: 220px;">
+                <label for="zona">Zona</label>
+                <select id="zona">
+                    <option>Todas las zonas</option>
+                    <option>Fuengirola</option>
+                    <option>Málaga</option>
+                    <option>Marbella</option>
+                </select>
             </div>
-            <div class="filtros-row">
-                <div>
-                    <label for="dorm">Dormitorios</label>
-                    <select id="dorm">
-                        <option>Cualquier núm.</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4+</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="banos">Baños</label>
-                    <select id="banos">
-                        <option>Cualquier núm.</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3+</option>
-                    </select>
-                </div>
+            <div style="flex: 1 1 180px; min-width: 180px; max-width: 220px;">
+                <label for="tipo">Tipo de Propiedad</label>
+                <select id="tipo">
+                    <option>Todos los tipos</option>
+                    <option>Apartamento</option>
+                    <option>Villa</option>
+                    <option>Piso</option>
+                </select>
             </div>
-            <button class="filtros-mas" type="button" onclick="document.getElementById('modal').style.display='block'">Más selecciones</button>
-            <button class="filtros-btn" type="submit">Buscar Propiedades</button>
+            <div style="flex: 1 1 120px; min-width: 120px; max-width: 150px;">
+                <label for="min">Precio Mínimo</label>
+                <input type="text" id="min" placeholder="€">
+            </div>
+            <div style="flex: 1 1 120px; min-width: 120px; max-width: 150px;">
+                <label for="max">Precio Máximo</label>
+                <input type="text" id="max" placeholder="€">
+            </div>
+            <div style="flex: 1 1 120px; min-width: 120px; max-width: 150px;">
+                <label for="dorm">Dormitorios</label>
+                <select id="dorm">
+                    <option>Cualquier núm.</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4+</option>
+                </select>
+            </div>
+            <div style="flex: 1 1 120px; min-width: 120px; max-width: 150px;">
+                <label for="banos">Baños</label>
+                <select id="banos">
+                    <option>Cualquier núm.</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3+</option>
+                </select>
+            </div>
+            <div style="flex-basis: 100%; height: 0;"></div>
+            <div style="width: 100%; display: flex; flex-direction: column; gap: 10px; margin-top: 0;">
+                <button class="filtros-mas" type="button" style="width: 100%; font-size: 16px;" onclick="document.getElementById('modal').style.display='block'">Más selecciones</button>
+                <button class="filtros-btn" type="submit" style="width: 100%; font-size: 18px;">Buscar Propiedades</button>
+            </div>
         </form>
-
         <!-- Resultados -->
         <div class="resultados">
             <div class="resultados-titulo">Propiedades en Venta</div>

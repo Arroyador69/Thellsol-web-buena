@@ -116,9 +116,17 @@
             display: block;
         }
         .legal-logo {
-            width: 120px;
+            width: 240px;
+            height: 240px;
+            max-width: 100%;
+            max-height: 240px;
             display: block;
             margin: 0 auto 18px auto;
+            object-fit: contain;
+            background: #fff;
+            padding: 16px;
+            box-sizing: border-box;
+            border-radius: 16px;
         }
         .legal-pdf-list {
             list-style: none;
@@ -233,6 +241,56 @@
             width: 35px;
             height: 35px;
         }
+        @media (max-width: 900px) {
+            .legal-main {
+                flex-direction: column !important;
+                gap: 16px;
+                padding: 24px 0 0 0;
+                max-width: 100vw;
+            }
+            .legal-col {
+                max-width: 98vw !important;
+                margin: 0 auto 18px auto !important;
+                padding: 18px 6px 18px 6px !important;
+            }
+        }
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 8px 0;
+            }
+            .navbar-left, .navbar-center, .navbar-right {
+                position: static !important;
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                margin: 0;
+                height: auto;
+            }
+            .navbar-title {
+                font-size: 1.1rem;
+                text-align: center;
+                width: 100%;
+            }
+            .legal-main {
+                padding: 10px 0 0 0;
+                gap: 8px;
+            }
+            .legal-col {
+                padding: 10px 2vw 10px 2vw !important;
+                border-radius: 8px;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .legal-logo {
+                width: 120px;
+                height: 120px;
+                padding: 6px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -240,13 +298,7 @@
         <div class="navbar-left">
             <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
             <a href="index.html" class="navbar-link">Inicio</a>
-            <div class="dropdown">
-                <a href="#" class="navbar-link">Propiedades &#9662;</a>
-                <div class="dropdown-content">
-                    <a href="comprar.html">Comprar</a>
-                    <a href="vender.html">Vender</a>
-                </div>
-            </div>
+            <a href="#" class="navbar-link">Propiedades</a>
         </div>
         <div class="navbar-center">
             <span class="navbar-title">ThellSol Real Estate</span>
@@ -258,25 +310,24 @@
     </nav>
 
     <div class="legal-main">
-        <!-- Columna izquierda -->
-        <div class="legal-col">
-            <img src="./images/prop1.jpg" alt="Foto legal" class="legal-foto" />
+        <!-- Columna izquierda (ahora con logo ThellSol y texto) -->
+        <div class="legal-col" style="text-align:center;">
+            <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="legal-logo" />
             <div class="legal-text">
                 En ThellSol Real Estate nos encargamos de ofrecer a nuestros clientes una experiencia segura, transparente y actualizada, con los mejores partners en compliance y arquitectura legal para cada paso del proceso de compraventa de propiedades.<br><br>
                 Unimos el sector inmobiliario con la máxima actualidad jurídica y las mejores firmas legales. Nos encargamos de gestionar la obtención de toda la documentación legal, de los ajustes fiscales y de la correcta inscripción registral, en colaboración con abogados y asesores fiscales independientes.<br><br>
                 Tanto si deseas comprar como vender una propiedad, contarás siempre con las máximas garantías legales, aquí tienes los enlaces para descargar la información legal en tu idioma. ThellSol, la confianza de tu propiedad, sin complicaciones.
             </div>
         </div>
-        <!-- Columna derecha -->
+        <!-- Columna derecha (ahora con logo Martínez-Echevarría y PDFs) -->
         <div class="legal-col" style="text-align:center;">
-            <img src="./images/martinez-echevarria-logo.jpg" alt="Martínez-Echevarría" class="legal-logo" />
+            <img src="./images/logo martinez echevarria.jpeg" alt="Martínez-Echevarría" class="legal-logo" />
             <ul class="legal-pdf-list">
-                <li><a href="#" class="legal-pdf-link">Descargar PDF (Español)</a></li>
-                <li><a href="#" class="legal-pdf-link">Descargar PDF (Polaco)</a></li>
-                <li><a href="#" class="legal-pdf-link">Descargar PDF (Ruso)</a></li>
-                <li><a href="#" class="legal-pdf-link">Descargar PDF (Sueco)</a></li>
-                <li><a href="#" class="legal-pdf-link">Descargar PDF (Inglés)</a></li>
-                <li><a href="#" class="legal-pdf-link">Descargar PDF (Francés)</a></li>
+                <li><a href="pdf/ME_FolletoInmo_Español.pdf" class="legal-pdf-link" download>Descargar PDF (Español)</a></li>
+                <li><a href="pdf/ME_FolletoInmo_Ingles.pdf" class="legal-pdf-link" download>Descargar PDF (Inglés)</a></li>
+                <li><a href="pdf/ME_FolletoInmo_Polaco.pdf" class="legal-pdf-link" download>Descargar PDF (Polaco)</a></li>
+                <li><a href="pdf/ME_FolletoInmo_Ruso.pdf" class="legal-pdf-link" download>Descargar PDF (Ruso)</a></li>
+                <li><a href="pdf/ME köp guide 2024.pdf" class="legal-pdf-link" download>Descargar PDF (Sueco)</a></li>
             </ul>
         </div>
     </div>
@@ -284,13 +335,13 @@
     <!-- Videos -->
     <div class="legal-videos">
         <div class="legal-video">
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/VIDEO_ID_1" title="Video 1" frameborder="0" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/H2qC3xBXkUM" title="Video 1" frameborder="0" allowfullscreen></iframe>
         </div>
         <div class="legal-video">
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/VIDEO_ID_2" title="Video 2" frameborder="0" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/LabJ5V2R2Pk" title="Video 2" frameborder="0" allowfullscreen></iframe>
         </div>
         <div class="legal-video">
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/VIDEO_ID_3" title="Video 3" frameborder="0" allowfullscreen></iframe>
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/-jdwhxqqlg4" title="Video 3" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 
