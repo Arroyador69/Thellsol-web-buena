@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TellSol Real Estate</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="logo-thellsol copia.png" type="image/png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -448,10 +449,32 @@
                 gap: 18px;
             }
         }
+        @media (max-width: 768px) {
+            .navbar-logo,
+            .navbar-title {
+                display: none !important;
+            }
+            .navbar-mobile-title {
+                display: block !important;
+            }
+        }
+        .navbar-mobile-title {
+            display: none;
+            width: 100%;
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif !important;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #fff;
+            background: #181e29;
+            padding: 10px 0 0 0;
+        }
     </style>
 </head>
 <body>
     <nav class="navbar">
+        <div class="navbar-mobile-title">ThellSol Real Estate</div>
         <div class="navbar-left">
             <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
             <a href="index.html" class="navbar-link active">Inicio</a>

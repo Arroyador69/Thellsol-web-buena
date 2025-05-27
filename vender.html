@@ -260,6 +260,130 @@
             width: 35px;
             height: 35px;
         }
+
+        /* Menú móvil */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1000;
+            position: absolute;
+            right: 20px;
+            top: 16px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #fff;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background: #181e29;
+            padding: 32px 20px 20px;
+            transition: right 0.3s ease;
+            z-index: 999;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+            padding-top: 32px;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 0;
+            font-size: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-menu .dropdown-content {
+            position: static;
+            display: none;
+            background: #232a3a;
+            box-shadow: none;
+            margin: 10px 0;
+        }
+
+        .mobile-menu .dropdown-content.active {
+            display: block;
+        }
+
+        .mobile-menu .dropdown-content a {
+            padding-left: 20px;
+        }
+
+        .mobile-menu-title {
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 32px;
+            margin-top: 0;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 900px) {
+            .menu-toggle {
+                display: flex;
+                position: fixed;
+                top: 16px;
+                right: 20px;
+                z-index: 1100;
+            }
+            .navbar-left, .navbar-right {
+                display: none;
+            }
+            .navbar {
+                justify-content: center;
+                padding: 0;
+            }
+            .navbar-title {
+                font-size: 20px;
+            }
+            .mobile-menu {
+                display: block;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100vw;
+                max-width: none;
+                height: 100vh;
+                z-index: 1050;
+                border-radius: 0;
+            }
+            .mobile-menu.active {
+                right: 0;
+            }
+            .menu-toggle.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+            .navbar-logo { display: none !important; }
+            .navbar-center { display: none !important; }
+        }
     </style>
 </head>
 <body>
@@ -282,7 +406,26 @@
             <a href="#" class="navbar-link">Información Legal</a>
             <a href="#" class="navbar-link">Contacto</a>
         </div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
+
+    <div class="mobile-menu">
+        <div class="mobile-menu-title">ThellSol Real Estate</div>
+        <a href="index.html">Inicio</a>
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle">Propiedades</a>
+            <div class="dropdown-content">
+                <a href="comprar.html">Comprar</a>
+                <a href="vender.html">Vender</a>
+            </div>
+        </div>
+        <a href="#">Información Legal</a>
+        <a href="#">Contacto</a>
+    </div>
 
     <div class="vender-container">
         <div class="vender-titulo">Vender tu Propiedad con ThellSol</div>
@@ -386,5 +529,42 @@
     <a href="https://wa.me/34676335313" class="whatsapp-button" target="_blank">
         <img src="./images/whatsapp-icon.png" alt="WhatsApp">
     </a>
+
+    <script>
+        // Código del menú móvil
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const dropdownToggles = document.querySelectorAll('.mobile-menu .dropdown-toggle');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const dropdownContent = toggle.nextElementSibling;
+                dropdownContent.classList.toggle('active');
+            });
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        const mobileLinks = document.querySelectorAll('.mobile-menu a:not(.dropdown-toggle)');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html> 
