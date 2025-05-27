@@ -294,11 +294,16 @@
         }
         @media (max-width: 768px) {
             .navbar-logo,
-            .navbar-title {
+            .navbar-title,
+            .navbar-left,
+            .navbar-right {
                 display: none !important;
             }
             .navbar-mobile-title {
                 display: block !important;
+            }
+            .hamburger {
+                display: flex !important;
             }
         }
         .navbar-mobile-title {
@@ -312,12 +317,87 @@
             color: #fff;
             background: #181e29;
             padding: 10px 0 0 0;
+            z-index: 1201;
+        }
+        .hamburger {
+            display: none;
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            width: 44px;
+            height: 44px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1202;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 4px;
+            margin: 4px 0;
+            background: #111;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .mobile-menu-bg {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.25);
+            z-index: 1200;
+        }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0; right: 0;
+            width: 80vw;
+            max-width: 340px;
+            height: 100vh;
+            background: #e3e3e3;
+            box-shadow: -2px 0 12px #0002;
+            z-index: 1203;
+            flex-direction: column;
+            padding: 32px 24px 0 24px;
+            animation: slideIn 0.3s;
+        }
+        .mobile-menu.open {
+            display: flex;
+        }
+        .mobile-menu-bg.open {
+            display: block;
+        }
+        @keyframes slideIn {
+            from { right: -100vw; }
+            to { right: 0; }
+        }
+        .mobile-menu a {
+            color: #181e29;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 18px 0;
+            display: block;
+            border-radius: 6px;
+            padding: 8px 12px;
+            transition: background 0.2s;
+        }
+        .mobile-menu a:hover {
+            background: #d1d1d1;
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="navbar-mobile-title">ThellSol Real Estate</div>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú" onclick="openMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
         <div class="navbar-left">
             <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
             <a href="index.html" class="navbar-link">Inicio</a>
@@ -332,6 +412,14 @@
             <a href="contacto.html" class="navbar-link">Contacto</a>
         </div>
     </nav>
+    <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Inicio</a>
+      <a href="comprar.html">Comprar</a>
+      <a href="vender.html">Vender</a>
+      <a href="informacion-legal.html">Información Legal</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
 
     <div class="legal-main">
         <!-- Columna izquierda (ahora con logo ThellSol y texto) -->
@@ -478,5 +566,14 @@
         document.head.appendChild(style);
     }
 })();
+
+function openMobileMenu() {
+  document.getElementById('mobileMenu').classList.add('open');
+  document.getElementById('mobileMenuBg').classList.add('open');
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('mobileMenuBg').classList.remove('open');
+}
 </script>
 </html> 
