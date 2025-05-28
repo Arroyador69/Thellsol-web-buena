@@ -1,0 +1,61 @@
+{
+    "nav": {
+        "home": "Home",
+        "buy": "Buy",
+        "rent": "Rent",
+        "sell": "Vender",
+        "contact": "Contact"
+    },
+    "filters": {
+        "area": "Area",
+        "propertyType": "Property Type",
+        "price": "Price",
+        "bedrooms": "Bedrooms",
+        "bathrooms": "Bathrooms",
+        "features": "Features",
+        "search": "Search",
+        "allAreas": "All areas",
+        "allTypes": "All types"
+    },
+    "propertyTypes": {
+        "apartment": "Apartment",
+        "villa": "Villa",
+        "house": "Home",
+        "penthouse": "Penthouse"
+    },
+    "features": {
+        "pool": "Pool",
+        "garden": "Garden",
+        "garage": "Garage",
+        "terrace": "Terraza",
+        "airConditioning": "Air Conditioning",
+        "heating": "Heating",
+        "elevator": "Ascensor",
+        "security": "24h security",
+        "seaView": "Sea view",
+        "furnished": "Furniture included"
+    },
+    "areas": {
+        "fuengirola": "Fuengirola",
+        "mijas": "Mijas",
+        "benalmadena": "Benalmadena",
+        "torreblanca": "Torreblanca",
+        "torremolinos": "Torremolinos",
+        "riviera": "Riviera del Sol",
+        "calahonda": "Calahonda",
+        "marbella": "Marbella",
+        "nuevaAndalucia": "Nueva Andalucía",
+        "malaga": "Malaga"
+    },
+    "common": {
+        "bedrooms": "Bedrooms",
+        "bathrooms": "Bathrooms",
+        "area": "Area",
+        "price": "Price",
+        "contact": "Contact",
+        "moreInfo": "More information",
+        "back": "Volver",
+        "next": "Next",
+        "loading": "Loading..."
+    }
+}

@@ -1,0 +1,61 @@
+{
+    "nav": {
+        "home": "Inicio",
+        "buy": "Comprar",
+        "rent": "Alquilar",
+        "sell": "Vender",
+        "contact": "Contacto"
+    },
+    "filters": {
+        "area": "Área",
+        "propertyType": "Tipo de Propiedad",
+        "price": "Precio",
+        "bedrooms": "Dormitorios",
+        "bathrooms": "Baños",
+        "features": "Características",
+        "search": "Buscar",
+        "allAreas": "Todas las zonas",
+        "allTypes": "Todos los tipos"
+    },
+    "propertyTypes": {
+        "apartment": "Apartamento",
+        "villa": "Villa",
+        "house": "Casa",
+        "penthouse": "Ático"
+    },
+    "features": {
+        "pool": "Piscina",
+        "garden": "Jardín",
+        "garage": "Garaje",
+        "terrace": "Terraza",
+        "airConditioning": "Aire Acondicionado",
+        "heating": "Calefacción",
+        "elevator": "Ascensor",
+        "security": "Seguridad 24h",
+        "seaView": "Vistas al mar",
+        "furnished": "Mobiliario incluido"
+    },
+    "areas": {
+        "fuengirola": "Fuengirola",
+        "mijas": "Mijas",
+        "benalmadena": "Benalmádena",
+        "torreblanca": "Torreblanca",
+        "torremolinos": "Torremolinos",
+        "riviera": "Riviera del Sol",
+        "calahonda": "Calahonda",
+        "marbella": "Marbella",
+        "nuevaAndalucia": "Nueva Andalucía",
+        "malaga": "Málaga"
+    },
+    "common": {
+        "bedrooms": "Dormitorios",
+        "bathrooms": "Baños",
+        "area": "Área",
+        "price": "Precio",
+        "contact": "Contactar",
+        "moreInfo": "Más información",
+        "back": "Volver",
+        "next": "Siguiente",
+        "loading": "Cargando..."
+    }
+}

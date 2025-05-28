@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | ThellSol Real Estate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fcf9f4;
+        }
+        .navbar {
+            background: #181e29;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .add-property-btn {
+            background: #0a53e4;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .property-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .property-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .property-info {
+            padding: 20px;
+        }
+        .property-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .property-details {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .property-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .edit-btn, .delete-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            flex: 1;
+        }
+        .edit-btn {
+            background: #28a745;
+            color: white;
+        }
+        .delete-btn {
+            background: #dc3545;
+            color: white;
+        }
+        /* Modal de nueva propiedad */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 12px;
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group textarea {
+            height: 100px;
+        }
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+        .submit-btn {
+            background: #0a53e4;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-title">ThellSol Real Estate - Panel de Administración</div>
+        <button class="logout-btn" onclick="logout()">Cerrar Sesión</button>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard-header">
+            <h1>Gestión de Propiedades</h1>
+            <button class="add-property-btn" onclick="openModal()">Añadir Nueva Propiedad</button>
+        </div>
+
+        <div class="properties-grid">
+            <!-- Las propiedades se cargarán dinámicamente aquí -->
+        </div>
+    </div>
+
+    <!-- Modal de Nueva Propiedad -->
+    <div id="propertyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2>Añadir Nueva Propiedad</h2>
+            <form id="propertyForm" onsubmit="return false;">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="title">Título</label>
+                        <input type="text" id="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Precio (€)</label>
+                        <input type="number" id="price" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Tipo de Propiedad</label>
+                        <select id="type" required>
+                            <option value="apartamento">Apartamento</option>
+                            <option value="villa">Villa</option>
+                            <option value="piso">Piso</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Ubicación</label>
+                        <select id="location" required>
+                            <option value="fuengirola">Fuengirola</option>
+                            <option value="mijas">Mijas</option>
+                            <option value="benalmadena">Benalmádena</option>
+                            <option value="torreblanca">Torreblanca</option>
+                            <option value="torremolinos">Torremolinos</option>
+                            <option value="riviera">Riviera del sol</option>
+                            <option value="calahonda">Calahonda</option>
+                            <option value="marbella">Marbella</option>
+                            <option value="nueva-andalucia">Nueva Andalucía</option>
+                            <option value="malaga">Málaga</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bedrooms">Dormitorios</label>
+                        <select id="bedrooms" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bathrooms">Baños</label>
+                        <select id="bathrooms" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="area">Área (m²)</label>
+                        <input type="number" id="area" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Imagen Principal</label>
+                        <input type="file" id="image" accept="image/*" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="description">Descripción</label>
+                        <textarea id="description" required></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Características</label>
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                            <label><input type="checkbox" name="features" value="piscina"> Piscina</label>
+                            <label><input type="checkbox" name="features" value="jardin"> Jardín</label>
+                            <label><input type="checkbox" name="features" value="garaje"> Garaje</label>
+                            <label><input type="checkbox" name="features" value="aire"> Aire Acondicionado</label>
+                            <label><input type="checkbox" name="features" value="vistas"> Vistas al Mar</label>
+                            <label><input type="checkbox" name="features" value="playa"> Primera Línea de Playa</label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">Guardar Propiedad</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Verificar si el usuario está logueado
+        function checkAuth() {
+            if (!sessionStorage.getItem('isLoggedIn')) {
+                window.location.href = 'admin.html';
+            }
+        }
+        checkAuth();
+
+        // Funciones del modal
+        function openModal() {
+            document.getElementById('propertyModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('propertyModal').style.display = 'none';
+            document.getElementById('propertyForm').reset();
+        }
+
+        // Cerrar sesión
+        function logout() {
+            sessionStorage.removeItem('isLoggedIn');
+            window.location.href = 'admin.html';
+        }
+
+        // Cargar propiedades al iniciar
+        async function loadProperties() {
+            try {
+                const response = await fetch('api/properties.php');
+                const properties = await response.json();
+                const grid = document.querySelector('.properties-grid');
+                grid.innerHTML = '';
+
+                properties.forEach((property, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'property-card';
+                    card.innerHTML = `
+                        <img src="${property.image_url}" alt="${property.title}" class="property-image">
+                        <div class="property-info">
+                            <div class="property-title">${property.title}</div>
+                            <div class="property-details">
+                                ${property.location} · ${property.type}<br>
+                                ${property.bedrooms} hab. · ${property.bathrooms} baños · ${property.area}m²
+                            </div>
+                            <div class="property-price">${parseFloat(property.price).toLocaleString()} €</div>
+                            <div class="property-actions">
+                                <button class="edit-btn" onclick="editProperty(${property.id})">Editar</button>
+                                <button class="delete-btn" onclick="deleteProperty(${property.id})">Eliminar</button>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error al cargar propiedades:', error);
+                alert('Error al cargar las propiedades');
+            }
+        }
+
+        // Guardar nueva propiedad
+        async function saveProperty(formData) {
+            try {
+                const form = new FormData();
+                for (let key in formData) {
+                    if (key === 'features') {
+                        form.append(key, JSON.stringify(formData[key]));
+                    } else if (key === 'image' && formData[key] instanceof File) {
+                        form.append(key, formData[key]);
+                    } else {
+                        form.append(key, formData[key]);
+                    }
+                }
+
+                const response = await fetch('api/properties.php', {
+                    method: 'POST',
+                    body: form
+                });
+
+                if (response.ok) {
+                    loadProperties();
+                    return true;
+                } else {
+                    throw new Error('Error al guardar la propiedad');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al guardar la propiedad');
+                return false;
+            }
+        }
+
+        // Editar propiedad
+        async function editProperty(id) {
+            try {
+                const response = await fetch(`api/properties.php?id=${id}`);
+                const property = await response.json();
+                
+                document.getElementById('title').value = property.title;
+                document.getElementById('price').value = property.price;
+                document.getElementById('type').value = property.type;
+                document.getElementById('location').value = property.location;
+                document.getElementById('bedrooms').value = property.bedrooms;
+                document.getElementById('bathrooms').value = property.bathrooms;
+                document.getElementById('area').value = property.area;
+                document.getElementById('description').value = property.description;
+
+                // Marcar las características
+                const features = document.getElementsByName('features');
+                features.forEach(feature => {
+                    feature.checked = property.features.includes(feature.value);
+                });
+
+                // Cambiar el comportamiento del formulario para actualizar
+                const form = document.getElementById('propertyForm');
+                form.onsubmit = function(e) {
+                    e.preventDefault();
+                    updateProperty(id);
+                };
+
+                openModal();
+            } catch (error) {
+                console.error('Error al cargar la propiedad:', error);
+                alert('Error al cargar la propiedad');
+            }
+        }
+
+        // Actualizar propiedad
+        async function updateProperty(id) {
+            try {
+                const formData = getFormData();
+                formData.id = id;
+
+                const form = new FormData();
+                for (let key in formData) {
+                    if (key === 'features') {
+                        form.append(key, JSON.stringify(formData[key]));
+                    } else if (key === 'image' && formData[key] instanceof File) {
+                        form.append(key, formData[key]);
+                    } else {
+                        form.append(key, formData[key]);
+                    }
+                }
+
+                const response = await fetch('api/properties.php', {
+                    method: 'PUT',
+                    body: form
+                });
+
+                if (response.ok) {
+                    loadProperties();
+                    closeModal();
+                } else {
+                    throw new Error('Error al actualizar la propiedad');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al actualizar la propiedad');
+            }
+        }
+
+        // Eliminar propiedad
+        async function deleteProperty(id) {
+            if (confirm('¿Estás seguro de que quieres eliminar esta propiedad?')) {
+                try {
+                    const response = await fetch(`api/properties.php?id=${id}`, {
+                        method: 'DELETE'
+                    });
+
+                    if (response.ok) {
+                        loadProperties();
+                    } else {
+                        throw new Error('Error al eliminar la propiedad');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error al eliminar la propiedad');
+                }
+            }
+        }
+
+        // Obtener datos del formulario
+        function getFormData() {
+            const features = Array.from(document.getElementsByName('features'))
+                .filter(feature => feature.checked)
+                .map(feature => feature.value);
+
+            return {
+                title: document.getElementById('title').value,
+                price: parseFloat(document.getElementById('price').value),
+                type: document.getElementById('type').value,
+                location: document.getElementById('location').value,
+                bedrooms: document.getElementById('bedrooms').value,
+                bathrooms: document.getElementById('bathrooms').value,
+                area: parseFloat(document.getElementById('area').value),
+                description: document.getElementById('description').value,
+                features: features,
+                image: document.getElementById('image').files[0]
+            };
+        }
+
+        // Manejar el envío del formulario
+        document.getElementById('propertyForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = getFormData();
+            if (await saveProperty(formData)) {
+                closeModal();
+            }
+        });
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const modal = document.getElementById('propertyModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Cargar propiedades al iniciar
+        loadProperties();
+    </script>
+</body>
+</html> 
