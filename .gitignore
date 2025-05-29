@@ -1,7 +1,0 @@
-.DS_Store
-node_modules/
-.next/
-*.zip
-.env
-.env.local
-.vercel 
