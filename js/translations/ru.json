@@ -1,0 +1,72 @@
+{
+    "nav": {
+        "home": "Главная",
+        "properties": "Недвижимость",
+        "buy": "Купить",
+        "sell": "Продать",
+        "legal": "Юридическая информация",
+        "contact": "Контакты"
+    },
+    "filters": {
+        "area": "Район",
+        "propertyType": "Тип недвижимости",
+        "price": "Цена",
+        "bedrooms": "Спальни",
+        "bathrooms": "Ванные комнаты",
+        "features": "Особенности",
+        "search": "Поиск",
+        "allAreas": "Все районы",
+        "allTypes": "Все типы"
+    },
+    "propertyTypes": {
+        "apartment": "Квартира",
+        "villa": "Вилла",
+        "house": "Дом",
+        "penthouse": "Пентхаус"
+    },
+    "features": {
+        "pool": "Бассейн",
+        "garden": "Сад",
+        "garage": "Гараж",
+        "terrace": "Терраса",
+        "airConditioning": "Кондиционер",
+        "heating": "Отопление",
+        "elevator": "Лифт",
+        "security": "Охрана 24/7",
+        "seaView": "Вид на море",
+        "furnished": "Меблированный"
+    },
+    "areas": {
+        "fuengirola": "Фуэнхирола",
+        "mijas": "Михас",
+        "benalmadena": "Бенальмадена",
+        "torreblanca": "Торребланка",
+        "torremolinos": "Торремолинос",
+        "riviera": "Ривьера дель Соль",
+        "calahonda": "Калахонда",
+        "marbella": "Марбелья",
+        "nuevaAndalucia": "Нуэва Андалусия",
+        "malaga": "Малага"
+    },
+    "common": {
+        "bedrooms": "Спальни",
+        "bathrooms": "Ванные комнаты",
+        "area": "Площадь",
+        "price": "Цена",
+        "contact": "Контакты",
+        "moreInfo": "Подробнее",
+        "back": "Назад",
+        "next": "Далее",
+        "loading": "Загрузка..."
+    },
+    "footer": {
+        "contact": "Контакты",
+        "legal": "Юридические ссылки",
+        "privacy": "Политика конфиденциальности",
+        "cookies": "Политика использования файлов cookie",
+        "legal_notice": "Юридическое уведомление"
+    },
+    "whatsapp": {
+        "contact": "Связаться через WhatsApp"
+    }
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto | ThellSol Real Estate</title>
+    <title>Información Legal | ThellSol Real Estate</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="logo-thellsol copia.png" type="image/png">
     <link rel="stylesheet" href="css/styles.css">
@@ -97,46 +97,101 @@
             .navbar-title { font-size: 20px; }
             .navbar-link, .dropdown-content a { font-size: 13px; }
         }
-        .contact-hero {
-            width: 100%;
-            max-width: 900px;
-            margin: 24px auto 0 auto;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px #0001;
+        .legal-main {
+            max-width: 1100px;
+            margin: 40px auto 0 auto;
+            display: flex;
+            gap: 32px;
+            align-items: stretch;
         }
-        .contact-hero-img {
+        .legal-col {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px #0001;
+            padding: 24px;
+            flex: 1;
+            min-width: 280px;
+            display: flex;
+            flex-direction: column;
+        }
+        .legal-foto {
             width: 100%;
-            height: 180px;
+            height: auto;
+            border-radius: 8px;
             object-fit: cover;
+            margin-bottom: 24px;
             display: block;
         }
-        .contact-card {
-            max-width: 400px;
-            margin: 32px auto 0 auto;
+        .legal-logo {
+            width: 240px;
+            height: 240px;
+            max-width: 100%;
+            max-height: 240px;
+            display: block;
+            margin: 0 auto 18px auto;
+            object-fit: contain;
             background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px #0001;
-            padding: 24px 24px 18px 24px;
+            padding: 16px;
+            box-sizing: border-box;
+            border-radius: 16px;
         }
-        .contact-card h3 {
-            margin-top: 0;
-            font-size: 1.05rem;
-            font-weight: bold;
-            margin-bottom: 16px;
+        .legal-pdf-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
-        .contact-card p {
-            margin: 0 0 8px 0;
-            color: #222;
-            font-size: 0.98rem;
+        .legal-pdf-list li {
+            margin-bottom: 28px;
         }
-        .contact-card a {
+        .legal-pdf-link {
             color: #0a53e4;
             text-decoration: none;
-            word-break: break-all;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s;
         }
-        .contact-card a:hover {
+        .legal-pdf-link:hover {
+            color: #0051a2;
             text-decoration: underline;
+        }
+        .legal-pdf-link::before {
+            content: '\1F4C4';
+            font-size: 1.1em;
+        }
+        .legal-text {
+            color: #222;
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+        /* Videos */
+        .legal-videos {
+            max-width: 1100px;
+            margin: 32px auto 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .legal-video {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px #0001;
+            background: #000;
+            margin-bottom: 24px;
+        }
+        .legal-video:last-child {
+            margin-bottom: 0;
+        }
+        @media (max-width: 1100px) {
+            .legal-main { flex-direction: column; gap: 18px; }
+        }
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
         }
         .footer {
             background: #181e29;
@@ -195,45 +250,17 @@
             width: 35px;
             height: 35px;
         }
-        .dropdown {
-            position: relative;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: #232a3a;
-            min-width: 140px;
-            box-shadow: 0 2px 8px #0002;
-            border-radius: 0 0 6px 6px;
-            overflow: hidden;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        .dropdown-content a {
-            display: block;
-            color: #fff;
-            padding: 10px 16px;
-            text-decoration: none;
-            font-size: 15px;
-            background: none;
-            border: none;
-            text-align: left;
-        }
-        .dropdown-content a:hover {
-            background: #181e29;
-        }
         @media (max-width: 900px) {
-            .contact-hero {
+            .legal-main {
+                flex-direction: column !important;
+                gap: 16px;
+                padding: 24px 0 0 0;
                 max-width: 100vw;
-                margin: 12px auto 0 auto;
             }
-            .contact-card {
-                max-width: 98vw;
-                margin: 18px auto 0 auto;
-                padding: 18px 6px 12px 6px;
+            .legal-col {
+                max-width: 98vw !important;
+                margin: 0 auto 18px auto !important;
+                padding: 18px 6px 18px 6px !important;
             }
         }
         @media (max-width: 600px) {
@@ -255,9 +282,22 @@
                 text-align: center;
                 width: 100%;
             }
+            .legal-main {
+                padding: 10px 0 0 0;
+                gap: 8px;
+            }
+            .legal-col {
+                padding: 10px 2vw 10px 2vw !important;
+                border-radius: 8px;
+            }
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 18px;
+            }
+            .legal-logo {
+                width: 120px;
+                height: 120px;
+                padding: 6px;
             }
         }
         @media (max-width: 768px) {
@@ -360,7 +400,7 @@
         .language-selector {
             position: relative;
             display: inline-block;
-            margin-left: 18px;
+            margin-left: 20px;
         }
 
         .language-button {
@@ -369,89 +409,95 @@
             cursor: pointer;
             display: flex;
             align-items: center;
-            font-size: 22px;
-            padding: 0 8px;
+            gap: 5px;
+            padding: 5px 10px;
+            font-size: 16px;
+            color: #fff;
         }
 
         .language-dropdown {
             display: none;
             position: absolute;
+            top: 100%;
             right: 0;
-            top: 120%;
             background: #232a3a;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px #0002;
-            z-index: 1001;
-            min-width: 160px;
-            padding: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+            min-width: 150px;
         }
 
         .language-option {
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 1rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             width: 100%;
-            padding: 8px 18px;
+            padding: 8px 12px;
+            border: none;
+            background: none;
             cursor: pointer;
-            transition: background 0.2s;
+            text-align: left;
+            font-size: 14px;
+            color: #fff;
         }
 
         .language-option:hover {
             background: #181e29;
         }
 
-        @media (max-width: 900px) {
-            .navbar-right .language-selector { display: none; }
-            .mobile-menu .language-selector { display: block; margin: 0 0 18px 0; }
+        @media (max-width: 768px) {
+            .language-selector {
+                margin: 10px 0;
+            }
+        }
+        .legal-col img.legal-logo {
+            width: 100%;
+            height: 100%;
+            min-height: 320px;
+            max-height: 420px;
+            object-fit: cover;
+            margin: 0;
+            display: block;
+            border-radius: 12px;
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
+        <div class="navbar-mobile-title">ThellSol Real Estate</div>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú" onclick="openMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="navbar-left">
+            <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
+            <a href="index.html" class="navbar-link" data-translate="nav.home">Inicio</a>
+            <a href="comprar.html" class="navbar-link" data-translate="nav.buy">Comprar</a>
+            <a href="vender.html" class="navbar-link" data-translate="nav.sell">Vender</a>
+        </div>
         <div class="navbar-center">
             <span class="navbar-title">ThellSol Real Estate</span>
         </div>
-        <div class="navbar-left">
-            <a href="index.html" class="navbar-link">Inicio</a>
-            <a href="comprar.html" class="navbar-link">Comprar</a>
-            <a href="vender.html" class="navbar-link">Vender</a>
-        </div>
         <div class="navbar-right">
-            <a href="informacion-legal.html" class="navbar-link">Información Legal</a>
-            <a href="contacto.html" class="navbar-link">Contacto</a>
             <div class="language-selector">
-                <button class="language-button" onclick="toggleLanguageDropdown(event)">
-                    <span class="fi fi-es"></span>
-                </button>
-                <div class="language-dropdown" id="languageDropdown">
-                    <button class="language-option"><span class="fi fi-es"></span> Español</button>
-                    <button class="language-option"><span class="fi fi-gb"></span> English</button>
-                    <button class="language-option"><span class="fi fi-fr"></span> Français</button>
-                    <button class="language-option"><span class="fi fi-il"></span> Hebreo</button>
-                    <button class="language-option"><span class="fi fi-se"></span> Svenska</button>
-                    <button class="language-option"><span class="fi fi-ru"></span> Русский</button>
-                </div>
+                <span class="fi fi-es language-flag" data-lang="es" title="Español"></span>
+                <span class="fi fi-gb language-flag" data-lang="en" title="English"></span>
+                <span class="fi fi-fr language-flag" data-lang="fr" title="Français"></span>
+                <span class="fi fi-de language-flag" data-lang="de" title="Deutsch"></span>
             </div>
+            <a href="informacion-legal.html" class="navbar-link" data-translate="nav.legal">Información Legal</a>
+            <a href="contacto.html" class="navbar-link" data-translate="nav.contact">Contacto</a>
         </div>
     </nav>
     <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>
     <div class="mobile-menu" id="mobileMenu">
         <div class="language-selector">
-            <button class="language-button" onclick="toggleLanguageDropdown(event)">
-                <span class="fi fi-es"></span>
-            </button>
-            <div class="language-dropdown" id="languageDropdown">
-                <button class="language-option"><span class="fi fi-es"></span> Español</button>
-                <button class="language-option"><span class="fi fi-gb"></span> English</button>
-                <button class="language-option"><span class="fi fi-fr"></span> Français</button>
-                <button class="language-option"><span class="fi fi-il"></span> Hebreo</button>
-                <button class="language-option"><span class="fi fi-se"></span> Svenska</button>
-                <button class="language-option"><span class="fi fi-ru"></span> Русский</button>
-            </div>
+            <span class="fi fi-es language-flag" data-lang="es" title="Español"></span>
+            <span class="fi fi-gb language-flag" data-lang="en" title="English"></span>
+            <span class="fi fi-fr language-flag" data-lang="fr" title="Français"></span>
+            <span class="fi fi-de language-flag" data-lang="de" title="Deutsch"></span>
         </div>
         <a href="index.html" data-translate="nav.home">Inicio</a>
         <a href="comprar.html" data-translate="nav.buy">Comprar</a>
@@ -460,20 +506,37 @@
         <a href="contacto.html" data-translate="nav.contact">Contacto</a>
     </div>
 
-    <div class="contact-hero">
-        <img src="./images/carrusel3.jpeg" alt="Hero contacto" class="contact-hero-img" />
+    <div class="legal-main">
+        <div class="legal-col" style="text-align:center;">
+            <img src="./images/imagen-informacion-legal.png" alt="Información Legal" class="legal-logo" />
+            <div class="legal-text">
+                En ThellSol Real Estate nos encargamos de ofrecer a nuestros clientes una experiencia segura, transparente y actualizada, con los mejores partners en compliance y arquitectura legal para cada paso del proceso de compraventa de propiedades.<br><br>
+                Unimos el sector inmobiliario con la máxima actualidad jurídica y las mejores firmas legales. Nos encargamos de gestionar la obtención de toda la documentación legal, de los ajustes fiscales y de la correcta inscripción registral, en colaboración con abogados y asesores fiscales independientes.<br><br>
+                Tanto si deseas comprar como vender una propiedad, contarás siempre con las máximas garantías legales, aquí tienes los enlaces para descargar la información legal en tu idioma. ThellSol, la confianza de tu propiedad, sin complicaciones.
+            </div>
+        </div>
+        <div class="legal-col" style="text-align:center;">
+            <img src="./images/logo martinez echevarria.jpeg" alt="Logo Martínez-Echevarría" style="width:180px;display:block;margin:0 auto 10px auto;object-fit:contain;" />
+            <ul class="legal-pdf-list" style="margin-top:30px;">
+                <li><a href="pdf/ME_FolletoInmo_Español.pdf" class="legal-pdf-link" download>Descargar PDF (Español)</a></li>
+                <li><a href="pdf/ME_FolletoInmo_Ingles.pdf" class="legal-pdf-link" download>Descargar PDF (Inglés)</a></li>
+                <li><a href="pdf/ME_FolletoInmo_Polaco.pdf" class="legal-pdf-link" download>Descargar PDF (Polaco)</a></li>
+                <li><a href="pdf/ME_FolletoInmo_Ruso.pdf" class="legal-pdf-link" download>Descargar PDF (Ruso)</a></li>
+                <li><a href="pdf/ME köp guide 2024.pdf" class="legal-pdf-link" download>Descargar PDF (Sueco)</a></li>
+                <li><a href="pdf/MARTINEZ ECHEVARRIA - GUIA DE COMPRA - FRANÇAIS.pdf" class="legal-pdf-link" download>Descargar PDF (Francés)</a></li>
+            </ul>
+        </div>
     </div>
-
-    <div class="contact-card">
-        <h3>Información de Contacto</h3>
-        <p><b>Andre Richard Tell</b><br>
-        Thellsol Real Estate</p>
-        <p><b>Dirección</b><br>
-        Fuengirola 29640<br>
-        Málaga, Spain</p>
-        <p><b>Contacto</b><br>
-        <a href="mailto:andre@thellsol.com">andre@thellsol.com</a><br>
-        +34 676 335 313</p>
+    <div class="legal-videos">
+        <div class="legal-video">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/H2qC3xBXkUM" title="Video 1" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="legal-video">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/LabJ5V2R2Pk" title="Video 2" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="legal-video">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/-jdwhxqqlg4" title="Video 3" frameborder="0" allowfullscreen></iframe>
+        </div>
     </div>
 
     <footer class="footer">
@@ -508,14 +571,6 @@
     </a>
 </body>
 <script>
-function openMobileMenu() {
-  document.getElementById('mobileMenu').classList.add('open');
-  document.getElementById('mobileMenuBg').classList.add('open');
-}
-function closeMobileMenu() {
-  document.getElementById('mobileMenu').classList.remove('open');
-  document.getElementById('mobileMenuBg').classList.remove('open');
-}
 // Banner de cookies
 (function() {
     function setCookie(name, value, days) {
@@ -599,14 +654,14 @@ function closeMobileMenu() {
         document.head.appendChild(style);
     }
 })();
-function toggleLanguageDropdown(e) {
-  e.stopPropagation();
-  var dropdown = document.getElementById('languageDropdown');
-  dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+
+function openMobileMenu() {
+  document.getElementById('mobileMenu').classList.add('open');
+  document.getElementById('mobileMenuBg').classList.add('open');
 }
-document.addEventListener('click', function() {
-  var dropdown = document.getElementById('languageDropdown');
-  if (dropdown) dropdown.style.display = 'none';
-});
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('mobileMenuBg').classList.remove('open');
+}
 </script>
 </html> 

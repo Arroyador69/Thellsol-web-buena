@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TellSol Real Estate</title>
+    <link rel="icon" href="logo-thellsol copia.png" type="image/png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -405,33 +406,80 @@
             border-radius: 0 12px 0 0;
             z-index: 3;
         }
+        .language-selector {
+            position: relative;
+            display: inline-block;
+            margin-left: 18px;
+        }
+        .language-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            padding: 0 8px;
+        }
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 120%;
+            background: #232a3a;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #0002;
+            z-index: 1001;
+            min-width: 160px;
+            padding: 8px 0;
+        }
+        .language-option {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            padding: 8px 18px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .language-option:hover {
+            background: #181e29;
+        }
+        @media (max-width: 900px) {
+            .navbar-right .language-selector { display: none; }
+            .mobile-menu .language-selector { display: block; margin: 0 0 18px 0; }
+        }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <div class="navbar-mobile-title">ThellSol Real Estate</div>
-        <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú" onclick="openMobileMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <div class="navbar-left">
-            <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
-            <a href="#" class="navbar-link active">Inicio</a>
-            <div class="dropdown">
-                <a href="#" class="navbar-link">Propiedades &#9662;</a>
-                <div class="dropdown-content">
-                    <a href="#">Comprar</a>
-                    <a href="#">Vender</a>
-                </div>
-            </div>
-        </div>
         <div class="navbar-center">
             <span class="navbar-title">ThellSol Real Estate</span>
         </div>
+        <div class="navbar-left">
+            <a href="index.html" class="navbar-link">Inicio</a>
+            <a href="comprar.html" class="navbar-link">Comprar</a>
+            <a href="vender.html" class="navbar-link">Vender</a>
+        </div>
         <div class="navbar-right">
-            <a href="#" class="navbar-link">Información Legal</a>
-            <a href="#" class="navbar-link">Contacto</a>
+            <a href="informacion-legal.html" class="navbar-link">Información Legal</a>
+            <a href="contacto.html" class="navbar-link">Contacto</a>
+            <div class="language-selector">
+                <button class="language-button" onclick="toggleLanguageDropdown(event)">
+                    <span class="fi fi-es"></span>
+                </button>
+                <div class="language-dropdown" id="languageDropdown">
+                    <button class="language-option"><span class="fi fi-es"></span> Español</button>
+                    <button class="language-option"><span class="fi fi-gb"></span> English</button>
+                    <button class="language-option"><span class="fi fi-fr"></span> Français</button>
+                    <button class="language-option"><span class="fi fi-il"></span> Hebreo</button>
+                    <button class="language-option"><span class="fi fi-se"></span> Svenska</button>
+                    <button class="language-option"><span class="fi fi-ru"></span> Русский</button>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -757,6 +805,17 @@
       document.getElementById('mobileMenu').classList.remove('open');
       document.getElementById('mobileMenuBg').classList.remove('open');
     }
+    </script>
+    <script>
+    function toggleLanguageDropdown(e) {
+      e.stopPropagation();
+      var dropdown = document.getElementById('languageDropdown');
+      dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    }
+    document.addEventListener('click', function() {
+      var dropdown = document.getElementById('languageDropdown');
+      if (dropdown) dropdown.style.display = 'none';
+    });
     </script>
 </body>
 </html> 

@@ -1,0 +1,29 @@
+{
+    "nav": {
+        "home": "Startseite",
+        "buy": "Kaufen",
+        "sell": "Verkaufen",
+        "legal": "Rechtliche Informationen",
+        "contact": "Kontakt"
+    },
+    "footer": {
+        "contact": "Kontakt",
+        "legal": "Rechtliche Links",
+        "privacy": "Datenschutzerklärung",
+        "cookies": "Cookie-Richtlinie",
+        "legal_notice": "Impressum"
+    },
+    "welcome": {
+        "title": "Willkommen bei Thellsol Real Estate",
+        "intro": "Ich freue mich, Sie bei Thellsol Real Estate willkommen zu heißen, wo jede Immobilie eine Geschichte erzählt und jeder Kunde Teil unserer Familie ist.",
+        "text1": "Mit über einem Jahrzehnt Erfahrung an der Costa del Sol bin ich stolz darauf, Ihnen zu helfen, Ihr Traumhaus in dieser wunderbaren Region zu finden. Von den Stränden Fuengirolas bis zu den historischen Straßen Malagas hat jede Ecke unserer Region etwas Besonderes zu bieten.",
+        "text2": "Bei Thellsol verkaufen wir nicht nur Immobilien; wir schaffen langfristige Beziehungen basierend auf Vertrauen, Transparenz und Engagement für Exzellenz.",
+        "text3": "Mein Team und ich sind hier, um Sie auf jedem Schritt zu begleiten und sicherzustellen, dass Ihre Erfahrung so außergewöhnlich ist wie das Zuhause, das Sie suchen.",
+        "text4": "Ich lade Sie ein, unsere Auswahl an Immobilien zu erkunden und zu entdecken, warum die Costa del Sol der perfekte Ort für Ihr nächstes Zuhause ist.",
+        "signature": "André Tell",
+        "position": "Gründer & CEO, Thellsol Real Estate"
+    },
+    "featured": {
+        "title": "Ausgewählte Immobilien"
+    }
+} 
