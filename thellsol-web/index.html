@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TellSol Real Estate</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="logo-thellsol copia.png" type="image/png">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -407,144 +405,6 @@
             border-radius: 0 12px 0 0;
             z-index: 3;
         }
-        @media (max-width: 900px) {
-            .hero {
-                height: 180px;
-            }
-            .presentacion {
-                padding: 18px 6px 18px 6px;
-            }
-            .presentacion-fotos {
-                gap: 12px;
-            }
-        }
-        @media (max-width: 600px) {
-            .navbar {
-                flex-direction: column;
-                height: auto;
-                padding: 8px 0;
-            }
-            .navbar-left, .navbar-center, .navbar-right {
-                position: static !important;
-                flex-direction: column;
-                align-items: flex-start;
-                width: 100%;
-                margin: 0;
-                height: auto;
-            }
-            .navbar-title {
-                font-size: 1.1rem;
-                text-align: center;
-                width: 100%;
-            }
-            .hero-img {
-                height: 120px;
-            }
-            .presentacion {
-                padding: 10px 2vw 10px 2vw;
-                border-radius: 8px;
-            }
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 18px;
-            }
-        }
-        @media (max-width: 768px) {
-            .navbar-logo,
-            .navbar-title,
-            .navbar-left,
-            .navbar-right {
-                display: none !important;
-            }
-            .navbar-mobile-title {
-                display: block !important;
-            }
-            .hamburger {
-                display: flex !important;
-            }
-        }
-        .navbar-mobile-title {
-            display: none;
-            width: 100%;
-            text-align: center;
-            font-family: 'Cormorant Garamond', serif !important;
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: #fff;
-            background: #181e29;
-            padding: 10px 0 0 0;
-            z-index: 1201;
-        }
-        .hamburger {
-            display: none;
-            position: fixed;
-            top: 18px;
-            right: 18px;
-            width: 44px;
-            height: 44px;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1202;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-        .hamburger span {
-            display: block;
-            width: 30px;
-            height: 4px;
-            margin: 4px 0;
-            background: #111;
-            border-radius: 2px;
-            transition: 0.3s;
-        }
-        .mobile-menu-bg {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.25);
-            z-index: 1200;
-        }
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0; right: 0;
-            width: 80vw;
-            max-width: 340px;
-            height: 100vh;
-            background: #e3e3e3;
-            box-shadow: -2px 0 12px #0002;
-            z-index: 1203;
-            flex-direction: column;
-            padding: 32px 24px 0 24px;
-            animation: slideIn 0.3s;
-        }
-        .mobile-menu.open {
-            display: flex;
-        }
-        .mobile-menu-bg.open {
-            display: block;
-        }
-        @keyframes slideIn {
-            from { right: -100vw; }
-            to { right: 0; }
-        }
-        .mobile-menu a {
-            color: #181e29;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin: 18px 0;
-            display: block;
-            border-radius: 6px;
-            padding: 8px 12px;
-            transition: background 0.2s;
-        }
-        .mobile-menu a:hover {
-            background: #d1d1d1;
-        }
     </style>
 </head>
 <body>
@@ -557,26 +417,23 @@
         </button>
         <div class="navbar-left">
             <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
-            <a href="index.html" class="navbar-link active">Inicio</a>
-            <a href="comprar.html" class="navbar-link">Comprar</a>
-            <a href="vender.html" class="navbar-link">Vender</a>
+            <a href="#" class="navbar-link active">Inicio</a>
+            <div class="dropdown">
+                <a href="#" class="navbar-link">Propiedades &#9662;</a>
+                <div class="dropdown-content">
+                    <a href="#">Comprar</a>
+                    <a href="#">Vender</a>
+                </div>
+            </div>
         </div>
         <div class="navbar-center">
             <span class="navbar-title">ThellSol Real Estate</span>
         </div>
         <div class="navbar-right">
-            <a href="informacion-legal.html" class="navbar-link">Información Legal</a>
-            <a href="contacto.html" class="navbar-link">Contacto</a>
+            <a href="#" class="navbar-link">Información Legal</a>
+            <a href="#" class="navbar-link">Contacto</a>
         </div>
     </nav>
-    <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="index.html">Inicio</a>
-      <a href="comprar.html">Comprar</a>
-      <a href="vender.html">Vender</a>
-      <a href="informacion-legal.html">Información Legal</a>
-      <a href="contacto.html">Contacto</a>
-    </div>
 
     <!-- Hero Carrusel -->
     <div class="carrusel">
@@ -600,73 +457,174 @@
 
     <!-- Presentación -->
     <section class="presentacion">
-        <h2>Bienvenidos a Thellsol Real Estate</h2>
-        <p class="intro">Me complace darte la bienvenida a Thellsol Real Estate, donde cada propiedad cuenta una historia y cada cliente es parte de nuestra familia.</p>
+        <h2 data-translate="welcome.title">Bienvenidos a Thellsol Real Estate</h2>
+        <p class="intro" data-translate="welcome.intro">Me complace darte la bienvenida a Thellsol Real Estate, donde cada propiedad cuenta una historia y cada cliente es parte de nuestra familia.</p>
         <div class="presentacion-fotos">
             <img src="./images/andre-tell.jpg" alt="André Tell" class="presentacion-foto" />
             <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="presentacion-logo" />
         </div>
-        <div class="presentacion-texto">
+        <div class="presentacion-texto" data-translate="welcome.text1">
             Con más de una década de experiencia en la Costa del Sol, me enorgullece poder ayudarte a encontrar tu hogar ideal en esta maravillosa región. Desde las playas de Fuengirola hasta las calles históricas de Málaga, cada rincón de nuestra zona tiene algo especial que ofrecer.
         </div>
         <div class="presentacion-texto">
-            En Thellsol, no solo vendemos propiedades; creamos relaciones duraderas basadas en la confianza, la transparencia y el compromiso con la excelencia.<br>
-            <span style="display:block;margin-top:10px;">Mi equipo y yo estamos aquí para guiarte en cada paso del camino, asegurando que tu experiencia sea tan excepcional como el hogar que estás buscando.</span>
+            En Thellsol, no solo vendemos propiedades; creamos relaciones duraderas basadas en la confianza, la transparencia y el compromiso con la excelencia. Mi equipo y yo estamos aquí para guiarte en cada paso del camino, asegurando que tu experiencia sea tan excepcional como el hogar que estás buscando.
         </div>
-        <div class="presentacion-texto">
+        <div class="presentacion-texto" data-translate="welcome.text4">
             Te invito a explorar nuestra selección de propiedades y descubrir por qué la Costa del Sol es el lugar perfecto para tu próximo hogar.
         </div>
-        <div class="presentacion-firma">André Tell</div>
-        <div class="presentacion-cargo">Fundador & CEO, Thellsol Real Estate</div>
+        <div class="presentacion-firma" data-translate="welcome.signature">André Tell</div>
+        <div class="presentacion-cargo" data-translate="welcome.position">Fundador & CEO, Thellsol Real Estate</div>
     </section>
 
     <!-- Propiedades destacadas -->
     <section class="destacadas">
-        <h3>Propiedades Destacadas</h3>
+        <h3 data-translate="featured.title">Propiedades Destacadas</h3>
         <div class="cards">
+            <!-- Propiedad 1 -->
             <div class="card">
-                <img src="./images/prop1.jpg" alt="Propiedad 1" class="card-img" />
+                <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Apartamento en Marbella">
                 <div class="card-body">
-                    <div class="card-title">Apartamento de lujo en el centro</div>
-                    <div class="card-zona">Centro de ciudad</div>
-                    <div class="card-desc">2 habitaciones · 2 baños · 120m²</div>
-                    <div class="card-precio">350.000 €</div>
-                    <button class="card-btn">Ver detalles</button>
+                    <h3 class="card-title">Apartamento de Lujo en Marbella</h3>
+                    <p class="card-zona">Marbella, Costa del Sol</p>
+                    <p class="card-desc">3 dormitorios, 2 baños, 120m²</p>
+                    <p class="card-precio">450.000€</p>
+                    <button class="card-btn">Ver Detalles</button>
                 </div>
             </div>
+            <!-- Propiedad 2 -->
             <div class="card">
-                <img src="./images/prop2.jpg" alt="Propiedad 2" class="card-img" />
+                <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Villa en Fuengirola">
                 <div class="card-body">
-                    <div class="card-title">Villa con piscina</div>
-                    <div class="card-zona">Zona residencial</div>
-                    <div class="card-desc">3 habitaciones · 3 baños · 250m²</div>
-                    <div class="card-precio">750.000 €</div>
-                    <button class="card-btn">Ver detalles</button>
+                    <h3 class="card-title">Villa con Piscina en Fuengirola</h3>
+                    <p class="card-zona">Fuengirola, Costa del Sol</p>
+                    <p class="card-desc">4 dormitorios, 3 baños, 250m²</p>
+                    <p class="card-precio">650.000€</p>
+                    <button class="card-btn">Ver Detalles</button>
                 </div>
             </div>
+            <!-- Propiedad 3 -->
             <div class="card">
-                <img src="./images/prop3.jpg" alt="Propiedad 3" class="card-img" />
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Chalet en Benalmádena">
                 <div class="card-body">
-                    <div class="card-title">Piso con vistas al mar</div>
-                    <div class="card-zona">Primera línea de playa</div>
-                    <div class="card-desc">2 habitaciones · 1 baño · 80m²</div>
-                    <div class="card-precio">250.000 €</div>
-                    <button class="card-btn">Ver detalles</button>
+                    <h3 class="card-title">Chalet Moderno en Benalmádena</h3>
+                    <p class="card-zona">Benalmádena, Costa del Sol</p>
+                    <p class="card-desc">5 dormitorios, 4 baños, 300m²</p>
+                    <p class="card-precio">850.000€</p>
+                    <button class="card-btn">Ver Detalles</button>
+                </div>
+            </div>
+            <!-- Propiedad 4 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Casa Adosada en Mijas">
+                <div class="card-body">
+                    <h3 class="card-title">Casa Adosada en Mijas</h3>
+                    <p class="card-zona">Mijas, Costa del Sol</p>
+                    <p class="card-desc">3 dormitorios, 2 baños, 150m²</p>
+                    <p class="card-precio">320.000€</p>
+                    <button class="card-btn">Ver Detalles</button>
+                </div>
+            </div>
+            <!-- Propiedad 5 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Ático en Torremolinos">
+                <div class="card-body">
+                    <h3 class="card-title">Ático con Vistas al Mar</h3>
+                    <p class="card-zona">Torremolinos, Costa del Sol</p>
+                    <p class="card-desc">2 dormitorios, 2 baños, 90m²</p>
+                    <p class="card-precio">280.000€</p>
+                    <button class="card-btn">Ver Detalles</button>
+                </div>
+            </div>
+            <!-- Propiedad 6 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Apartamento en Nueva Andalucía">
+                <div class="card-body">
+                    <h3 class="card-title">Apartamento en Nueva Andalucía</h3>
+                    <p class="card-zona">Nueva Andalucía, Marbella</p>
+                    <p class="card-desc">2 dormitorios, 2 baños, 85m²</p>
+                    <p class="card-precio">350.000€</p>
+                    <button class="card-btn">Ver Detalles</button>
+                </div>
+            </div>
+            <!-- Propiedad 7 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Villa en Calahonda">
+                <div class="card-body">
+                    <h3 class="card-title">Villa de Lujo en Calahonda</h3>
+                    <p class="card-zona">Calahonda, Costa del Sol</p>
+                    <p class="card-desc">6 dormitorios, 5 baños, 400m²</p>
+                    <p class="card-precio">1.200.000€</p>
+                    <button class="card-btn">Ver Detalles</button>
+                </div>
+            </div>
+            <!-- Propiedad 8 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Apartamento en Riviera del Sol">
+                <div class="card-body">
+                    <h3 class="card-title">Apartamento en Riviera del Sol</h3>
+                    <p class="card-zona">Riviera del Sol, Mijas</p>
+                    <p class="card-desc">3 dormitorios, 2 baños, 110m²</p>
+                    <p class="card-precio">290.000€</p>
+                    <button class="card-btn">Ver Detalles</button>
+                </div>
+            </div>
+            <!-- Propiedad 9 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Chalet en Torreblanca">
+                <div class="card-body">
+                    <h3 class="card-title">Chalet en Torreblanca</h3>
+                    <p class="card-zona">Torreblanca, Fuengirola</p>
+                    <p class="card-desc">4 dormitorios, 3 baños, 200m²</p>
+                    <p class="card-precio">420.000€</p>
+                    <button class="card-btn">Ver Detalles</button>
+                </div>
+            </div>
+            <!-- Propiedad 10 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Ático en Málaga">
+                <div class="card-body">
+                    <h3 class="card-title">Ático en Centro de Málaga</h3>
+                    <p class="card-zona">Centro, Málaga</p>
+                    <p class="card-desc">3 dormitorios, 2 baños, 120m²</p>
+                    <p class="card-precio">380.000€</p>
+                    <button class="card-btn">Ver Detalles</button>
+                </div>
+            </div>
+            <!-- Propiedad 11 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Casa Adosada en Benalmádena">
+                <div class="card-body">
+                    <h3 class="card-title">Casa Adosada en Benalmádena</h3>
+                    <p class="card-zona">Benalmádena, Costa del Sol</p>
+                    <p class="card-desc">3 dormitorios, 2 baños, 140m²</p>
+                    <p class="card-precio">310.000€</p>
+                    <button class="card-btn">Ver Detalles</button>
+                </div>
+            </div>
+            <!-- Propiedad 12 -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Villa en Marbella">
+                <div class="card-body">
+                    <h3 class="card-title">Villa de Lujo en Marbella</h3>
+                    <p class="card-zona">Marbella, Costa del Sol</p>
+                    <p class="card-desc">5 dormitorios, 4 baños, 350m²</p>
+                    <p class="card-precio">950.000€</p>
+                    <button class="card-btn">Ver Detalles</button>
                 </div>
             </div>
         </div>
     </section>
 
     <footer class="footer">
-        <div class="footer-content">
+        <div class="footer-content" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; align-items: start;">
             <div class="footer-section">
                 <h4>Contacto</h4>
-                <p><b>Andre Richard Tell</b><br>
-                Thellsol Real Estate</p>
-                <p>Fuengirola 29640<br>
-                Málaga, Spain</p>
-                <p><a href="mailto:andre@thellsol.com">andre@thellsol.com</a><br>
-                +34 676 335 313</p>
+                <p><b>Andre Richard Tell</b><br>Thellsol Real Estate</p>
+                <p>Fuengirola 29640<br>Málaga, Spain</p>
+            </div>
+            <div class="footer-section">
+                <p style="margin-bottom: 0;">andre@thellsol.com</p>
+                <p style="margin-top: 0;">+34 676 335 313</p>
             </div>
             <div class="footer-section">
                 <h4>Enlaces Legales</h4>
@@ -674,6 +632,13 @@
                 <a href="politica-cookies.html">Política de Cookies</a>
                 <a href="aviso-legal.html">Aviso Legal</a>
             </div>
+            <div class="footer-section" style="text-align: right;">
+                <a href="https://thellsol.com" target="_blank"><img src="./images/logo-thellsol.png" alt="Logo Thellsol" style="width: 120px; border-radius: 12px;"></a>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 30px; font-size: 0.95rem; color: #ccc;">
+            <span>Developed by DesArroyo Tech</span>
+            <span>thellsol.com copyright reserved 2025</span>
         </div>
     </footer>
 

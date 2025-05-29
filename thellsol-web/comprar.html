@@ -6,6 +6,10 @@
     <title>Comprar Propiedades | ThellSol Real Estate</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="logo-thellsol copia.png" type="image/png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
+    <script src="./js/translations.js"></script>
+    <script src="./js/language-selector.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -135,24 +139,33 @@
             width: 340px;
             background: #fff;
             border-radius: 12px;
-            box-shadow: 0 2px 8px #0001;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             padding: 28px 24px 24px 24px;
             margin-right: 48px;
             height: fit-content;
+            border: 1px solid #eaeaea;
         }
         .filtros label {
-            font-weight: bold;
+            font-weight: 600;
             font-size: 15px;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             display: block;
+            color: #333;
         }
         .filtros select, .filtros input[type="text"] {
             width: 100%;
-            padding: 8px;
-            margin-bottom: 18px;
-            border-radius: 6px;
-            border: 1px solid #ddd;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
             font-size: 15px;
+            background-color: #f8f8f8;
+            transition: all 0.3s ease;
+        }
+        .filtros select:focus, .filtros input[type="text"]:focus {
+            border-color: #0a53e4;
+            box-shadow: 0 0 0 2px rgba(10, 83, 228, 0.1);
+            outline: none;
         }
         .filtros-row {
             display: flex;
@@ -161,29 +174,36 @@
         .filtros-row > div {
             flex: 1;
         }
-        .filtros-btn, .filtros-mas {
-            width: 100%;
-            padding: 10px;
-            border-radius: 6px;
-            border: none;
-            font-size: 16px;
-            margin-top: 8px;
-            cursor: pointer;
-        }
         .filtros-btn {
             background: #0a53e4;
             color: #fff;
-            font-weight: bold;
-            margin-top: 18px;
+            font-weight: 600;
+            margin-top: 24px;
+            padding: 14px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .filtros-btn:hover {
             background: #003fa3;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(10, 83, 228, 0.2);
         }
         .filtros-mas {
-            background: #e9e9e9;
-            color: #222;
+            background: #f0f0f0;
+            color: #333;
             font-size: 15px;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border: 1px solid #e0e0e0;
+        }
+        .filtros-mas:hover {
+            background: #e8e8e8;
+            transform: translateY(-1px);
         }
         /* Resultados */
         .resultados {
@@ -447,6 +467,9 @@
             .hamburger {
                 display: flex !important;
             }
+            .language-selector {
+                margin: 10px 0;
+            }
         }
         .navbar-mobile-title {
             display: none;
@@ -530,6 +553,55 @@
         .mobile-menu a:hover {
             background: #d1d1d1;
         }
+        /* Estilos para el selector de idiomas */
+        .language-selector {
+            position: relative;
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        .language-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #232a3a;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+            min-width: 150px;
+        }
+
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            padding: 8px 12px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            text-align: left;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .language-option:hover {
+            background: #181e29;
+        }
     </style>
 </head>
 <body>
@@ -545,6 +617,9 @@
             <a href="index.html" class="navbar-link">Inicio</a>
             <a href="comprar.html" class="navbar-link active">Comprar</a>
             <a href="vender.html" class="navbar-link">Vender</a>
+            <a href="index.html" class="navbar-link" data-translate="nav.home">Inicio</a>
+            <a href="comprar.html" class="navbar-link" data-translate="nav.buy">Comprar</a>
+            <a href="vender.html" class="navbar-link" data-translate="nav.sell">Vender</a>
         </div>
         <div class="navbar-center">
             <span class="navbar-title">ThellSol Real Estate</span>
@@ -552,6 +627,14 @@
         <div class="navbar-right">
             <a href="informacion-legal.html" class="navbar-link">Información Legal</a>
             <a href="contacto.html" class="navbar-link">Contacto</a>
+            <div class="language-selector">
+                <span class="fi fi-es language-flag" data-lang="es" title="Español"></span>
+                <span class="fi fi-gb language-flag" data-lang="en" title="English"></span>
+                <span class="fi fi-fr language-flag" data-lang="fr" title="Français"></span>
+                <span class="fi fi-de language-flag" data-lang="de" title="Deutsch"></span>
+            </div>
+            <a href="informacion-legal.html" class="navbar-link" data-translate="nav.legal">Información Legal</a>
+            <a href="contacto.html" class="navbar-link" data-translate="nav.contact">Contacto</a>
         </div>
     </nav>
     <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>
@@ -561,6 +644,17 @@
       <a href="vender.html">Vender</a>
       <a href="informacion-legal.html">Información Legal</a>
       <a href="contacto.html">Contacto</a>
+        <div class="language-selector">
+            <span class="fi fi-es language-flag" data-lang="es" title="Español"></span>
+            <span class="fi fi-gb language-flag" data-lang="en" title="English"></span>
+            <span class="fi fi-fr language-flag" data-lang="fr" title="Français"></span>
+            <span class="fi fi-de language-flag" data-lang="de" title="Deutsch"></span>
+        </div>
+        <a href="index.html" data-translate="nav.home">Inicio</a>
+        <a href="comprar.html" data-translate="nav.buy">Comprar</a>
+        <a href="vender.html" data-translate="nav.sell">Vender</a>
+        <a href="informacion-legal.html" data-translate="nav.legal">Información Legal</a>
+        <a href="contacto.html" data-translate="nav.contact">Contacto</a>
     </div>
 
     <div class="main-content" style="display: block; max-width: 1300px; margin: 0 auto; padding: 48px 0 0 0; min-height: 80vh;">
@@ -573,6 +667,18 @@
                     <option>Fuengirola</option>
                     <option>Málaga</option>
                     <option>Marbella</option>
+                <select id="zona" name="zona">
+                    <option value="">Todas las zonas</option>
+                    <option value="fuengirola">Fuengirola</option>
+                    <option value="mijas">Mijas</option>
+                    <option value="benalmadena">Benalmádena</option>
+                    <option value="torreblanca">Torreblanca</option>
+                    <option value="torremolinos">Torremolinos</option>
+                    <option value="riviera">Riviera del Sol</option>
+                    <option value="calahonda">Calahonda</option>
+                    <option value="marbella">Marbella</option>
+                    <option value="nueva-andalucia">Nueva Andalucía</option>
+                    <option value="malaga">Málaga</option>
                 </select>
             </div>
             <div style="flex: 1 1 180px; min-width: 180px; max-width: 220px;">
@@ -600,6 +706,40 @@
                     <option>2</option>
                     <option>3</option>
                     <option>4+</option>
+                <select id="tipo" name="tipo">
+                    <option value="">Todos los tipos</option>
+                    <option value="apartamento">Apartamento</option>
+                    <option value="villa">Villa</option>
+                    <option value="chalet">Chalet</option>
+                    <option value="casa-adosada">Casa Adosada</option>
+                    <option value="atico">Ático</option>
+                </select>
+            </div>
+            <div style="flex: 1 1 180px; min-width: 180px; max-width: 220px;">
+                <label for="precio">Rango de Precio</label>
+                <select id="precio" name="precio">
+                    <option value="">Todos los precios</option>
+                    <option value="100000-200000">100.000€ - 200.000€</option>
+                    <option value="200000-300000">200.000€ - 300.000€</option>
+                    <option value="300000-400000">300.000€ - 400.000€</option>
+                    <option value="400000-500000">400.000€ - 500.000€</option>
+                    <option value="500000+">Más de 500.000€</option>
+                </select>
+            </div>
+            <div style="flex: 1 1 120px; min-width: 120px; max-width: 150px;">
+                <label for="dormitorios">Dormitorios</label>
+                <select id="dormitorios" name="dormitorios">
+                    <option value="">Cualquier núm.</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
                 </select>
             </div>
             <div style="flex: 1 1 120px; min-width: 120px; max-width: 150px;">
@@ -609,6 +749,18 @@
                     <option>1</option>
                     <option>2</option>
                     <option>3+</option>
+                <select id="banos" name="banos">
+                    <option value="">Cualquier núm.</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
                 </select>
             </div>
             <div style="flex-basis: 100%; height: 0;"></div>
@@ -619,36 +771,149 @@
         </form>
         <!-- Resultados -->
         <div class="resultados">
-            <div class="resultados-titulo">Propiedades en Venta</div>
-            <div class="cards">
+            <h1 class="resultados-titulo">Propiedades Disponibles</h1>
+            <div class="cards" style="justify-content: center;">
+                <!-- Propiedad 1 -->
                 <div class="card">
-                    <img src="./images/prop1.jpg" alt="Propiedad 1" class="card-img" />
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Apartamento en Marbella">
                     <div class="card-body">
-                        <div class="card-title">Apartamento de lujo en el centro</div>
-                        <div class="card-zona">Centro de ciudad</div>
-                        <div class="card-desc">2 habitaciones · 2 baños · 120m²</div>
-                        <div class="card-precio">350.000 €</div>
-                        <button class="card-btn">Ver detalles</button>
+                        <h3 class="card-title">Apartamento de Lujo en Marbella</h3>
+                        <p class="card-zona">Marbella, Costa del Sol</p>
+                        <p class="card-desc">3 dormitorios, 2 baños, 120m²</p>
+                        <p class="card-precio">450.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
                     </div>
                 </div>
+
+                <!-- Propiedad 2 -->
                 <div class="card">
-                    <img src="./images/prop2.jpg" alt="Propiedad 2" class="card-img" />
+                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Villa en Fuengirola">
                     <div class="card-body">
-                        <div class="card-title">Villa con piscina</div>
-                        <div class="card-zona">Zona residencial</div>
-                        <div class="card-desc">3 habitaciones · 3 baños · 250m²</div>
-                        <div class="card-precio">750.000 €</div>
-                        <button class="card-btn">Ver detalles</button>
+                        <h3 class="card-title">Villa con Piscina en Fuengirola</h3>
+                        <p class="card-zona">Fuengirola, Costa del Sol</p>
+                        <p class="card-desc">4 dormitorios, 3 baños, 250m²</p>
+                        <p class="card-precio">650.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
                     </div>
                 </div>
+
+                <!-- Propiedad 3 -->
                 <div class="card">
-                    <img src="./images/prop3.jpg" alt="Propiedad 3" class="card-img" />
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Chalet en Benalmádena">
                     <div class="card-body">
-                        <div class="card-title">Piso con vistas al mar</div>
-                        <div class="card-zona">Primera línea de playa</div>
-                        <div class="card-desc">2 habitaciones · 1 baño · 80m²</div>
-                        <div class="card-precio">250.000 €</div>
-                        <button class="card-btn">Ver detalles</button>
+                        <h3 class="card-title">Chalet Moderno en Benalmádena</h3>
+                        <p class="card-zona">Benalmádena, Costa del Sol</p>
+                        <p class="card-desc">5 dormitorios, 4 baños, 300m²</p>
+                        <p class="card-precio">850.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 4 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Casa Adosada en Mijas">
+                    <div class="card-body">
+                        <h3 class="card-title">Casa Adosada en Mijas</h3>
+                        <p class="card-zona">Mijas, Costa del Sol</p>
+                        <p class="card-desc">3 dormitorios, 2 baños, 150m²</p>
+                        <p class="card-precio">320.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 5 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Ático en Torremolinos">
+                    <div class="card-body">
+                        <h3 class="card-title">Ático con Vistas al Mar</h3>
+                        <p class="card-zona">Torremolinos, Costa del Sol</p>
+                        <p class="card-desc">2 dormitorios, 2 baños, 90m²</p>
+                        <p class="card-precio">280.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 6 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Apartamento en Nueva Andalucía">
+                    <div class="card-body">
+                        <h3 class="card-title">Apartamento en Nueva Andalucía</h3>
+                        <p class="card-zona">Nueva Andalucía, Marbella</p>
+                        <p class="card-desc">2 dormitorios, 2 baños, 85m²</p>
+                        <p class="card-precio">350.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 7 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Villa en Calahonda">
+                    <div class="card-body">
+                        <h3 class="card-title">Villa de Lujo en Calahonda</h3>
+                        <p class="card-zona">Calahonda, Costa del Sol</p>
+                        <p class="card-desc">6 dormitorios, 5 baños, 400m²</p>
+                        <p class="card-precio">1.200.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 8 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Apartamento en Riviera del Sol">
+                    <div class="card-body">
+                        <h3 class="card-title">Apartamento en Riviera del Sol</h3>
+                        <p class="card-zona">Riviera del Sol, Mijas</p>
+                        <p class="card-desc">3 dormitorios, 2 baños, 110m²</p>
+                        <p class="card-precio">290.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 9 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Chalet en Torreblanca">
+                    <div class="card-body">
+                        <h3 class="card-title">Chalet en Torreblanca</h3>
+                        <p class="card-zona">Torreblanca, Fuengirola</p>
+                        <p class="card-desc">4 dormitorios, 3 baños, 200m²</p>
+                        <p class="card-precio">420.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 10 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Ático en Málaga">
+                    <div class="card-body">
+                        <h3 class="card-title">Ático en Centro de Málaga</h3>
+                        <p class="card-zona">Centro, Málaga</p>
+                        <p class="card-desc">3 dormitorios, 2 baños, 120m²</p>
+                        <p class="card-precio">380.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 11 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Casa Adosada en Benalmádena">
+                    <div class="card-body">
+                        <h3 class="card-title">Casa Adosada en Benalmádena</h3>
+                        <p class="card-zona">Benalmádena, Costa del Sol</p>
+                        <p class="card-desc">3 dormitorios, 2 baños, 140m²</p>
+                        <p class="card-precio">310.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 12 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Villa en Marbella">
+                    <div class="card-body">
+                        <h3 class="card-title">Villa de Lujo en Marbella</h3>
+                        <p class="card-zona">Marbella, Costa del Sol</p>
+                        <p class="card-desc">5 dormitorios, 4 baños, 350m²</p>
+                        <p class="card-precio">950.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
                     </div>
                 </div>
             </div>
@@ -698,15 +963,15 @@
     </script>
 
     <footer class="footer">
-        <div class="footer-content">
+        <div class="footer-content" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; align-items: start;">
             <div class="footer-section">
                 <h4>Contacto</h4>
-                <p><b>Andre Richard Tell</b><br>
-                Thellsol Real Estate</p>
-                <p>Fuengirola 29640<br>
-                Málaga, Spain</p>
-                <p><a href="mailto:andre@thellsol.com">andre@thellsol.com</a><br>
-                +34 676 335 313</p>
+                <p><b>Andre Richard Tell</b><br>Thellsol Real Estate</p>
+                <p>Fuengirola 29640<br>Málaga, Spain</p>
+            </div>
+            <div class="footer-section">
+                <p style="margin-bottom: 0;">andre@thellsol.com</p>
+                <p style="margin-top: 0;">+34 676 335 313</p>
             </div>
             <div class="footer-section">
                 <h4>Enlaces Legales</h4>
@@ -714,6 +979,13 @@
                 <a href="politica-cookies.html">Política de Cookies</a>
                 <a href="aviso-legal.html">Aviso Legal</a>
             </div>
+            <div class="footer-section" style="text-align: right;">
+                <a href="https://thellsol.com" target="_blank"><img src="./images/logo-thellsol.png" alt="Logo Thellsol" style="width: 120px; border-radius: 12px;"></a>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 30px; font-size: 0.95rem; color: #ccc;">
+            <span>Developed by DesArroyo Tech</span>
+            <span>thellsol.com copyright reserved 2025</span>
         </div>
     </footer>
 
