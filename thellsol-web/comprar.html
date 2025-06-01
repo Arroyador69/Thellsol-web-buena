@@ -617,9 +617,6 @@
             <a href="index.html" class="navbar-link">Inicio</a>
             <a href="comprar.html" class="navbar-link active">Comprar</a>
             <a href="vender.html" class="navbar-link">Vender</a>
-            <a href="index.html" class="navbar-link" data-translate="nav.home">Inicio</a>
-            <a href="comprar.html" class="navbar-link" data-translate="nav.buy">Comprar</a>
-            <a href="vender.html" class="navbar-link" data-translate="nav.sell">Vender</a>
         </div>
         <div class="navbar-center">
             <span class="navbar-title">ThellSol Real Estate</span>
@@ -633,8 +630,6 @@
                 <span class="fi fi-fr language-flag" data-lang="fr" title="Français"></span>
                 <span class="fi fi-de language-flag" data-lang="de" title="Deutsch"></span>
             </div>
-            <a href="informacion-legal.html" class="navbar-link" data-translate="nav.legal">Información Legal</a>
-            <a href="contacto.html" class="navbar-link" data-translate="nav.contact">Contacto</a>
         </div>
     </nav>
     <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>
@@ -650,11 +645,6 @@
             <span class="fi fi-fr language-flag" data-lang="fr" title="Français"></span>
             <span class="fi fi-de language-flag" data-lang="de" title="Deutsch"></span>
         </div>
-        <a href="index.html" data-translate="nav.home">Inicio</a>
-        <a href="comprar.html" data-translate="nav.buy">Comprar</a>
-        <a href="vender.html" data-translate="nav.sell">Vender</a>
-        <a href="informacion-legal.html" data-translate="nav.legal">Información Legal</a>
-        <a href="contacto.html" data-translate="nav.contact">Contacto</a>
     </div>
 
     <div class="main-content" style="display: block; max-width: 1300px; margin: 0 auto; padding: 48px 0 0 0; min-height: 80vh;">
@@ -662,11 +652,6 @@
         <form class="filtros" style="width: 100%; max-width: 1000px; margin: 0 auto 40px auto; display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; align-items: flex-end; box-sizing: border-box;">
             <div style="flex: 1 1 180px; min-width: 180px; max-width: 220px;">
                 <label for="zona">Zona</label>
-                <select id="zona">
-                    <option>Todas las zonas</option>
-                    <option>Fuengirola</option>
-                    <option>Málaga</option>
-                    <option>Marbella</option>
                 <select id="zona" name="zona">
                     <option value="">Todas las zonas</option>
                     <option value="fuengirola">Fuengirola</option>
@@ -683,29 +668,6 @@
             </div>
             <div style="flex: 1 1 180px; min-width: 180px; max-width: 220px;">
                 <label for="tipo">Tipo de Propiedad</label>
-                <select id="tipo">
-                    <option>Todos los tipos</option>
-                    <option>Apartamento</option>
-                    <option>Villa</option>
-                    <option>Piso</option>
-                </select>
-            </div>
-            <div style="flex: 1 1 120px; min-width: 120px; max-width: 150px;">
-                <label for="min">Precio Mínimo</label>
-                <input type="text" id="min" placeholder="€">
-            </div>
-            <div style="flex: 1 1 120px; min-width: 120px; max-width: 150px;">
-                <label for="max">Precio Máximo</label>
-                <input type="text" id="max" placeholder="€">
-            </div>
-            <div style="flex: 1 1 120px; min-width: 120px; max-width: 150px;">
-                <label for="dorm">Dormitorios</label>
-                <select id="dorm">
-                    <option>Cualquier núm.</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4+</option>
                 <select id="tipo" name="tipo">
                     <option value="">Todos los tipos</option>
                     <option value="apartamento">Apartamento</option>
@@ -716,7 +678,7 @@
                 </select>
             </div>
             <div style="flex: 1 1 180px; min-width: 180px; max-width: 220px;">
-                <label for="precio">Rango de Precio</label>
+                <label for="precio">Precio</label>
                 <select id="precio" name="precio">
                     <option value="">Todos los precios</option>
                     <option value="100000-200000">100.000€ - 200.000€</option>
@@ -744,11 +706,6 @@
             </div>
             <div style="flex: 1 1 120px; min-width: 120px; max-width: 150px;">
                 <label for="banos">Baños</label>
-                <select id="banos">
-                    <option>Cualquier núm.</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3+</option>
                 <select id="banos" name="banos">
                     <option value="">Cualquier núm.</option>
                     <option value="1">1</option>
