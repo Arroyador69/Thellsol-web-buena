@@ -602,51 +602,75 @@
         .language-option:hover {
             background: #181e29;
         }
+        #hamburgerBtnFixed {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: #181e29;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            position: fixed;
+            top: 16px;
+            right: 18px;
+            z-index: 9999;
+            box-shadow: 0 2px 8px #0003;
+            padding: 0;
+        }
+        #hamburgerBtnFixed span {
+            display: block;
+            width: 28px;
+            height: 4px;
+            background: #fff;
+            margin: 4px 0;
+            border-radius: 2px;
+            transition: all 0.2s;
+        }
+        @media (max-width: 900px) {
+            #hamburgerBtnFixed {
+                display: flex !important;
+            }
+            .navbar-left, .navbar-right {
+                display: none !important;
+            }
+            .navbar-center {
+                width: 100%;
+                justify-content: center;
+            }
+            .navbar {
+                justify-content: center;
+                padding: 0 10px;
+            }
+            .navbar-title {
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-mobile-title">ThellSol Real Estate</div>
-        <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú" onclick="openMobileMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <div class="navbar-left">
-            <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
-            <a href="index.html" class="navbar-link">Inicio</a>
-            <a href="comprar.html" class="navbar-link active">Comprar</a>
-            <a href="vender.html" class="navbar-link">Vender</a>
-        </div>
-        <div class="navbar-center">
-            <span class="navbar-title">ThellSol Real Estate</span>
-        </div>
-        <div class="navbar-right">
-            <a href="informacion-legal.html" class="navbar-link">Información Legal</a>
-            <a href="contacto.html" class="navbar-link">Contacto</a>
-            <div class="language-selector">
-                <span class="fi fi-es language-flag" data-lang="es" title="Español"></span>
-                <span class="fi fi-gb language-flag" data-lang="en" title="English"></span>
-                <span class="fi fi-fr language-flag" data-lang="fr" title="Français"></span>
-                <span class="fi fi-de language-flag" data-lang="de" title="Deutsch"></span>
-            </div>
-        </div>
-    </nav>
-    <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="index.html">Inicio</a>
-      <a href="comprar.html">Comprar</a>
-      <a href="vender.html">Vender</a>
-      <a href="informacion-legal.html">Información Legal</a>
-      <a href="contacto.html">Contacto</a>
-        <div class="language-selector">
-            <span class="fi fi-es language-flag" data-lang="es" title="Español"></span>
-            <span class="fi fi-gb language-flag" data-lang="en" title="English"></span>
-            <span class="fi fi-fr language-flag" data-lang="fr" title="Français"></span>
-            <span class="fi fi-de language-flag" data-lang="de" title="Deutsch"></span>
-        </div>
-    </div>
-
+    <!-- MENÚ DINÁMICO INCLUIDO CON FETCH -->
+    <div id="menu"></div>
+    <script>
+      fetch('menu.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('menu').innerHTML = html;
+          // Ejecutar los scripts embebidos en menu.html
+          const scripts = document.getElementById('menu').querySelectorAll('script');
+          scripts.forEach(oldScript => {
+            const newScript = document.createElement('script');
+            if (oldScript.src) {
+              newScript.src = oldScript.src;
+            } else {
+              newScript.textContent = oldScript.textContent;
+            }
+            document.body.appendChild(newScript);
+          });
+        });
+    </script>
     <div class="main-content" style="display: block; max-width: 1300px; margin: 0 auto; padding: 48px 0 0 0; min-height: 80vh;">
         <!-- Filtros -->
         <form class="filtros" style="width: 100%; max-width: 1000px; margin: 0 auto 40px auto; display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; align-items: flex-end; box-sizing: border-box;">
@@ -1034,16 +1058,6 @@
             document.head.appendChild(style);
         }
     })();
-    </script>
-    <script>
-    function openMobileMenu() {
-      document.getElementById('mobileMenu').classList.add('open');
-      document.getElementById('mobileMenuBg').classList.add('open');
-    }
-    function closeMobileMenu() {
-      document.getElementById('mobileMenu').classList.remove('open');
-      document.getElementById('mobileMenuBg').classList.remove('open');
-    }
     </script>
 </body>
 </html> 
