@@ -429,45 +429,56 @@
             .navbar-right .language-selector { display: none; }
             .mobile-menu .language-selector { display: block; margin: 0 0 18px 0; }
         }
+        #hamburgerBtnFixed {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: #181e29;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            position: fixed;
+            top: 16px;
+            right: 18px;
+            z-index: 9999;
+            box-shadow: 0 2px 8px #0003;
+            padding: 0;
+        }
+        #hamburgerBtnFixed span {
+            display: block;
+            width: 28px;
+            height: 4px;
+            background: #fff;
+            margin: 4px 0;
+            border-radius: 2px;
+            transition: all 0.2s;
+        }
+        @media (max-width: 900px) {
+            #hamburgerBtnFixed {
+                display: flex !important;
+            }
+            .navbar-left, .navbar-right {
+                display: none !important;
+            }
+            .navbar-center {
+                width: 100%;
+                justify-content: center;
+            }
+            .navbar {
+                justify-content: center;
+                padding: 0 10px;
+            }
+            .navbar-title {
+                font-size: 20px;
+            }
+        }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-center">
-            <span class="navbar-title">ThellSol Real Estate</span>
-        </div>
-        <div class="navbar-left">
-            <a href="index.html" class="navbar-link">Inicio</a>
-            <a href="comprar.html" class="navbar-link">Comprar</a>
-            <a href="vender.html" class="navbar-link">Vender</a>
-        </div>
-        <div class="navbar-right">
-            <a href="informacion-legal.html" class="navbar-link">Información Legal</a>
-            <a href="contacto.html" class="navbar-link">Contacto</a>
-            <div class="language-selector">
-                <button class="language-button" onclick="toggleLanguageDropdown(event)">
-                    <span class="fi fi-es"></span>
-                </button>
-                <div class="language-dropdown" id="languageDropdown">
-                    <button class="language-option"><span class="fi fi-es"></span> Español</button>
-                    <button class="language-option"><span class="fi fi-gb"></span> English</button>
-                    <button class="language-option"><span class="fi fi-fr"></span> Français</button>
-                    <button class="language-option"><span class="fi fi-il"></span> Hebreo</button>
-                    <button class="language-option"><span class="fi fi-se"></span> Svenska</button>
-                    <button class="language-option"><span class="fi fi-ru"></span> Русский</button>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="index.html">Inicio</a>
-      <a href="comprar.html">Comprar</a>
-      <a href="vender.html">Vender</a>
-      <a href="informacion-legal.html">Información Legal</a>
-      <a href="contacto.html">Contacto</a>
-    </div>
-
+    <div id="menu"></div>
     <div class="vender-container">
         <div class="vender-titulo">Vender tu Propiedad con ThellSol</div>
         <div class="vender-sub">Proceso seguro, rápido y sin complicaciones</div>
@@ -632,6 +643,15 @@
     <a href="https://wa.me/34676335313" class="whatsapp-button" target="_blank">
         <img src="./images/whatsapp-icon.png" alt="WhatsApp">
     </a>
+
+    <script>
+        // Cargar el menú
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('menu').innerHTML = html;
+            });
+    </script>
 </body>
 <script>
 function openMobileMenu() {
@@ -644,12 +664,19 @@ function closeMobileMenu() {
 }
 function toggleLanguageDropdown(e) {
   e.stopPropagation();
-  var dropdown = document.getElementById('languageDropdown');
+  var dropdown = document.getElementById('languageDropdownMenu');
+  dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+}
+function toggleLanguageDropdownMobile(e) {
+  e.stopPropagation();
+  var dropdown = document.getElementById('languageDropdownMenuMobile');
   dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
 }
 document.addEventListener('click', function() {
-  var dropdown = document.getElementById('languageDropdown');
+  var dropdown = document.getElementById('languageDropdownMenu');
   if (dropdown) dropdown.style.display = 'none';
+  var dropdownMobile = document.getElementById('languageDropdownMenuMobile');
+  if (dropdownMobile) dropdownMobile.style.display = 'none';
 });
 // Banner de cookies
 (function() {

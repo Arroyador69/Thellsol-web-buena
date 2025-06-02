@@ -651,25 +651,14 @@
     </style>
 </head>
 <body>
-    <!-- MENÚ DINÁMICO INCLUIDO CON FETCH -->
     <div id="menu"></div>
     <script>
-      fetch('menu.html')
-        .then(response => response.text())
-        .then(html => {
-          document.getElementById('menu').innerHTML = html;
-          // Ejecutar los scripts embebidos en menu.html
-          const scripts = document.getElementById('menu').querySelectorAll('script');
-          scripts.forEach(oldScript => {
-            const newScript = document.createElement('script');
-            if (oldScript.src) {
-              newScript.src = oldScript.src;
-            } else {
-              newScript.textContent = oldScript.textContent;
-            }
-            document.body.appendChild(newScript);
-          });
-        });
+        // Cargar el menú
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('menu').innerHTML = html;
+            });
     </script>
     <div class="main-content" style="display: block; max-width: 1300px; margin: 0 auto; padding: 48px 0 0 0; min-height: 80vh;">
         <!-- Filtros -->
