@@ -127,6 +127,14 @@
             border: none;
             cursor: pointer;
             margin-left: 10px;
+            z-index: 3000 !important;
+            position: fixed !important;
+            top: 16px !important;
+            right: 18px !important;
+            box-shadow: 0 2px 8px #0002;
+        }
+        .hamburger.open {
+            z-index: 4000 !important;
         }
         .hamburger span {
             display: block;
@@ -170,7 +178,7 @@
         .mobile-menu-header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-end;
             padding: 18px 18px 0 18px;
         }
         .mobile-menu-content {
@@ -206,7 +214,7 @@
         }
         @media (max-width: 900px) {
             .navbar-left, .navbar-right {
-                display: none;
+                display: none !important;
             }
             .navbar-center {
                 width: 100%;
@@ -214,10 +222,6 @@
             }
             .hamburger {
                 display: flex !important;
-                position: absolute;
-                right: 18px;
-                top: 8px;
-                z-index: 1500;
             }
             .navbar {
                 justify-content: center;
@@ -515,6 +519,38 @@
             border-radius: 0 12px 0 0;
             z-index: 3;
         }
+        #hamburgerBtnFixed {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background: #181e29;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            position: fixed;
+            top: 16px;
+            right: 18px;
+            z-index: 9999;
+            box-shadow: 0 2px 8px #0003;
+            padding: 0;
+        }
+        #hamburgerBtnFixed span {
+            display: block;
+            width: 28px;
+            height: 4px;
+            background: #fff;
+            margin: 4px 0;
+            border-radius: 2px;
+            transition: all 0.2s;
+        }
+        @media (max-width: 900px) {
+            #hamburgerBtnFixed {
+                display: flex !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -544,19 +580,15 @@
                     <a href="#"><span class="fi fi-ru"></span> Русский</a>
                 </div>
             </div>
-            <button class="hamburger" id="hamburgerBtn" onclick="openMobileMenu()" aria-label="Abrir menú móvil">
-                <span></span><span></span><span></span>
-            </button>
         </div>
     </nav>
     <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-header">
-            <span class="navbar-title">ThellSol Real Estate</span>
             <button class="close-mobile-menu" onclick="closeMobileMenu()">&times;</button>
         </div>
         <div class="mobile-menu-content">
-            <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" style="margin: 0 auto 18px auto; display: block;" />
+            <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" style="width:80px;height:80px;margin:0 auto 18px auto;display:block;border-radius:12px;background:#fff;object-fit:contain;" />
             <a href="index.html" class="navbar-link">Inicio</a>
             <a href="comprar.html" class="navbar-link">Comprar</a>
             <a href="vender.html" class="navbar-link">Vender</a>
@@ -577,6 +609,10 @@
             </div>
         </div>
     </div>
+    <!-- Botón hamburguesa robusto fuera del nav -->
+    <button id="hamburgerBtnFixed" aria-label="Abrir menú móvil" onclick="openMobileMenu()">
+        <span></span><span></span><span></span>
+    </button>
     <script>
     function openMobileMenu() {
       document.getElementById('mobileMenu').classList.add('open');
