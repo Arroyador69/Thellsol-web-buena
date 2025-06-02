@@ -1,0 +1,139 @@
+<footer class="footer-tarjetas">
+  <style>
+    .footer-tarjetas {
+      background: #181e29;
+      color: #fff;
+      padding: 48px 0 0 0;
+      margin-top: 60px;
+      font-family: 'Inter', Arial, sans-serif;
+    }
+    .footer-tarjetas .footer-content-tarjetas {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .footer-tarjetas .footer-card-tarjeta {
+      background: rgba(24,30,41,0.7);
+      border: 1.5px solid #232a3a;
+      border-radius: 18px;
+      padding: 32px 32px 28px 32px;
+      min-width: 280px;
+      max-width: 350px;
+      flex: 1 1 300px;
+      box-sizing: border-box;
+      margin-bottom: 24px;
+      text-align: center;
+      box-shadow: 0 2px 12px #0002;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .footer-tarjetas .footer-card-tarjeta h4 {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 18px;
+      color: #fff;
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+    .footer-tarjetas .footer-card-tarjeta h4::after {
+      content: '';
+      display: block;
+      margin: 8px auto 0 auto;
+      width: 38px;
+      height: 3px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #3e7fff 0%, #b8c1d9 100%);
+    }
+    .footer-tarjetas .footer-card-tarjeta p, .footer-tarjetas .footer-card-tarjeta a {
+      color: #e3e6f3;
+      font-size: 1rem;
+      margin: 6px 0;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-tarjetas .footer-card-tarjeta a:hover {
+      color: #3e7fff;
+      text-decoration: underline;
+    }
+    .footer-tarjetas .footer-card-tarjeta img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #fff;
+      margin: 0 auto;
+      box-shadow: 0 2px 12px #0002;
+      margin-top: 12px;
+    }
+    .footer-tarjetas .footer-bottom-tarjetas {
+      width: 100%;
+      background: #151925;
+      margin-top: 32px;
+      padding: 18px 24px 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 16px 16px 0 0;
+      font-size: 1.1rem;
+      box-sizing: border-box;
+      max-width: 97vw;
+    }
+    .footer-tarjetas .footer-bottom-tarjetas .footer-left {
+      color: #b8c1d9;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+    .footer-tarjetas .footer-bottom-tarjetas .footer-right {
+      color: #b8c1d9;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+    }
+    @media (max-width: 900px) {
+      .footer-tarjetas .footer-content-tarjetas {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+        padding: 0 8px;
+      }
+      .footer-tarjetas .footer-card-tarjeta {
+        min-width: unset;
+        max-width: 98vw;
+        margin: 0 auto 18px auto;
+      }
+      .footer-tarjetas .footer-bottom-tarjetas {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 1rem;
+        padding: 14px 6px 14px 6px;
+        border-radius: 12px 12px 0 0;
+      }
+    }
+  </style>
+  <div class="footer-content-tarjetas">
+    <div class="footer-card-tarjeta">
+      <h4>Contacto</h4>
+      <p><b>Andre Richard Tell</b><br>Thellsol Real Estate</p>
+      <p>Fuengirola 29640<br>Málaga, Spain</p>
+      <p>andre@thellsol.com</p>
+      <p>+34 676 335 313</p>
+    </div>
+    <div class="footer-card-tarjeta">
+      <h4>Enlaces Legales</h4>
+      <a href="politica-privacidad.html">Política de Privacidad</a>
+      <a href="politica-cookies.html">Política de Cookies</a>
+      <a href="aviso-legal.html">Aviso Legal</a>
+    </div>
+    <div class="footer-card-tarjeta">
+      <img src="images/logo-thellsol.png" alt="Logo Thellsol" />
+    </div>
+  </div>
+  <div class="footer-bottom-tarjetas">
+    <span class="footer-left">Developed by DesArroyo.Tech</span>
+    <span class="footer-right">thellsol.com copyright reserved 2025</span>
+  </div>
+</footer> 
