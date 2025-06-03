@@ -53,8 +53,8 @@
         "bathrooms": "Badrum",
         "area": "Yta",
         "price": "Pris",
-        "contact": "Kontakt",
-        "moreInfo": "Mer info",
+        "contact": "Kontakta",
+        "moreInfo": "Mer information",
         "back": "Tillbaka",
         "next": "Nästa",
         "loading": "Laddar..."
@@ -64,7 +64,20 @@
         "legal": "Juridiska länkar",
         "privacy": "Integritetspolicy",
         "cookies": "Cookiepolicy",
-        "legal_notice": "Juridiskt meddelande"
+        "legal_notice": "Juridisk information"
+    },
+    "welcome": {
+        "title": "Välkommen till Thellsol Real Estate",
+        "intro": "Jag är glad att välkomna dig till Thellsol Real Estate, där varje fastighet berättar en historia och varje kund är en del av vår familj.",
+        "text1": "Med mer än ett decennium av erfarenhet på Costa del Sol är jag stolt över att kunna hjälpa dig hitta ditt drömhem i denna underbara region. Från Fuengirolas stränder till Málagas historiska gator har varje hörn av vårt område något speciellt att erbjuda.",
+        "text2": "På Thellsol säljer vi inte bara fastigheter; vi skapar långvariga relationer baserade på förtroende, transparens och engagemang för excellens.",
+        "text3": "Jag och mitt team är här för att guida dig genom varje steg och säkerställa att din upplevelse är lika exceptionell som hemmet du söker.",
+        "text4": "Jag inbjuder dig att utforska vårt utbud av fastigheter och upptäcka varför Costa del Sol är den perfekta platsen för ditt nästa hem.",
+        "signature": "André Tell",
+        "position": "Grundare & VD, Thellsol Real Estate"
+    },
+    "featured": {
+        "title": "Utvalda fastigheter"
     },
     "whatsapp": {
         "contact": "Kontakta via WhatsApp"
