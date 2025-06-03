@@ -82,5 +82,87 @@
         "10": { "title": "Lantligt hus i Mijas", "zone": "Mijas Pueblo", "desc": "4 sovrum, 3 badrum, 200m²", "price": "480 000€", "button": "Visa detaljer" },
         "11": { "title": "Lägenhet i Nueva Andalucía", "zone": "Nueva Andalucía, Marbella", "desc": "2 sovrum, 2 badrum, 100m²", "price": "350 000€", "button": "Visa detaljer" },
         "12": { "title": "Lyxvilla i Benalmádena", "zone": "Benalmádena Costa", "desc": "5 sovrum, 5 badrum, 420m²", "price": "1 200 000€", "button": "Visa detaljer" }
+    },
+    "contact": {
+        "title": "Kontaktinformation",
+        "name": "Andre Richard Tell",
+        "company": "Thellsol Real Estate",
+        "address_title": "Adress",
+        "address": "Fuengirola 29640\nMálaga, Spanien",
+        "contact_title": "Kontakt"
+    },
+    "thanks": {
+        "title": "Tack för att du kontaktade oss!",
+        "text": "Vi har mottagit din förfrågan. En medlem av vårt team kommer att kontakta dig så snart som möjligt för att hjälpa dig med försäljningen av din fastighet.",
+        "back_button": "Tillbaka till säljsidan"
+    },
+    "sell": {
+        "title": "Sälj din fastighet med ThellSol",
+        "subtitle": "Säkert, snabbt och utan krångel",
+        "intro": "På ThellSol följer vi dig genom hela processen att sälja din fastighet i Spanien och säkerställer en säker, snabb och smidig upplevelse.\n\nVi har dessutom juridiskt stöd från den prestigefyllda advokatbyrån Martínez-Echevarría, vilket gör att vi kan erbjuda dig en komplett och professionell hantering med full juridisk garanti.",
+        "steps": {
+            "1": {"title": "Värdering och försäljning", "text": "Vi gör en professionell värdering av din bostad och publicerar den på rätt kanaler för att locka köpkraftiga köpare."},
+            "2": {"title": "Köparens reservation", "text": "Köparen gör ett åtagande: om intresserad gör denne en reservationsinsättning (mellan 6 000 och 10 000 euro), vilket tar bort bostaden från marknaden."},
+            "3": {"title": "Juridisk förberedelse av försäljningen", "list": {"1": "Lagfart", "2": "Registreringsintyg", "3": "Kommunalt tillstånd och energicertifikat", "4": "Kontroll att det inte finns några belastningar (inteckningar, utmätningar, IBI- eller serviceavgiftsskulder)"}},
+            "4": {"title": "Undertecknande av privat kontrakt", "text": "Ett privat köpekontrakt upprättas, som vanligtvis inkluderar betalning av en procentandel av priset (vanligtvis 10%). Dokumentet fastställer villkor, tidsfrister och påföljder vid brott."},
+            "5": {"title": "Undertecknande av officiellt köpebrev", "text": "Inom 4-6 veckor undertecknas det officiella köpebrevet inför notarie. Då får du resten av pengarna och fastigheten överlämnas till köparen."},
+            "6": {"title": "Skatteuppgörelse och slutliga åtgärder", "list": {"1": "Beräkning och betalning av kommunal värdestegringsskatt", "2": "Avregistrering av inteckningar (om tillämpligt)", "3": "Ägarbyte i tjänster", "4": "3% innehållning för icke-residenter (om tillämpligt enligt din skattesituation)"}},
+            "7": {"title": "Juridisk hjälp under hela processen", "text": "Om du inte kan närvara kan du ge oss fullmakt och vi undertecknar allt åt dig. Vi tar också hand om all skattehantering, deklarationer och nödvändiga betalningar."}
+        },
+        "final": "Sälj ditt hus med sinnesro, juridiskt stöd och professionell vägledning",
+        "form": {
+            "title": "Begär personlig information om försäljning av din fastighet",
+            "name": "Namn *",
+            "phone": "Telefon *",
+            "email": "E-post *",
+            "message": "Meddelande (valfritt)",
+            "send": "Skicka"
+        }
+    },
+    "buy": {
+        "filters": {
+            "area": "Område",
+            "all_areas": "Alla områden",
+            "type": "Fastighetstyp",
+            "all_types": "Alla typer",
+            "price": "Pris",
+            "all_prices": "Alla priser",
+            "more_500k": "Mer än 500 000€",
+            "bedrooms": "Sovrum",
+            "bathrooms": "Badrum",
+            "any": "Valfritt antal",
+            "more": "Fler val",
+            "search": "Sök fastigheter"
+        },
+        "results": {
+            "title": "Tillgängliga fastigheter"
+        },
+        "modal": {
+            "title": "Fler egenskaper",
+            "features": {
+                "1": "Första linjen strand",
+                "2": "Första linjen golf",
+                "3": "Nära butiker",
+                "4": "Söder",
+                "5": "Sydväst",
+                "6": "Sydost",
+                "7": "Utmärkt",
+                "8": "Behöver renoveras",
+                "9": "Nyproduktion",
+                "10": "Gemensam pool",
+                "11": "Privat pool",
+                "12": "Luftkonditionering",
+                "13": "Öppen spis",
+                "14": "Golvvärme",
+                "15": "Hav",
+                "16": "Berg",
+                "17": "Golf",
+                "18": "Utrustat kök",
+                "19": "Privat trädgård",
+                "20": "Parkering",
+                "21": "Investering",
+                "22": "Lyx"
+            }
+        }
     }
 }

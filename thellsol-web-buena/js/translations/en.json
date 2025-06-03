@@ -95,5 +95,82 @@
         "10": { "title": "Country House in Mijas", "zone": "Mijas Pueblo", "desc": "4 bedrooms, 3 bathrooms, 200m²", "price": "€480,000", "button": "View Details" },
         "11": { "title": "Apartment in Nueva Andalucía", "zone": "Nueva Andalucía, Marbella", "desc": "2 bedrooms, 2 bathrooms, 100m²", "price": "€350,000", "button": "View Details" },
         "12": { "title": "Luxury Villa in Benalmádena", "zone": "Benalmádena Costa", "desc": "5 bedrooms, 5 bathrooms, 420m²", "price": "€1,200,000", "button": "View Details" }
+    },
+    "contact": {
+        "title": "Contact Information",
+        "name": "Andre Richard Tell",
+        "company": "Thellsol Real Estate",
+        "address_title": "Address",
+        "address": "Fuengirola 29640\nMálaga, Spain",
+        "contact_title": "Contact"
+    },
+    "sell": {
+        "title": "Sell your Property with ThellSol",
+        "subtitle": "Safe, fast and hassle-free process",
+        "intro": "At ThellSol, we accompany you throughout the process of selling your property in Spain, ensuring a safe, fast and hassle-free experience.\n\nIn addition, we have the legal backing of the prestigious law firm Martínez-Echevarría, which allows us to offer you a complete and professional management with total legal guarantee.",
+        "steps": {
+            "1": {"title": "Valuation and listing", "text": "We carry out a professional valuation of your home and publish it on the right channels to attract solvent buyers."},
+            "2": {"title": "Buyer's reservation", "text": "The buyer makes a commitment: if interested, they make a reservation deposit (between €6,000 and €10,000), thus removing the property from the market."},
+            "3": {"title": "Legal preparation of the sale", "list": {"1": "Property deed", "2": "Registry certificates", "3": "Municipal license and energy efficiency certificate", "4": "Verification that there are no encumbrances (mortgages, liens, IBI or utility debts)"}},
+            "4": {"title": "Signing of the private contract", "text": "A private purchase contract is drawn up, which usually includes the payment of a percentage of the price (usually 10%). The document sets conditions, deadlines and penalties in case of breach."},
+            "5": {"title": "Signing of the public deed of sale", "text": "Within 4-6 weeks, the official deed is signed before a notary. At that time, you receive the rest of the money and the property is handed over to the buyer."},
+            "6": {"title": "Settlement of taxes and final procedures", "list": {"1": "Calculation and settlement of the Municipal Capital Gains Tax", "2": "Registry cancellation of mortgages (if applicable)", "3": "Change of ownership in utilities", "4": "3% withholding for non-residents (if applicable according to your tax situation)"}},
+            "7": {"title": "Legal assistance throughout the process", "text": "If you cannot be present, you can grant us a power of attorney and we will sign everything on your behalf. We also take care of all tax management, declarations and necessary payments."}
+        },
+        "final": "Sell your house with peace of mind, legal backing and professional support",
+        "form": {
+            "title": "Request personalized information about selling your property",
+            "name": "Name *",
+            "phone": "Phone *",
+            "email": "Email *",
+            "message": "Message (optional)",
+            "send": "Send"
+        }
+    },
+    "buy": {
+        "filters": {
+            "area": "Area",
+            "all_areas": "All areas",
+            "type": "Property Type",
+            "all_types": "All types",
+            "price": "Price",
+            "all_prices": "All prices",
+            "more_500k": "More than €500,000",
+            "bedrooms": "Bedrooms",
+            "bathrooms": "Bathrooms",
+            "any": "Any number",
+            "more": "More selections",
+            "search": "Search Properties"
+        },
+        "results": {
+            "title": "Available Properties"
+        },
+        "modal": {
+            "title": "More features",
+            "features": {
+                "1": "Beachfront",
+                "2": "Golf front",
+                "3": "Near shops",
+                "4": "South",
+                "5": "Southwest",
+                "6": "Southeast",
+                "7": "Excellent",
+                "8": "Needs renovation",
+                "9": "New build",
+                "10": "Communal pool",
+                "11": "Private pool",
+                "12": "Air conditioning",
+                "13": "Fireplace",
+                "14": "Underfloor heating",
+                "15": "Sea",
+                "16": "Mountain",
+                "17": "Golf",
+                "18": "Equipped kitchen",
+                "19": "Private garden",
+                "20": "Parking",
+                "21": "Investment",
+                "22": "Luxury"
+            }
+        }
     }
 }

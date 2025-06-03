@@ -95,5 +95,87 @@
         "10": { "title": "Maison de Campagne à Mijas", "zone": "Mijas Pueblo", "desc": "4 chambres, 3 salles de bain, 200m²", "price": "480 000€", "button": "Voir les Détails" },
         "11": { "title": "Appartement à Nueva Andalucía", "zone": "Nueva Andalucía, Marbella", "desc": "2 chambres, 2 salles de bain, 100m²", "price": "350 000€", "button": "Voir les Détails" },
         "12": { "title": "Villa de Luxe à Benalmádena", "zone": "Benalmádena Costa", "desc": "5 chambres, 5 salles de bain, 420m²", "price": "1 200 000€", "button": "Voir les Détails" }
+    },
+    "contact": {
+        "title": "Informations de Contact",
+        "name": "Andre Richard Tell",
+        "company": "Thellsol Real Estate",
+        "address_title": "Adresse",
+        "address": "Fuengirola 29640\nMálaga, Espagne",
+        "contact_title": "Contact"
+    },
+    "thanks": {
+        "title": "Merci de nous avoir contactés !",
+        "text": "Nous avons bien reçu votre demande. Un membre de notre équipe vous contactera dans les plus brefs délais pour vous aider à vendre votre propriété.",
+        "back_button": "Retour à la page de vente"
+    },
+    "sell": {
+        "title": "Vendez votre propriété avec ThellSol",
+        "subtitle": "Processus sûr, rapide et sans complications",
+        "intro": "Chez ThellSol, nous vous accompagnons tout au long du processus de vente de votre propriété en Espagne, en garantissant une expérience sûre, rapide et sans complications.\n\nDe plus, nous bénéficions du soutien juridique du prestigieux cabinet d'avocats Martínez-Echevarría, ce qui nous permet de vous offrir une gestion complète et professionnelle avec une garantie juridique totale.",
+        "steps": {
+            "1": {"title": "Évaluation et mise en vente", "text": "Nous réalisons une évaluation professionnelle de votre logement et le publions sur les bons canaux pour attirer des acheteurs solvables."},
+            "2": {"title": "Réservation de l'acheteur", "text": "L'acheteur effectue un engagement : s'il est intéressé, il verse un acompte de réservation (entre 6 000 et 10 000 euros), retirant ainsi le bien du marché."},
+            "3": {"title": "Préparation légale de la vente", "list": {"1": "Acte de propriété", "2": "Certificats du registre", "3": "Licence municipale et certificat d'efficacité énergétique", "4": "Vérification de l'absence de charges (hypothèques, saisies, dettes IBI ou services)"}},
+            "4": {"title": "Signature du contrat privé", "text": "Un contrat privé de vente est rédigé, qui inclut généralement le paiement d'un pourcentage du prix (généralement 10%). Le document fixe les conditions, les délais et les pénalités en cas de non-respect."},
+            "5": {"title": "Signature de l'acte public de vente", "text": "Dans un délai de 4 à 6 semaines, l'acte officiel est signé devant notaire. À ce moment-là, vous recevez le reste de l'argent et la propriété est remise à l'acheteur."},
+            "6": {"title": "Règlement des taxes et démarches finales", "list": {"1": "Calcul et règlement de la taxe municipale sur la plus-value", "2": "Annulation au registre des hypothèques (le cas échéant)", "3": "Changement de titulaire des services", "4": "Retenue de 3% pour les non-résidents (si applicable selon votre situation fiscale)"}},
+            "7": {"title": "Assistance juridique tout au long du processus", "text": "Si vous ne pouvez pas être présent, vous pouvez nous accorder une procuration et nous signerons tout en votre nom. Nous nous occupons également de toute la gestion fiscale, des déclarations et des paiements nécessaires."}
+        },
+        "final": "Vendez votre maison en toute tranquillité, avec un soutien juridique et un accompagnement professionnel",
+        "form": {
+            "title": "Demandez des informations personnalisées sur la vente de votre propriété",
+            "name": "Nom *",
+            "phone": "Téléphone *",
+            "email": "Email *",
+            "message": "Message (optionnel)",
+            "send": "Envoyer"
+        }
+    },
+    "buy": {
+        "filters": {
+            "area": "Zone",
+            "all_areas": "Toutes les zones",
+            "type": "Type de propriété",
+            "all_types": "Tous les types",
+            "price": "Prix",
+            "all_prices": "Tous les prix",
+            "more_500k": "Plus de 500 000€",
+            "bedrooms": "Chambres",
+            "bathrooms": "Salles de bain",
+            "any": "N'importe quel nombre",
+            "more": "Plus de sélections",
+            "search": "Rechercher des propriétés"
+        },
+        "results": {
+            "title": "Propriétés disponibles"
+        },
+        "modal": {
+            "title": "Plus de caractéristiques",
+            "features": {
+                "1": "Première ligne de plage",
+                "2": "Première ligne de golf",
+                "3": "Proche des commerces",
+                "4": "Sud",
+                "5": "Sud-ouest",
+                "6": "Sud-est",
+                "7": "Excellent",
+                "8": "Besoin de rénovation",
+                "9": "Neuf",
+                "10": "Piscine communautaire",
+                "11": "Piscine privée",
+                "12": "Climatisation",
+                "13": "Cheminée",
+                "14": "Chauffage au sol",
+                "15": "Mer",
+                "16": "Montagne",
+                "17": "Golf",
+                "18": "Cuisine équipée",
+                "19": "Jardin privé",
+                "20": "Parking",
+                "21": "Investissement",
+                "22": "Luxe"
+            }
+        }
     }
 }

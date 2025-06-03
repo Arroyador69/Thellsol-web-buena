@@ -270,32 +270,14 @@
         <p>ThellSol Real Estate puede modificar esta política de cookies en función de exigencias legislativas, reglamentarias, o con la finalidad de adaptar dicha política a las instrucciones dictadas por la Agencia Española de Protección de Datos.</p>
     </div>
 
-    <footer class="footer">
-        <div class="footer-content" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; align-items: start;">
-            <div class="footer-section">
-                <h4>Contacto</h4>
-                <p><b>Andre Richard Tell</b><br>Thellsol Real Estate</p>
-                <p>Fuengirola 29640<br>Málaga, Spain</p>
-            </div>
-            <div class="footer-section">
-                <p style="margin-bottom: 0;">andre@thellsol.com</p>
-                <p style="margin-top: 0;">+34 676 335 313</p>
-            </div>
-            <div class="footer-section">
-                <h4>Enlaces Legales</h4>
-                <a href="politica-privacidad.html">Política de Privacidad</a>
-                <a href="politica-cookies.html">Política de Cookies</a>
-                <a href="aviso-legal.html">Aviso Legal</a>
-            </div>
-            <div class="footer-section" style="text-align: right;">
-                <a href="https://thellsol.com" target="_blank"><img src="./images/logo-thellsol.png" alt="Logo Thellsol" style="width: 120px; border-radius: 12px;"></a>
-            </div>
-        </div>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 30px; font-size: 0.95rem; color: #ccc;">
-            <span>Developed by DesArroyo.Tech</span>
-            <span>thellsol.com copyright reserved 2025</span>
-        </div>
-    </footer>
+    <div id="footer"></div>
+    <script>
+      fetch('footer.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('footer').innerHTML = html;
+        });
+    </script>
 
     <a href="https://wa.me/34676335313" class="whatsapp-button" target="_blank">
         <img src="./images/whatsapp-icon.png" alt="WhatsApp">

@@ -95,5 +95,87 @@
         "10": { "title": "Casa de Campo en Mijas", "zone": "Mijas Pueblo", "desc": "4 dormitorios, 3 baños, 200m²", "price": "480.000€", "button": "Ver Detalles" },
         "11": { "title": "Apartamento en Nueva Andalucía", "zone": "Nueva Andalucía, Marbella", "desc": "2 dormitorios, 2 baños, 100m²", "price": "350.000€", "button": "Ver Detalles" },
         "12": { "title": "Villa de Lujo en Benalmádena", "zone": "Benalmádena Costa", "desc": "5 dormitorios, 5 baños, 420m²", "price": "1.200.000€", "button": "Ver Detalles" }
+    },
+    "contact": {
+        "title": "Información de Contacto",
+        "name": "Andre Richard Tell",
+        "company": "Thellsol Real Estate",
+        "address_title": "Dirección",
+        "address": "Fuengirola 29640\nMálaga, Spain",
+        "contact_title": "Contacto"
+    },
+    "thanks": {
+        "title": "¡Gracias por contactarnos!",
+        "text": "Hemos recibido tu solicitud correctamente. Un miembro de nuestro equipo se pondrá en contacto contigo lo antes posible para ayudarte con la venta de tu propiedad.",
+        "back_button": "Volver a la página de venta"
+    },
+    "sell": {
+        "title": "Vender tu Propiedad con ThellSol",
+        "subtitle": "Proceso seguro, rápido y sin complicaciones",
+        "intro": "En ThellSol, te acompañamos en todo el proceso de venta de tu propiedad en España, asegurando una experiencia segura, rápida y sin complicaciones.\n\nAdemás, contamos con el respaldo legal del prestigioso despacho de abogados Martínez-Echevarría, lo que nos permite ofrecerte una gestión completa y profesional con total garantía jurídica.",
+        "steps": {
+            "1": {"title": "Valoración y puesta en venta", "text": "Realizamos una valoración profesional de tu vivienda y la publicamos en los canales adecuados para atraer compradores solventes."},
+            "2": {"title": "Reserva del comprador", "text": "El comprador efectúa un compromiso: interesado, este realiza un depósito de reserva (entre 6.000 y 10.000 euros), retirando así la vivienda del mercado."},
+            "3": {"title": "Preparación legal de la venta", "list": {"1": "Escritura de la propiedad", "2": "Certificados registral", "3": "Licencia municipal y certificado de eficiencia energética", "4": "Comprobación de que no existen cargas (hipotecas, embargos, deudas de IBI o suministros)"}},
+            "4": {"title": "Firma del contrato privado", "text": "Se redacta un contrato privado de compraventa, que suele incluir el pago de un porcentaje del precio (normalmente 10%). El documento fija condiciones, plazos y penalizaciones en caso de incumplimiento."},
+            "5": {"title": "Firma de la escritura pública de compraventa", "text": "En un plazo de 4-6 semanas, se firma ante notario la escritura oficial. En ese momento, recibes el resto del dinero y se entrega la propiedad al comprador."},
+            "6": {"title": "Liquidación de impuestos y gestiones finales", "list": {"1": "Cálculo y liquidación del Impuesto de Plusvalía Municipal", "2": "Cancelación registral de hipotecas (si aplica)", "3": "Cambio de titularidad en suministros", "4": "Retención del 3% para no residentes (si corresponde según tu situación fiscal)"}},
+            "7": {"title": "Asistencia legal durante todo el proceso", "text": "Si no puedes estar presente, puedes otorgarnos un poder notarial y realizamos todas las firmas en tu nombre. Nos encargamos también de toda la gestión fiscal, declaraciones y pagos necesarios."}
+        },
+        "final": "Vende tu casa con tranquilidad, respaldo legal y acompañamiento profesional",
+        "form": {
+            "title": "Solicita información personalizada sobre la venta de tu propiedad",
+            "name": "Nombre *",
+            "phone": "Teléfono *",
+            "email": "Email *",
+            "message": "Mensaje (opcional)",
+            "send": "Enviar"
+        }
+    },
+    "buy": {
+        "filters": {
+            "area": "Zona",
+            "all_areas": "Todas las zonas",
+            "type": "Tipo de Propiedad",
+            "all_types": "Todos los tipos",
+            "price": "Precio",
+            "all_prices": "Todos los precios",
+            "more_500k": "Más de 500.000€",
+            "bedrooms": "Dormitorios",
+            "bathrooms": "Baños",
+            "any": "Cualquier núm.",
+            "more": "Más selecciones",
+            "search": "Buscar Propiedades"
+        },
+        "results": {
+            "title": "Propiedades Disponibles"
+        },
+        "modal": {
+            "title": "Más características",
+            "features": {
+                "1": "Primera línea de playa",
+                "2": "Primera línea de golf",
+                "3": "Cerca de tiendas",
+                "4": "Sur",
+                "5": "Suroeste",
+                "6": "Sureste",
+                "7": "Excelente",
+                "8": "Necesita reformas",
+                "9": "Obra nueva",
+                "10": "Piscina comunitaria",
+                "11": "Piscina privada",
+                "12": "Aire acondicionado",
+                "13": "Chimenea",
+                "14": "Suelo radiante",
+                "15": "Mar",
+                "16": "Montaña",
+                "17": "Golf",
+                "18": "Cocina equipada",
+                "19": "Jardín privado",
+                "20": "Parking",
+                "21": "Inversión",
+                "22": "Lujo"
+            }
+        }
     }
 } 
