@@ -172,5 +172,52 @@
                 "22": "Luxury"
             }
         }
+    },
+    "legal": {
+        "intro": "At ThellSol Real Estate, we are committed to providing our clients with a secure, transparent, and up-to-date experience, with the best partners in compliance and legal architecture for each step of the property buying and selling process.<br><br>We unite the real estate sector with the latest legal developments and the best legal firms. We manage the acquisition of all legal documentation, tax adjustments, and proper registration, in collaboration with independent lawyers and tax advisors.<br><br>Whether you want to buy or sell a property, you will always have the maximum legal guarantees. Here are the links to download the legal information in your language. ThellSol, the trust of your property, without complications.",
+        "pdf_es": "Download PDF (Spanish)",
+        "pdf_en": "Download PDF (English)",
+        "pdf_pl": "Download PDF (Polish)",
+        "pdf_ru": "Download PDF (Russian)",
+        "pdf_sv": "Download PDF (Swedish)",
+        "pdf_fr": "Download PDF (French)"
+    },
+    "legalNotice": {
+        "title": "Legal Notice",
+        "section1": "1. General Information",
+        "text1": "In compliance with the information duty set forth in Article 10 of Law 34/2002, of July 11, on Information Society Services and Electronic Commerce, we inform you that the Website and the Internet portal www.thellsol.com (hereinafter, the 'Website') is owned by ThellSol Real Estate, located in Fuengirola 29640, Málaga, Spain.",
+        "section2": "2. Purpose",
+        "text2": "This legal notice regulates the use of the website www.thellsol.com that ThellSol Real Estate makes available to Internet users.",
+        "section3": "3. Intellectual Property",
+        "text3": "All content on the Website, including texts, photographs, graphics, images, icons, technology, links, audiovisual or sound content, as well as its graphic design and source codes, are the intellectual property of ThellSol Real Estate or third parties, and none of the exploitation rights recognized by current intellectual property regulations are understood to be transferred to the User.",
+        "section4": "4. Terms of Use",
+        "text4": "The User undertakes to use the Website in accordance with the law, this legal notice, and other notices and instructions brought to their attention.",
+        "section5": "5. Liability",
+        "text5": "ThellSol Real Estate is not responsible for any damages that may arise from interferences, omissions, interruptions, computer viruses, or telephone malfunctions in the operation of the electronic system, caused by reasons beyond the company's control."
+    },
+    "privacy": {
+        "title": "Privacy Policy",
+        "section1": "1. General Information",
+        "text1": "In compliance with the information duty set forth in Article 10 of Law 34/2002, of July 11, on Information Society Services and Electronic Commerce, we inform you that the Website and the Internet portal www.thellsol.com (hereinafter, the 'Website') is owned by ThellSol Real Estate, located in Fuengirola 29640, Málaga, Spain.",
+        "section2": "2. Personal Data Processing",
+        "text2": "In compliance with the provisions of Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, we inform you that:",
+        "text3": "The personal data you provide will be used to manage the requested services, provide employers with information about submitted applications, respond to your inquiries, and send you information about our services.",
+        "section3": "3. User Rights",
+        "text4": "As a user, you may exercise the following rights:",
+        "text5": "- Right of access to your personal data<br>- Right to rectify inaccurate data<br>- Right to erasure when data is no longer necessary<br>- Right to object to the processing of your data<br>- Right to restriction of processing<br>- Right to data portability",
+        "section4": "4. Security",
+        "text6": "ThellSol Real Estate has adopted the necessary technical and organizational security measures to ensure the security of your personal data and to prevent its alteration, loss, processing, and/or unauthorized access."
+    },
+    "cookies": {
+        "title": "Cookie Policy",
+        "section1": "1. What are cookies?",
+        "text1": "Cookies are small text files that websites visited by users send to their devices, where they are stored to be retransmitted to the same sites on subsequent visits. Cookies are used for different purposes, have particular characteristics, and can be used both by the owner of the site being visited and by third parties.",
+        "section2": "2. Types of cookies used",
+        "text2": "This website uses the following categories of cookies:",
+        "text3": "- Technical cookies: these allow the user to navigate through a website, platform, or application and use the different options or services available.<br>- Analytical cookies: these allow the party responsible for them to monitor and analyze the behavior of users of the websites to which they are linked.",
+        "section3": "3. How to manage cookies?",
+        "text4": "You can set your browser to reject all cookies or to notify you when a cookie is sent. However, if you reject cookies, some parts of our website may not function properly.",
+        "section4": "4. Updates to the cookie policy",
+        "text5": "ThellSol Real Estate may modify this cookie policy due to legislative, regulatory requirements, or to adapt the policy to the instructions issued by the Spanish Data Protection Agency."
     }
 }

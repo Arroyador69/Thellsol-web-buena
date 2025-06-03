@@ -177,5 +177,52 @@
                 "22": "Lujo"
             }
         }
+    },
+    "legal": {
+        "intro": "En ThellSol Real Estate nos encargamos de ofrecer a nuestros clientes una experiencia segura, transparente y actualizada, con los mejores partners en compliance y arquitectura legal para cada paso del proceso de compraventa de propiedades.<br><br>Unimos el sector inmobiliario con la máxima actualidad jurídica y las mejores firmas legales. Nos encargamos de gestionar la obtención de toda la documentación legal, de los ajustes fiscales y de la correcta inscripción registral, en colaboración con abogados y asesores fiscales independientes.<br><br>Tanto si deseas comprar como vender una propiedad, contarás siempre con las máximas garantías legales, aquí tienes los enlaces para descargar la información legal en tu idioma. ThellSol, la confianza de tu propiedad, sin complicaciones.",
+        "pdf_es": "Descargar PDF (Español)",
+        "pdf_en": "Descargar PDF (Inglés)",
+        "pdf_pl": "Descargar PDF (Polaco)",
+        "pdf_ru": "Descargar PDF (Ruso)",
+        "pdf_sv": "Descargar PDF (Sueco)",
+        "pdf_fr": "Descargar PDF (Francés)"
+    },
+    "legalNotice": {
+        "title": "Aviso Legal",
+        "section1": "1. Información General",
+        "text1": "En cumplimiento con el deber de información recogido en artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico, le informamos que el Sitio Web y el portal de Internet www.thellsol.com (en adelante, el 'Sitio Web') es propiedad de ThellSol Real Estate, con domicilio en Fuengirola 29640, Málaga, Spain.",
+        "section2": "2. Objeto",
+        "text2": "El presente aviso legal regula el uso del sitio web www.thellsol.com que ThellSol Real Estate pone a disposición de los usuarios de Internet.",
+        "section3": "3. Propiedad Intelectual",
+        "text3": "Todos los contenidos del Sitio Web, incluyendo textos, fotografías, gráficos, imágenes, iconos, tecnología, enlaces, contenidos audiovisuales o sonoros, así como su diseño gráfico y códigos fuente, son propiedad intelectual de ThellSol Real Estate o de terceros, sin que puedan entenderse cedidos al Usuario ninguno de los derechos de explotación reconocidos por la normativa vigente en materia de propiedad intelectual.",
+        "section4": "4. Condiciones de Uso",
+        "text4": "El Usuario se compromete a utilizar el Sitio Web de conformidad con la ley, este aviso legal, y demás avisos e instrucciones puestos en su conocimiento.",
+        "section5": "5. Responsabilidad",
+        "text5": "ThellSol Real Estate no se hace responsable de los daños y perjuicios que se pudieran derivar de interferencias, omisiones, interrupciones, virus telefónicos o disfunciones telefónicas en el funcionamiento del sistema electrónico, motivadas por causas ajenas a la empresa."
+    },
+    "privacy": {
+        "title": "Política de Privacidad",
+        "section1": "1. Información General",
+        "text1": "En cumplimiento con el deber de información recogido en artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico, le informamos que el Sitio Web y el portal de Internet www.thellsol.com (en adelante, el 'Sitio Web') es propiedad de ThellSol Real Estate, con domicilio en Fuengirola 29640, Málaga, Spain.",
+        "section2": "2. Tratamiento de Datos Personales",
+        "text2": "En cumplimiento de lo dispuesto en el Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos, le informamos que:",
+        "text3": "Los datos personales que nos facilite serán utilizados con la finalidad de gestionar los servicios solicitados, facilitar a los empresarios información sobre las candidaturas presentadas, responder a sus consultas y remitirle información sobre nuestros servicios.",
+        "section3": "3. Derechos del Usuario",
+        "text4": "Como usuario, puede ejercer los siguientes derechos:",
+        "text5": "- Derecho de acceso a sus datos personales<br>- Derecho de rectificación de datos inexactos<br>- Derecho de supresión cuando los datos ya no sean necesarios<br>- Derecho de oposición al tratamiento de sus datos<br>- Derecho de limitación del tratamiento<br>- Derecho a la portabilidad de los datos",
+        "section4": "4. Seguridad",
+        "text6": "ThellSol Real Estate ha adoptado las medidas de seguridad técnicas y organizativas necesarias que garanticen la seguridad de sus datos de carácter personal y eviten su alteración, pérdida, tratamiento y/o acceso no autorizado."
+    },
+    "cookies": {
+        "title": "Política de Cookies",
+        "section1": "1. ¿Qué son las cookies?",
+        "text1": "Las cookies son pequeños archivos de texto que los sitios web visitados por los usuarios envían a sus terminales, donde se almacenan para ser retransmitidos a los mismos sitios en visitas sucesivas. Las cookies se utilizan con diferentes finalidades, tienen características particulares, y pueden ser utilizadas tanto por el titular del sitio que se está visitando, como por terceros.",
+        "section2": "2. Tipos de cookies utilizadas",
+        "text2": "Este sitio web utiliza las siguientes categorías de cookies:",
+        "text3": "- Cookies técnicas: son aquellas que permiten al usuario la navegación a través de una página web, plataforma o aplicación y la utilización de las diferentes opciones o servicios que en ella existen.<br>- Cookies analíticas: son aquellas que permiten al responsable de las mismas el seguimiento y análisis del comportamiento de los usuarios de los sitios web a los que están vinculadas.",
+        "section3": "3. ¿Cómo gestionar las cookies?",
+        "text4": "Puede configurar su navegador para que rechace todas las cookies, o para que le avise cuando se envía una cookie. Sin embargo, si rechaza las cookies, es posible que algunas partes de nuestro sitio web no funcionen correctamente.",
+        "section4": "4. Actualizaciones de la política de cookies",
+        "text5": "ThellSol Real Estate puede modificar esta política de cookies en función de exigencias legislativas, reglamentarias, o con la finalidad de adaptar dicha política a las instrucciones dictadas por la Agencia Española de Protección de Datos."
     }
 } 

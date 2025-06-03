@@ -164,5 +164,52 @@
                 "22": "Lyx"
             }
         }
+    },
+    "legal": {
+        "intro": "På ThellSol Real Estate strävar vi efter att ge våra kunder en säker, transparent och modern upplevelse med de bästa partner inom efterlevnad och juridisk arkitektur i varje steg av processen för köp och försäljning av fastigheter.<br><br>Vi förenar fastighetssektorn med de senaste juridiska utvecklingarna och de bästa juridiska företagen. Vi hanterar anskaffningen av all juridisk dokumentation, skattejusteringar och motsvarande registrering, i samarbete med oberoende advokater och skatterådgivare.<br><br>Oavsett om du vill köpa eller sälja en fastighet kommer du alltid att ha de maximala juridiska garantierna. Här är länkarna för att ladda ner den juridiska informationen på ditt språk. ThellSol, förtroendet för din fastighet, utan komplikationer.",
+        "pdf_es": "Ladda ner PDF (spanska)",
+        "pdf_en": "Ladda ner PDF (engelska)",
+        "pdf_pl": "Ladda ner PDF (polska)",
+        "pdf_ru": "Ladda ner PDF (ryska)",
+        "pdf_sv": "Ladda ner PDF (svenska)",
+        "pdf_fr": "Ladda ner PDF (franska)"
+    },
+    "legalNotice": {
+        "title": "Juridiskt meddelande",
+        "section1": "1. Allmän information",
+        "text1": "I enlighet med informationsplikten enligt artikel 10 i lag 34/2002 av den 11 juli om informationssamhällets tjänster och elektronisk handel, informerar vi dig om att webbplatsen och internetportalen www.thellsol.com (hädanefter 'Webbplatsen') ägs av ThellSol Real Estate, belägen i Fuengirola 29640, Málaga, Spanien.",
+        "section2": "2. Syfte",
+        "text2": "Detta juridiska meddelande reglerar användningen av webbplatsen www.thellsol.com som ThellSol Real Estate gör tillgänglig för internetanvändare.",
+        "section3": "3. Immateriella rättigheter",
+        "text3": "Allt innehåll på Webbplatsen, inklusive texter, fotografier, grafik, bilder, ikoner, teknik, länkar, audiovisuellt eller ljudinnehåll, samt dess grafiska design och källkoder, är ThellSol Real Estates eller tredje parts immateriella egendom, och inga av de utnyttjanderätter som erkänns av gällande immaterialrättslig lagstiftning överförs till användaren.",
+        "section4": "4. Användarvillkor",
+        "text4": "Användaren åtar sig att använda Webbplatsen i enlighet med lagen, detta juridiska meddelande och andra meddelanden och instruktioner som har meddelats honom.",
+        "section5": "5. Ansvar",
+        "text5": "ThellSol Real Estate ansvarar inte för skador som kan uppstå till följd av störningar, utelämnanden, avbrott, virus eller telefonfel i det elektroniska systemets funktion, orsakade av skäl utanför företagets kontroll."
+    },
+    "privacy": {
+        "title": "Integritetspolicy",
+        "section1": "1. Allmän information",
+        "text1": "I enlighet med informationsplikten enligt artikel 10 i lag 34/2002 av den 11 juli om informationssamhällets tjänster och elektronisk handel, informerar vi dig om att webbplatsen och internetportalen www.thellsol.com (hädanefter 'Webbplatsen') ägs av ThellSol Real Estate, belägen i Fuengirola 29640, Málaga, Spanien.",
+        "section2": "2. Behandling av personuppgifter",
+        "text2": "I enlighet med bestämmelserna i förordning (EU) 2016/679 från Europaparlamentet och rådet av den 27 april 2016 om skydd av fysiska personer med avseende på behandling av personuppgifter och om det fria flödet av sådana uppgifter, informerar vi dig om att:",
+        "text3": "De personuppgifter du lämnar kommer att användas för att hantera de begärda tjänsterna, tillhandahålla arbetsgivare information om inlämnade ansökningar, svara på dina förfrågningar och skicka dig information om våra tjänster.",
+        "section3": "3. Användarrättigheter",
+        "text4": "Som användare kan du utöva följande rättigheter:",
+        "text5": "- Rätt till tillgång till dina personuppgifter<br>- Rätt att rätta felaktiga uppgifter<br>- Rätt till radering när uppgifterna inte längre behövs<br>- Rätt att invända mot behandlingen av dina uppgifter<br>- Rätt till begränsning av behandlingen<br>- Rätt till dataportabilitet",
+        "section4": "4. Säkerhet",
+        "text6": "ThellSol Real Estate har vidtagit nödvändiga tekniska och organisatoriska säkerhetsåtgärder för att säkerställa säkerheten för dina personuppgifter och förhindra deras ändring, förlust, behandling och/eller obehörig åtkomst."
+    },
+    "cookies": {
+        "title": "Cookiepolicy",
+        "section1": "1. Vad är cookies?",
+        "text1": "Cookies är små textfiler som webbplatser som besöks av användare skickar till deras enheter, där de lagras för att skickas tillbaka till samma webbplatser vid senare besök. Cookies används för olika ändamål, har särskilda egenskaper och kan användas både av ägaren till den besökta webbplatsen och av tredje part.",
+        "section2": "2. Typer av cookies som används",
+        "text2": "Denna webbplats använder följande kategorier av cookies:",
+        "text3": "- Tekniska cookies: gör det möjligt för användaren att navigera på en webbplats, plattform eller applikation och använda de olika alternativ eller tjänster som finns där.<br>- Analytiska cookies: gör det möjligt för den ansvarige att övervaka och analysera användarnas beteende på de webbplatser de är kopplade till.",
+        "section3": "3. Hur hanterar man cookies?",
+        "text4": "Du kan ställa in din webbläsare att avvisa alla cookies eller att meddela dig när en cookie skickas. Om du avvisar cookies kan dock vissa delar av vår webbplats fungera felaktigt.",
+        "section4": "4. Uppdateringar av cookiepolicyn",
+        "text5": "ThellSol Real Estate kan ändra denna cookiepolicy på grund av lagstiftningskrav, regleringskrav eller för att anpassa policyn till instruktioner utfärdade av den spanska dataskyddsmyndigheten."
     }
 }
