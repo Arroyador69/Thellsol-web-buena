@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Gracias! | ThellSol Real Estate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="logo-thellsol copia.png" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fcf9f4;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        #menu {
+            width: 100%;
+        }
+        .gracias-container {
+            max-width: 500px;
+            margin: 60px auto 40px auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px #0002;
+            padding: 40px 28px 32px 28px;
+            text-align: center;
+        }
+        .gracias-titulo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: #181e29;
+            margin-bottom: 18px;
+        }
+        .gracias-texto {
+            color: #444;
+            font-size: 1.13rem;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+        .volver-btn {
+            display: inline-block;
+            background: #181e29;
+            color: #fff;
+            text-decoration: none;
+            padding: 13px 28px;
+            border-radius: 7px;
+            font-weight: bold;
+            font-size: 1.08rem;
+            transition: background 0.2s;
+            box-shadow: 0 2px 8px #0001;
+        }
+        .volver-btn:hover {
+            background: #232a3a;
+        }
+        @media (max-width: 600px) {
+            .gracias-container {
+                max-width: 98vw;
+                padding: 18px 4vw 18px 4vw;
+            }
+            .gracias-titulo {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="menu"></div>
+    <div class="gracias-container">
+        <h1 class="gracias-titulo">¡Gracias por contactarnos!</h1>
+        <p class="gracias-texto">
+            Hemos recibido tu solicitud correctamente. Un miembro de nuestro equipo se pondrá en contacto contigo lo antes posible para ayudarte con la venta de tu propiedad.
+        </p>
+        <a href="vender.html" class="volver-btn">Volver a la página de venta</a>
+    </div>
+    <div id="footer"></div>
+    <script>
+      fetch('menu.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('menu').innerHTML = html;
+        });
+      fetch('footer.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('footer').innerHTML = html;
+        });
+    </script>
+</body>
+</html> 
