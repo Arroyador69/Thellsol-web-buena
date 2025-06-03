@@ -62,6 +62,41 @@
     <span style="display:block;width:24px;height:3px;background:#fff;margin:3px 0;border-radius:2px;"></span>
     <span style="display:block;width:24px;height:3px;background:#fff;margin:3px 0;border-radius:2px;"></span>
 </button>
+<style>
+/* --- MEJORA DEL MENÚ DE IDIOMAS --- */
+.dropdown-content .language-flag {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-size: 1.1rem;
+    min-width: 140px;
+    white-space: nowrap;
+    width: 100%;
+    box-sizing: border-box;
+}
+.dropdown-content .language-flag > span,
+.dropdown-content .language-flag::before {
+    flex-shrink: 0;
+    width: 28px;
+    height: 20px;
+    margin-right: 10px;
+    display: inline-block;
+}
+.dropdown-content .language-flag {
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.dropdown-content .language-flag:hover {
+    background: #181e29;
+}
+@media (max-width: 900px) {
+    .dropdown-content .language-flag {
+        font-size: 1rem;
+        padding: 12px 10px;
+    }
+}
+</style>
 <script>
 // Mostrar siempre el título centrado en móvil y que no se solape con el botón hamburguesa
 function ajustarTituloNavbar() {
