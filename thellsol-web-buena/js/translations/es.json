@@ -1,0 +1,99 @@
+{
+    "nav": {
+        "home": "Inicio",
+        "properties": "Propiedades",
+        "buy": "Comprar",
+        "sell": "Vender",
+        "legal": "Información Legal",
+        "contact": "Contacto"
+    },
+    "filters": {
+        "area": "Área",
+        "propertyType": "Tipo de Propiedad",
+        "price": "Precio",
+        "bedrooms": "Dormitorios",
+        "bathrooms": "Baños",
+        "features": "Características",
+        "search": "Buscar",
+        "allAreas": "Todas las zonas",
+        "allTypes": "Todos los tipos"
+    },
+    "propertyTypes": {
+        "apartment": "Apartamento",
+        "villa": "Villa",
+        "house": "Casa",
+        "penthouse": "Ático"
+    },
+    "features": {
+        "pool": "Piscina",
+        "garden": "Jardín",
+        "garage": "Garaje",
+        "terrace": "Terraza",
+        "airConditioning": "Aire Acondicionado",
+        "heating": "Calefacción",
+        "elevator": "Ascensor",
+        "security": "Seguridad 24h",
+        "seaView": "Vistas al mar",
+        "furnished": "Mobiliario incluido"
+    },
+    "areas": {
+        "fuengirola": "Fuengirola",
+        "mijas": "Mijas",
+        "benalmadena": "Benalmádena",
+        "torreblanca": "Torreblanca",
+        "torremolinos": "Torremolinos",
+        "riviera": "Riviera del Sol",
+        "calahonda": "Calahonda",
+        "marbella": "Marbella",
+        "nuevaAndalucia": "Nueva Andalucía",
+        "malaga": "Málaga"
+    },
+    "common": {
+        "bedrooms": "Dormitorios",
+        "bathrooms": "Baños",
+        "area": "Área",
+        "price": "Precio",
+        "contact": "Contactar",
+        "moreInfo": "Más información",
+        "back": "Volver",
+        "next": "Siguiente",
+        "loading": "Cargando..."
+    },
+    "footer": {
+        "contact": "Contacto",
+        "legal": "Enlaces Legales",
+        "privacy": "Política de Privacidad",
+        "cookies": "Política de Cookies",
+        "legal_notice": "Aviso Legal"
+    },
+    "whatsapp": {
+        "contact": "Contactar por WhatsApp"
+    },
+    "welcome": {
+        "title": "Bienvenidos a Thellsol Real Estate",
+        "intro": "Me complace darte la bienvenida a Thellsol Real Estate, donde cada propiedad cuenta una historia y cada cliente es parte de nuestra familia.",
+        "text1": "Con más de una década de experiencia en la Costa del Sol, me enorgullece poder ayudarte a encontrar tu hogar ideal en esta maravillosa región. Desde las playas de Fuengirola hasta las calles históricas de Málaga, cada rincón de nuestra zona tiene algo especial que ofrecer.",
+        "text2": "En Thellsol, no solo vendemos propiedades; creamos relaciones duraderas basadas en la confianza, la transparencia y el compromiso con la excelencia.",
+        "text3": "Mi equipo y yo estamos aquí para guiarte en cada paso del camino, asegurando que tu experiencia sea tan excepcional como el hogar que estás buscando.",
+        "text4": "Te invito a explorar nuestra selección de propiedades y descubrir por qué la Costa del Sol es el lugar perfecto para tu próximo hogar.",
+        "signature": "André Tell",
+        "position": "Fundador & CEO, Thellsol Real Estate"
+    },
+    "featured": {
+        "title": "Propiedades Destacadas"
+    },
+    "cards": {
+        "1": { "title": "Apartamento de Lujo en Marbella", "zone": "Marbella, Costa del Sol", "desc": "3 dormitorios, 2 baños, 120m²", "price": "450.000€", "button": "Ver Detalles" },
+        "2": { "title": "Villa con Piscina en Fuengirola", "zone": "Fuengirola, Costa del Sol", "desc": "4 dormitorios, 3 baños, 250m²", "price": "650.000€", "button": "Ver Detalles" },
+        "3": { "title": "Chalet Moderno en Benalmádena", "zone": "Benalmádena, Costa del Sol", "desc": "5 dormitorios, 4 baños, 300m²", "price": "850.000€", "button": "Ver Detalles" },
+        "4": { "title": "Ático con Vistas al Mar", "zone": "Mijas Costa", "desc": "2 dormitorios, 2 baños, 95m²", "price": "320.000€", "button": "Ver Detalles" },
+        "5": { "title": "Casa Familiar en Calahonda", "zone": "Calahonda, Mijas", "desc": "3 dormitorios, 2 baños, 140m²", "price": "390.000€", "button": "Ver Detalles" },
+        "6": { "title": "Apartamento Reformado en Málaga", "zone": "Centro, Málaga", "desc": "2 dormitorios, 1 baño, 80m²", "price": "275.000€", "button": "Ver Detalles" },
+        "7": { "title": "Villa Exclusiva en Marbella", "zone": "Marbella, Golden Mile", "desc": "6 dormitorios, 6 baños, 600m²", "price": "2.500.000€", "button": "Ver Detalles" },
+        "8": { "title": "Dúplex en Riviera del Sol", "zone": "Riviera del Sol, Mijas", "desc": "3 dormitorios, 2 baños, 110m²", "price": "310.000€", "button": "Ver Detalles" },
+        "9": { "title": "Estudio en Torremolinos", "zone": "Torremolinos", "desc": "1 dormitorio, 1 baño, 45m²", "price": "120.000€", "button": "Ver Detalles" },
+        "10": { "title": "Casa de Campo en Mijas", "zone": "Mijas Pueblo", "desc": "4 dormitorios, 3 baños, 200m²", "price": "480.000€", "button": "Ver Detalles" },
+        "11": { "title": "Apartamento en Nueva Andalucía", "zone": "Nueva Andalucía, Marbella", "desc": "2 dormitorios, 2 baños, 100m²", "price": "350.000€", "button": "Ver Detalles" },
+        "12": { "title": "Villa de Lujo en Benalmádena", "zone": "Benalmádena Costa", "desc": "5 dormitorios, 5 baños, 420m²", "price": "1.200.000€", "button": "Ver Detalles" }
+    }
+} 

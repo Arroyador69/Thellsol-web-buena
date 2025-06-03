@@ -1,0 +1,86 @@
+{
+    "nav": {
+        "home": "Hem",
+        "properties": "Fastigheter",
+        "buy": "Köp",
+        "sell": "Sälj",
+        "legal": "Juridisk information",
+        "contact": "Kontakt"
+    },
+    "filters": {
+        "area": "Område",
+        "propertyType": "Fastighetstyp",
+        "price": "Pris",
+        "bedrooms": "Sovrum",
+        "bathrooms": "Badrum",
+        "features": "Funktioner",
+        "search": "Sök",
+        "allAreas": "Alla områden",
+        "allTypes": "Alla typer"
+    },
+    "propertyTypes": {
+        "apartment": "Lägenhet",
+        "villa": "Villa",
+        "house": "Hus",
+        "penthouse": "Penthouse"
+    },
+    "features": {
+        "pool": "Pool",
+        "garden": "Trädgård",
+        "garage": "Garage",
+        "terrace": "Terrass",
+        "airConditioning": "Luftkonditionering",
+        "heating": "Värme",
+        "elevator": "Hiss",
+        "security": "24-timmars säkerhet",
+        "seaView": "Havsutsikt",
+        "furnished": "Möblerad"
+    },
+    "areas": {
+        "fuengirola": "Fuengirola",
+        "mijas": "Mijas",
+        "benalmadena": "Benalmádena",
+        "torreblanca": "Torreblanca",
+        "torremolinos": "Torremolinos",
+        "riviera": "Riviera del Sol",
+        "calahonda": "Calahonda",
+        "marbella": "Marbella",
+        "nuevaAndalucia": "Nueva Andalucía",
+        "malaga": "Málaga"
+    },
+    "common": {
+        "bedrooms": "Sovrum",
+        "bathrooms": "Badrum",
+        "area": "Yta",
+        "price": "Pris",
+        "contact": "Kontakt",
+        "moreInfo": "Mer info",
+        "back": "Tillbaka",
+        "next": "Nästa",
+        "loading": "Laddar..."
+    },
+    "footer": {
+        "contact": "Kontakt",
+        "legal": "Juridiska länkar",
+        "privacy": "Integritetspolicy",
+        "cookies": "Cookiepolicy",
+        "legal_notice": "Juridiskt meddelande"
+    },
+    "whatsapp": {
+        "contact": "Kontakta via WhatsApp"
+    },
+    "cards": {
+        "1": { "title": "Lyxlägenhet i Marbella", "zone": "Marbella, Costa del Sol", "desc": "3 sovrum, 2 badrum, 120m²", "price": "450 000€", "button": "Visa detaljer" },
+        "2": { "title": "Villa med pool i Fuengirola", "zone": "Fuengirola, Costa del Sol", "desc": "4 sovrum, 3 badrum, 250m²", "price": "650 000€", "button": "Visa detaljer" },
+        "3": { "title": "Modern chalet i Benalmádena", "zone": "Benalmádena, Costa del Sol", "desc": "5 sovrum, 4 badrum, 300m²", "price": "850 000€", "button": "Visa detaljer" },
+        "4": { "title": "Takvåning med havsutsikt", "zone": "Mijas Costa", "desc": "2 sovrum, 2 badrum, 95m²", "price": "320 000€", "button": "Visa detaljer" },
+        "5": { "title": "Familjehus i Calahonda", "zone": "Calahonda, Mijas", "desc": "3 sovrum, 2 badrum, 140m²", "price": "390 000€", "button": "Visa detaljer" },
+        "6": { "title": "Renoverad lägenhet i Málaga", "zone": "Centrum, Málaga", "desc": "2 sovrum, 1 badrum, 80m²", "price": "275 000€", "button": "Visa detaljer" },
+        "7": { "title": "Exklusiv villa i Marbella", "zone": "Marbella, Golden Mile", "desc": "6 sovrum, 6 badrum, 600m²", "price": "2 500 000€", "button": "Visa detaljer" },
+        "8": { "title": "Duplex i Riviera del Sol", "zone": "Riviera del Sol, Mijas", "desc": "3 sovrum, 2 badrum, 110m²", "price": "310 000€", "button": "Visa detaljer" },
+        "9": { "title": "Studio i Torremolinos", "zone": "Torremolinos", "desc": "1 sovrum, 1 badrum, 45m²", "price": "120 000€", "button": "Visa detaljer" },
+        "10": { "title": "Lantligt hus i Mijas", "zone": "Mijas Pueblo", "desc": "4 sovrum, 3 badrum, 200m²", "price": "480 000€", "button": "Visa detaljer" },
+        "11": { "title": "Lägenhet i Nueva Andalucía", "zone": "Nueva Andalucía, Marbella", "desc": "2 sovrum, 2 badrum, 100m²", "price": "350 000€", "button": "Visa detaljer" },
+        "12": { "title": "Lyxvilla i Benalmádena", "zone": "Benalmádena Costa", "desc": "5 sovrum, 5 badrum, 420m²", "price": "1 200 000€", "button": "Visa detaljer" }
+    }
+}
