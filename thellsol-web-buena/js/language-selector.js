@@ -45,7 +45,10 @@ function changeLanguage(lang) {
     
     // Actualizar el texto del botón de idioma
     const langName = languages[lang].name;
-    const langFlag = `fi fi-${lang === 'he' ? 'il' : lang}`;
+    let flagCode = lang;
+    if (lang === 'he') flagCode = 'il';
+    if (lang === 'sv') flagCode = 'se';
+    const langFlag = `fi fi-${flagCode}`;
     
     // Actualizar en el menú de escritorio
     const desktopButton = document.querySelector('.language-dropdown-desktop .navbar-link');
@@ -82,7 +85,12 @@ async function loadTranslations(lang) {
             }
             
             if (typeof value === 'string') {
-                element.textContent = value;
+                // Si contiene etiquetas HTML, usar innerHTML
+                if (value.includes('<br') || value.includes('<b') || value.includes('</')) {
+                    element.innerHTML = value;
+                } else {
+                    element.textContent = value;
+                }
             }
         });
         
@@ -101,6 +109,15 @@ async function loadTranslations(lang) {
         }
         
         document.title = `${titleValue} | ThellSol Real Estate`;
+        
+        // Cambiar dirección RTL para hebreo
+        if (lang === 'he') {
+            document.documentElement.setAttribute('dir', 'rtl');
+            document.body.style.textAlign = 'right';
+        } else {
+            document.documentElement.setAttribute('dir', 'ltr');
+            document.body.style.textAlign = '';
+        }
         
     } catch (error) {
         console.error('Error cargando traducciones:', error);

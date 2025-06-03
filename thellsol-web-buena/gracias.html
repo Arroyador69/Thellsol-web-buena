@@ -82,6 +82,9 @@
         .then(response => response.text())
         .then(html => {
           document.getElementById('menu').innerHTML = html;
+          if (window.initLanguageSelector) {
+            window.initLanguageSelector();
+          }
         });
       fetch('footer.html')
         .then(response => response.text())
