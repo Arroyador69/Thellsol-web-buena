@@ -682,11 +682,13 @@
         window.addEventListener('resize', mostrarHamburguesa);
     </script>
     <script>
-        // Cargar el menú
         fetch('menu.html')
             .then(response => response.text())
             .then(html => {
                 document.getElementById('menu').innerHTML = html;
+                if (window.initLanguageSelector) {
+                    window.initLanguageSelector();
+                }
             });
     </script>
     <div class="main-content" style="display: block; max-width: 1300px; margin: 0 auto; padding: 48px 0 0 0; min-height: 80vh;">

@@ -296,5 +296,17 @@
         <a href="informacion-legal.html" data-translate="nav.legal">Información Legal</a>
         <a href="contacto.html" data-translate="nav.contact">Contacto</a>
     </div>
+
+    <div id="menu"></div>
+    <script>
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('menu').innerHTML = html;
+                if (window.initLanguageSelector) {
+                    window.initLanguageSelector();
+                }
+            });
+    </script>
 </body>
 </html> 

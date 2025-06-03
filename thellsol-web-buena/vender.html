@@ -6,6 +6,9 @@
     <title>Vender tu Propiedad | ThellSol Real Estate</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="logo-thellsol copia.png" type="image/png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
+    <script src="./js/translations.js"></script>
+    <script src="./js/language-selector.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -649,6 +652,9 @@
             .then(response => response.text())
             .then(html => {
                 document.getElementById('menu').innerHTML = html;
+                if (window.initLanguageSelector) {
+                    window.initLanguageSelector();
+                }
             });
         fetch('footer.html')
             .then(response => response.text())

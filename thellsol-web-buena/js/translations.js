@@ -5,7 +5,7 @@ let translations = {};
 async function loadTranslations(lang) {
     try {
         console.log('Cargando traducciones para:', lang);
-        const response = await fetch(`./js/translations/${lang}.json`);
+        const response = await fetch(`./js/lang/${lang}.json`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }

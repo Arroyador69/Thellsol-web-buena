@@ -1,215 +1,331 @@
 {
     "nav": {
-        "home": "Главная",
-        "properties": "Недвижимость",
-        "buy": "Купить",
-        "sell": "Продать",
-        "legal": "Юридическая информация",
-        "contact": "Контакты"
+        "home": "Inicio",
+        "properties": "Propiedades",
+        "buy": "Comprar",
+        "sell": "Vender",
+        "legal": "Información Legal",
+        "contact": "Contacto"
     },
     "filters": {
-        "area": "Район",
-        "propertyType": "Тип недвижимости",
-        "price": "Цена",
-        "bedrooms": "Спальни",
-        "bathrooms": "Ванные комнаты",
-        "features": "Особенности",
-        "search": "Поиск",
-        "allAreas": "Все районы",
-        "allTypes": "Все типы"
+        "area": "Área",
+        "propertyType": "Tipo de Propiedad",
+        "price": "Precio",
+        "bedrooms": "Dormitorios",
+        "bathrooms": "Baños",
+        "features": "Características",
+        "search": "Buscar",
+        "allAreas": "Todas las zonas",
+        "allTypes": "Todos los tipos"
     },
     "propertyTypes": {
-        "apartment": "Квартира",
-        "villa": "Вилла",
-        "house": "Дом",
-        "penthouse": "Пентхаус"
+        "apartment": "Apartamento",
+        "villa": "Villa",
+        "house": "Casa",
+        "penthouse": "Ático"
     },
     "features": {
-        "pool": "Бассейн",
-        "garden": "Сад",
-        "garage": "Гараж",
-        "terrace": "Терраса",
-        "airConditioning": "Кондиционер",
-        "heating": "Отопление",
-        "elevator": "Лифт",
-        "security": "Охрана 24/7",
-        "seaView": "Вид на море",
-        "furnished": "Меблированный"
+        "pool": "Piscina",
+        "garden": "Jardín",
+        "garage": "Garaje",
+        "terrace": "Terraza",
+        "airConditioning": "Aire Acondicionado",
+        "heating": "Calefacción",
+        "elevator": "Ascensor",
+        "security": "Seguridad 24h",
+        "seaView": "Vistas al mar",
+        "furnished": "Mobiliario incluido"
     },
     "areas": {
-        "fuengirola": "Фуэнхирола",
-        "mijas": "Михас",
-        "benalmadena": "Бенальмадена",
-        "torreblanca": "Торребланка",
-        "torremolinos": "Торремолинос",
-        "riviera": "Ривьера дель Соль",
-        "calahonda": "Калахонда",
-        "marbella": "Марбелья",
-        "nuevaAndalucia": "Нуэва Андалусия",
-        "malaga": "Малага"
+        "fuengirola": "Fuengirola",
+        "mijas": "Mijas",
+        "benalmadena": "Benalmádena",
+        "torreblanca": "Torreblanca",
+        "torremolinos": "Torremolinos",
+        "riviera": "Riviera del Sol",
+        "calahonda": "Calahonda",
+        "marbella": "Marbella",
+        "nuevaAndalucia": "Nueva Andalucía",
+        "malaga": "Málaga"
     },
     "common": {
-        "bedrooms": "Спальни",
-        "bathrooms": "Ванные комнаты",
-        "area": "Площадь",
-        "price": "Цена",
-        "contact": "Контакты",
-        "moreInfo": "Подробнее",
-        "back": "Назад",
-        "next": "Далее",
-        "loading": "Загрузка..."
+        "bedrooms": "Dormitorios",
+        "bathrooms": "Baños",
+        "area": "Área",
+        "price": "Precio",
+        "contact": "Contactar",
+        "moreInfo": "Más información",
+        "back": "Volver",
+        "next": "Siguiente",
+        "loading": "Cargando..."
     },
     "footer": {
-        "contact": "Контакты",
-        "legal": "Юридические ссылки",
-        "privacy": "Политика конфиденциальности",
-        "cookies": "Политика использования файлов cookie",
-        "legal_notice": "Юридическое уведомление"
+        "contact": "Contacto",
+        "legal": "Enlaces Legales",
+        "privacy": "Política de Privacidad",
+        "cookies": "Política de Cookies",
+        "legal_notice": "Aviso Legal"
     },
     "whatsapp": {
-        "contact": "Связаться через WhatsApp"
+        "contact": "Contactar por WhatsApp"
+    },
+    "welcome": {
+        "title": "Bienvenidos a Thellsol Real Estate",
+        "intro": "Me complace darte la bienvenida a Thellsol Real Estate, donde cada propiedad cuenta una historia y cada cliente es parte de nuestra familia.",
+        "text1": "Con más de una década de experiencia en la Costa del Sol, me enorgullece poder ayudarte a encontrar tu hogar ideal en esta maravillosa región. Desde las playas de Fuengirola hasta las calles históricas de Málaga, cada rincón de nuestra zona tiene algo especial que ofrecer.",
+        "text2": "En Thellsol, no solo vendemos propiedades; creamos relaciones duraderas basadas en la confianza, la transparencia y el compromiso con la excelencia.",
+        "text3": "Mi equipo y yo estamos aquí para guiarte en cada paso del camino, asegurando que tu experiencia sea tan excepcional como el hogar que estás buscando.",
+        "text4": "Te invito a explorar nuestra selección de propiedades y descubrir por qué la Costa del Sol es el lugar perfecto para tu próximo hogar.",
+        "signature": "André Tell",
+        "position": "Fundador & CEO, Thellsol Real Estate"
+    },
+    "featured": {
+        "title": "Propiedades Destacadas"
     },
     "cards": {
-        "1": { "title": "Роскошные апартаменты в Марбелье", "zone": "Марбелья, Коста-дель-Соль", "desc": "3 спальни, 2 ванные, 120м²", "price": "450 000€", "button": "Подробнее" },
-        "2": { "title": "Вилла с бассейном в Фуэнхироле", "zone": "Фуэнхирола, Коста-дель-Соль", "desc": "4 спальни, 3 ванные, 250м²", "price": "650 000€", "button": "Подробнее" },
-        "3": { "title": "Современный шале в Бенальмадене", "zone": "Бенальмадена, Коста-дель-Соль", "desc": "5 спален, 4 ванные, 300м²", "price": "850 000€", "button": "Подробнее" },
-        "4": { "title": "Пентхаус с видом на море", "zone": "Михас Коста", "desc": "2 спальни, 2 ванные, 95м²", "price": "320 000€", "button": "Подробнее" },
-        "5": { "title": "Семейный дом в Калахонде", "zone": "Калахонда, Михас", "desc": "3 спальни, 2 ванные, 140м²", "price": "390 000€", "button": "Подробнее" },
-        "6": { "title": "Отремонтированные апартаменты в Малаге", "zone": "Центр, Малага", "desc": "2 спальни, 1 ванная, 80м²", "price": "275 000€", "button": "Подробнее" },
-        "7": { "title": "Эксклюзивная вилла в Марбелье", "zone": "Марбелья, Золотая Миля", "desc": "6 спален, 6 ванных, 600м²", "price": "2 500 000€", "button": "Подробнее" },
-        "8": { "title": "Дуплекс в Ривьере-дель-Соль", "zone": "Ривьера-дель-Соль, Михас", "desc": "3 спальни, 2 ванные, 110м²", "price": "310 000€", "button": "Подробнее" },
-        "9": { "title": "Студия в Торремолиносе", "zone": "Торремолинос", "desc": "1 спальня, 1 ванная, 45м²", "price": "120 000€", "button": "Подробнее" },
-        "10": { "title": "Загородный дом в Михасе", "zone": "Михас Пуэбло", "desc": "4 спальни, 3 ванные, 200м²", "price": "480 000€", "button": "Подробнее" },
-        "11": { "title": "Апартаменты в Нуэва Андалусия", "zone": "Нуэва Андалусия, Марбелья", "desc": "2 спальни, 2 ванные, 100м²", "price": "350 000€", "button": "Подробнее" },
-        "12": { "title": "Роскошная вилла в Бенальмадене", "zone": "Бенальмадена Коста", "desc": "5 спален, 5 ванных, 420м²", "price": "1 200 000€", "button": "Подробнее" }
+        "1": {
+            "title": "Apartamento de Lujo en Marbella",
+            "zone": "Marbella, Costa del Sol",
+            "desc": "3 dormitorios, 2 baños, 120m²",
+            "price": "450.000€",
+            "button": "Ver Detalles"
+        },
+        "2": {
+            "title": "Villa con Piscina en Fuengirola",
+            "zone": "Fuengirola, Costa del Sol",
+            "desc": "4 dormitorios, 3 baños, 250m²",
+            "price": "650.000€",
+            "button": "Ver Detalles"
+        },
+        "3": {
+            "title": "Chalet Moderno en Benalmádena",
+            "zone": "Benalmádena, Costa del Sol",
+            "desc": "5 dormitorios, 4 baños, 300m²",
+            "price": "850.000€",
+            "button": "Ver Detalles"
+        },
+        "4": {
+            "title": "Ático con Vistas al Mar",
+            "zone": "Mijas Costa",
+            "desc": "2 dormitorios, 2 baños, 95m²",
+            "price": "320.000€",
+            "button": "Ver Detalles"
+        },
+        "5": {
+            "title": "Casa Familiar en Calahonda",
+            "zone": "Calahonda, Mijas",
+            "desc": "3 dormitorios, 2 baños, 140m²",
+            "price": "390.000€",
+            "button": "Ver Detalles"
+        },
+        "6": {
+            "title": "Apartamento Reformado en Málaga",
+            "zone": "Centro, Málaga",
+            "desc": "2 dormitorios, 1 baño, 80m²",
+            "price": "275.000€",
+            "button": "Ver Detalles"
+        },
+        "7": {
+            "title": "Villa Exclusiva en Marbella",
+            "zone": "Marbella, Golden Mile",
+            "desc": "6 dormitorios, 6 baños, 600m²",
+            "price": "2.500.000€",
+            "button": "Ver Detalles"
+        },
+        "8": {
+            "title": "Dúplex en Riviera del Sol",
+            "zone": "Riviera del Sol, Mijas",
+            "desc": "3 dormitorios, 2 baños, 110m²",
+            "price": "310.000€",
+            "button": "Ver Detalles"
+        },
+        "9": {
+            "title": "Estudio en Torremolinos",
+            "zone": "Torremolinos",
+            "desc": "1 dormitorio, 1 baño, 45m²",
+            "price": "120.000€",
+            "button": "Ver Detalles"
+        },
+        "10": {
+            "title": "Casa de Campo en Mijas",
+            "zone": "Mijas Pueblo",
+            "desc": "4 dormitorios, 3 baños, 200m²",
+            "price": "480.000€",
+            "button": "Ver Detalles"
+        },
+        "11": {
+            "title": "Apartamento en Nueva Andalucía",
+            "zone": "Nueva Andalucía, Marbella",
+            "desc": "2 dormitorios, 2 baños, 100m²",
+            "price": "350.000€",
+            "button": "Ver Detalles"
+        },
+        "12": {
+            "title": "Villa de Lujo en Benalmádena",
+            "zone": "Benalmádena Costa",
+            "desc": "5 dormitorios, 5 baños, 420m²",
+            "price": "1.200.000€",
+            "button": "Ver Detalles"
+        }
     },
     "contact": {
-        "title": "Контактная информация",
-        "name": "Андре Ричард Телл",
+        "title": "Información de Contacto",
+        "name": "Andre Richard Tell",
         "company": "Thellsol Real Estate",
-        "address_title": "Адрес",
-        "address": "Фуэнхирола 29640\nМалага, Испания",
-        "contact_title": "Контакты"
+        "address_title": "Dirección",
+        "address": "Fuengirola 29640\nMálaga, Spain",
+        "contact_title": "Contacto"
     },
     "thanks": {
-        "title": "Спасибо за обращение к нам!",
-        "text": "Мы успешно получили ваш запрос. Наш сотрудник свяжется с вами в ближайшее время, чтобы помочь с продажей вашей недвижимости.",
-        "back_button": "Вернуться на страницу продажи"
+        "title": "¡Gracias por contactarnos!",
+        "text": "Hemos recibido tu solicitud correctamente. Un miembro de nuestro equipo se pondrá en contacto contigo lo antes posible para ayudarte con la venta de tu propiedad.",
+        "back_button": "Volver a la página de venta"
     },
     "sell": {
-        "title": "Продайте свою недвижимость с ThellSol",
-        "subtitle": "Безопасный, быстрый и простой процесс",
-        "intro": "В ThellSol мы сопровождаем вас на протяжении всего процесса продажи вашей недвижимости в Испании, обеспечивая безопасный, быстрый и простой опыт.\n\nКроме того, у нас есть юридическая поддержка престижной юридической фирмы Martínez-Echevarría, что позволяет нам предложить вам полный и профессиональный сервис с полной юридической гарантией.",
+        "title": "Vender tu Propiedad con ThellSol",
+        "subtitle": "Proceso seguro, rápido y sin complicaciones",
+        "intro": "En ThellSol, te acompañamos en todo el proceso de venta de tu propiedad en España, asegurando una experiencia segura, rápida y sin complicaciones.\n\nAdemás, contamos con el respaldo legal del prestigioso despacho de abogados Martínez-Echevarría, lo que nos permite ofrecerte una gestión completa y profesional con total garantía jurídica.",
         "steps": {
-            "1": {"title": "Оценка и выставление на продажу", "text": "Мы проводим профессиональную оценку вашей недвижимости и размещаем ее на подходящих каналах для привлечения платежеспособных покупателей."},
-            "2": {"title": "Резервирование покупателя", "text": "Покупатель делает обязательство: если заинтересован, он вносит депозит (от 6 000 до 10 000 евро), тем самым снимая недвижимость с рынка."},
-            "3": {"title": "Юридическая подготовка к продаже", "list": {"1": "Право собственности", "2": "Регистрационные сертификаты", "3": "Муниципальная лицензия и сертификат энергоэффективности", "4": "Проверка отсутствия обременений (ипотеки, аресты, долги по IBI или коммунальным услугам)"}},
-            "4": {"title": "Подписание частного договора", "text": "Составляется частный договор купли-продажи, который обычно включает оплату процента от стоимости (обычно 10%). Документ устанавливает условия, сроки и штрафы в случае нарушения."},
-            "5": {"title": "Подписание публичного акта купли-продажи", "text": "В течение 4-6 недель официальный акт подписывается у нотариуса. В этот момент вы получаете оставшуюся сумму, а недвижимость передается покупателю."},
-            "6": {"title": "Уплата налогов и финальные процедуры", "list": {"1": "Расчет и уплата муниципального налога на прирост стоимости", "2": "Снятие ипотеки в реестре (если применимо)", "3": "Смена владельца в коммунальных службах", "4": "Удержание 3% для нерезидентов (если применимо по вашей налоговой ситуации)"}},
-            "7": {"title": "Юридическая поддержка на всех этапах", "text": "Если вы не можете присутствовать, вы можете выдать нам доверенность, и мы подпишем все за вас. Мы также берем на себя все налоговые вопросы, декларации и необходимые платежи."}
+            "1": {
+                "title": "Valoración y puesta en venta",
+                "text": "Realizamos una valoración profesional de tu vivienda y la publicamos en los canales adecuados para atraer compradores solventes."
+            },
+            "2": {
+                "title": "Reserva del comprador",
+                "text": "El comprador efectúa un compromiso: interesado, este realiza un depósito de reserva (entre 6.000 y 10.000 euros), retirando así la vivienda del mercado."
+            },
+            "3": {
+                "title": "Preparación legal de la venta",
+                "list": {
+                    "1": "Escritura de la propiedad",
+                    "2": "Certificados registral",
+                    "3": "Licencia municipal y certificado de eficiencia energética",
+                    "4": "Comprobación de que no existen cargas (hipotecas, embargos, deudas de IBI o suministros)"
+                }
+            },
+            "4": {
+                "title": "Firma del contrato privado",
+                "text": "Se redacta un contrato privado de compraventa, que suele incluir el pago de un porcentaje del precio (normalmente 10%). El documento fija condiciones, plazos y penalizaciones en caso de incumplimiento."
+            },
+            "5": {
+                "title": "Firma de la escritura pública de compraventa",
+                "text": "En un plazo de 4-6 semanas, se firma ante notario la escritura oficial. En ese momento, recibes el resto del dinero y se entrega la propiedad al comprador."
+            },
+            "6": {
+                "title": "Liquidación de impuestos y gestiones finales",
+                "list": {
+                    "1": "Cálculo y liquidación del Impuesto de Plusvalía Municipal",
+                    "2": "Cancelación registral de hipotecas (si aplica)",
+                    "3": "Cambio de titularidad en suministros",
+                    "4": "Retención del 3% para no residentes (si corresponde según tu situación fiscal)"
+                }
+            },
+            "7": {
+                "title": "Asistencia legal durante todo el proceso",
+                "text": "Si no puedes estar presente, puedes otorgarnos un poder notarial y realizamos todas las firmas en tu nombre. Nos encargamos también de toda la gestión fiscal, declaraciones y pagos necesarios."
+            }
         },
-        "final": "Продайте свой дом спокойно, с юридической поддержкой и профессиональным сопровождением",
+        "final": "Vende tu casa con tranquilidad, respaldo legal y acompañamiento profesional",
         "form": {
-            "title": "Запросите персональную информацию о продаже вашей недвижимости",
-            "name": "Имя *",
-            "phone": "Телефон *",
+            "title": "Solicita información personalizada sobre la venta de tu propiedad",
+            "name": "Nombre *",
+            "phone": "Teléfono *",
             "email": "Email *",
-            "message": "Сообщение (необязательно)",
-            "send": "Отправить"
+            "message": "Mensaje (opcional)",
+            "send": "Enviar"
         }
     },
     "buy": {
         "filters": {
-            "area": "Район",
-            "all_areas": "Все районы",
-            "type": "Тип недвижимости",
-            "all_types": "Все типы",
-            "price": "Цена",
-            "all_prices": "Все цены",
-            "more_500k": "Более 500 000€",
-            "bedrooms": "Спальни",
-            "bathrooms": "Ванные комнаты",
-            "any": "Любое количество",
-            "more": "Больше опций",
-            "search": "Поиск недвижимости"
+            "area": "Zona",
+            "all_areas": "Todas las zonas",
+            "type": "Tipo de Propiedad",
+            "all_types": "Todos los tipos",
+            "price": "Precio",
+            "all_prices": "Todos los precios",
+            "more_500k": "Más de 500.000€",
+            "bedrooms": "Dormitorios",
+            "bathrooms": "Baños",
+            "any": "Cualquier núm.",
+            "more": "Más selecciones",
+            "search": "Buscar Propiedades"
         },
         "results": {
-            "title": "Доступная недвижимость"
+            "title": "Propiedades Disponibles"
         },
         "modal": {
-            "title": "Больше характеристик",
+            "title": "Más características",
             "features": {
-                "1": "Первая линия моря",
-                "2": "Первая линия гольфа",
-                "3": "Рядом с магазинами",
-                "4": "Юг",
-                "5": "Юго-запад",
-                "6": "Юго-восток",
-                "7": "Отлично",
-                "8": "Требует ремонта",
-                "9": "Новостройка",
-                "10": "Общий бассейн",
-                "11": "Частный бассейн",
-                "12": "Кондиционер",
-                "13": "Камин",
-                "14": "Теплый пол",
-                "15": "Море",
-                "16": "Горы",
-                "17": "Гольф",
-                "18": "Оборудованная кухня",
-                "19": "Частный сад",
-                "20": "Парковка",
-                "21": "Инвестиция",
-                "22": "Роскошь"
+                "1": "Primera línea de playa",
+                "2": "Primera línea de golf",
+                "3": "Cerca de tiendas",
+                "4": "Sur",
+                "5": "Suroeste",
+                "6": "Sureste",
+                "7": "Excelente",
+                "8": "Necesita reformas",
+                "9": "Obra nueva",
+                "10": "Piscina comunitaria",
+                "11": "Piscina privada",
+                "12": "Aire acondicionado",
+                "13": "Chimenea",
+                "14": "Suelo radiante",
+                "15": "Mar",
+                "16": "Montaña",
+                "17": "Golf",
+                "18": "Cocina equipada",
+                "19": "Jardín privado",
+                "20": "Parking",
+                "21": "Inversión",
+                "22": "Lujo"
             }
         }
     },
     "legal": {
-        "intro": "В ThellSol Real Estate мы стремимся обеспечить нашим клиентам безопасный, прозрачный и современный опыт с лучшими партнерами в области соответствия и юридической архитектуры на каждом этапе процесса покупки и продажи недвижимости.<br><br>Мы объединяем сектор недвижимости с последними юридическими разработками и лучшими юридическими фирмами. Мы управляем получением всей юридической документации, налоговых корректировок и соответствующей регистрации, сотрудничая с независимыми юристами и налоговыми консультантами.<br><br>Хотите ли вы купить или продать недвижимость, у вас всегда будут максимальные юридические гарантии. Вот ссылки для загрузки юридической информации на вашем языке. ThellSol, доверие вашей недвижимости, без осложнений.",
-        "pdf_es": "Скачать PDF (испанский)",
-        "pdf_en": "Скачать PDF (английский)",
-        "pdf_pl": "Скачать PDF (польский)",
-        "pdf_ru": "Скачать PDF (русский)",
-        "pdf_sv": "Скачать PDF (шведский)",
-        "pdf_fr": "Скачать PDF (французский)"
+        "intro": "En ThellSol Real Estate nos encargamos de ofrecer a nuestros clientes una experiencia segura, transparente y actualizada, con los mejores partners en compliance y arquitectura legal para cada paso del proceso de compraventa de propiedades.<br><br>Unimos el sector inmobiliario con la máxima actualidad jurídica y las mejores firmas legales. Nos encargamos de gestionar la obtención de toda la documentación legal, de los ajustes fiscales y de la correcta inscripción registral, en colaboración con abogados y asesores fiscales independientes.<br><br>Tanto si deseas comprar como vender una propiedad, contarás siempre con las máximas garantías legales, aquí tienes los enlaces para descargar la información legal en tu idioma. ThellSol, la confianza de tu propiedad, sin complicaciones.",
+        "pdf_es": "Descargar PDF (Español)",
+        "pdf_en": "Descargar PDF (Inglés)",
+        "pdf_pl": "Descargar PDF (Polaco)",
+        "pdf_ru": "Descargar PDF (Ruso)",
+        "pdf_sv": "Descargar PDF (Sueco)",
+        "pdf_fr": "Descargar PDF (Francés)"
     },
     "legalNotice": {
-        "title": "Юридическое уведомление",
-        "section1": "1. Общая информация",
-        "text1": "В соответствии с требованием об информировании, установленным статьей 10 Закона 34/2002 от 11 июля о службах информационного общества и электронной коммерции, сообщаем, что веб-сайт и интернет-портал www.thellsol.com (далее — 'Сайт') принадлежат ThellSol Real Estate, расположенной по адресу Фуэнхирола 29640, Малага, Испания.",
-        "section2": "2. Цель",
-        "text2": "Данное юридическое уведомление регулирует использование сайта www.thellsol.com, предоставляемого ThellSol Real Estate пользователям Интернета.",
-        "section3": "3. Интеллектуальная собственность",
-        "text3": "Все содержимое Сайта, включая тексты, фотографии, графику, изображения, иконки, технологии, ссылки, аудиовизуальный или звуковой контент, а также графический дизайн и исходные коды, являются интеллектуальной собственностью ThellSol Real Estate или третьих лиц, и никакие права на использование, признанные действующим законодательством об интеллектуальной собственности, не передаются Пользователю.",
-        "section4": "4. Условия использования",
-        "text4": "Пользователь обязуется использовать Сайт в соответствии с законом, данным юридическим уведомлением и другими уведомлениями и инструкциями, доведенными до его сведения.",
-        "section5": "5. Ответственность",
-        "text5": "ThellSol Real Estate не несет ответственности за любые убытки, которые могут возникнуть в результате помех, упущений, перебоев, вирусов или телефонных сбоев в работе электронной системы, вызванных причинами, не зависящими от компании."
+        "title": "Aviso Legal",
+        "section1": "1. Información General",
+        "text1": "En cumplimiento con el deber de información recogido en artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico, le informamos que el Sitio Web y el portal de Internet www.thellsol.com (en adelante, el 'Sitio Web') es propiedad de ThellSol Real Estate, con domicilio en Fuengirola 29640, Málaga, Spain.",
+        "section2": "2. Objeto",
+        "text2": "El presente aviso legal regula el uso del sitio web www.thellsol.com que ThellSol Real Estate pone a disposición de los usuarios de Internet.",
+        "section3": "3. Propiedad Intelectual",
+        "text3": "Todos los contenidos del Sitio Web, incluyendo textos, fotografías, gráficos, imágenes, iconos, tecnología, enlaces, contenidos audiovisuales o sonoros, así como su diseño gráfico y códigos fuente, son propiedad intelectual de ThellSol Real Estate o de terceros, sin que puedan entenderse cedidos al Usuario ninguno de los derechos de explotación reconocidos por la normativa vigente en materia de propiedad intelectual.",
+        "section4": "4. Condiciones de Uso",
+        "text4": "El Usuario se compromete a utilizar el Sitio Web de conformidad con la ley, este aviso legal, y demás avisos e instrucciones puestos en su conocimiento.",
+        "section5": "5. Responsabilidad",
+        "text5": "ThellSol Real Estate no se hace responsable de los daños y perjuicios que se pudieran derivar de interferencias, omisiones, interrupciones, virus telefónicos o disfunciones telefónicas en el funcionamiento del sistema electrónico, motivadas por causas ajenas a la empresa."
     },
     "privacy": {
-        "title": "Политика конфиденциальности",
-        "section1": "1. Общая информация",
-        "text1": "В соответствии с требованием об информировании, установленным статьей 10 Закона 34/2002 от 11 июля о службах информационного общества и электронной коммерции, сообщаем, что веб-сайт и интернет-портал www.thellsol.com (далее — 'Сайт') принадлежат ThellSol Real Estate, расположенной по адресу Фуэнхирола 29640, Малага, Испания.",
-        "section2": "2. Обработка персональных данных",
-        "text2": "В соответствии с положениями Регламента (ЕС) 2016/679 Европейского парламента и Совета от 27 апреля 2016 года о защите физических лиц в связи с обработкой персональных данных и о свободном перемещении таких данных, сообщаем, что:",
-        "text3": "Персональные данные, которые вы предоставляете, будут использоваться для управления запрошенными услугами, предоставления работодателям информации о поданных заявках, ответа на ваши запросы и отправки вам информации о наших услугах.",
-        "section3": "3. Права пользователя",
-        "text4": "Как пользователь, вы можете воспользоваться следующими правами:",
-        "text5": "- Право доступа к вашим персональным данным<br>- Право на исправление неточных данных<br>- Право на удаление, когда данные больше не нужны<br>- Право возражать против обработки ваших данных<br>- Право на ограничение обработки<br>- Право на переносимость данных",
-        "section4": "4. Безопасность",
-        "text6": "ThellSol Real Estate приняла необходимые технические и организационные меры безопасности для обеспечения безопасности ваших персональных данных и предотвращения их изменения, потери, обработки и/или несанкционированного доступа."
+        "title": "Política de Privacidad",
+        "section1": "1. Información General",
+        "text1": "En cumplimiento con el deber de información recogido en artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico, le informamos que el Sitio Web y el portal de Internet www.thellsol.com (en adelante, el 'Sitio Web') es propiedad de ThellSol Real Estate, con domicilio en Fuengirola 29640, Málaga, Spain.",
+        "section2": "2. Tratamiento de Datos Personales",
+        "text2": "En cumplimiento de lo dispuesto en el Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos, le informamos que:",
+        "text3": "Los datos personales que nos facilite serán utilizados con la finalidad de gestionar los servicios solicitados, facilitar a los empresarios información sobre las candidaturas presentadas, responder a sus consultas y remitirle información sobre nuestros servicios.",
+        "section3": "3. Derechos del Usuario",
+        "text4": "Como usuario, puede ejercer los siguientes derechos:",
+        "text5": "- Derecho de acceso a sus datos personales<br>- Derecho de rectificación de datos inexactos<br>- Derecho de supresión cuando los datos ya no sean necesarios<br>- Derecho de oposición al tratamiento de sus datos<br>- Derecho de limitación del tratamiento<br>- Derecho a la portabilidad de los datos",
+        "section4": "4. Seguridad",
+        "text6": "ThellSol Real Estate ha adoptado las medidas de seguridad técnicas y organizativas necesarias que garanticen la seguridad de sus datos de carácter personal y eviten su alteración, pérdida, tratamiento y/o acceso no autorizado."
     },
     "cookies": {
-        "title": "Политика использования файлов cookie",
-        "section1": "1. Что такое cookie?",
-        "text1": "Cookie — это небольшие текстовые файлы, которые посещаемые пользователями веб-сайты отправляют на их устройства, где они сохраняются для последующей передачи на те же сайты при последующих посещениях. Cookie используются для различных целей, имеют определённые характеристики и могут использоваться как владельцем посещаемого сайта, так и третьими лицами.",
-        "section2": "2. Типы используемых cookie",
-        "text2": "Этот сайт использует следующие категории cookie:",
-        "text3": "- Технические cookie: позволяют пользователю перемещаться по сайту, платформе или приложению и использовать различные опции или услуги, которые на них существуют.<br>- Аналитические cookie: позволяют ответственному лицу отслеживать и анализировать поведение пользователей сайтов, к которым они привязаны.",
-        "section3": "3. Как управлять cookie?",
-        "text4": "Вы можете настроить свой браузер на отклонение всех cookie или на уведомление при отправке cookie. Однако если вы отклоните cookie, некоторые части нашего сайта могут работать некорректно.",
-        "section4": "4. Обновления политики использования cookie",
-        "text5": "ThellSol Real Estate может изменять данную политику использования cookie в соответствии с законодательными, нормативными требованиями или для адаптации политики к инструкциям, издаваемым Испанским агентством по защите данных."
+        "title": "Política de Cookies",
+        "section1": "1. ¿Qué son las cookies?",
+        "text1": "Las cookies son pequeños archivos de texto que los sitios web visitados por los usuarios envían a sus terminales, donde se almacenan para ser retransmitidos a los mismos sitios en visitas sucesivas. Las cookies se utilizan con diferentes finalidades, tienen características particulares, y pueden ser utilizadas tanto por el titular del sitio que se está visitando, como por terceros.",
+        "section2": "2. Tipos de cookies utilizadas",
+        "text2": "Este sitio web utiliza las siguientes categorías de cookies:",
+        "text3": "- Cookies técnicas: son aquellas que permiten al usuario la navegación a través de una página web, plataforma o aplicación y la utilización de las diferentes opciones o servicios que en ella existen.<br>- Cookies analíticas: son aquellas que permiten al responsable de las mismas el seguimiento y análisis del comportamiento de los usuarios de los sitios web a los que están vinculadas.",
+        "section3": "3. ¿Cómo gestionar las cookies?",
+        "text4": "Puede configurar su navegador para que rechace todas las cookies, o para que le avise cuando se envía una cookie. Sin embargo, si rechaza las cookies, es posible que algunas partes de nuestro sitio web no funcionen correctamente.",
+        "section4": "4. Actualizaciones de la política de cookies",
+        "text5": "ThellSol Real Estate puede modificar esta política de cookies en función de exigencias legislativas, reglamentarias, o con la finalidad de adaptar dicha política a las instrucciones dictadas por la Agencia Española de Protección de Datos."
     }
 }

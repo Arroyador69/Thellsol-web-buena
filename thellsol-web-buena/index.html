@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TellSol Real Estate</title>
     <link rel="icon" href="logo-thellsol copia.png" type="image/png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
+    <script src="./js/translations.js"></script>
+    <script src="./js/language-selector.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -463,6 +466,16 @@
 </head>
 <body>
     <div id="menu"></div>
+    <script>
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('menu').innerHTML = html;
+                if (window.initLanguageSelector) {
+                    window.initLanguageSelector();
+                }
+            });
+    </script>
     <!-- Título centrado SIEMPRE visible en móvil -->
     <div class="navbar-mobile-title" style="display:none;width:100vw;text-align:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;letter-spacing:1px;color:#fff;background:#181e29;padding:10px 0 0 0;z-index:1201;position:fixed;left:0;top:0;">ThellSol Real Estate</div>
     <!-- Botón hamburguesa robusto fuera del nav -->
@@ -794,6 +807,9 @@
             .then(response => response.text())
             .then(html => {
                 document.getElementById('menu').innerHTML = html;
+                if (window.initLanguageSelector) {
+                    window.initLanguageSelector();
+                }
             });
     </script>
 </body>

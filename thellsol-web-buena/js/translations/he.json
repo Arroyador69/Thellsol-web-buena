@@ -1,215 +1,331 @@
 {
     "nav": {
-        "home": "בית",
-        "properties": "נכסים",
-        "buy": "לקנות",
-        "sell": "למכור",
-        "legal": "מידע משפטי",
-        "contact": "צור קשר"
+        "home": "Inicio",
+        "properties": "Propiedades",
+        "buy": "Comprar",
+        "sell": "Vender",
+        "legal": "Información Legal",
+        "contact": "Contacto"
     },
     "filters": {
-        "area": "אזור",
-        "propertyType": "סוג נכס",
-        "price": "מחיר",
-        "bedrooms": "חדרי שינה",
-        "bathrooms": "חדרי רחצה",
-        "features": "תכונות",
-        "search": "חיפוש",
-        "allAreas": "כל האזורים",
-        "allTypes": "כל הסוגים"
+        "area": "Área",
+        "propertyType": "Tipo de Propiedad",
+        "price": "Precio",
+        "bedrooms": "Dormitorios",
+        "bathrooms": "Baños",
+        "features": "Características",
+        "search": "Buscar",
+        "allAreas": "Todas las zonas",
+        "allTypes": "Todos los tipos"
     },
     "propertyTypes": {
-        "apartment": "דירה",
-        "villa": "וילה",
-        "house": "בית",
-        "penthouse": "נטהאוס"
+        "apartment": "Apartamento",
+        "villa": "Villa",
+        "house": "Casa",
+        "penthouse": "Ático"
     },
     "features": {
-        "pool": "בריכה",
-        "garden": "גן",
-        "garage": "מוסך",
-        "terrace": "מרפסת",
-        "airConditioning": "מיזוג אוויר",
-        "heating": "חימום",
-        "elevator": "מעלית",
-        "security": "אבטחה 24 שעות",
-        "seaView": "נוף לים",
-        "furnished": "מרוהט"
+        "pool": "Piscina",
+        "garden": "Jardín",
+        "garage": "Garaje",
+        "terrace": "Terraza",
+        "airConditioning": "Aire Acondicionado",
+        "heating": "Calefacción",
+        "elevator": "Ascensor",
+        "security": "Seguridad 24h",
+        "seaView": "Vistas al mar",
+        "furnished": "Mobiliario incluido"
     },
     "areas": {
-        "fuengirola": "פואנגירולה",
-        "mijas": "מיחס",
-        "benalmadena": "בנאלמדנה",
-        "torreblanca": "טורבלנקה",
-        "torremolinos": "טורמולינוס",
-        "riviera": "ריביירה דל סול",
-        "calahonda": "קלאחונדה",
-        "marbella": "מארבלה",
-        "nuevaAndalucia": "נואבה אנדלוסיה",
-        "malaga": "מלאגה"
+        "fuengirola": "Fuengirola",
+        "mijas": "Mijas",
+        "benalmadena": "Benalmádena",
+        "torreblanca": "Torreblanca",
+        "torremolinos": "Torremolinos",
+        "riviera": "Riviera del Sol",
+        "calahonda": "Calahonda",
+        "marbella": "Marbella",
+        "nuevaAndalucia": "Nueva Andalucía",
+        "malaga": "Málaga"
     },
     "common": {
-        "bedrooms": "חדרי שינה",
-        "bathrooms": "חדרי רחצה",
-        "area": "שטח",
-        "price": "מחיר",
-        "contact": "צור קשר",
-        "moreInfo": "מידע נוסף",
-        "back": "חזרה",
-        "next": "הבא",
-        "loading": "טוען..."
+        "bedrooms": "Dormitorios",
+        "bathrooms": "Baños",
+        "area": "Área",
+        "price": "Precio",
+        "contact": "Contactar",
+        "moreInfo": "Más información",
+        "back": "Volver",
+        "next": "Siguiente",
+        "loading": "Cargando..."
     },
     "footer": {
-        "contact": "צור קשר",
-        "legal": "קישורים משפטיים",
-        "privacy": "מדיניות פרטיות",
-        "cookies": "מדיניות עוגיות",
-        "legal_notice": "הצהרה משפטית"
+        "contact": "Contacto",
+        "legal": "Enlaces Legales",
+        "privacy": "Política de Privacidad",
+        "cookies": "Política de Cookies",
+        "legal_notice": "Aviso Legal"
     },
     "whatsapp": {
-        "contact": "צור קשר דרך וואטסאפ"
+        "contact": "Contactar por WhatsApp"
+    },
+    "welcome": {
+        "title": "Bienvenidos a Thellsol Real Estate",
+        "intro": "Me complace darte la bienvenida a Thellsol Real Estate, donde cada propiedad cuenta una historia y cada cliente es parte de nuestra familia.",
+        "text1": "Con más de una década de experiencia en la Costa del Sol, me enorgullece poder ayudarte a encontrar tu hogar ideal en esta maravillosa región. Desde las playas de Fuengirola hasta las calles históricas de Málaga, cada rincón de nuestra zona tiene algo especial que ofrecer.",
+        "text2": "En Thellsol, no solo vendemos propiedades; creamos relaciones duraderas basadas en la confianza, la transparencia y el compromiso con la excelencia.",
+        "text3": "Mi equipo y yo estamos aquí para guiarte en cada paso del camino, asegurando que tu experiencia sea tan excepcional como el hogar que estás buscando.",
+        "text4": "Te invito a explorar nuestra selección de propiedades y descubrir por qué la Costa del Sol es el lugar perfecto para tu próximo hogar.",
+        "signature": "André Tell",
+        "position": "Fundador & CEO, Thellsol Real Estate"
+    },
+    "featured": {
+        "title": "Propiedades Destacadas"
     },
     "cards": {
-        "1": { "title": "דירת יוקרה במרבלה", "zone": "מרבלה, קוסטה דל סול", "desc": "3 חדרי שינה, 2 חדרי רחצה, 120 מ"ר", "price": "€450,000", "button": "צפה בפרטים" },
-        "2": { "title": "וילה עם בריכה בפואנגירולה", "zone": "פואנגירולה, קוסטה דל סול", "desc": "4 חדרי שינה, 3 חדרי רחצה, 250 מ"ר", "price": "€650,000", "button": "צפה בפרטים" },
-        "3": { "title": "צ'לט מודרני בבנאלמדנה", "zone": "בנאלמדנה, קוסטה דל סול", "desc": "5 חדרי שינה, 4 חדרי רחצה, 300 מ"ר", "price": "€850,000", "button": "צפה בפרטים" },
-        "4": { "title": "פנטהאוז עם נוף לים", "zone": "מיחס קוסטה", "desc": "2 חדרי שינה, 2 חדרי רחצה, 95 מ"ר", "price": "€320,000", "button": "צפה בפרטים" },
-        "5": { "title": "בית משפחתי בקלאחונדה", "zone": "קלאחונדה, מיחס", "desc": "3 חדרי שינה, 2 חדרי רחצה, 140 מ"ר", "price": "€390,000", "button": "צפה בפרטים" },
-        "6": { "title": "דירה משופצת במלאגה", "zone": "מרכז, מלאגה", "desc": "2 חדרי שינה, 1 חדר רחצה, 80 מ"ר", "price": "€275,000", "button": "צפה בפרטים" },
-        "7": { "title": "וילה יוקרתית במרבלה", "zone": "מרבלה, גולדן מייל", "desc": "6 חדרי שינה, 6 חדרי רחצה, 600 מ"ר", "price": "€2,500,000", "button": "צפה בפרטים" },
-        "8": { "title": "דופלקס בריביירה דל סול", "zone": "ריביירה דל סול, מיחס", "desc": "3 חדרי שינה, 2 חדרי רחצה, 110 מ"ר", "price": "€310,000", "button": "צפה בפרטים" },
-        "9": { "title": "סטודיו בטורמולינוס", "zone": "טורמולינוס", "desc": "חדר שינה אחד, חדר רחצה אחד, 45 מ"ר", "price": "€120,000", "button": "צפה בפרטים" },
-        "10": { "title": "בית כפרי במיחס", "zone": "מיחס פואבלו", "desc": "4 חדרי שינה, 3 חדרי רחצה, 200 מ"ר", "price": "€480,000", "button": "צפה בפרטים" },
-        "11": { "title": "דירה בנואבה אנדלוסיה", "zone": "נואבה אנדלוסיה, מרבלה", "desc": "2 חדרי שינה, 2 חדרי רחצה, 100 מ"ר", "price": "€350,000", "button": "צפה בפרטים" },
-        "12": { "title": "וילת יוקרה בבנאלמדנה", "zone": "בנאלמדנה קוסטה", "desc": "5 חדרי שינה, 5 חדרי רחצה, 420 מ"ר", "price": "€1,200,000", "button": "צפה בפרטים" }
+        "1": {
+            "title": "Apartamento de Lujo en Marbella",
+            "zone": "Marbella, Costa del Sol",
+            "desc": "3 dormitorios, 2 baños, 120m²",
+            "price": "450.000€",
+            "button": "Ver Detalles"
+        },
+        "2": {
+            "title": "Villa con Piscina en Fuengirola",
+            "zone": "Fuengirola, Costa del Sol",
+            "desc": "4 dormitorios, 3 baños, 250m²",
+            "price": "650.000€",
+            "button": "Ver Detalles"
+        },
+        "3": {
+            "title": "Chalet Moderno en Benalmádena",
+            "zone": "Benalmádena, Costa del Sol",
+            "desc": "5 dormitorios, 4 baños, 300m²",
+            "price": "850.000€",
+            "button": "Ver Detalles"
+        },
+        "4": {
+            "title": "Ático con Vistas al Mar",
+            "zone": "Mijas Costa",
+            "desc": "2 dormitorios, 2 baños, 95m²",
+            "price": "320.000€",
+            "button": "Ver Detalles"
+        },
+        "5": {
+            "title": "Casa Familiar en Calahonda",
+            "zone": "Calahonda, Mijas",
+            "desc": "3 dormitorios, 2 baños, 140m²",
+            "price": "390.000€",
+            "button": "Ver Detalles"
+        },
+        "6": {
+            "title": "Apartamento Reformado en Málaga",
+            "zone": "Centro, Málaga",
+            "desc": "2 dormitorios, 1 baño, 80m²",
+            "price": "275.000€",
+            "button": "Ver Detalles"
+        },
+        "7": {
+            "title": "Villa Exclusiva en Marbella",
+            "zone": "Marbella, Golden Mile",
+            "desc": "6 dormitorios, 6 baños, 600m²",
+            "price": "2.500.000€",
+            "button": "Ver Detalles"
+        },
+        "8": {
+            "title": "Dúplex en Riviera del Sol",
+            "zone": "Riviera del Sol, Mijas",
+            "desc": "3 dormitorios, 2 baños, 110m²",
+            "price": "310.000€",
+            "button": "Ver Detalles"
+        },
+        "9": {
+            "title": "Estudio en Torremolinos",
+            "zone": "Torremolinos",
+            "desc": "1 dormitorio, 1 baño, 45m²",
+            "price": "120.000€",
+            "button": "Ver Detalles"
+        },
+        "10": {
+            "title": "Casa de Campo en Mijas",
+            "zone": "Mijas Pueblo",
+            "desc": "4 dormitorios, 3 baños, 200m²",
+            "price": "480.000€",
+            "button": "Ver Detalles"
+        },
+        "11": {
+            "title": "Apartamento en Nueva Andalucía",
+            "zone": "Nueva Andalucía, Marbella",
+            "desc": "2 dormitorios, 2 baños, 100m²",
+            "price": "350.000€",
+            "button": "Ver Detalles"
+        },
+        "12": {
+            "title": "Villa de Lujo en Benalmádena",
+            "zone": "Benalmádena Costa",
+            "desc": "5 dormitorios, 5 baños, 420m²",
+            "price": "1.200.000€",
+            "button": "Ver Detalles"
+        }
     },
     "contact": {
-        "title": "פרטי התקשרות",
-        "name": "אנדרה ריצ'רד טל",
-        "company": "תלסול נדל\"ן",
-        "address_title": "כתובת",
-        "address": "פואנגירולה 29640\nמלאגה, ספרד",
-        "contact_title": "צור קשר"
+        "title": "Información de Contacto",
+        "name": "Andre Richard Tell",
+        "company": "Thellsol Real Estate",
+        "address_title": "Dirección",
+        "address": "Fuengirola 29640\nMálaga, Spain",
+        "contact_title": "Contacto"
     },
     "thanks": {
-        "title": "תודה שפנית אלינו!",
-        "text": "קיבלנו את פנייתך בהצלחה. אחד מאנשי הצוות שלנו יצור איתך קשר בהקדם האפשרי כדי לסייע לך במכירת הנכס שלך.",
-        "back_button": "חזרה לעמוד המכירה"
+        "title": "¡Gracias por contactarnos!",
+        "text": "Hemos recibido tu solicitud correctamente. Un miembro de nuestro equipo se pondrá en contacto contigo lo antes posible para ayudarte con la venta de tu propiedad.",
+        "back_button": "Volver a la página de venta"
     },
     "sell": {
-        "title": "מכור את הנכס שלך עם ThellSol",
-        "subtitle": "תהליך בטוח, מהיר וללא סיבוכים",
-        "intro": "ב-ThellSol אנו מלווים אותך לאורך כל תהליך מכירת הנכס שלך בספרד, ומבטיחים חוויה בטוחה, מהירה וללא סיבוכים.\n\nבנוסף, יש לנו גיבוי משפטי ממשרד עורכי הדין היוקרתי Martínez-Echevarría, מה שמאפשר לנו להציע לך ניהול מלא ומקצועי עם אחריות משפטית מלאה.",
+        "title": "Vender tu Propiedad con ThellSol",
+        "subtitle": "Proceso seguro, rápido y sin complicaciones",
+        "intro": "En ThellSol, te acompañamos en todo el proceso de venta de tu propiedad en España, asegurando una experiencia segura, rápida y sin complicaciones.\n\nAdemás, contamos con el respaldo legal del prestigioso despacho de abogados Martínez-Echevarría, lo que nos permite ofrecerte una gestión completa y profesional con total garantía jurídica.",
         "steps": {
-            "1": {"title": "הערכת הנכס והצבתו למכירה", "text": "אנו מבצעים הערכה מקצועית של הנכס שלך ומפרסמים אותו בערוצים המתאימים כדי למשוך קונים רציניים."},
-            "2": {"title": "הזמנת הקונה", "text": "הקונה מבצע התחייבות: אם הוא מעוניין, הוא מבצע הפקדת הזמנה (בין 6,000 ל-10,000 אירו), ובכך מסיר את הנכס מהשוק."},
-            "3": {"title": "הכנה משפטית של המכירה", "list": {"1": "שטר הנכס", "2": "תעודות רישום", "3": "רישיון עירוני ותעודת יעילות אנרגטית", "4": "בדיקה שאין עיקולים (משכנתאות, עיקולים, חובות ארנונה או שירותים)"}},
-            "4": {"title": "חתימת חוזה פרטי", "text": "נחתם חוזה מכר פרטי, הכולל בדרך כלל תשלום אחוז מהמחיר (בדרך כלל 10%). המסמך קובע תנאים, מועדים וקנסות במקרה של הפרה."},
-            "5": {"title": "חתימת שטר מכר ציבורי", "text": "בתוך 4-6 שבועות נחתם השטר הרשמי בפני נוטריון. באותו רגע אתה מקבל את שאר הכסף והנכס מועבר לקונה."},
-            "6": {"title": "סילוק מסים ונהלים סופיים", "list": {"1": "חישוב וסילוק מס השבח העירוני", "2": "ביטול רישום משכנתאות (אם יש)", "3": "העברת בעלות בשירותים", "4": "ניכוי 3% ללא תושבים (אם רלוונטי למצבך המס)"}},
-            "7": {"title": "סיוע משפטי לאורך כל התהליך", "text": "אם אינך יכול להיות נוכח, תוכל להעניק לנו ייפוי כוח ואנו נחתום עבורך על כל המסמכים. אנו מטפלים גם בכל הניהול המס, ההצהרות והתשלומים הנדרשים."}
+            "1": {
+                "title": "Valoración y puesta en venta",
+                "text": "Realizamos una valoración profesional de tu vivienda y la publicamos en los canales adecuados para atraer compradores solventes."
+            },
+            "2": {
+                "title": "Reserva del comprador",
+                "text": "El comprador efectúa un compromiso: interesado, este realiza un depósito de reserva (entre 6.000 y 10.000 euros), retirando así la vivienda del mercado."
+            },
+            "3": {
+                "title": "Preparación legal de la venta",
+                "list": {
+                    "1": "Escritura de la propiedad",
+                    "2": "Certificados registral",
+                    "3": "Licencia municipal y certificado de eficiencia energética",
+                    "4": "Comprobación de que no existen cargas (hipotecas, embargos, deudas de IBI o suministros)"
+                }
+            },
+            "4": {
+                "title": "Firma del contrato privado",
+                "text": "Se redacta un contrato privado de compraventa, que suele incluir el pago de un porcentaje del precio (normalmente 10%). El documento fija condiciones, plazos y penalizaciones en caso de incumplimiento."
+            },
+            "5": {
+                "title": "Firma de la escritura pública de compraventa",
+                "text": "En un plazo de 4-6 semanas, se firma ante notario la escritura oficial. En ese momento, recibes el resto del dinero y se entrega la propiedad al comprador."
+            },
+            "6": {
+                "title": "Liquidación de impuestos y gestiones finales",
+                "list": {
+                    "1": "Cálculo y liquidación del Impuesto de Plusvalía Municipal",
+                    "2": "Cancelación registral de hipotecas (si aplica)",
+                    "3": "Cambio de titularidad en suministros",
+                    "4": "Retención del 3% para no residentes (si corresponde según tu situación fiscal)"
+                }
+            },
+            "7": {
+                "title": "Asistencia legal durante todo el proceso",
+                "text": "Si no puedes estar presente, puedes otorgarnos un poder notarial y realizamos todas las firmas en tu nombre. Nos encargamos también de toda la gestión fiscal, declaraciones y pagos necesarios."
+            }
         },
-        "final": "מכור את הבית שלך בשקט נפשי, עם גיבוי משפטי וליווי מקצועי",
+        "final": "Vende tu casa con tranquilidad, respaldo legal y acompañamiento profesional",
         "form": {
-            "title": "בקש מידע מותאם אישית על מכירת הנכס שלך",
-            "name": "שם *",
-            "phone": "טלפון *",
-            "email": "אימייל *",
-            "message": "הודעה (אופציונלי)",
-            "send": "שלח"
+            "title": "Solicita información personalizada sobre la venta de tu propiedad",
+            "name": "Nombre *",
+            "phone": "Teléfono *",
+            "email": "Email *",
+            "message": "Mensaje (opcional)",
+            "send": "Enviar"
         }
     },
     "buy": {
         "filters": {
-            "area": "אזור",
-            "all_areas": "כל האזורים",
-            "type": "סוג נכס",
-            "all_types": "כל הסוגים",
-            "price": "מחיר",
-            "all_prices": "כל המחירים",
-            "more_500k": "יותר מ-500,000€",
-            "bedrooms": "חדרי שינה",
-            "bathrooms": "חדרי רחצה",
-            "any": "כל מספר",
-            "more": "בחירות נוספות",
-            "search": "חפש נכסים"
+            "area": "Zona",
+            "all_areas": "Todas las zonas",
+            "type": "Tipo de Propiedad",
+            "all_types": "Todos los tipos",
+            "price": "Precio",
+            "all_prices": "Todos los precios",
+            "more_500k": "Más de 500.000€",
+            "bedrooms": "Dormitorios",
+            "bathrooms": "Baños",
+            "any": "Cualquier núm.",
+            "more": "Más selecciones",
+            "search": "Buscar Propiedades"
         },
         "results": {
-            "title": "נכסים זמינים"
+            "title": "Propiedades Disponibles"
         },
         "modal": {
-            "title": "מאפיינים נוספים",
+            "title": "Más características",
             "features": {
-                "1": "קו ראשון לים",
-                "2": "קו ראשון לגולף",
-                "3": "קרוב לחנויות",
-                "4": "דרום",
-                "5": "דרום-מערב",
-                "6": "דרום-מזרח",
-                "7": "מצוין",
-                "8": "זקוק לשיפוץ",
-                "9": "חדש",
-                "10": "בריכה משותפת",
-                "11": "בריכה פרטית",
-                "12": "מיזוג אוויר",
-                "13": "אח",
-                "14": "חימום תת רצפתי",
-                "15": "ים",
-                "16": "הר",
-                "17": "גולף",
-                "18": "מטבח מאובזר",
-                "19": "גן פרטי",
-                "20": "חניה",
-                "21": "השקעה",
-                "22": "יוקרה"
+                "1": "Primera línea de playa",
+                "2": "Primera línea de golf",
+                "3": "Cerca de tiendas",
+                "4": "Sur",
+                "5": "Suroeste",
+                "6": "Sureste",
+                "7": "Excelente",
+                "8": "Necesita reformas",
+                "9": "Obra nueva",
+                "10": "Piscina comunitaria",
+                "11": "Piscina privada",
+                "12": "Aire acondicionado",
+                "13": "Chimenea",
+                "14": "Suelo radiante",
+                "15": "Mar",
+                "16": "Montaña",
+                "17": "Golf",
+                "18": "Cocina equipada",
+                "19": "Jardín privado",
+                "20": "Parking",
+                "21": "Inversión",
+                "22": "Lujo"
             }
         }
     },
     "legal": {
-        "intro": "ב-ThellSol Real Estate אנו מחויבים לספק ללקוחותינו חוויה מאובטחת, שקופה ועדכנית, עם השותפים הטובים ביותר בתחום הציות והארכיטקטורה המשפטית לכל שלב בתהליך הקנייה והמכירה של נכסים.<br><br>אנו מאחדים את מגזר הנדל\"ן עם ההתפתחויות המשפטיות האחרונות והחברות המשפטיות הטובות ביותר. אנו מנהלים את רכישת כל התיעוד המשפטי, התאמות המס והרישום המתאים, בשיתוף פעולה עם עורכי דין ויועצי מס עצמאיים.<br><br>בין אם אתה רוצה לקנות או למכור נכס, תמיד יהיו לך הערבויות המשפטיות המקסימליות. הנה הקישורים להורדת המידע המשפטי בשפה שלך. ThellSol, האמון של הנכס שלך, ללא סיבוכים.",
-        "pdf_es": "הורד PDF (ספרדית)",
-        "pdf_en": "הורד PDF (אנגלית)",
-        "pdf_pl": "הורד PDF (פולנית)",
-        "pdf_ru": "הורד PDF (רוסית)",
-        "pdf_sv": "הורד PDF (שוודית)",
-        "pdf_fr": "הורד PDF (צרפתית)"
+        "intro": "En ThellSol Real Estate nos encargamos de ofrecer a nuestros clientes una experiencia segura, transparente y actualizada, con los mejores partners en compliance y arquitectura legal para cada paso del proceso de compraventa de propiedades.<br><br>Unimos el sector inmobiliario con la máxima actualidad jurídica y las mejores firmas legales. Nos encargamos de gestionar la obtención de toda la documentación legal, de los ajustes fiscales y de la correcta inscripción registral, en colaboración con abogados y asesores fiscales independientes.<br><br>Tanto si deseas comprar como vender una propiedad, contarás siempre con las máximas garantías legales, aquí tienes los enlaces para descargar la información legal en tu idioma. ThellSol, la confianza de tu propiedad, sin complicaciones.",
+        "pdf_es": "Descargar PDF (Español)",
+        "pdf_en": "Descargar PDF (Inglés)",
+        "pdf_pl": "Descargar PDF (Polaco)",
+        "pdf_ru": "Descargar PDF (Ruso)",
+        "pdf_sv": "Descargar PDF (Sueco)",
+        "pdf_fr": "Descargar PDF (Francés)"
     },
     "legalNotice": {
-        "title": "הצהרה משפטית",
-        "section1": "1. מידע כללי",
-        "text1": "בהתאם לחובת המידע הקבועה בסעיף 10 לחוק 34/2002 מיום 11 ביולי, שירותי החברה למידע ומסחר אלקטרוני, אנו מודיעים כי האתר ופורטל האינטרנט www.thellsol.com (להלן 'האתר') הם בבעלות ThellSol Real Estate, הממוקמת בפואנגירולה 29640, מלאגה, ספרד.",
-        "section2": "2. מטרה",
-        "text2": "הצהרה משפטית זו מסדירה את השימוש באתר www.thellsol.com ש-ThellSol Real Estate מעמידה לרשות משתמשי האינטרנט.",
-        "section3": "3. קניין רוחני",
-        "text3": "כל התכנים באתר, כולל טקסטים, תמונות, גרפיקה, אייקונים, טכנולוגיה, קישורים, תכנים אודיו-ויזואליים או קוליים, כמו גם העיצוב הגרפי וקוד המקור, הם קניין רוחני של ThellSol Real Estate או של צדדים שלישיים, ואין לראות בכך העברת זכויות ניצול כלשהן למשתמש על פי הדין.",
-        "section4": "4. תנאי שימוש",
-        "text4": "המשתמש מתחייב להשתמש באתר בהתאם לחוק, להצהרה משפטית זו ולכל הודעה או הוראה אחרת שהובאה לידיעתו.",
-        "section5": "5. אחריות",
-        "text5": "ThellSol Real Estate אינה אחראית לכל נזק שעלול להיגרם מהפרעות, השמטות, הפסקות, וירוסים או תקלות טלפוניות במערכת האלקטרונית, שנגרמו מסיבות שאינן בשליטת החברה."
+        "title": "Aviso Legal",
+        "section1": "1. Información General",
+        "text1": "En cumplimiento con el deber de información recogido en artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico, le informamos que el Sitio Web y el portal de Internet www.thellsol.com (en adelante, el 'Sitio Web') es propiedad de ThellSol Real Estate, con domicilio en Fuengirola 29640, Málaga, Spain.",
+        "section2": "2. Objeto",
+        "text2": "El presente aviso legal regula el uso del sitio web www.thellsol.com que ThellSol Real Estate pone a disposición de los usuarios de Internet.",
+        "section3": "3. Propiedad Intelectual",
+        "text3": "Todos los contenidos del Sitio Web, incluyendo textos, fotografías, gráficos, imágenes, iconos, tecnología, enlaces, contenidos audiovisuales o sonoros, así como su diseño gráfico y códigos fuente, son propiedad intelectual de ThellSol Real Estate o de terceros, sin que puedan entenderse cedidos al Usuario ninguno de los derechos de explotación reconocidos por la normativa vigente en materia de propiedad intelectual.",
+        "section4": "4. Condiciones de Uso",
+        "text4": "El Usuario se compromete a utilizar el Sitio Web de conformidad con la ley, este aviso legal, y demás avisos e instrucciones puestos en su conocimiento.",
+        "section5": "5. Responsabilidad",
+        "text5": "ThellSol Real Estate no se hace responsable de los daños y perjuicios que se pudieran derivar de interferencias, omisiones, interrupciones, virus telefónicos o disfunciones telefónicas en el funcionamiento del sistema electrónico, motivadas por causas ajenas a la empresa."
     },
     "privacy": {
-        "title": "מדיניות פרטיות",
-        "section1": "1. מידע כללי",
-        "text1": "בהתאם לחובת המידע הקבועה בסעיף 10 לחוק 34/2002 מיום 11 ביולי, שירותי החברה למידע ומסחר אלקטרוני, אנו מודיעים כי האתר ופורטל האינטרנט www.thellsol.com (להלן 'האתר') הם בבעלות ThellSol Real Estate, הממוקמת בפואנגירולה 29640, מלאגה, ספרד.",
-        "section2": "2. עיבוד נתונים אישיים",
-        "text2": "בהתאם להוראות תקנה (EU) 2016/679 של הפרלמנט האירופי ושל המועצה מיום 27 באפריל 2016, בנוגע להגנה על אנשים פרטיים בכל הנוגע לעיבוד נתונים אישיים ולתנועה החופשית של נתונים אלה, אנו מודיעים כי:",
-        "text3": "הנתונים האישיים שתספק ישמשו לניהול השירותים המבוקשים, לספק למעסיקים מידע על מועמדויות שהוגשו, להשיב לפניותיך ולשלוח לך מידע על השירותים שלנו.",
-        "section3": "3. זכויות המשתמש",
-        "text4": "כמשתמש, באפשרותך לממש את הזכויות הבאות:",
-        "text5": "- זכות גישה לנתונים האישיים שלך<br>- זכות לתקן נתונים שגויים<br>- זכות למחיקה כאשר הנתונים אינם נחוצים עוד<br>- זכות להתנגד לעיבוד הנתונים שלך<br>- זכות להגבלת העיבוד<br>- זכות לניידות נתונים",
-        "section4": "4. אבטחה",
-        "text6": "ThellSol Real Estate נקטה באמצעים טכניים וארגוניים הנדרשים כדי להבטיח את אבטחת הנתונים האישיים שלך ולמנוע את שינוי, אובדן, עיבוד ו/או גישה לא מורשית אליהם."
+        "title": "Política de Privacidad",
+        "section1": "1. Información General",
+        "text1": "En cumplimiento con el deber de información recogido en artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico, le informamos que el Sitio Web y el portal de Internet www.thellsol.com (en adelante, el 'Sitio Web') es propiedad de ThellSol Real Estate, con domicilio en Fuengirola 29640, Málaga, Spain.",
+        "section2": "2. Tratamiento de Datos Personales",
+        "text2": "En cumplimiento de lo dispuesto en el Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos, le informamos que:",
+        "text3": "Los datos personales que nos facilite serán utilizados con la finalidad de gestionar los servicios solicitados, facilitar a los empresarios información sobre las candidaturas presentadas, responder a sus consultas y remitirle información sobre nuestros servicios.",
+        "section3": "3. Derechos del Usuario",
+        "text4": "Como usuario, puede ejercer los siguientes derechos:",
+        "text5": "- Derecho de acceso a sus datos personales<br>- Derecho de rectificación de datos inexactos<br>- Derecho de supresión cuando los datos ya no sean necesarios<br>- Derecho de oposición al tratamiento de sus datos<br>- Derecho de limitación del tratamiento<br>- Derecho a la portabilidad de los datos",
+        "section4": "4. Seguridad",
+        "text6": "ThellSol Real Estate ha adoptado las medidas de seguridad técnicas y organizativas necesarias que garanticen la seguridad de sus datos de carácter personal y eviten su alteración, pérdida, tratamiento y/o acceso no autorizado."
     },
     "cookies": {
-        "title": "מדיניות עוגיות",
-        "section1": "1. מהן עוגיות?",
-        "text1": "עוגיות הן קבצי טקסט קטנים שאתרי אינטרנט מבקרים שולחים למכשירים של המשתמשים, שם הן נשמרות כדי להישלח שוב לאותם אתרים בביקורים חוזרים. עוגיות משמשות למטרות שונות, יש להן מאפיינים מסוימים, וניתן להשתמש בהן הן על ידי בעל האתר והן על ידי צדדים שלישיים.",
-        "section2": "2. סוגי העוגיות בשימוש",
-        "text2": "אתר זה משתמש בקטגוריות העוגיות הבאות:",
-        "text3": "- עוגיות טכניות: מאפשרות למשתמש לגלוש באתר, בפלטפורמה או באפליקציה ולהשתמש באפשרויות או בשירותים השונים הקיימים בהם.<br>- עוגיות אנליטיות: מאפשרות לאחריות לעקוב ולנתח את התנהגות המשתמשים באתרים אליהם הן משויכות.",
-        "section3": "3. כיצד לנהל עוגיות?",
-        "text4": "ניתן להגדיר את הדפדפן שלך לדחות את כל העוגיות או להתריע כאשר עוגיה נשלחת. עם זאת, אם תדחה עוגיות, ייתכן שחלקים מהאתר שלנו לא יפעלו כראוי.",
-        "section4": "4. עדכונים למדיניות העוגיות",
-        "text5": "ThellSol Real Estate רשאית לשנות מדיניות עוגיות זו בהתאם לדרישות חקיקה, רגולציה, או כדי להתאים את המדיניות להנחיות רשות הגנת המידע הספרדית."
+        "title": "Política de Cookies",
+        "section1": "1. ¿Qué son las cookies?",
+        "text1": "Las cookies son pequeños archivos de texto que los sitios web visitados por los usuarios envían a sus terminales, donde se almacenan para ser retransmitidos a los mismos sitios en visitas sucesivas. Las cookies se utilizan con diferentes finalidades, tienen características particulares, y pueden ser utilizadas tanto por el titular del sitio que se está visitando, como por terceros.",
+        "section2": "2. Tipos de cookies utilizadas",
+        "text2": "Este sitio web utiliza las siguientes categorías de cookies:",
+        "text3": "- Cookies técnicas: son aquellas que permiten al usuario la navegación a través de una página web, plataforma o aplicación y la utilización de las diferentes opciones o servicios que en ella existen.<br>- Cookies analíticas: son aquellas que permiten al responsable de las mismas el seguimiento y análisis del comportamiento de los usuarios de los sitios web a los que están vinculadas.",
+        "section3": "3. ¿Cómo gestionar las cookies?",
+        "text4": "Puede configurar su navegador para que rechace todas las cookies, o para que le avise cuando se envía una cookie. Sin embargo, si rechaza las cookies, es posible que algunas partes de nuestro sitio web no funcionen correctamente.",
+        "section4": "4. Actualizaciones de la política de cookies",
+        "text5": "ThellSol Real Estate puede modificar esta política de cookies en función de exigencias legislativas, reglamentarias, o con la finalidad de adaptar dicha política a las instrucciones dictadas por la Agencia Española de Protección de Datos."
     }
 }

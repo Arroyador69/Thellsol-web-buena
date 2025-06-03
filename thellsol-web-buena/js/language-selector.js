@@ -3,7 +3,10 @@ const languages = {
     'es': { name: 'Español' },
     'en': { name: 'English' },
     'fr': { name: 'Français' },
-    'de': { name: 'Deutsch' }
+    'de': { name: 'Deutsch' },
+    'ru': { name: 'Русский' },
+    'sv': { name: 'Svenska' },
+    'he': { name: 'עברית' }
 };
 
 // Función para inicializar el selector de idiomas
@@ -45,6 +48,9 @@ function changeLanguage(lang) {
     localStorage.setItem('selectedLanguage', lang);
     loadTranslations(lang);
 }
+
+// Exponer la función globalmente para poder llamarla tras cargar el menú dinámicamente
+window.initLanguageSelector = initLanguageSelector;
 
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', initLanguageSelector); 

@@ -1,0 +1,223 @@
+{
+    "nav": {
+        "home": "Home",
+        "properties": "Properties",
+        "buy": "Buy",
+        "sell": "Sell",
+        "legal": "Legal Information",
+        "contact": "Contact"
+    },
+    "filters": {
+        "area": "Area",
+        "propertyType": "Property Type",
+        "price": "Price",
+        "bedrooms": "Bedrooms",
+        "bathrooms": "Bathrooms",
+        "features": "Features",
+        "search": "Search",
+        "allAreas": "All areas",
+        "allTypes": "All types"
+    },
+    "propertyTypes": {
+        "apartment": "Apartment",
+        "villa": "Villa",
+        "house": "House",
+        "penthouse": "Penthouse"
+    },
+    "features": {
+        "pool": "Pool",
+        "garden": "Garden",
+        "garage": "Garage",
+        "terrace": "Terrace",
+        "airConditioning": "Air Conditioning",
+        "heating": "Heating",
+        "elevator": "Elevator",
+        "security": "24h Security",
+        "seaView": "Sea View",
+        "furnished": "Furnished"
+    },
+    "areas": {
+        "fuengirola": "Fuengirola",
+        "mijas": "Mijas",
+        "benalmadena": "Benalmádena",
+        "torreblanca": "Torreblanca",
+        "torremolinos": "Torremolinos",
+        "riviera": "Riviera del Sol",
+        "calahonda": "Calahonda",
+        "marbella": "Marbella",
+        "nuevaAndalucia": "Nueva Andalucía",
+        "malaga": "Málaga"
+    },
+    "common": {
+        "bedrooms": "Bedrooms",
+        "bathrooms": "Bathrooms",
+        "area": "Area",
+        "price": "Price",
+        "contact": "Contact",
+        "moreInfo": "More info",
+        "back": "Back",
+        "next": "Next",
+        "loading": "Loading..."
+    },
+    "footer": {
+        "contact": "Contact",
+        "legal": "Legal Links",
+        "privacy": "Privacy Policy",
+        "cookies": "Cookie Policy",
+        "legal_notice": "Legal Notice"
+    },
+    "whatsapp": {
+        "contact": "Contact via WhatsApp"
+    },
+    "welcome": {
+        "title": "Welcome to Thellsol Real Estate",
+        "intro": "I am pleased to welcome you to Thellsol Real Estate, where each property tells a story and each client is part of our family.",
+        "text1": "With over a decade of experience in the Costa del Sol, I am proud to help you find your ideal home in this wonderful region. From the beaches of Fuengirola to the historic streets of Malaga, every corner of our area has something special to offer.",
+        "text2": "At Thellsol, we don't just sell properties; we create lasting relationships based on trust, transparency, and commitment to excellence.",
+        "text3": "My team and I are here to guide you every step of the way, ensuring your experience is as exceptional as the home you're looking for.",
+        "text4": "I invite you to explore our selection of properties and discover why the Costa del Sol is the perfect place for your next home.",
+        "signature": "André Tell",
+        "position": "Founder & CEO, Thellsol Real Estate"
+    },
+    "featured": {
+        "title": "Featured Properties"
+    },
+    "cards": {
+        "1": { "title": "Luxury Apartment in Marbella", "zone": "Marbella, Costa del Sol", "desc": "3 bedrooms, 2 bathrooms, 120m²", "price": "€450,000", "button": "View Details" },
+        "2": { "title": "Villa with Pool in Fuengirola", "zone": "Fuengirola, Costa del Sol", "desc": "4 bedrooms, 3 bathrooms, 250m²", "price": "€650,000", "button": "View Details" },
+        "3": { "title": "Modern Chalet in Benalmádena", "zone": "Benalmádena, Costa del Sol", "desc": "5 bedrooms, 4 bathrooms, 300m²", "price": "€850,000", "button": "View Details" },
+        "4": { "title": "Penthouse with Sea Views", "zone": "Mijas Costa", "desc": "2 bedrooms, 2 bathrooms, 95m²", "price": "€320,000", "button": "View Details" },
+        "5": { "title": "Family House in Calahonda", "zone": "Calahonda, Mijas", "desc": "3 bedrooms, 2 bathrooms, 140m²", "price": "€390,000", "button": "View Details" },
+        "6": { "title": "Renovated Apartment in Málaga", "zone": "Centro, Málaga", "desc": "2 bedrooms, 1 bathroom, 80m²", "price": "€275,000", "button": "View Details" },
+        "7": { "title": "Exclusive Villa in Marbella", "zone": "Marbella, Golden Mile", "desc": "6 bedrooms, 6 bathrooms, 600m²", "price": "€2,500,000", "button": "View Details" },
+        "8": { "title": "Duplex in Riviera del Sol", "zone": "Riviera del Sol, Mijas", "desc": "3 bedrooms, 2 bathrooms, 110m²", "price": "€310,000", "button": "View Details" },
+        "9": { "title": "Studio in Torremolinos", "zone": "Torremolinos", "desc": "1 bedroom, 1 bathroom, 45m²", "price": "€120,000", "button": "View Details" },
+        "10": { "title": "Country House in Mijas", "zone": "Mijas Pueblo", "desc": "4 bedrooms, 3 bathrooms, 200m²", "price": "€480,000", "button": "View Details" },
+        "11": { "title": "Apartment in Nueva Andalucía", "zone": "Nueva Andalucía, Marbella", "desc": "2 bedrooms, 2 bathrooms, 100m²", "price": "€350,000", "button": "View Details" },
+        "12": { "title": "Luxury Villa in Benalmádena", "zone": "Benalmádena Costa", "desc": "5 bedrooms, 5 bathrooms, 420m²", "price": "€1,200,000", "button": "View Details" }
+    },
+    "contact": {
+        "title": "Contact Information",
+        "name": "Andre Richard Tell",
+        "company": "Thellsol Real Estate",
+        "address_title": "Address",
+        "address": "Fuengirola 29640\nMálaga, Spain",
+        "contact_title": "Contact"
+    },
+    "sell": {
+        "title": "Sell your Property with ThellSol",
+        "subtitle": "Safe, fast and hassle-free process",
+        "intro": "At ThellSol, we accompany you throughout the process of selling your property in Spain, ensuring a safe, fast and hassle-free experience.\n\nIn addition, we have the legal backing of the prestigious law firm Martínez-Echevarría, which allows us to offer you a complete and professional management with total legal guarantee.",
+        "steps": {
+            "1": {"title": "Valuation and listing", "text": "We carry out a professional valuation of your home and publish it on the right channels to attract solvent buyers."},
+            "2": {"title": "Buyer's reservation", "text": "The buyer makes a commitment: if interested, they make a reservation deposit (between €6,000 and €10,000), thus removing the property from the market."},
+            "3": {"title": "Legal preparation of the sale", "list": {"1": "Property deed", "2": "Registry certificates", "3": "Municipal license and energy efficiency certificate", "4": "Verification that there are no encumbrances (mortgages, liens, IBI or utility debts)"}},
+            "4": {"title": "Signing of the private contract", "text": "A private purchase contract is drawn up, which usually includes the payment of a percentage of the price (usually 10%). The document sets conditions, deadlines and penalties in case of breach."},
+            "5": {"title": "Signing of the public deed of sale", "text": "Within 4-6 weeks, the official deed is signed before a notary. At that time, you receive the rest of the money and the property is handed over to the buyer."},
+            "6": {"title": "Settlement of taxes and final procedures", "list": {"1": "Calculation and settlement of the Municipal Capital Gains Tax", "2": "Registry cancellation of mortgages (if applicable)", "3": "Change of ownership in utilities", "4": "3% withholding for non-residents (if applicable according to your tax situation)"}},
+            "7": {"title": "Legal assistance throughout the process", "text": "If you cannot be present, you can grant us a power of attorney and we will sign everything on your behalf. We also take care of all tax management, declarations and necessary payments."}
+        },
+        "final": "Sell your house with peace of mind, legal backing and professional support",
+        "form": {
+            "title": "Request personalized information about selling your property",
+            "name": "Name *",
+            "phone": "Phone *",
+            "email": "Email *",
+            "message": "Message (optional)",
+            "send": "Send"
+        }
+    },
+    "buy": {
+        "filters": {
+            "area": "Area",
+            "all_areas": "All areas",
+            "type": "Property Type",
+            "all_types": "All types",
+            "price": "Price",
+            "all_prices": "All prices",
+            "more_500k": "More than €500,000",
+            "bedrooms": "Bedrooms",
+            "bathrooms": "Bathrooms",
+            "any": "Any number",
+            "more": "More selections",
+            "search": "Search Properties"
+        },
+        "results": {
+            "title": "Available Properties"
+        },
+        "modal": {
+            "title": "More features",
+            "features": {
+                "1": "Beachfront",
+                "2": "Golf front",
+                "3": "Near shops",
+                "4": "South",
+                "5": "Southwest",
+                "6": "Southeast",
+                "7": "Excellent",
+                "8": "Needs renovation",
+                "9": "New build",
+                "10": "Communal pool",
+                "11": "Private pool",
+                "12": "Air conditioning",
+                "13": "Fireplace",
+                "14": "Underfloor heating",
+                "15": "Sea",
+                "16": "Mountain",
+                "17": "Golf",
+                "18": "Equipped kitchen",
+                "19": "Private garden",
+                "20": "Parking",
+                "21": "Investment",
+                "22": "Luxury"
+            }
+        }
+    },
+    "legal": {
+        "intro": "At ThellSol Real Estate, we are committed to providing our clients with a secure, transparent, and up-to-date experience, with the best partners in compliance and legal architecture for each step of the property buying and selling process.<br><br>We unite the real estate sector with the latest legal developments and the best legal firms. We manage the acquisition of all legal documentation, tax adjustments, and proper registration, in collaboration with independent lawyers and tax advisors.<br><br>Whether you want to buy or sell a property, you will always have the maximum legal guarantees. Here are the links to download the legal information in your language. ThellSol, the trust of your property, without complications.",
+        "pdf_es": "Download PDF (Spanish)",
+        "pdf_en": "Download PDF (English)",
+        "pdf_pl": "Download PDF (Polish)",
+        "pdf_ru": "Download PDF (Russian)",
+        "pdf_sv": "Download PDF (Swedish)",
+        "pdf_fr": "Download PDF (French)"
+    },
+    "legalNotice": {
+        "title": "Legal Notice",
+        "section1": "1. General Information",
+        "text1": "In compliance with the information duty set forth in Article 10 of Law 34/2002, of July 11, on Information Society Services and Electronic Commerce, we inform you that the Website and the Internet portal www.thellsol.com (hereinafter, the 'Website') is owned by ThellSol Real Estate, located in Fuengirola 29640, Málaga, Spain.",
+        "section2": "2. Purpose",
+        "text2": "This legal notice regulates the use of the website www.thellsol.com that ThellSol Real Estate makes available to Internet users.",
+        "section3": "3. Intellectual Property",
+        "text3": "All content on the Website, including texts, photographs, graphics, images, icons, technology, links, audiovisual or sound content, as well as its graphic design and source codes, are the intellectual property of ThellSol Real Estate or third parties, and none of the exploitation rights recognized by current intellectual property regulations are understood to be transferred to the User.",
+        "section4": "4. Terms of Use",
+        "text4": "The User undertakes to use the Website in accordance with the law, this legal notice, and other notices and instructions brought to their attention.",
+        "section5": "5. Liability",
+        "text5": "ThellSol Real Estate is not responsible for any damages that may arise from interferences, omissions, interruptions, computer viruses, or telephone malfunctions in the operation of the electronic system, caused by reasons beyond the company's control."
+    },
+    "privacy": {
+        "title": "Privacy Policy",
+        "section1": "1. General Information",
+        "text1": "In compliance with the information duty set forth in Article 10 of Law 34/2002, of July 11, on Information Society Services and Electronic Commerce, we inform you that the Website and the Internet portal www.thellsol.com (hereinafter, the 'Website') is owned by ThellSol Real Estate, located in Fuengirola 29640, Málaga, Spain.",
+        "section2": "2. Personal Data Processing",
+        "text2": "In compliance with the provisions of Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, we inform you that:",
+        "text3": "The personal data you provide will be used to manage the requested services, provide employers with information about submitted applications, respond to your inquiries, and send you information about our services.",
+        "section3": "3. User Rights",
+        "text4": "As a user, you may exercise the following rights:",
+        "text5": "- Right of access to your personal data<br>- Right to rectify inaccurate data<br>- Right to erasure when data is no longer necessary<br>- Right to object to the processing of your data<br>- Right to restriction of processing<br>- Right to data portability",
+        "section4": "4. Security",
+        "text6": "ThellSol Real Estate has adopted the necessary technical and organizational security measures to ensure the security of your personal data and to prevent its alteration, loss, processing, and/or unauthorized access."
+    },
+    "cookies": {
+        "title": "Cookie Policy",
+        "section1": "1. What are cookies?",
+        "text1": "Cookies are small text files that websites visited by users send to their devices, where they are stored to be retransmitted to the same sites on subsequent visits. Cookies are used for different purposes, have particular characteristics, and can be used both by the owner of the site being visited and by third parties.",
+        "section2": "2. Types of cookies used",
+        "text2": "This website uses the following categories of cookies:",
+        "text3": "- Technical cookies: these allow the user to navigate through a website, platform, or application and use the different options or services available.<br>- Analytical cookies: these allow the party responsible for them to monitor and analyze the behavior of users of the websites to which they are linked.",
+        "section3": "3. How to manage cookies?",
+        "text4": "You can set your browser to reject all cookies or to notify you when a cookie is sent. However, if you reject cookies, some parts of our website may not function properly.",
+        "section4": "4. Updates to the cookie policy",
+        "text5": "ThellSol Real Estate may modify this cookie policy due to legislative, regulatory requirements, or to adapt the policy to the instructions issued by the Spanish Data Protection Agency."
+    }
+}
