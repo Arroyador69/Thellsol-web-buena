@@ -801,16 +801,10 @@
     })();
     </script>
 
-    <script>
-        // Cargar el menú
-        fetch('menu.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('menu').innerHTML = html;
-                if (window.initLanguageSelector) {
-                    window.initLanguageSelector();
-                }
-            });
-    </script>
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/language.js"></script>
 </body>
 </html> 
