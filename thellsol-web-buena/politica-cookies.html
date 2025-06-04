@@ -230,28 +230,21 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-left">
-            <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
-            <a href="index.html" class="navbar-link">Inicio</a>
-            <a href="comprar.html" class="navbar-link">Comprar</a>
-            <a href="vender.html" class="navbar-link">Vender</a>
-        </div>
-        <div class="navbar-center">
-            <span class="navbar-title">ThellSol Real Estate</span>
-        </div>
-        <div class="navbar-right">
-            <a href="informacion-legal.html" class="navbar-link">Información Legal</a>
-            <a href="contacto.html" class="navbar-link">Contacto</a>
-            <div class="language-selector">
-                <span class="fi fi-es language-flag" data-lang="es" title="Español"></span>
-                <span class="fi fi-gb language-flag" data-lang="en" title="English"></span>
-                <span class="fi fi-fr language-flag" data-lang="fr" title="Français"></span>
-                <span class="fi fi-de language-flag" data-lang="de" title="Deutsch"></span>
-            </div>
-        </div>
-    </nav>
-
+    <div id="menu"></div>
+    <script>
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('menu').innerHTML = html;
+                if (window.setLanguageButtonFromStorage) {
+                    window.setLanguageButtonFromStorage();
+                }
+                if (window.initLanguageSelector) {
+                    window.initLanguageSelector();
+                }
+            });
+    </script>
+    <script src="./js/menu-mobile.js"></script>
     <div class="legal-content">
         <h1 data-translate="cookies.title">Política de Cookies</h1>
         
@@ -269,7 +262,6 @@
         <h2 data-translate="cookies.section4">4. Actualizaciones de la política de cookies</h2>
         <p data-translate="cookies.text5">ThellSol Real Estate puede modificar esta política de cookies en función de exigencias legislativas, reglamentarias, o con la finalidad de adaptar dicha política a las instrucciones dictadas por la Agencia Española de Protección de Datos.</p>
     </div>
-
     <div id="footer"></div>
     <script>
       fetch('footer.html')
@@ -278,35 +270,8 @@
           document.getElementById('footer').innerHTML = html;
         });
     </script>
-
     <a href="https://wa.me/34676335313" class="whatsapp-button" target="_blank">
         <img src="./images/whatsapp-icon.png" alt="WhatsApp">
     </a>
-
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="language-selector">
-            <span class="fi fi-es language-flag" data-lang="es" title="Español"></span>
-            <span class="fi fi-gb language-flag" data-lang="en" title="English"></span>
-            <span class="fi fi-fr language-flag" data-lang="fr" title="Français"></span>
-            <span class="fi fi-de language-flag" data-lang="de" title="Deutsch"></span>
-        </div>
-        <a href="index.html" data-translate="nav.home">Inicio</a>
-        <a href="comprar.html" data-translate="nav.buy">Comprar</a>
-        <a href="vender.html" data-translate="nav.sell">Vender</a>
-        <a href="informacion-legal.html" data-translate="nav.legal">Información Legal</a>
-        <a href="contacto.html" data-translate="nav.contact">Contacto</a>
-    </div>
-
-    <div id="menu"></div>
-    <script>
-        fetch('menu.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('menu').innerHTML = html;
-                if (window.initLanguageSelector) {
-                    window.initLanguageSelector();
-                }
-            });
-    </script>
 </body>
 </html> 

@@ -230,38 +230,28 @@
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-left">
-            <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
-            <a href="index.html" class="navbar-link">Inicio</a>
-            <a href="comprar.html" class="navbar-link">Comprar</a>
-            <a href="vender.html" class="navbar-link">Vender</a>
-        </div>
-        <div class="navbar-center">
-            <span class="navbar-title">ThellSol Real Estate</span>
-        </div>
-        <div class="navbar-right">
-            <a href="informacion-legal.html" class="navbar-link">Información Legal</a>
-            <a href="contacto.html" class="navbar-link">Contacto</a>
-            <div class="language-selector">
-                <span class="fi fi-es language-flag" data-lang="es" title="Español"></span>
-                <span class="fi fi-gb language-flag" data-lang="en" title="English"></span>
-                <span class="fi fi-fr language-flag" data-lang="fr" title="Français"></span>
-                <span class="fi fi-de language-flag" data-lang="de" title="Deutsch"></span>
-            </div>
-        </div>
-    </nav>
-
+    <div id="menu"></div>
+    <script>
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('menu').innerHTML = html;
+                if (window.setLanguageButtonFromStorage) {
+                    window.setLanguageButtonFromStorage();
+                }
+                if (window.initLanguageSelector) {
+                    window.initLanguageSelector();
+                }
+            });
+    </script>
+    <script src="./js/menu-mobile.js"></script>
     <div class="legal-content">
         <h1 data-translate="privacy.title">Política de Privacidad</h1>
-        
         <h2 data-translate="privacy.section1">1. Información General</h2>
         <p data-translate="privacy.text1">En cumplimiento con el deber de información recogido en artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico, le informamos que el Sitio Web y el portal de Internet www.thellsol.com (en adelante, el "Sitio Web") es propiedad de ThellSol Real Estate, con domicilio en Fuengirola 29640, Málaga, Spain.</p>
-
         <h2 data-translate="privacy.section2">2. Tratamiento de Datos Personales</h2>
         <p data-translate="privacy.text2">En cumplimiento de lo dispuesto en el Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo, de 27 de abril de 2016, relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos, le informamos que:</p>
         <p data-translate="privacy.text3">Los datos personales que nos facilite serán utilizados con la finalidad de gestionar los servicios solicitados, facilitar a los empresarios información sobre las candidaturas presentadas, responder a sus consultas y remitirle información sobre nuestros servicios.</p>
-
         <h2 data-translate="privacy.section3">3. Derechos del Usuario</h2>
         <p data-translate="privacy.text4">Como usuario, puede ejercer los siguientes derechos:</p>
         <p data-translate="privacy.text5">- Derecho de acceso a sus datos personales<br>
@@ -270,11 +260,9 @@
         - Derecho de oposición al tratamiento de sus datos<br>
         - Derecho de limitación del tratamiento<br>
         - Derecho a la portabilidad de los datos</p>
-
         <h2 data-translate="privacy.section4">4. Seguridad</h2>
         <p data-translate="privacy.text6">ThellSol Real Estate ha adoptado las medidas de seguridad técnicas y organizativas necesarias que garanticen la seguridad de sus datos de carácter personal y eviten su alteración, pérdida, tratamiento y/o acceso no autorizado.</p>
     </div>
-
     <div id="footer"></div>
     <script>
       fetch('footer.html')
@@ -283,35 +271,8 @@
           document.getElementById('footer').innerHTML = html;
         });
     </script>
-
     <a href="https://wa.me/34676335313" class="whatsapp-button" target="_blank">
         <img src="./images/whatsapp-icon.png" alt="WhatsApp">
     </a>
-
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="language-selector">
-            <span class="fi fi-es language-flag" data-lang="es" title="Español"></span>
-            <span class="fi fi-gb language-flag" data-lang="en" title="English"></span>
-            <span class="fi fi-fr language-flag" data-lang="fr" title="Français"></span>
-            <span class="fi fi-de language-flag" data-lang="de" title="Deutsch"></span>
-        </div>
-        <a href="index.html" data-translate="nav.home">Inicio</a>
-        <a href="comprar.html" data-translate="nav.buy">Comprar</a>
-        <a href="vender.html" data-translate="nav.sell">Vender</a>
-        <a href="informacion-legal.html" data-translate="nav.legal">Información Legal</a>
-        <a href="contacto.html" data-translate="nav.contact">Contacto</a>
-    </div>
-
-    <div id="menu"></div>
-    <script>
-        fetch('menu.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('menu').innerHTML = html;
-                if (window.initLanguageSelector) {
-                    window.initLanguageSelector();
-                }
-            });
-    </script>
 </body>
 </html> 
