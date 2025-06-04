@@ -69,6 +69,20 @@
 </head>
 <body>
     <div id="menu"></div>
+    <script>
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('menu').innerHTML = html;
+                if (window.setLanguageButtonFromStorage) {
+                    window.setLanguageButtonFromStorage();
+                }
+                if (window.initLanguageSelector) {
+                    window.initLanguageSelector();
+                }
+            });
+    </script>
+    <script src="./js/menu-mobile.js"></script>
     <div class="gracias-container">
         <h1 class="gracias-titulo" data-translate="thanks.title">¡Gracias por contactarnos!</h1>
         <p class="gracias-texto" data-translate="thanks.text">
@@ -78,14 +92,6 @@
     </div>
     <div id="footer"></div>
     <script>
-      fetch('menu.html')
-        .then(response => response.text())
-        .then(html => {
-          document.getElementById('menu').innerHTML = html;
-          if (window.initLanguageSelector) {
-            window.initLanguageSelector();
-          }
-        });
       fetch('footer.html')
         .then(response => response.text())
         .then(html => {
