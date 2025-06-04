@@ -652,6 +652,16 @@
 </head>
 <body>
     <div id="menu"></div>
+    <script>
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('menu').innerHTML = html;
+                if (window.initLanguageSelector) {
+                    window.initLanguageSelector();
+                }
+            });
+    </script>
     <!-- Título centrado SIEMPRE visible en móvil -->
     <div class="navbar-mobile-title" style="display:none;width:100vw;text-align:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;letter-spacing:1px;color:#fff;background:#181e29;padding:10px 0 0 0;z-index:1201;position:fixed;left:0;top:0;">ThellSol Real Estate</div>
     <!-- Botón hamburguesa robusto fuera del nav -->
@@ -680,16 +690,6 @@
         }
         mostrarHamburguesa();
         window.addEventListener('resize', mostrarHamburguesa);
-    </script>
-    <script>
-        fetch('menu.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('menu').innerHTML = html;
-                if (window.initLanguageSelector) {
-                    window.initLanguageSelector();
-                }
-            });
     </script>
     <div class="main-content" style="display: block; max-width: 1300px; margin: 0 auto; padding: 48px 0 0 0; min-height: 80vh;">
         <!-- Filtros -->

@@ -482,6 +482,16 @@
 </head>
 <body>
     <div id="menu"></div>
+    <script>
+        fetch('menu.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('menu').innerHTML = html;
+                if (window.initLanguageSelector) {
+                    window.initLanguageSelector();
+                }
+            });
+    </script>
     <div class="vender-container">
         <div class="vender-titulo" data-translate="sell.title">Vender tu Propiedad con ThellSol</div>
         <div class="vender-sub" data-translate="sell.subtitle">Proceso seguro, rápido y sin complicaciones</div>
@@ -620,16 +630,6 @@
         <img src="./images/whatsapp-icon.png" alt="WhatsApp">
     </a>
 
-    <script>
-        fetch('menu.html')
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('menu').innerHTML = html;
-                if (window.initLanguageSelector) {
-                    window.initLanguageSelector();
-                }
-            });
-    </script>
     <div id="footer"></div>
     <script>
       fetch('footer.html')
@@ -638,16 +638,37 @@
           document.getElementById('footer').innerHTML = html;
         });
     </script>
+    <!-- Título centrado SIEMPRE visible en móvil -->
+    <div class="navbar-mobile-title" style="display:none;width:100vw;text-align:center;font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;letter-spacing:1px;color:#fff;background:#181e29;padding:10px 0 0 0;z-index:1201;position:fixed;left:0;top:0;">ThellSol Real Estate</div>
+    <!-- Botón hamburguesa robusto fuera del nav -->
+    <button id="hamburgerBtnFixed" aria-label="Abrir menú móvil" onclick="openMobileMenu()" style="display:none;flex-direction:column;justify-content:center;align-items:center;width:38px;height:38px;background:none;border:none;cursor:pointer;position:fixed;top:16px;right:18px;z-index:3000;box-shadow:0 2px 8px #0002;">
+        <span style="display:block;width:24px;height:3px;background:#fff;margin:3px 0;border-radius:2px;"></span>
+        <span style="display:block;width:24px;height:3px;background:#fff;margin:3px 0;border-radius:2px;"></span>
+        <span style="display:block;width:24px;height:3px;background:#fff;margin:3px 0;border-radius:2px;"></span>
+    </button>
+    <script>
+        function openMobileMenu() {
+            document.getElementById('mobileMenu').classList.add('open');
+            document.getElementById('mobileMenuBg').classList.add('open');
+        }
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('open');
+            document.getElementById('mobileMenuBg').classList.remove('open');
+        }
+        // Mostrar el botón hamburguesa solo en móvil
+        function mostrarHamburguesa() {
+            var btn = document.getElementById('hamburgerBtnFixed');
+            if(window.innerWidth < 900) {
+                btn.style.display = 'flex';
+            } else {
+                btn.style.display = 'none';
+            }
+        }
+        mostrarHamburguesa();
+        window.addEventListener('resize', mostrarHamburguesa);
+    </script>
 </body>
 <script>
-function openMobileMenu() {
-  document.getElementById('mobileMenu').classList.add('open');
-  document.getElementById('mobileMenuBg').classList.add('open');
-}
-function closeMobileMenu() {
-  document.getElementById('mobileMenu').classList.remove('open');
-  document.getElementById('mobileMenuBg').classList.remove('open');
-}
 function toggleLanguageDropdown(e) {
   e.stopPropagation();
   var dropdown = document.getElementById('languageDropdownMenu');
