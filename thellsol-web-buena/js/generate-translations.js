@@ -6,7 +6,6 @@ const DEEPL_API_KEY = 'b0b5f90c-91df-417b-91cf-d82690fb09d4:fx';
 const LANGUAGES = {
     'en': 'English',
     'fr': 'French',
-    'he': 'Hebrew',
     'ru': 'Russian',
     'sv': 'Swedish'
 };

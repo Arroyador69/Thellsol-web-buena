@@ -5,8 +5,7 @@ const languages = {
     'fr': { name: 'Français' },
     'de': { name: 'Deutsch' },
     'ru': { name: 'Русский' },
-    'sv': { name: 'Svenska' },
-    'he': { name: 'עברית' }
+    'sv': { name: 'Svenska' }
 };
 
 // Función para inicializar el selector de idiomas
