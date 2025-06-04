@@ -11,16 +11,14 @@
     <div class="navbar-right">
         <a href="informacion-legal.html" class="navbar-link" data-translate="nav.legal">Información Legal</a>
         <a href="contacto.html" class="navbar-link" data-translate="nav.contact">Contacto</a>
-        <div class="dropdown language-dropdown-desktop" style="background:#232a3a;border-radius:4px;">
-            <button class="navbar-link" onclick="toggleLanguageDropdown(event)" style="background:none;color:#fff;">
-                <span class="fi fi-es"></span> Español <span style="font-size:12px;">▼</span>
-            </button>
-            <div class="dropdown-content" id="languageDropdownMenu" style="background:#232a3a;">
-                <span class="language-flag" data-lang="es" title="Español" style="cursor:pointer;display:flex;align-items:center;padding:8px 16px;"><span class="fi fi-es" style="margin-right:10px;"></span> Español</span>
-                <span class="language-flag" data-lang="en" title="English" style="cursor:pointer;display:flex;align-items:center;padding:8px 16px;"><span class="fi fi-gb" style="margin-right:10px;"></span> English</span>
-                <span class="language-flag" data-lang="fr" title="Français" style="cursor:pointer;display:flex;align-items:center;padding:8px 16px;"><span class="fi fi-fr" style="margin-right:10px;"></span> Français</span>
-                <span class="language-flag" data-lang="ru" title="Русский" style="cursor:pointer;display:flex;align-items:center;padding:8px 16px;"><span class="fi fi-ru" style="margin-right:10px;"></span> Русский</span>
-                <span class="language-flag" data-lang="sv" title="Svenska" style="cursor:pointer;display:flex;align-items:center;padding:8px 16px;"><span class="fi fi-se" style="margin-right:10px;"></span> Svenska</span>
+        <div class="dropdown language-dropdown-desktop" style="background:#232a3a;border-radius:8px;">
+            <button class="navbar-link language-btn" onclick="toggleLanguageDropdown(event)" style="display:flex;align-items:center;gap:8px;"></button>
+            <div class="dropdown-content" id="languageDropdownMenu" style="background:#232a3a;min-width:180px;border-radius:8px;box-shadow:0 2px 8px #0002;">
+                <span class="language-flag" data-lang="es" title="Español" style="cursor:pointer;display:flex;align-items:center;padding:10px 18px;gap:8px;"><span class="fi fi-es" style="margin-right:6px;"></span> <span>Español</span></span>
+                <span class="language-flag" data-lang="en" title="English" style="cursor:pointer;display:flex;align-items:center;padding:10px 18px;gap:8px;"><span class="fi fi-gb" style="margin-right:6px;"></span> <span>English</span></span>
+                <span class="language-flag" data-lang="fr" title="Français" style="cursor:pointer;display:flex;align-items:center;padding:10px 18px;gap:8px;"><span class="fi fi-fr" style="margin-right:6px;"></span> <span>Français</span></span>
+                <span class="language-flag" data-lang="ru" title="Русский" style="cursor:pointer;display:flex;align-items:center;padding:10px 18px;gap:8px;"><span class="fi fi-ru" style="margin-right:6px;"></span> <span>Русский</span></span>
+                <span class="language-flag" data-lang="sv" title="Svenska" style="cursor:pointer;display:flex;align-items:center;padding:10px 18px;gap:8px;"><span class="fi fi-se" style="margin-right:6px;"></span> <span>Svenska</span></span>
             </div>
         </div>
     </div>
@@ -46,16 +44,14 @@
         <a href="vender.html" class="navbar-link" style="color:#fff;font-size:1.1rem;font-weight:600;margin:12px 0;" data-translate="nav.sell">Vender</a>
         <a href="informacion-legal.html" class="navbar-link" style="color:#fff;font-size:1.1rem;font-weight:600;margin:12px 0;" data-translate="nav.legal">Información Legal</a>
         <a href="contacto.html" class="navbar-link" style="color:#fff;font-size:1.1rem;font-weight:600;margin:12px 0;" data-translate="nav.contact">Contacto</a>
-        <div class="dropdown language-dropdown-mobile" style="background:#232a3a;border-radius:4px;margin-top:18px;">
-            <button class="navbar-link" onclick="toggleLanguageDropdown(event)" style="background:none;color:#fff;width:100%;text-align:left;">
-                <span class="fi fi-es"></span> Español <span style="font-size:12px;">▼</span>
-            </button>
-            <div class="dropdown-content" id="languageDropdownMenu" style="background:#232a3a;">
-                <span class="language-flag" data-lang="es" title="Español" style="cursor:pointer;display:flex;align-items:center;padding:8px 16px;"><span class="fi fi-es" style="margin-right:10px;"></span> Español</span>
-                <span class="language-flag" data-lang="en" title="English" style="cursor:pointer;display:flex;align-items:center;padding:8px 16px;"><span class="fi fi-gb" style="margin-right:10px;"></span> English</span>
-                <span class="language-flag" data-lang="fr" title="Français" style="cursor:pointer;display:flex;align-items:center;padding:8px 16px;"><span class="fi fi-fr" style="margin-right:10px;"></span> Français</span>
-                <span class="language-flag" data-lang="ru" title="Русский" style="cursor:pointer;display:flex;align-items:center;padding:8px 16px;"><span class="fi fi-ru" style="margin-right:10px;"></span> Русский</span>
-                <span class="language-flag" data-lang="sv" title="Svenska" style="cursor:pointer;display:flex;align-items:center;padding:8px 16px;"><span class="fi fi-se" style="margin-right:10px;"></span> Svenska</span>
+        <div class="dropdown language-dropdown-mobile" style="background:#232a3a;border-radius:8px;margin-top:18px;">
+            <button class="navbar-link language-btn" onclick="toggleLanguageDropdown(event)" style="display:flex;align-items:center;gap:8px;width:100%;text-align:left;"></button>
+            <div class="dropdown-content" id="languageDropdownMenuMobile" style="background:#232a3a;min-width:180px;border-radius:8px;box-shadow:0 2px 8px #0002;">
+                <span class="language-flag" data-lang="es" title="Español" style="cursor:pointer;display:flex;align-items:center;padding:10px 18px;gap:8px;"><span class="fi fi-es" style="margin-right:6px;"></span> <span>Español</span></span>
+                <span class="language-flag" data-lang="en" title="English" style="cursor:pointer;display:flex;align-items:center;padding:10px 18px;gap:8px;"><span class="fi fi-gb" style="margin-right:6px;"></span> <span>English</span></span>
+                <span class="language-flag" data-lang="fr" title="Français" style="cursor:pointer;display:flex;align-items:center;padding:10px 18px;gap:8px;"><span class="fi fi-fr" style="margin-right:6px;"></span> <span>Français</span></span>
+                <span class="language-flag" data-lang="ru" title="Русский" style="cursor:pointer;display:flex;align-items:center;padding:10px 18px;gap:8px;"><span class="fi fi-ru" style="margin-right:6px;"></span> <span>Русский</span></span>
+                <span class="language-flag" data-lang="sv" title="Svenska" style="cursor:pointer;display:flex;align-items:center;padding:10px 18px;gap:8px;"><span class="fi fi-se" style="margin-right:6px;"></span> <span>Svenska</span></span>
             </div>
         </div>
     </div>
@@ -113,6 +109,28 @@
         display: none !important;
     }
 }
+.language-btn {
+    background: #232a3a;
+    color: #fff;
+    border: 1.5px solid #3e7fff;
+    border-radius: 8px;
+    padding: 4px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px #0001;
+    cursor: pointer;
+    transition: background 0.2s, border 0.2s;
+    font-weight: 500;
+    position: relative;
+}
+.language-btn:hover, .language-btn:focus {
+    background: #2d3a5a;
+    border: 1.5px solid #b8c1d9;
+}
+.language-btn .fi {
+    font-size: 1.2em;
+}
 </style>
 <script>
 function openMobileMenu() {
@@ -135,12 +153,20 @@ mostrarHamburguesa();
 window.addEventListener('resize', mostrarHamburguesa);
 function toggleLanguageDropdown(e) {
     e.stopPropagation();
-    var dropdown = document.getElementById('languageDropdownMenu');
-    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    var dropdownDesktop = document.getElementById('languageDropdownMenu');
+    var dropdownMobile = document.getElementById('languageDropdownMenuMobile');
+    if (dropdownDesktop && e.target.closest('.language-dropdown-desktop')) {
+        dropdownDesktop.style.display = dropdownDesktop.style.display === 'block' ? 'none' : 'block';
+    }
+    if (dropdownMobile && e.target.closest('.language-dropdown-mobile')) {
+        dropdownMobile.style.display = dropdownMobile.style.display === 'block' ? 'none' : 'block';
+    }
 }
 document.addEventListener('click', function() {
-    var dropdown = document.getElementById('languageDropdownMenu');
-    if (dropdown) dropdown.style.display = 'none';
+    var dropdownDesktop = document.getElementById('languageDropdownMenu');
+    var dropdownMobile = document.getElementById('languageDropdownMenuMobile');
+    if (dropdownDesktop) dropdownDesktop.style.display = 'none';
+    if (dropdownMobile) dropdownMobile.style.display = 'none';
 });
 window.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.mobile-menu a, .mobile-menu .language-flag').forEach(function(el) {
@@ -161,4 +187,31 @@ window.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+// Mostrar idioma y bandera seleccionados en el botón del selector al cargar el menú
+function setLanguageButtonFromStorage() {
+    var lang = localStorage.getItem('selectedLanguage') || 'es';
+    var languages = {
+        'es': { name: 'Español', flag: 'es' },
+        'en': { name: 'English', flag: 'gb' },
+        'fr': { name: 'Français', flag: 'fr' },
+        'ru': { name: 'Русский', flag: 'ru' },
+        'sv': { name: 'Svenska', flag: 'se' }
+    };
+    var langName = languages[lang] ? languages[lang].name : 'Español';
+    var flagCode = languages[lang] ? languages[lang].flag : 'es';
+    var langFlag = `fi fi-${flagCode}`;
+    var globe = '<span style="font-size:1.2em;margin-right:4px;">🌐</span>';
+    // Desktop
+    var desktopBtn = document.querySelector('.language-dropdown-desktop .navbar-link');
+    if (desktopBtn) {
+        desktopBtn.innerHTML = `${globe}<span class="${langFlag}"></span> ${langName} <span style="font-size:12px;">▼</span>`;
+    }
+    // Móvil
+    var mobileBtn = document.querySelector('.language-dropdown-mobile .navbar-link');
+    if (mobileBtn) {
+        mobileBtn.innerHTML = `${globe}<span class="${langFlag}"></span> ${langName} <span style="font-size:12px;">▼</span>`;
+    }
+}
+window.setLanguageButtonFromStorage = setLanguageButtonFromStorage;
+window.addEventListener('DOMContentLoaded', setLanguageButtonFromStorage);
 </script> 
