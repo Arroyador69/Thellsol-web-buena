@@ -372,8 +372,8 @@
             right: 20px;
             background: #25D366;
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 96px;
+            height: 96px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -387,8 +387,8 @@
             transform: scale(1.1);
         }
         .whatsapp-button img {
-            width: 35px;
-            height: 35px;
+            width: 56px;
+            height: 56px;
         }
         @media (max-width: 900px) {
             .main-content {
@@ -657,6 +657,9 @@
             .then(response => response.text())
             .then(html => {
                 document.getElementById('menu').innerHTML = html;
+                if (window.setLanguageButtonFromStorage) {
+                    window.setLanguageButtonFromStorage();
+                }
                 if (window.initLanguageSelector) {
                     window.initLanguageSelector();
                 }

@@ -95,15 +95,18 @@
     }
     @media (max-width: 900px) {
       .footer-tarjetas .footer-content-tarjetas {
-        flex-direction: column;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
         align-items: stretch;
-        gap: 18px;
-        padding: 0 8px;
+        gap: 12px;
+        padding: 0 4px;
       }
       .footer-tarjetas .footer-card-tarjeta {
-        min-width: unset;
+        min-width: 180px;
         max-width: 98vw;
-        margin: 0 auto 18px auto;
+        flex: 1 1 220px;
+        margin: 0 4px 12px 4px;
       }
       .footer-tarjetas .footer-bottom-tarjetas {
         flex-direction: column;
@@ -111,6 +114,18 @@
         font-size: 1rem;
         padding: 14px 6px 14px 6px;
         border-radius: 12px 12px 0 0;
+      }
+    }
+    @media (max-width: 600px) {
+      .footer-tarjetas .footer-content-tarjetas {
+        flex-direction: column;
+        gap: 10px;
+        padding: 0 2px;
+      }
+      .footer-tarjetas .footer-card-tarjeta {
+        min-width: unset;
+        max-width: 98vw;
+        margin: 0 auto 10px auto;
       }
     }
   </style>

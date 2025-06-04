@@ -189,7 +189,7 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 // Mostrar idioma y bandera seleccionados en el botón del selector al cargar el menú
 function setLanguageButtonFromStorage() {
-    var lang = localStorage.getItem('selectedLanguage') || 'es';
+    var lang = localStorage.getItem('selectedLanguage') || 'en';
     var languages = {
         'es': { name: 'Español', flag: 'es' },
         'en': { name: 'English', flag: 'gb' },
@@ -197,8 +197,8 @@ function setLanguageButtonFromStorage() {
         'ru': { name: 'Русский', flag: 'ru' },
         'sv': { name: 'Svenska', flag: 'se' }
     };
-    var langName = languages[lang] ? languages[lang].name : 'Español';
-    var flagCode = languages[lang] ? languages[lang].flag : 'es';
+    var langName = languages[lang] ? languages[lang].name : 'English';
+    var flagCode = languages[lang] ? languages[lang].flag : 'gb';
     var langFlag = `fi fi-${flagCode}`;
     var globe = '<span style="font-size:1.2em;margin-right:4px;">🌐</span>';
     // Desktop

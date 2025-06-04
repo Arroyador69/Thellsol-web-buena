@@ -1,11 +1,11 @@
 // Definir los idiomas disponibles
 const languages = {
-    'es': { name: 'Español' },
-    'en': { name: 'English' },
-    'fr': { name: 'Français' },
-    'de': { name: 'Deutsch' },
-    'ru': { name: 'Русский' },
-    'sv': { name: 'Svenska' }
+    'es': { name: 'Español', flag: 'es' },
+    'en': { name: 'English', flag: 'gb' },
+    'fr': { name: 'Français', flag: 'fr' },
+    'de': { name: 'Deutsch', flag: 'de' },
+    'ru': { name: 'Русский', flag: 'ru' },
+    'sv': { name: 'Svenska', flag: 'se' }
 };
 
 // Función para inicializar el selector de idiomas
@@ -44,9 +44,7 @@ function changeLanguage(lang) {
     
     // Actualizar el texto del botón de idioma
     const langName = languages[lang].name;
-    let flagCode = lang;
-    if (lang === 'he') flagCode = 'il';
-    if (lang === 'sv') flagCode = 'se';
+    const flagCode = languages[lang].flag;
     const langFlag = `fi fi-${flagCode}`;
     
     // Actualizar en el menú de escritorio
