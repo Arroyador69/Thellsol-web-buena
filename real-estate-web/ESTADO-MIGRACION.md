@@ -200,3 +200,4 @@ Una vez completada la migración tendrás:
 
 **Estado**: 🟡 **Listo para desplegar en Vercel**
 **Próximo paso**: Configurar base de datos en la nube y desplegar en Vercel
+

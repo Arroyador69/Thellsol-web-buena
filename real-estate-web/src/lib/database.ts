@@ -203,3 +203,121 @@ export async function searchProperties(filters: {
     return [];
   }
 } 
+
+// Función para crear una nueva propiedad
+export async function createProperty(propertyData: {
+  title: string;
+  description: string;
+  price: number;
+  location: string;
+  type: string;
+  bedrooms?: number;
+  bathrooms?: number;
+  area?: number;
+  features: any;
+  images: string[];
+  status: string;
+}) {
+  const connection = getConnection();
+  try {
+    const [result] = await connection.execute(`
+      INSERT INTO properties (
+        title,
+        description,
+        price,
+        location,
+        type,
+        bedrooms,
+        bathrooms,
+        area,
+        features,
+        images,
+        status,
+        created_at,
+        updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())
+    `, [
+      propertyData.title,
+      propertyData.description,
+      propertyData.price,
+      propertyData.location,
+      propertyData.type,
+      propertyData.bedrooms || null,
+      propertyData.bathrooms || null,
+      propertyData.area || null,
+      JSON.stringify(propertyData.features),
+      JSON.stringify(propertyData.images),
+      propertyData.status
+    ]);
+    
+    const insertResult = result as any;
+    return {
+      id: insertResult.insertId,
+      ...propertyData,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    };
+  } catch (error) {
+    console.error('Error creating property:', error);
+    throw error;
+  }
+}
+
+// Función para actualizar una propiedad
+export async function updateProperty(id: string, propertyData: any) {
+  const connection = getConnection();
+  try {
+    await connection.execute(`
+      UPDATE properties SET
+        title = ?,
+        description = ?,
+        price = ?,
+        location = ?,
+        type = ?,
+        bedrooms = ?,
+        bathrooms = ?,
+        area = ?,
+        features = ?,
+        images = ?,
+        status = ?,
+        updated_at = NOW()
+      WHERE id = ?
+    `, [
+      propertyData.title,
+      propertyData.description,
+      propertyData.price,
+      propertyData.location,
+      propertyData.type,
+      propertyData.bedrooms || null,
+      propertyData.bathrooms || null,
+      propertyData.area || null,
+      JSON.stringify(propertyData.features),
+      JSON.stringify(propertyData.images),
+      propertyData.status,
+      id
+    ]);
+    
+    return await getPropertyById(id);
+  } catch (error) {
+    console.error('Error updating property:', error);
+    throw error;
+  }
+}
+
+// Función para eliminar una propiedad (soft delete)
+export async function deleteProperty(id: string) {
+  const connection = getConnection();
+  try {
+    await connection.execute(`
+      UPDATE properties SET
+        status = 'deleted',
+        updated_at = NOW()
+      WHERE id = ?
+    `, [id]);
+    
+    return { success: true };
+  } catch (error) {
+    console.error('Error deleting property:', error);
+    throw error;
+  }
+} 

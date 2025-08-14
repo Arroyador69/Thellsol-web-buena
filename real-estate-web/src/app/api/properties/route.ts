@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getAllProperties } from '@/lib/database';
+import { getAllProperties, createProperty } from '@/lib/database';
 
 export async function GET() {
   try {
@@ -9,6 +9,20 @@ export async function GET() {
     console.error('Error fetching properties:', error);
     return NextResponse.json(
       { error: 'Error al obtener las propiedades' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function POST(request: Request) {
+  try {
+    const body = await request.json();
+    const property = await createProperty(body);
+    return NextResponse.json(property, { status: 201 });
+  } catch (error) {
+    console.error('Error creating property:', error);
+    return NextResponse.json(
+      { error: 'Error al crear la propiedad' },
       { status: 500 }
     );
   }

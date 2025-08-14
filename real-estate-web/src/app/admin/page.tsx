@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import PropertyList from '@/components/PropertyList';
 
 export default function AdminDashboard() {
   const [activeTab, setActiveTab] = useState('properties');
@@ -66,20 +67,7 @@ export default function AdminDashboard() {
                   </Link>
                 </div>
                 
-                <div className="bg-white border border-gray-200 rounded-lg">
-                  <div className="px-6 py-4 border-b border-gray-200">
-                    <h3 className="text-lg font-medium text-gray-900">Propiedades Publicadas</h3>
-                  </div>
-                  <div className="p-6">
-                    <p className="text-gray-500">No hay propiedades publicadas aún.</p>
-                    <Link
-                      href="/admin/properties/new"
-                      className="inline-block mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
-                    >
-                      Publicar Primera Propiedad
-                    </Link>
-                  </div>
-                </div>
+                <PropertyList />
               </div>
             )}
 

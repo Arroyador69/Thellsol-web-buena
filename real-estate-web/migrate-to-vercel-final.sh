@@ -1,165 +1,176 @@
 #!/bin/bash
 
-echo "🚀 MIGRACIÓN FINAL A VERCEL - THELLSOL REAL ESTATE"
+echo "🚀 MIGRACIÓN COMPLETA A VERCEL - THELLSOL REAL ESTATE"
 echo "=================================================="
-echo ""
+
+# Colores para output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Función para imprimir mensajes
+print_status() {
+    echo -e "${BLUE}[INFO]${NC} $1"
+}
+
+print_success() {
+    echo -e "${GREEN}[SUCCESS]${NC} $1"
+}
+
+print_warning() {
+    echo -e "${YELLOW}[WARNING]${NC} $1"
+}
+
+print_error() {
+    echo -e "${RED}[ERROR]${NC} $1"
+}
 
 # Verificar que estamos en el directorio correcto
 if [ ! -f "package.json" ]; then
-    echo "❌ Error: No estás en el directorio del proyecto"
-    echo "Ejecuta: cd real-estate-web"
+    print_error "No se encontró package.json. Asegúrate de estar en el directorio del proyecto."
     exit 1
 fi
 
-echo "📋 PASO 1: Verificar estado actual"
-echo "-----------------------------------"
-echo ""
+print_status "Verificando estado del proyecto..."
 
-# Verificar estado de Git
-echo "📊 Estado de Git:"
-git status
-
-# Verificar repositorio remoto
-echo ""
-echo "🌐 Repositorio remoto:"
-git remote -v
-
-echo ""
-echo "📋 PASO 2: Preparar código para producción"
-echo "------------------------------------------"
-echo ""
-
-# Limpiar archivos innecesarios
-echo "🧹 Limpiando archivos temporales..."
-rm -rf .next out node_modules
-
-# Verificar que no hay cambios pendientes
-if [ -n "$(git status --porcelain)" ]; then
-    echo "⚠️ Hay cambios pendientes. ¿Quieres hacer commit? (y/n)"
-    read -r response
-    if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
-        git add .
-        git commit -m "Preparar para despliegue final en Vercel"
-        echo "✅ Commit realizado"
-    else
-        echo "❌ Migración cancelada"
-        exit 1
-    fi
+# Verificar Git
+if ! command -v git &> /dev/null; then
+    print_error "Git no está instalado. Por favor instala Git primero."
+    exit 1
 fi
 
-echo ""
-echo "📋 PASO 3: Subir cambios a GitHub"
-echo "---------------------------------"
-echo ""
+# Verificar Node.js
+if ! command -v node &> /dev/null; then
+    print_error "Node.js no está instalado. Por favor instala Node.js primero."
+    exit 1
+fi
 
-# Subir cambios
-echo "📤 Subiendo cambios a GitHub..."
-git push origin main
+# Verificar npm
+if ! command -v npm &> /dev/null; then
+    print_error "npm no está instalado. Por favor instala npm primero."
+    exit 1
+fi
 
-echo ""
-echo "📋 PASO 4: Verificar configuración de Vercel"
-echo "--------------------------------------------"
-echo ""
+print_success "Dependencias básicas verificadas"
 
-# Verificar archivo vercel.json
+# Paso 1: Instalar dependencias
+print_status "Instalando dependencias..."
+npm install
+if [ $? -eq 0 ]; then
+    print_success "Dependencias instaladas correctamente"
+else
+    print_error "Error al instalar dependencias"
+    exit 1
+fi
+
+# Paso 2: Generar cliente de Prisma
+print_status "Generando cliente de Prisma..."
+npm run db:generate
+if [ $? -eq 0 ]; then
+    print_success "Cliente de Prisma generado"
+else
+    print_warning "Error al generar cliente de Prisma (puede ser normal si no hay base de datos configurada)"
+fi
+
+# Paso 3: Verificar configuración de Vercel
+print_status "Verificando configuración de Vercel..."
 if [ -f "vercel.json" ]; then
-    echo "✅ vercel.json encontrado"
+    print_success "vercel.json encontrado"
 else
-    echo "❌ vercel.json no encontrado"
+    print_warning "vercel.json no encontrado - se creará automáticamente en Vercel"
+fi
+
+# Paso 4: Verificar variables de entorno
+print_status "Verificando archivo de variables de entorno..."
+if [ -f ".env.local" ]; then
+    print_success "Archivo .env.local encontrado"
+    print_warning "IMPORTANTE: Asegúrate de configurar estas variables en Vercel:"
+    echo "  - DATABASE_URL"
+    echo "  - NEXTAUTH_URL"
+    echo "  - NEXTAUTH_SECRET"
+else
+    print_warning "Archivo .env.local no encontrado"
+    print_status "Creando archivo .env.example..."
+    cat > .env.example << EOF
+# Base de datos
+DATABASE_URL="mysql://usuario:contraseña@host:puerto/base_de_datos"
+
+# NextAuth
+NEXTAUTH_URL="https://tu-dominio.vercel.app"
+NEXTAUTH_SECRET="tu-secreto-super-seguro"
+
+# Opcional: Google Translate API
+GOOGLE_TRANSLATE_API_KEY="tu-api-key"
+EOF
+    print_success "Archivo .env.example creado"
+fi
+
+# Paso 5: Verificar estructura del proyecto
+print_status "Verificando estructura del proyecto..."
+required_files=("src/app/layout.tsx" "src/app/page.tsx" "src/app/admin/page.tsx" "package.json" "next.config.js")
+for file in "${required_files[@]}"; do
+    if [ -f "$file" ]; then
+        print_success "✓ $file"
+    else
+        print_error "✗ $file (FALTANTE)"
+    fi
+done
+
+# Paso 6: Build de prueba
+print_status "Realizando build de prueba..."
+npm run build
+if [ $? -eq 0 ]; then
+    print_success "Build exitoso - El proyecto está listo para Vercel"
+else
+    print_error "Error en el build - Revisa los errores antes de continuar"
     exit 1
 fi
 
-# Verificar package.json
-if [ -f "package.json" ]; then
-    echo "✅ package.json encontrado"
+# Paso 7: Verificar Git
+print_status "Verificando estado de Git..."
+git status --porcelain
+if [ $? -eq 0 ]; then
+    print_success "Repositorio Git verificado"
 else
-    echo "❌ package.json no encontrado"
-    exit 1
+    print_warning "Problemas con Git - Verifica el estado del repositorio"
 fi
 
 echo ""
-echo "📋 PASO 5: Instrucciones para Vercel"
-echo "------------------------------------"
+echo "🎉 MIGRACIÓN PREPARADA EXITOSAMENTE"
+echo "=================================="
 echo ""
-
-echo "🌐 Sigue estos pasos en Vercel:"
+echo "📋 PRÓXIMOS PASOS:"
 echo ""
-echo "1. Ve a https://vercel.com"
-echo "2. Inicia sesión o crea una cuenta"
-echo "3. Conecta tu cuenta de GitHub"
-echo "4. Haz clic en 'New Project'"
-echo "5. Selecciona el repositorio: Thellsol-web-buena"
-echo "6. Configura las variables de entorno:"
-echo "   - DATABASE_URL: URL de tu base de datos MySQL"
-echo "   - NEXTAUTH_URL: https://thellsol.com"
-echo "   - NEXTAUTH_SECRET: Un string aleatorio de 32+ caracteres"
-echo "7. Haz clic en 'Deploy'"
+echo "1. 🌐 CONFIGURAR VERCEL:"
+echo "   - Ve a https://vercel.com"
+echo "   - Conecta tu cuenta de GitHub"
+echo "   - Importa el repositorio: Thellsol-web-buena"
+echo "   - Configura las variables de entorno"
 echo ""
-
-echo "📋 PASO 6: Configurar base de datos"
-echo "-----------------------------------"
+echo "2. 🗄️ CONFIGURAR BASE DE DATOS:"
+echo "   - Opción A: PlanetScale (recomendado, gratuito)"
+echo "   - Opción B: Railway"
+echo "   - Opción C: Supabase"
+echo "   - Opción D: Tu propio servidor MySQL"
 echo ""
-
-echo "🗄️ Opciones de base de datos recomendadas:"
+echo "3. 🔧 VARIABLES DE ENTORNO EN VERCEL:"
+echo "   DATABASE_URL=mysql://usuario:contraseña@host:puerto/base_de_datos"
+echo "   NEXTAUTH_URL=https://tu-dominio.vercel.app"
+echo "   NEXTAUTH_SECRET=tu-secreto-super-seguro"
 echo ""
-echo "A) PlanetScale (Gratuito):"
-echo "   - Ve a https://planetscale.com"
-echo "   - Crea una cuenta gratuita"
-echo "   - Crea una base de datos llamada 'thellsol_db'"
-echo "   - Copia la URL de conexión MySQL"
+echo "4. 👤 CREAR USUARIO ADMIN:"
+echo "   - Una vez desplegado, ejecuta: npm run create-admin"
+echo "   - O usa el script: ./scripts/create-admin.js"
 echo ""
-echo "B) Railway:"
-echo "   - Ve a https://railway.app"
-echo "   - Crea un proyecto MySQL"
-echo "   - Copia la URL de conexión"
+echo "5. 🧪 PROBAR DASHBOARD:"
+echo "   - URL: https://tu-dominio.vercel.app/admin"
+echo "   - Añadir propiedades de prueba"
+echo "   - Verificar que aparezcan en la web"
 echo ""
-echo "C) Supabase (PostgreSQL):"
-echo "   - Ve a https://supabase.com"
-echo "   - Crea un proyecto gratuito"
-echo "   - Usa la base de datos PostgreSQL"
+echo "📞 SOPORTE:"
+echo "   - Email: info@thellsol.com"
+echo "   - Documentación: README.md"
 echo ""
-
-echo "📋 PASO 7: Configurar dominio"
-echo "-----------------------------"
-echo ""
-
-echo "🌐 Para configurar thellsol.com en Vercel:"
-echo ""
-echo "1. En el dashboard de Vercel, ve a Settings > Domains"
-echo "2. Añade 'thellsol.com'"
-echo "3. Vercel te dará instrucciones para configurar DNS"
-echo "4. Actualiza los DNS en Hostinger según las instrucciones"
-echo ""
-
-echo "📋 PASO 8: Crear usuario administrador"
-echo "-------------------------------------"
-echo ""
-
-echo "👤 Después del despliegue, crea un usuario administrador:"
-echo ""
-echo "1. Ve a tu proyecto en Vercel"
-echo "2. Abre la consola de funciones"
-echo "3. Ejecuta: npm run create-admin"
-echo "4. Sigue las instrucciones para crear el usuario"
-echo ""
-
-echo "🎉 ¡MIGRACIÓN PREPARADA!"
-echo "======================="
-echo ""
-echo "📋 Resumen de lo que se ha verificado:"
-echo "✅ Repositorio GitHub configurado"
-echo "✅ Código actualizado y subido"
-echo "✅ Configuración de Vercel lista"
-echo "✅ Dashboard de administración funcional"
-echo "✅ APIs para gestión de propiedades"
-echo ""
-echo "🔗 Próximos pasos:"
-echo "1. Configura Vercel siguiendo las instrucciones"
-echo "2. Configura la base de datos en la nube"
-echo "3. Configura las variables de entorno en Vercel"
-echo "4. Configura el dominio personalizado"
-echo "5. Crea el usuario administrador"
-echo "6. Accede al dashboard en: https://thellsol.com/admin"
-echo ""
-echo "📞 Para soporte: info@thellsol.com"
-echo "📖 Consulta: vercel-deployment-guide.md"
+print_success "¡Proyecto listo para desplegar en Vercel!"

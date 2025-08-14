@@ -84,10 +84,28 @@ export default function NewProperty() {
     e.preventDefault();
     
     try {
-      // Aquí iría la lógica para guardar la propiedad
-      console.log('Propiedad a guardar:', formData);
-      
-      // Simular guardado exitoso
+      // Preparar los datos para enviar
+      const propertyData = {
+        ...formData,
+        price: parseFloat(formData.price),
+        bedrooms: formData.bedrooms ? parseInt(formData.bedrooms) : null,
+        bathrooms: formData.bathrooms ? parseInt(formData.bathrooms) : null,
+        area: formData.area ? parseInt(formData.area) : null,
+      };
+
+      const response = await fetch('/api/properties', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(propertyData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error al guardar la propiedad');
+      }
+
+      const result = await response.json();
       alert('Propiedad guardada exitosamente');
       router.push('/admin');
     } catch (error) {
