@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640px" height="480px" viewBox="0 0 640 480" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <clipPath id="s">
+            <path d="M-85.3,0H85.3V512H-85.3z"/>
+        </clipPath>
+    </defs>
+    <g clip-path="url(#s)" transform="scale(.9375)">
+        <path fill="#012169" d="M-256,0H768V512H-256z"/>
+        <path d="M-256,0H768V512H-256z" fill="#fff" stroke="#fff" stroke-width="37" stroke-dasharray="74,74"/>
+        <path d="M-256,0H768V512H-256z" fill="#fff" stroke="#fff" stroke-width="37" stroke-dasharray="74,74" transform="rotate(90)"/>
+        <path d="M-256,0H768V512H-256z" fill="#c8102e" stroke="#c8102e" stroke-width="24" stroke-dasharray="48,48"/>
+        <path d="M-256,0H768V512H-256z" fill="#c8102e" stroke="#c8102e" stroke-width="24" stroke-dasharray="48,48" transform="rotate(90)"/>
+        <path d="M-256,0H768V512H-256z" fill="#012169" stroke="#012169" stroke-width="74" stroke-dasharray="37,37"/>
+        <path d="M-256,0H768V512H-256z" fill="#012169" stroke="#012169" stroke-width="74" stroke-dasharray="37,37" transform="rotate(90)"/>
+    </g>
+</svg> 

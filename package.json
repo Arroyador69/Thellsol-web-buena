@@ -1,0 +1,41 @@
+{
+  "name": "real-estate-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next export",
+    "create-admin": "node scripts/create-admin.js",
+    "init-db": "node scripts/init-db.js",
+    "db:push": "prisma db push",
+    "db:generate": "prisma generate"
+  },
+  "dependencies": {
+    "@auth/prisma-adapter": "^2.0.0",
+    "@google-cloud/translate": "^9.0.1",
+    "@prisma/client": "^5.22.0",
+    "bcryptjs": "^3.0.2",
+    "better-sqlite3": "^9.4.3",
+    "next": "14.1.0",
+    "next-auth": "^4.24.5",
+    "openai": "^4.92.1",
+    "prisma": "^5.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "slugify": "^1.6.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-next": "14.1.0",
+    "postcss": "^8.0.0",
+    "tailwindcss": "^3.0.0",
+    "typescript": "^5.0.0"
+  }
+}
