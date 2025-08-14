@@ -1,64 +1,37 @@
-import mysql from 'mysql2/promise';
+import { PrismaClient } from '@prisma/client'
 
-// Configuración de la base de datos existente
-const dbConfig = {
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'thellsol_db',
-  port: parseInt(process.env.DB_PORT || '3306'),
-};
-
-// Pool de conexiones
-let pool: mysql.Pool | null = null;
-
-export function getConnection() {
-  if (!pool) {
-    pool = mysql.createPool(dbConfig);
-  }
-  return pool;
+const globalForPrisma = globalThis as unknown as {
+  prisma: PrismaClient | undefined
 }
+
+export const prisma = globalForPrisma.prisma ?? new PrismaClient({
+  datasources: {
+    db: {
+      url: process.env.DATABASE_URL || 'file:./prisma/dev.db'
+    }
+  }
+})
+
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
 
 // Función para obtener todas las propiedades
 export async function getAllProperties() {
-  const connection = getConnection();
   try {
-    const [rows] = await connection.execute(`
-      SELECT 
-        id,
-        title,
-        description,
-        price,
-        location,
-        type,
-        bedrooms,
-        bathrooms,
-        area,
-        features,
-        images,
-        status,
-        created_at,
-        updated_at
-      FROM properties 
-      WHERE status = 'active'
-      ORDER BY created_at DESC
-    `);
+    const properties = await prisma.property.findMany({
+      where: {
+        status: {
+          not: 'deleted'
+        }
+      },
+      orderBy: {
+        createdAt: 'desc'
+      }
+    });
     
-    return (rows as any[]).map((row: any) => ({
-      id: row.id,
-      title: row.title,
-      description: row.description,
-      price: parseFloat(row.price),
-      location: row.location,
-      type: row.type,
-      bedrooms: row.bedrooms,
-      bathrooms: row.bathrooms,
-      area: row.area,
-      features: row.features ? JSON.parse(row.features) : {},
-      images: row.images ? JSON.parse(row.images) : [],
-      status: row.status,
-      createdAt: row.created_at,
-      updatedAt: row.updated_at
+    return properties.map(property => ({
+      ...property,
+      features: property.features ? JSON.parse(property.features) : {},
+      images: property.images ? JSON.parse(property.images) : []
     }));
   } catch (error) {
     console.error('Error fetching properties:', error);
@@ -68,46 +41,22 @@ export async function getAllProperties() {
 
 // Función para obtener una propiedad por ID
 export async function getPropertyById(id: string) {
-  const connection = getConnection();
   try {
-    const [rows] = await connection.execute(`
-      SELECT 
+    const property = await prisma.property.findFirst({
+      where: {
         id,
-        title,
-        description,
-        price,
-        location,
-        type,
-        bedrooms,
-        bathrooms,
-        area,
-        features,
-        images,
-        status,
-        created_at,
-        updated_at
-      FROM properties 
-      WHERE id = ? AND status = 'active'
-    `, [id]);
+        status: {
+          not: 'deleted'
+        }
+      }
+    });
     
-    if ((rows as any[]).length === 0) return null;
+    if (!property) return null;
     
-    const row = (rows as any[])[0];
     return {
-      id: row.id,
-      title: row.title,
-      description: row.description,
-      price: parseFloat(row.price),
-      location: row.location,
-      type: row.type,
-      bedrooms: row.bedrooms,
-      bathrooms: row.bathrooms,
-      area: row.area,
-      features: row.features ? JSON.parse(row.features) : {},
-      images: row.images ? JSON.parse(row.images) : [],
-      status: row.status,
-      createdAt: row.created_at,
-      updatedAt: row.updated_at
+      ...property,
+      features: property.features ? JSON.parse(property.features) : {},
+      images: property.images ? JSON.parse(property.images) : []
     };
   } catch (error) {
     console.error('Error fetching property:', error);
@@ -124,85 +73,56 @@ export async function searchProperties(filters: {
   bedrooms?: number;
   bathrooms?: number;
 }) {
-  const connection = getConnection();
   try {
-    let query = `
-      SELECT 
-        id,
-        title,
-        description,
-        price,
-        location,
-        type,
-        bedrooms,
-        bathrooms,
-        area,
-        features,
-        images,
-        status,
-        created_at,
-        updated_at
-      FROM properties 
-      WHERE status = 'active'
-    `;
-    
-    const params: any[] = [];
+    const whereClause: any = {
+      status: {
+        not: 'deleted'
+      }
+    };
     
     if (filters.location) {
-      query += ' AND location = ?';
-      params.push(filters.location);
+      whereClause.location = filters.location;
     }
     
     if (filters.type) {
-      query += ' AND type = ?';
-      params.push(filters.type);
+      whereClause.type = filters.type;
     }
     
-    if (filters.minPrice) {
-      query += ' AND price >= ?';
-      params.push(filters.minPrice);
-    }
-    
-    if (filters.maxPrice) {
-      query += ' AND price <= ?';
-      params.push(filters.maxPrice);
+    if (filters.minPrice || filters.maxPrice) {
+      whereClause.price = {};
+      if (filters.minPrice) whereClause.price.gte = filters.minPrice;
+      if (filters.maxPrice) whereClause.price.lte = filters.maxPrice;
     }
     
     if (filters.bedrooms) {
-      query += ' AND bedrooms >= ?';
-      params.push(filters.bedrooms);
+      whereClause.bedrooms = {
+        gte: filters.bedrooms
+      };
     }
     
     if (filters.bathrooms) {
-      query += ' AND bathrooms >= ?';
-      params.push(filters.bathrooms);
+      whereClause.bathrooms = {
+        gte: filters.bathrooms
+      };
     }
     
-    query += ' ORDER BY created_at DESC';
+    const properties = await prisma.property.findMany({
+      where: whereClause,
+      orderBy: {
+        createdAt: 'desc'
+      }
+    });
     
-    const [rows] = await connection.execute(query, params);
-    
-    return (rows as any[]).map((row: any) => ({
-      id: row.id,
-      title: row.title,
-      description: row.description,
-      price: parseFloat(row.price),
-      location: row.location,
-      type: row.type,
-      bedrooms: row.bedrooms,
-      bathrooms: row.bathrooms,
-      area: row.area,
-      features: row.features ? JSON.parse(row.features) : {},
-      images: row.images ? JSON.parse(row.images) : [],
-      status: row.status,
-      createdAt: row.created_at,
-      updatedAt: row.updated_at
+    return properties.map(property => ({
+      ...property,
+      features: property.features ? JSON.parse(property.features) : {},
+      images: property.images ? JSON.parse(property.images) : []
     }));
   } catch (error) {
     console.error('Error searching properties:', error);
     return [];
   }
-} 
+}
 
 // Función para crear una nueva propiedad
 export async function createProperty(propertyData: {
@@ -218,44 +138,27 @@ export async function createProperty(propertyData: {
   images: string[];
   status: string;
 }) {
-  const connection = getConnection();
   try {
-    const [result] = await connection.execute(`
-      INSERT INTO properties (
-        title,
-        description,
-        price,
-        location,
-        type,
-        bedrooms,
-        bathrooms,
-        area,
-        features,
-        images,
-        status,
-        created_at,
-        updated_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())
-    `, [
-      propertyData.title,
-      propertyData.description,
-      propertyData.price,
-      propertyData.location,
-      propertyData.type,
-      propertyData.bedrooms || null,
-      propertyData.bathrooms || null,
-      propertyData.area || null,
-      JSON.stringify(propertyData.features),
-      JSON.stringify(propertyData.images),
-      propertyData.status
-    ]);
+    const property = await prisma.property.create({
+      data: {
+        title: propertyData.title,
+        description: propertyData.description,
+        price: propertyData.price,
+        location: propertyData.location,
+        type: propertyData.type,
+        bedrooms: propertyData.bedrooms,
+        bathrooms: propertyData.bathrooms,
+        area: propertyData.area,
+        features: JSON.stringify(propertyData.features),
+        images: JSON.stringify(propertyData.images),
+        status: propertyData.status
+      }
+    });
     
-    const insertResult = result as any;
     return {
-      id: insertResult.insertId,
-      ...propertyData,
-      createdAt: new Date(),
-      updatedAt: new Date()
+      ...property,
+      features: propertyData.features,
+      images: propertyData.images
     };
   } catch (error) {
     console.error('Error creating property:', error);
@@ -265,39 +168,29 @@ export async function createProperty(propertyData: {
 
 // Función para actualizar una propiedad
 export async function updateProperty(id: string, propertyData: any) {
-  const connection = getConnection();
   try {
-    await connection.execute(`
-      UPDATE properties SET
-        title = ?,
-        description = ?,
-        price = ?,
-        location = ?,
-        type = ?,
-        bedrooms = ?,
-        bathrooms = ?,
-        area = ?,
-        features = ?,
-        images = ?,
-        status = ?,
-        updated_at = NOW()
-      WHERE id = ?
-    `, [
-      propertyData.title,
-      propertyData.description,
-      propertyData.price,
-      propertyData.location,
-      propertyData.type,
-      propertyData.bedrooms || null,
-      propertyData.bathrooms || null,
-      propertyData.area || null,
-      JSON.stringify(propertyData.features),
-      JSON.stringify(propertyData.images),
-      propertyData.status,
-      id
-    ]);
+    const property = await prisma.property.update({
+      where: { id },
+      data: {
+        title: propertyData.title,
+        description: propertyData.description,
+        price: propertyData.price,
+        location: propertyData.location,
+        type: propertyData.type,
+        bedrooms: propertyData.bedrooms,
+        bathrooms: propertyData.bathrooms,
+        area: propertyData.area,
+        features: JSON.stringify(propertyData.features),
+        images: JSON.stringify(propertyData.images),
+        status: propertyData.status
+      }
+    });
     
-    return await getPropertyById(id);
+    return {
+      ...property,
+      features: propertyData.features,
+      images: propertyData.images
+    };
   } catch (error) {
     console.error('Error updating property:', error);
     throw error;
@@ -306,14 +199,13 @@ export async function updateProperty(id: string, propertyData: any) {
 
 // Función para eliminar una propiedad (soft delete)
 export async function deleteProperty(id: string) {
-  const connection = getConnection();
   try {
-    await connection.execute(`
-      UPDATE properties SET
-        status = 'deleted',
-        updated_at = NOW()
-      WHERE id = ?
-    `, [id]);
+    await prisma.property.update({
+      where: { id },
+      data: {
+        status: 'deleted'
+      }
+    });
     
     return { success: true };
   } catch (error) {

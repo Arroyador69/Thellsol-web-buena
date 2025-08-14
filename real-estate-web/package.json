@@ -9,6 +9,7 @@
     "lint": "next lint",
     "export": "next export",
     "create-admin": "node scripts/create-admin.js",
+    "init-db": "node scripts/init-db.js",
     "db:push": "prisma db push",
     "db:generate": "prisma generate"
   },
@@ -17,7 +18,7 @@
     "@google-cloud/translate": "^9.0.1",
     "@prisma/client": "^5.22.0",
     "bcryptjs": "^3.0.2",
-    "mysql2": "^3.14.2",
+    "better-sqlite3": "^9.4.3",
     "next": "14.1.0",
     "next-auth": "^4.24.5",
     "openai": "^4.92.1",
