@@ -10,6 +10,7 @@
     "export": "next export",
     "create-admin": "node scripts/create-admin.js",
     "init-db": "node scripts/init-db.js",
+    "init-vercel-db": "node scripts/init-vercel-db.js",
     "db:push": "prisma db push",
     "db:generate": "prisma generate"
   },
