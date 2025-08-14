@@ -76,10 +76,8 @@ async function main() {
   ];
 
   for (const propertyData of sampleProperties) {
-    const property = await prisma.property.upsert({
-      where: { title: propertyData.title },
-      update: {},
-      create: propertyData,
+    const property = await prisma.property.create({
+      data: propertyData,
     });
     console.log('✅ Propiedad creada:', property.title);
   }
