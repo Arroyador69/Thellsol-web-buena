@@ -1,18 +1,78 @@
 <?php
-// Obtener propiedades desde la API pública
-$apiUrl = 'api-properties-public.php';
-$properties = [];
+// Obtener propiedades del dashboard
+require_once 'propiedades-dashboard.php';
+$properties = getDashboardProperties();
 
-try {
-    $response = file_get_contents($apiUrl);
-    if ($response !== false) {
-        $data = json_decode($response, true);
-        if ($data && $data['success']) {
-            $properties = $data['properties'] ?? [];
-        }
-    }
-} catch (Exception $e) {
-    // Error silencioso, usar propiedades de ejemplo
+// Si no hay propiedades del dashboard, usar ejemplos
+if (empty($properties)) {
+    $properties = [
+        [
+            'title' => 'Villa preciosa',
+            'price' => 340000,
+            'location' => 'fuengirola',
+            'type' => 'villa',
+            'bedrooms' => 4,
+            'bathrooms' => 3,
+            'area' => 250,
+            'status' => 'active',
+            'images' => '["https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"]'
+        ],
+        [
+            'title' => 'Elegante Villa con Vistas Espectaculares - Junto al Castillo Sohail, Fuengirola',
+            'price' => 1350000,
+            'location' => 'fuengirola',
+            'type' => 'villa',
+            'bedrooms' => 5,
+            'bathrooms' => 4,
+            'area' => 350,
+            'status' => 'active',
+            'images' => '["https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"]'
+        ],
+        [
+            'title' => 'Villa moderna en Benalmádena',
+            'price' => 850000,
+            'location' => 'benalmadena',
+            'type' => 'villa',
+            'bedrooms' => 4,
+            'bathrooms' => 3,
+            'area' => 280,
+            'status' => 'active',
+            'images' => '["https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"]'
+        ],
+        [
+            'title' => 'Apartamento de lujo en Fuengirola',
+            'price' => 350000,
+            'location' => 'fuengirola',
+            'type' => 'apartment',
+            'bedrooms' => 3,
+            'bathrooms' => 2,
+            'area' => 120,
+            'status' => 'active',
+            'images' => '["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"]'
+        ],
+        [
+            'title' => 'Villa con Piscina en Fuengirola',
+            'price' => 650000,
+            'location' => 'fuengirola',
+            'type' => 'villa',
+            'bedrooms' => 4,
+            'bathrooms' => 3,
+            'area' => 250,
+            'status' => 'active',
+            'images' => '["https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"]'
+        ],
+        [
+            'title' => 'Chalet Moderno en Benalmádena',
+            'price' => 850000,
+            'location' => 'benalmadena',
+            'type' => 'chalet',
+            'bedrooms' => 5,
+            'bathrooms' => 4,
+            'area' => 300,
+            'status' => 'active',
+            'images' => '["https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"]'
+        ]
+    ];
 }
 ?>
 <!DOCTYPE html>
