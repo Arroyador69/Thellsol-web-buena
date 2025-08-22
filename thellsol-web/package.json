@@ -1,0 +1,24 @@
+{
+  "name": "thellsol-web-original",
+  "version": "1.0.0",
+  "description": "ThellSol Real Estate - Web Original con Dashboard",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'No build step needed for static site'",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
+  },
+  "keywords": [
+    "real-estate",
+    "thellsol",
+    "costa-del-sol"
+  ],
+  "author": "André Tell",
+  "license": "MIT"
+}
