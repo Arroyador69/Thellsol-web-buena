@@ -1,13 +1,18 @@
 <?php
-require_once 'supabase-connection.php';
-
-// Obtener propiedades de Supabase
-$supabase = new SupabaseConnection();
-$result = $supabase->getProperties();
+// Obtener propiedades desde la API pública
+$apiUrl = 'api-properties-public.php';
 $properties = [];
 
-if ($result['status'] === 200 && !empty($result['data'])) {
-    $properties = $result['data'];
+try {
+    $response = file_get_contents($apiUrl);
+    if ($response !== false) {
+        $data = json_decode($response, true);
+        if ($data && $data['success']) {
+            $properties = $data['properties'] ?? [];
+        }
+    }
+} catch (Exception $e) {
+    // Error silencioso, usar propiedades de ejemplo
 }
 ?>
 <!DOCTYPE html>

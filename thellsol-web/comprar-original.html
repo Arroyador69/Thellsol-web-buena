@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprar Propiedades | ThellSol Real Estate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="logo-thellsol copia.png" type="image/png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css">
+    <script src="./js/translations.js"></script>
+    <script src="./js/language-selector.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fcf9f4;
+        }
+        .navbar-title {
+            font-family: 'Cormorant Garamond', serif !important;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #fff;
+            text-shadow: 0 1px 2px #0002;
+        }
+        .navbar {
+            width: 100%;
+            background: #181e29;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            height: 54px;
+            box-sizing: border-box;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            gap: 0;
+            position: relative;
+        }
+        .navbar-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-right: 18px;
+            position: absolute;
+            left: 2cm;
+            top: 0;
+            height: 54px;
+        }
+        .navbar-center {
+            flex: 0 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 18px;
+            position: absolute;
+            right: 2cm;
+            top: 0;
+            height: 54px;
+        }
+        .navbar-logo {
+            height: 36px;
+            width: 36px;
+            border-radius: 6px;
+            background: #fff;
+            object-fit: contain;
+        }
+        .navbar-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 4px 10px;
+            border-radius: 3px;
+            transition: background 0.2s;
+        }
+        .navbar-link:hover, .navbar-link.active {
+            background: #232a3a;
+        }
+        .navbar-right::after {
+            content: '';
+            display: inline-block;
+            width: 60px;
+            height: 1px;
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #232a3a;
+            min-width: 140px;
+            box-shadow: 0 2px 8px #0002;
+            border-radius: 0 0 6px 6px;
+            overflow: hidden;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            display: block;
+            color: #fff;
+            padding: 10px 16px;
+            text-decoration: none;
+            font-size: 15px;
+            background: none;
+            border: none;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background: #181e29;
+        }
+        @media (max-width: 900px) {
+            .navbar { padding: 0 10px; }
+            .navbar-title { font-size: 20px; }
+            .navbar-link, .dropdown-content a { font-size: 13px; }
+        }
+        /* Layout */
+        .main-content {
+            display: flex;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 48px 0 0 0;
+            min-height: 80vh;
+        }
+        .filtros {
+            width: 340px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 28px 24px 24px 24px;
+            margin-right: 48px;
+            height: fit-content;
+            border: 1px solid #eaeaea;
+        }
+        .filtros label {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 8px;
+            display: block;
+            color: #333;
+        }
+        .filtros select, .filtros input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            font-size: 15px;
+            background-color: #f8f8f8;
+            transition: all 0.3s ease;
+        }
+        .filtros select:focus, .filtros input[type="text"]:focus {
+            border-color: #0a53e4;
+            box-shadow: 0 0 0 2px rgba(10, 83, 228, 0.1);
+            outline: none;
+        }
+        .filtros-row {
+            display: flex;
+            gap: 12px;
+        }
+        .filtros-row > div {
+            flex: 1;
+        }
+        .filtros-btn {
+            background: #0a53e4;
+            color: #fff;
+            font-weight: 600;
+            margin-top: 24px;
+            padding: 14px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .filtros-btn:hover {
+            background: #003fa3;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(10, 83, 228, 0.2);
+        }
+        .filtros-mas {
+            background: #f0f0f0;
+            color: #333;
+            font-size: 15px;
+            margin-bottom: 12px;
+            padding: 12px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border: 1px solid #e0e0e0;
+        }
+        .filtros-mas:hover {
+            background: #e8e8e8;
+            transform: translateY(-1px);
+        }
+        /* Resultados */
+        .resultados {
+            flex: 1;
+            padding-top: 12px;
+        }
+        .resultados-titulo {
+            font-size: 2.3rem;
+            font-weight: bold;
+            margin-bottom: 32px;
+        }
+        .cards {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #0001;
+            width: 270px;
+            padding: 0 0 18px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .card-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px 8px 0 0;
+        }
+        .card-body {
+            padding: 12px 18px 0 18px;
+            width: 100%;
+        }
+        .card-title {
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .card-zona, .card-desc {
+            font-size: 0.92rem;
+            color: #666;
+            margin-bottom: 2px;
+        }
+        .card-precio {
+            color: #0070f3;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 8px 0 10px 0;
+        }
+        .card-btn {
+            background: #0070f3;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 7px 18px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .card-btn:hover {
+            background: #0051a2;
+        }
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: auto;
+            background: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background: #222;
+            color: #fff;
+            margin: 60px auto;
+            padding: 32px 32px 24px 32px;
+            border-radius: 12px;
+            max-width: 600px;
+            min-width: 320px;
+            box-shadow: 0 2px 16px #0008;
+            position: relative;
+        }
+        .modal-content h4 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 18px;
+        }
+        .modal-cerrar {
+            position: absolute;
+            top: 18px;
+            right: 22px;
+            font-size: 1.5rem;
+            color: #fff;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .modal-lista {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0 32px;
+        }
+        .modal-lista label {
+            font-weight: normal;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 220px;
+        }
+        @media (max-width: 1100px) {
+            .main-content { flex-direction: column; }
+            .filtros { margin-right: 0; margin-bottom: 32px; }
+        }
+        .propiedades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .footer {
+            background: #181e29;
+            color: #fff;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        .footer-section h4 {
+            margin: 0 0 20px 0;
+            font-size: 1.1rem;
+            color: #fff;
+        }
+        .footer-section p {
+            margin: 0 0 10px 0;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        .footer-section a:hover {
+            color: #fff;
+        }
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+            z-index: 1000;
+        }
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+        }
+        .whatsapp-button img {
+            width: 35px;
+            height: 35px;
+        }
+        @media (max-width: 900px) {
+            .main-content {
+                flex-direction: column !important;
+                gap: 16px;
+                padding: 24px 0 0 0;
+                max-width: 100vw;
+            }
+            .filtros {
+                max-width: 98vw !important;
+                margin: 0 auto 18px auto !important;
+                padding: 18px 6px 18px 6px !important;
+            }
+            .cards {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+            .card {
+                width: 98vw;
+                max-width: 350px;
+            }
+        }
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 8px 0;
+            }
+            .navbar-left, .navbar-center, .navbar-right {
+                position: static !important;
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                margin: 0;
+                height: auto;
+            }
+            .navbar-title {
+                font-size: 1.1rem;
+                text-align: center;
+                width: 100%;
+            }
+            .main-content {
+                padding: 10px 0 0 0;
+                gap: 8px;
+            }
+            .filtros {
+                padding: 10px 2vw 10px 2vw !important;
+                border-radius: 8px;
+            }
+            .resultados-titulo {
+                font-size: 1.3rem;
+                margin-bottom: 18px;
+            }
+            .card {
+                width: 98vw;
+                max-width: 98vw;
+                min-width: unset;
+                padding: 0 0 12px 0;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+        }
+        @media (max-width: 768px) {
+            .navbar-logo,
+            .navbar-title,
+            .navbar-left,
+            .navbar-right {
+                display: none !important;
+            }
+            .navbar-mobile-title {
+                display: block !important;
+            }
+            .hamburger {
+                display: flex !important;
+            }
+            .language-selector {
+                margin: 10px 0;
+            }
+        }
+        .navbar-mobile-title {
+            display: none;
+            width: 100%;
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif !important;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #fff;
+            background: #181e29;
+            padding: 10px 0 0 0;
+            z-index: 1201;
+        }
+        .hamburger {
+            display: none;
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            width: 44px;
+            height: 44px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1202;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 4px;
+            margin: 4px 0;
+            background: #111;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        .mobile-menu-bg {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.25);
+            z-index: 1200;
+        }
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0; right: 0;
+            width: 80vw;
+            max-width: 340px;
+            height: 100vh;
+            background: #e3e3e3;
+            box-shadow: -2px 0 12px #0002;
+            z-index: 1203;
+            flex-direction: column;
+            padding: 32px 24px 0 24px;
+            animation: slideIn 0.3s;
+        }
+        .mobile-menu.open {
+            display: flex;
+        }
+        .mobile-menu-bg.open {
+            display: block;
+        }
+        @keyframes slideIn {
+            from { right: -100vw; }
+            to { right: 0; }
+        }
+        .mobile-menu a {
+            color: #181e29;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 18px 0;
+            display: block;
+            border-radius: 6px;
+            padding: 8px 12px;
+            transition: background 0.2s;
+        }
+        .mobile-menu a:hover {
+            background: #d1d1d1;
+        }
+        /* Estilos para el selector de idiomas */
+        .language-selector {
+            position: relative;
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        .language-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #232a3a;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+            min-width: 150px;
+        }
+
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            padding: 8px 12px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            text-align: left;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .language-option:hover {
+            background: #181e29;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-mobile-title">ThellSol Real Estate</div>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú" onclick="openMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="navbar-left">
+            <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
+            <a href="index.html" class="navbar-link">Inicio</a>
+            <a href="comprar.html" class="navbar-link active">Comprar</a>
+            <a href="vender.html" class="navbar-link">Vender</a>
+            <a href="index.html" class="navbar-link" data-translate="nav.home">Inicio</a>
+            <a href="comprar.html" class="navbar-link" data-translate="nav.buy">Comprar</a>
+            <a href="vender.html" class="navbar-link" data-translate="nav.sell">Vender</a>
+        </div>
+        <div class="navbar-center">
+            <span class="navbar-title">ThellSol Real Estate</span>
+        </div>
+        <div class="navbar-right">
+            <a href="informacion-legal.html" class="navbar-link">Información Legal</a>
+            <a href="contacto.html" class="navbar-link">Contacto</a>
+            <div class="language-selector">
+                <span class="fi fi-es language-flag" data-lang="es" title="Español"></span>
+                <span class="fi fi-gb language-flag" data-lang="en" title="English"></span>
+                <span class="fi fi-fr language-flag" data-lang="fr" title="Français"></span>
+                <span class="fi fi-de language-flag" data-lang="de" title="Deutsch"></span>
+            </div>
+            <a href="informacion-legal.html" class="navbar-link" data-translate="nav.legal">Información Legal</a>
+            <a href="contacto.html" class="navbar-link" data-translate="nav.contact">Contacto</a>
+        </div>
+    </nav>
+    <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">Inicio</a>
+      <a href="comprar.html">Comprar</a>
+      <a href="vender.html">Vender</a>
+      <a href="informacion-legal.html">Información Legal</a>
+      <a href="contacto.html">Contacto</a>
+        <div class="language-selector">
+            <span class="fi fi-es language-flag" data-lang="es" title="Español"></span>
+            <span class="fi fi-gb language-flag" data-lang="en" title="English"></span>
+            <span class="fi fi-fr language-flag" data-lang="fr" title="Français"></span>
+            <span class="fi fi-de language-flag" data-lang="de" title="Deutsch"></span>
+        </div>
+        <a href="index.html" data-translate="nav.home">Inicio</a>
+        <a href="comprar.html" data-translate="nav.buy">Comprar</a>
+        <a href="vender.html" data-translate="nav.sell">Vender</a>
+        <a href="informacion-legal.html" data-translate="nav.legal">Información Legal</a>
+        <a href="contacto.html" data-translate="nav.contact">Contacto</a>
+    </div>
+
+    <div class="main-content" style="display: block; max-width: 1300px; margin: 0 auto; padding: 48px 0 0 0; min-height: 80vh;">
+        <!-- Filtros -->
+        <form class="filtros" style="width: 100%; max-width: 1000px; margin: 0 auto 40px auto; display: flex; flex-wrap: wrap; gap: 18px; justify-content: center; align-items: flex-end; box-sizing: border-box;">
+            <div style="flex: 1 1 180px; min-width: 180px; max-width: 220px;">
+                <label for="zona">Zona</label>
+                <select id="zona">
+                    <option>Todas las zonas</option>
+                    <option>Fuengirola</option>
+                    <option>Málaga</option>
+                    <option>Marbella</option>
+                <select id="zona" name="zona">
+                    <option value="">Todas las zonas</option>
+                    <option value="fuengirola">Fuengirola</option>
+                    <option value="mijas">Mijas</option>
+                    <option value="benalmadena">Benalmádena</option>
+                    <option value="torreblanca">Torreblanca</option>
+                    <option value="torremolinos">Torremolinos</option>
+                    <option value="riviera">Riviera del Sol</option>
+                    <option value="calahonda">Calahonda</option>
+                    <option value="marbella">Marbella</option>
+                    <option value="nueva-andalucia">Nueva Andalucía</option>
+                    <option value="malaga">Málaga</option>
+                </select>
+            </div>
+            <div style="flex: 1 1 180px; min-width: 180px; max-width: 220px;">
+                <label for="tipo">Tipo de Propiedad</label>
+                <select id="tipo">
+                    <option>Todos los tipos</option>
+                    <option>Apartamento</option>
+                    <option>Villa</option>
+                    <option>Piso</option>
+                </select>
+            </div>
+            <div style="flex: 1 1 120px; min-width: 120px; max-width: 150px;">
+                <label for="min">Precio Mínimo</label>
+                <input type="text" id="min" placeholder="€">
+            </div>
+            <div style="flex: 1 1 120px; min-width: 120px; max-width: 150px;">
+                <label for="max">Precio Máximo</label>
+                <input type="text" id="max" placeholder="€">
+            </div>
+            <div style="flex: 1 1 120px; min-width: 120px; max-width: 150px;">
+                <label for="dorm">Dormitorios</label>
+                <select id="dorm">
+                    <option>Cualquier núm.</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4+</option>
+                <select id="tipo" name="tipo">
+                    <option value="">Todos los tipos</option>
+                    <option value="apartamento">Apartamento</option>
+                    <option value="villa">Villa</option>
+                    <option value="chalet">Chalet</option>
+                    <option value="casa-adosada">Casa Adosada</option>
+                    <option value="atico">Ático</option>
+                </select>
+            </div>
+            <div style="flex: 1 1 180px; min-width: 180px; max-width: 220px;">
+                <label for="precio">Rango de Precio</label>
+                <select id="precio" name="precio">
+                    <option value="">Todos los precios</option>
+                    <option value="100000-200000">100.000€ - 200.000€</option>
+                    <option value="200000-300000">200.000€ - 300.000€</option>
+                    <option value="300000-400000">300.000€ - 400.000€</option>
+                    <option value="400000-500000">400.000€ - 500.000€</option>
+                    <option value="500000+">Más de 500.000€</option>
+                </select>
+            </div>
+            <div style="flex: 1 1 120px; min-width: 120px; max-width: 150px;">
+                <label for="dormitorios">Dormitorios</label>
+                <select id="dormitorios" name="dormitorios">
+                    <option value="">Cualquier núm.</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div style="flex: 1 1 120px; min-width: 120px; max-width: 150px;">
+                <label for="banos">Baños</label>
+                <select id="banos">
+                    <option>Cualquier núm.</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3+</option>
+                <select id="banos" name="banos">
+                    <option value="">Cualquier núm.</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div style="flex-basis: 100%; height: 0;"></div>
+            <div style="width: 100%; display: flex; flex-direction: column; gap: 10px; margin-top: 0;">
+                <button class="filtros-mas" type="button" style="width: 100%; font-size: 16px;" onclick="document.getElementById('modal').style.display='block'">Más selecciones</button>
+                <button class="filtros-btn" type="submit" style="width: 100%; font-size: 18px;">Buscar Propiedades</button>
+            </div>
+        </form>
+        <!-- Resultados -->
+        <div class="resultados">
+            <h1 class="resultados-titulo">Propiedades Disponibles</h1>
+            <div class="cards" style="justify-content: center;">
+                <!-- Propiedad 1 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Apartamento en Marbella">
+                    <div class="card-body">
+                        <h3 class="card-title">Apartamento de Lujo en Marbella</h3>
+                        <p class="card-zona">Marbella, Costa del Sol</p>
+                        <p class="card-desc">3 dormitorios, 2 baños, 120m²</p>
+                        <p class="card-precio">450.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 2 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Villa en Fuengirola">
+                    <div class="card-body">
+                        <h3 class="card-title">Villa con Piscina en Fuengirola</h3>
+                        <p class="card-zona">Fuengirola, Costa del Sol</p>
+                        <p class="card-desc">4 dormitorios, 3 baños, 250m²</p>
+                        <p class="card-precio">650.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 3 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Chalet en Benalmádena">
+                    <div class="card-body">
+                        <h3 class="card-title">Chalet Moderno en Benalmádena</h3>
+                        <p class="card-zona">Benalmádena, Costa del Sol</p>
+                        <p class="card-desc">5 dormitorios, 4 baños, 300m²</p>
+                        <p class="card-precio">850.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 4 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Casa Adosada en Mijas">
+                    <div class="card-body">
+                        <h3 class="card-title">Casa Adosada en Mijas</h3>
+                        <p class="card-zona">Mijas, Costa del Sol</p>
+                        <p class="card-desc">3 dormitorios, 2 baños, 150m²</p>
+                        <p class="card-precio">320.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 5 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Ático en Torremolinos">
+                    <div class="card-body">
+                        <h3 class="card-title">Ático con Vistas al Mar</h3>
+                        <p class="card-zona">Torremolinos, Costa del Sol</p>
+                        <p class="card-desc">2 dormitorios, 2 baños, 90m²</p>
+                        <p class="card-precio">280.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 6 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Apartamento en Nueva Andalucía">
+                    <div class="card-body">
+                        <h3 class="card-title">Apartamento en Nueva Andalucía</h3>
+                        <p class="card-zona">Nueva Andalucía, Marbella</p>
+                        <p class="card-desc">2 dormitorios, 2 baños, 85m²</p>
+                        <p class="card-precio">350.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 7 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Villa en Calahonda">
+                    <div class="card-body">
+                        <h3 class="card-title">Villa de Lujo en Calahonda</h3>
+                        <p class="card-zona">Calahonda, Costa del Sol</p>
+                        <p class="card-desc">6 dormitorios, 5 baños, 400m²</p>
+                        <p class="card-precio">1.200.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 8 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Apartamento en Riviera del Sol">
+                    <div class="card-body">
+                        <h3 class="card-title">Apartamento en Riviera del Sol</h3>
+                        <p class="card-zona">Riviera del Sol, Mijas</p>
+                        <p class="card-desc">3 dormitorios, 2 baños, 110m²</p>
+                        <p class="card-precio">290.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 9 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Chalet en Torreblanca">
+                    <div class="card-body">
+                        <h3 class="card-title">Chalet en Torreblanca</h3>
+                        <p class="card-zona">Torreblanca, Fuengirola</p>
+                        <p class="card-desc">4 dormitorios, 3 baños, 200m²</p>
+                        <p class="card-precio">420.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 10 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Ático en Málaga">
+                    <div class="card-body">
+                        <h3 class="card-title">Ático en Centro de Málaga</h3>
+                        <p class="card-zona">Centro, Málaga</p>
+                        <p class="card-desc">3 dormitorios, 2 baños, 120m²</p>
+                        <p class="card-precio">380.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 11 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Casa Adosada en Benalmádena">
+                    <div class="card-body">
+                        <h3 class="card-title">Casa Adosada en Benalmádena</h3>
+                        <p class="card-zona">Benalmádena, Costa del Sol</p>
+                        <p class="card-desc">3 dormitorios, 2 baños, 140m²</p>
+                        <p class="card-precio">310.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+
+                <!-- Propiedad 12 -->
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Villa en Marbella">
+                    <div class="card-body">
+                        <h3 class="card-title">Villa de Lujo en Marbella</h3>
+                        <p class="card-zona">Marbella, Costa del Sol</p>
+                        <p class="card-desc">5 dormitorios, 4 baños, 350m²</p>
+                        <p class="card-precio">950.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Más Selecciones -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="modal-cerrar" onclick="document.getElementById('modal').style.display='none'">&times;</button>
+            <h4>Más características</h4>
+            <div class="modal-lista">
+                <label><input type="checkbox"> Primera línea de playa</label>
+                <label><input type="checkbox"> Primera línea de golf</label>
+                <label><input type="checkbox"> Cerca de tiendas</label>
+                <label><input type="checkbox"> Sur</label>
+                <label><input type="checkbox"> Suroeste</label>
+                <label><input type="checkbox"> Sureste</label>
+                <label><input type="checkbox"> Excelente</label>
+                <label><input type="checkbox"> Necesita reformas</label>
+                <label><input type="checkbox"> Obra nueva</label>
+                <label><input type="checkbox"> Piscina comunitaria</label>
+                <label><input type="checkbox"> Piscina privada</label>
+                <label><input type="checkbox"> Aire acondicionado</label>
+                <label><input type="checkbox"> Chimenea</label>
+                <label><input type="checkbox"> Suelo radiante</label>
+                <label><input type="checkbox"> Mar</label>
+                <label><input type="checkbox"> Montaña</label>
+                <label><input type="checkbox"> Golf</label>
+                <label><input type="checkbox"> Cocina equipada</label>
+                <label><input type="checkbox"> Jardín privado</label>
+                <label><input type="checkbox"> Parking</label>
+                <label><input type="checkbox"> Inversión</label>
+                <label><input type="checkbox"> Lujo</label>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cerrar modal al hacer click fuera
+        window.onclick = function(event) {
+            var modal = document.getElementById('modal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+    <footer class="footer">
+        <div class="footer-content" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; align-items: start;">
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p><b>Andre Richard Tell</b><br>Thellsol Real Estate</p>
+                <p>Fuengirola 29640<br>Málaga, Spain</p>
+            </div>
+            <div class="footer-section">
+                <p style="margin-bottom: 0;">andre@thellsol.com</p>
+                <p style="margin-top: 0;">+34 676 335 313</p>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces Legales</h4>
+                <a href="politica-privacidad.html">Política de Privacidad</a>
+                <a href="politica-cookies.html">Política de Cookies</a>
+                <a href="aviso-legal.html">Aviso Legal</a>
+            </div>
+            <div class="footer-section" style="text-align: right;">
+                <a href="https://thellsol.com" target="_blank"><img src="./images/logo-thellsol.png" alt="Logo Thellsol" style="width: 120px; border-radius: 12px;"></a>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 30px; font-size: 0.95rem; color: #ccc;">
+            <span>Developed by DesArroyo Tech</span>
+            <span>thellsol.com copyright reserved 2025</span>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/34676335313" class="whatsapp-button" target="_blank">
+        <img src="./images/whatsapp-icon.png" alt="WhatsApp">
+    </a>
+
+    <script>
+    // Banner de cookies
+    (function() {
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days*24*60*60*1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+        }
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0;i < ca.length;i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+            }
+            return null;
+        }
+        if (!getCookie('cookies_accepted')) {
+            var banner = document.createElement('div');
+            banner.id = 'cookie-banner';
+            banner.innerHTML = `
+                <div class="cookie-banner-content">
+                    Utilizamos cookies propias y de terceros para mejorar tu experiencia y analizar el uso de la web. <a href="politica-cookies.html" style="color:#0a53e4;text-decoration:underline;">Más información</a>.
+                    <button id="accept-cookies-btn">Aceptar</button>
+                </div>
+            `;
+            document.body.appendChild(banner);
+            document.getElementById('accept-cookies-btn').onclick = function() {
+                setCookie('cookies_accepted', 'yes', 30);
+                banner.style.display = 'none';
+            };
+            // Estilos
+            var style = document.createElement('style');
+            style.innerHTML = `
+            #cookie-banner {
+                position: fixed;
+                left: 0; right: 0; bottom: 0;
+                background: #181e29;
+                color: #fff;
+                padding: 18px 10px 18px 10px;
+                box-shadow: 0 -2px 12px #0003;
+                z-index: 2000;
+                font-size: 1rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .cookie-banner-content {
+                max-width: 700px;
+                margin: 0 auto;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 18px;
+                justify-content: center;
+            }
+            #accept-cookies-btn {
+                background: #0a53e4;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                padding: 8px 22px;
+                font-size: 1rem;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background 0.2s;
+                box-shadow: 0 1px 4px #0002;
+            }
+            #accept-cookies-btn:hover {
+                background: #003399;
+            }
+            @media (max-width: 600px) {
+                .cookie-banner-content { font-size: 0.95rem; gap: 8px; }
+                #accept-cookies-btn { padding: 8px 12px; font-size: 0.95rem; }
+            }
+            `;
+            document.head.appendChild(style);
+        }
+    })();
+    </script>
+    <script>
+    function openMobileMenu() {
+      document.getElementById('mobileMenu').classList.add('open');
+      document.getElementById('mobileMenuBg').classList.add('open');
+    }
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('mobileMenuBg').classList.remove('open');
+    }
+    </script>
+</body>
+</html> 
