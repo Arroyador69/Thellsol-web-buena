@@ -1,13 +1,20 @@
 <?php
-// Página de comprar - Sistema local
+// Página de comprar - Sistema unificado con API
 // Archivo: comprar.php
 
-$propertiesFile = "properties.json";
+$apiUrl = 'dashboard-api.php';
 $properties = [];
 
-if (file_exists($propertiesFile)) {
-    $content = file_get_contents($propertiesFile);
-    $properties = json_decode($content, true) ?: [];
+try {
+    $response = file_get_contents($apiUrl);
+    if ($response !== false) {
+        $data = json_decode($response, true);
+        if ($data && $data['success']) {
+            $properties = $data['properties'] ?? [];
+        }
+    }
+} catch (Exception $e) {
+    // Error silencioso, no mostrar propiedades
 }
 
 // Solo mostrar propiedades creadas en el dashboard
