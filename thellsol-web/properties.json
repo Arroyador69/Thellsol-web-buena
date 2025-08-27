@@ -1,1 +1,56 @@
-[]
+[
+    {
+        "id": "68af0e4f2d51c",
+        "title": "villa en fuengirola",
+        "price": 300200,
+        "location": "fuengirola",
+        "type": "Villa",
+        "bedrooms": 0,
+        "bathrooms": 3,
+        "area": 388,
+        "surface": 388,
+        "description": "una villa espectacular en fuengirola",
+        "images": ["https://example.com/villa1.jpg"],
+        "status": "active",
+        "created_at": "2025-08-27 13:55:27",
+        "createdAt": "2025-08-27 13:55:27",
+        "created_by": "Andre Richard Tell",
+        "createdBy": "Andre Richard Tell"
+    },
+    {
+        "id": "68af0e61a39e1", 
+        "title": "villa en fuengirola",
+        "price": 300200,
+        "location": "fuengirola",
+        "type": "Villa",
+        "bedrooms": 0,
+        "bathrooms": 3,
+        "area": 388,
+        "surface": 388,
+        "description": "una villa espectacular en fuengirola",
+        "images": ["https://example.com/villa2.jpg"],
+        "status": "active",
+        "created_at": "2025-08-27 13:55:45",
+        "createdAt": "2025-08-27 13:55:45",
+        "created_by": "Andre Richard Tell",
+        "createdBy": "Andre Richard Tell"
+    },
+    {
+        "id": 1756304134,
+        "title": "prueba de villa",
+        "price": 234134,
+        "location": "fuengirola", 
+        "type": "villa",
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "area": 210,
+        "surface": 210,
+        "description": "ñldfemsfm aslgfldsg asfgsdg",
+        "images": ["https://example.com/villa3.jpg"],
+        "status": "active",
+        "created_at": "2025-08-27 14:15:34",
+        "createdAt": "2025-08-27 14:15:34",
+        "created_by": "Andre Tell",
+        "createdBy": "Andre Tell"
+    }
+]

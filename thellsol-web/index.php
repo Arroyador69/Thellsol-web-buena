@@ -527,11 +527,11 @@ try {
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <!-- Solo mostrar propiedades del dashboard -->
+                <!-- Mensaje cuando no hay propiedades -->
                 <div class="card" style="text-align: center; padding: 40px; grid-column: 1 / -1;">
-                    <h3>📋 No hay propiedades publicadas</h3>
-                    <p>Las propiedades creadas en el dashboard aparecerán aquí automáticamente.</p>
-                    <a href="admin-login.php" class="card-btn">Acceder al Dashboard</a>
+                    <h3>🏠 Próximamente nuevas propiedades</h3>
+                    <p>Estamos trabajando para ofrecerte las mejores opciones inmobiliarias en la Costa del Sol.</p>
+                    <a href="contacto.html" class="card-btn">Contactar</a>
                 </div>
             <?php endif; ?>
         </div>
