@@ -326,19 +326,100 @@ if (empty($properties)) {
             color: white;
         }
         
+        .navbar-mobile-title {
+            display: none;
+            width: 100%;
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif !important;
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #fff;
+            background: #181e29;
+            padding: 10px 0 0 0;
+            z-index: 1201;
+        }
+        .hamburger {
+            display: none;
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            width: 44px;
+            height: 44px;
+            background: #181e29;
+            border: none;
+            border-radius: 50%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1201;
+        }
+        .hamburger span {
+            width: 22px;
+            height: 2px;
+            background: #fff;
+            margin: 2px 0;
+            transition: 0.3s;
+        }
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: #181e29;
+            z-index: 1200;
+            display: flex;
+            flex-direction: column;
+            padding: 80px 20px 20px;
+            transition: right 0.3s ease;
+        }
+        .mobile-menu.open {
+            right: 0;
+        }
+        .mobile-menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 15px 0;
+            border-bottom: 1px solid #232a3a;
+            font-size: 16px;
+        }
+        .mobile-menu-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1199;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .mobile-menu-bg.open {
+            opacity: 1;
+            visibility: visible;
+        }
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .navbar-logo,
+            .navbar-title,
+            .navbar-left,
+            .navbar-right {
+                display: none !important;
             }
-            
+            .navbar-mobile-title {
+                display: block !important;
+            }
+            .hamburger {
+                display: flex !important;
+            }
             .hero h1 {
                 font-size: 2rem;
             }
-            
             .properties-grid {
                 grid-template-columns: 1fr;
             }
-            
             .filter-grid {
                 grid-template-columns: 1fr;
             }
@@ -347,20 +428,35 @@ if (empty($properties)) {
 </head>
 <body>
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <img src="./images/logo-thellsol.png" alt="TellSol Logo" class="nav-logo">
-                <span class="nav-title">TellSol</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.php" class="nav-link">Inicio</a></li>
-                <li><a href="comprar.php" class="nav-link active">Propiedades</a></li>
-                <li><a href="contacto.html" class="nav-link">Contacto</a></li>
-                <li><a href="informacion-legal.html" class="nav-link">Información Legal</a></li>
-                <li><a href="admin-dashboard.php" class="nav-link">Admin</a></li>
-            </ul>
+        <div class="navbar-mobile-title">ThellSol Real Estate</div>
+        <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú" onclick="openMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="navbar-left">
+            <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
+            <a href="index.php" class="navbar-link">Inicio</a>
+            <a href="comprar.php" class="navbar-link active">Comprar</a>
+            <a href="vender.html" class="navbar-link">Vender</a>
+        </div>
+        <div class="navbar-center">
+            <span class="navbar-title">ThellSol Real Estate</span>
+        </div>
+        <div class="navbar-right">
+            <a href="informacion-legal.html" class="navbar-link">Información Legal</a>
+            <a href="contacto.html" class="navbar-link">Contacto</a>
         </div>
     </nav>
+    <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.php">Inicio</a>
+      <a href="comprar.php">Comprar</a>
+      <a href="vender.html">Vender</a>
+      <a href="informacion-legal.html">Información Legal</a>
+      <a href="contacto.html">Contacto</a>
+      <a href="admin-dashboard.php">Admin</a>
+    </div>
 
     <section class="hero">
         <h1>Propiedades en Venta</h1>
@@ -457,7 +553,7 @@ if (empty($properties)) {
                         </div>
                         
                         <p class="property-price"><?php echo number_format($property["price"]); ?>€</p>
-                        <a href="contacto.html" class="property-btn">Contactar</a>
+                                                 <a href="propiedad-detalles.php?id=<?php echo urlencode($property['id'] ?? uniqid()); ?>" class="property-btn">Ver Detalles</a>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -488,6 +584,15 @@ if (empty($properties)) {
     </footer>
 
     <script>
+        function openMobileMenu() {
+          document.getElementById('mobileMenu').classList.add('open');
+          document.getElementById('mobileMenuBg').classList.add('open');
+        }
+        function closeMobileMenu() {
+          document.getElementById('mobileMenu').classList.remove('open');
+          document.getElementById('mobileMenuBg').classList.remove('open');
+        }
+        
         function filterProperties() {
             const location = document.getElementById('location').value.toLowerCase();
             const type = document.getElementById('type').value;

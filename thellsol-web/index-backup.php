@@ -50,6 +50,39 @@ if (empty($properties)) {
             'area' => 280,
             'status' => 'active',
             'images' => '["https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"]'
+        ],
+        [
+            'title' => 'Apartamento de lujo en Fuengirola',
+            'price' => 350000,
+            'location' => 'fuengirola',
+            'type' => 'apartment',
+            'bedrooms' => 3,
+            'bathrooms' => 2,
+            'area' => 120,
+            'status' => 'active',
+            'images' => '["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"]'
+        ],
+        [
+            'title' => 'Villa con Piscina en Fuengirola',
+            'price' => 650000,
+            'location' => 'fuengirola',
+            'type' => 'villa',
+            'bedrooms' => 4,
+            'bathrooms' => 3,
+            'area' => 250,
+            'status' => 'active',
+            'images' => '["https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"]'
+        ],
+        [
+            'title' => 'Chalet Moderno en Benalmádena',
+            'price' => 850000,
+            'location' => 'benalmadena',
+            'type' => 'chalet',
+            'bedrooms' => 5,
+            'bathrooms' => 4,
+            'area' => 300,
+            'status' => 'active',
+            'images' => '["https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"]'
         ]
     ];
 }
@@ -59,23 +92,13 @@ if (empty($properties)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio | ThellSol Real Estate</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="logo-thellsol copia.png" type="image/png">
+    <title>TellSol Real Estate</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #fcf9f4;
-        }
-        .navbar-title {
-            font-family: 'Cormorant Garamond', serif !important;
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            color: #fff;
-            text-shadow: 0 1px 2px #0002;
+            background-color: #f5f5f5;
         }
         .navbar {
             width: 100%;
@@ -90,8 +113,6 @@ if (empty($properties)) {
             position: sticky;
             top: 0;
             z-index: 100;
-            gap: 0;
-            position: relative;
         }
         .navbar-left {
             display: flex;
@@ -119,6 +140,10 @@ if (empty($properties)) {
             top: 0;
             height: 54px;
         }
+        .navbar {
+            gap: 0;
+            position: relative;
+        }
         .navbar-logo {
             height: 36px;
             width: 36px;
@@ -138,105 +163,43 @@ if (empty($properties)) {
         .navbar-link:hover, .navbar-link.active {
             background: #232a3a;
         }
-        .navbar-right::after {
-            content: '';
-            display: inline-block;
-            width: 60px;
-            height: 1px;
-        }
-        @media (max-width: 900px) {
-            .navbar { padding: 0 10px; }
-            .navbar-title { font-size: 20px; }
-            .navbar-link { font-size: 13px; }
-        }
-        @media (max-width: 768px) {
-            .navbar-logo,
-            .navbar-title,
-            .navbar-left,
-            .navbar-right {
-                display: none !important;
-            }
-            .navbar-mobile-title {
-                display: block !important;
-            }
-            .hamburger {
-                display: flex !important;
-            }
-        }
-        .navbar-mobile-title {
-            display: none;
-            width: 100%;
-            text-align: center;
+        .navbar-title {
             font-family: 'Cormorant Garamond', serif !important;
-            font-size: 2rem;
+            font-size: 28px;
             font-weight: 700;
             letter-spacing: 1px;
             color: #fff;
-            background: #181e29;
-            padding: 10px 0 0 0;
-            z-index: 1201;
+            text-shadow: 0 1px 2px #0002;
         }
-        .hamburger {
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
             display: none;
-            position: fixed;
-            top: 18px;
-            right: 18px;
-            width: 44px;
-            height: 44px;
-            background: #181e29;
-            border: none;
-            border-radius: 50%;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            z-index: 1201;
-        }
-        .hamburger span {
-            width: 22px;
-            height: 2px;
-            background: #fff;
-            margin: 2px 0;
-            transition: 0.3s;
-        }
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 280px;
-            height: 100vh;
-            background: #181e29;
-            z-index: 1200;
-            display: flex;
-            flex-direction: column;
-            padding: 80px 20px 20px;
-            transition: right 0.3s ease;
-        }
-        .mobile-menu.open {
-            right: 0;
-        }
-        .mobile-menu a {
-            color: #fff;
-            text-decoration: none;
-            padding: 15px 0;
-            border-bottom: 1px solid #232a3a;
-            font-size: 16px;
-        }
-        .mobile-menu-bg {
-            position: fixed;
-            top: 0;
+            position: absolute;
+            top: 100%;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1199;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
+            background: #232a3a;
+            min-width: 140px;
+            box-shadow: 0 2px 8px #0002;
+            border-radius: 0 0 6px 6px;
+            overflow: hidden;
         }
-        .mobile-menu-bg.open {
-            opacity: 1;
-            visibility: visible;
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            display: block;
+            color: #fff;
+            padding: 10px 16px;
+            text-decoration: none;
+            font-size: 15px;
+            background: none;
+            border: none;
+            text-align: left;
+        }
+        .dropdown-content a:hover {
+            background: #181e29;
         }
         .hero {
             width: 100%;
@@ -332,7 +295,7 @@ if (empty($properties)) {
         }
         .destacadas h3 {
             text-align: center;
-            font-size: 1.8rem;
+            font-size: 1.1rem;
             font-weight: bold;
             margin-bottom: 24px;
         }
@@ -351,10 +314,6 @@ if (empty($properties)) {
             display: flex;
             flex-direction: column;
             align-items: center;
-            transition: transform 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
         }
         .card-img {
             width: 100%;
@@ -391,7 +350,6 @@ if (empty($properties)) {
             font-size: 0.95rem;
             cursor: pointer;
             transition: background 0.2s;
-            text-decoration: none;
         }
         .card-btn:hover {
             background: #0051a2;
@@ -453,67 +411,31 @@ if (empty($properties)) {
             width: 35px;
             height: 35px;
         }
-        @media (max-width: 600px) {
-            .navbar {
-                flex-direction: column;
-                height: auto;
-                padding: 8px 0;
-            }
-            .navbar-left, .navbar-center, .navbar-right {
-                position: static !important;
-                flex-direction: column;
-                align-items: flex-start;
-                width: 100%;
-                margin: 0;
-                height: auto;
-            }
-            .navbar-title {
-                font-size: 1.1rem;
-                text-align: center;
-                width: 100%;
-            }
-            .presentacion-fotos {
-                flex-direction: column;
-                gap: 20px;
-            }
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 18px;
-            }
-        }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <div class="navbar-mobile-title">ThellSol Real Estate</div>
-        <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú" onclick="openMobileMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
         <div class="navbar-left">
-            <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
-            <a href="index.php" class="navbar-link active">Inicio</a>
-            <a href="comprar.php" class="navbar-link">Comprar</a>
-            <a href="vender.html" class="navbar-link">Vender</a>
+            <img src="./images/logo-thellsol.png" alt="Logo" class="navbar-logo">
+            <span class="navbar-title">TellSol</span>
         </div>
         <div class="navbar-center">
-            <span class="navbar-title">ThellSol Real Estate</span>
+            <a href="index.php" class="navbar-link active">Inicio</a>
+            <div class="dropdown">
+                <a href="#" class="navbar-link">Propiedades</a>
+                <div class="dropdown-content">
+                    <a href="propiedades-dinamicas.php">Ver Todas</a>
+                    <a href="comprar.php">Comprar</a>
+                    <a href="vender.html">Vender</a>
+                </div>
+            </div>
+            <a href="contacto.html" class="navbar-link">Contacto</a>
+            <a href="informacion-legal.html" class="navbar-link">Información Legal</a>
         </div>
         <div class="navbar-right">
-            <a href="informacion-legal.html" class="navbar-link">Información Legal</a>
-            <a href="contacto.html" class="navbar-link">Contacto</a>
+            <a href="admin-dashboard.php" class="navbar-link" style="font-size: 0.9rem;">Admin</a>
         </div>
     </nav>
-    <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="index.php">Inicio</a>
-      <a href="comprar.php">Comprar</a>
-      <a href="vender.html">Vender</a>
-      <a href="informacion-legal.html">Información Legal</a>
-      <a href="contacto.html">Contacto</a>
-      <a href="admin-dashboard.php">Admin</a>
-    </div>
 
     <section class="hero">
         <img src="./images/hero.jpg" alt="Hero" class="hero-img">
@@ -544,7 +466,7 @@ if (empty($properties)) {
             <?php if (!empty($properties)): ?>
                 <?php foreach (array_slice($properties, 0, 12) as $property): ?>
                     <div class="card">
-                        <img src="<?php echo !empty($property['images']) ? (is_array($property['images']) ? $property['images'][0] : json_decode($property['images'], true)[0]) ?? 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80' : 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'; ?>" class="card-img" alt="<?php echo htmlspecialchars($property['title']); ?>">
+                        <img src="<?php echo !empty($property['images']) ? json_decode($property['images'], true)[0] ?? 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80' : 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'; ?>" class="card-img" alt="<?php echo htmlspecialchars($property['title']); ?>">
                         <div class="card-body">
                             <h3 class="card-title"><?php echo htmlspecialchars($property['title']); ?></h3>
                             <p class="card-zona"><?php echo htmlspecialchars($property['location']); ?></p>
@@ -558,12 +480,12 @@ if (empty($properties)) {
                                 ?>
                             </p>
                             <p class="card-precio"><?php echo number_format($property['price']); ?>€</p>
-                            <a href="propiedad-detalles.php?id=<?php echo urlencode($property['id']); ?>" class="card-btn">Ver Detalles</a>
+                            <button class="card-btn">Ver Detalles</button>
                         </div>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <!-- Propiedades por defecto si no hay datos -->
+                <!-- Propiedades por defecto si no hay datos en Supabase -->
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Apartamento en Marbella">
                     <div class="card-body">
@@ -571,7 +493,7 @@ if (empty($properties)) {
                         <p class="card-zona">Marbella, Costa del Sol</p>
                         <p class="card-desc">3 dormitorios, 2 baños, 120m²</p>
                         <p class="card-precio">450.000€</p>
-                        <a href="contacto.html" class="card-btn">Contactar</a>
+                        <button class="card-btn">Ver Detalles</button>
                     </div>
                 </div>
                 <div class="card">
@@ -581,7 +503,7 @@ if (empty($properties)) {
                         <p class="card-zona">Fuengirola, Costa del Sol</p>
                         <p class="card-desc">4 dormitorios, 3 baños, 250m²</p>
                         <p class="card-precio">650.000€</p>
-                        <a href="contacto.html" class="card-btn">Contactar</a>
+                        <button class="card-btn">Ver Detalles</button>
                     </div>
                 </div>
                 <div class="card">
@@ -591,7 +513,37 @@ if (empty($properties)) {
                         <p class="card-zona">Benalmádena, Costa del Sol</p>
                         <p class="card-desc">5 dormitorios, 4 baños, 300m²</p>
                         <p class="card-precio">850.000€</p>
-                        <a href="contacto.html" class="card-btn">Contactar</a>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Casa Adosada en Mijas">
+                    <div class="card-body">
+                        <h3 class="card-title">Casa Adosada en Mijas</h3>
+                        <p class="card-zona">Mijas, Costa del Sol</p>
+                        <p class="card-desc">3 dormitorios, 2 baños, 150m²</p>
+                        <p class="card-precio">320.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Ático en Torremolinos">
+                    <div class="card-body">
+                        <h3 class="card-title">Ático con Vistas al Mar</h3>
+                        <p class="card-zona">Torremolinos, Costa del Sol</p>
+                        <p class="card-desc">2 dormitorios, 2 baños, 90m²</p>
+                        <p class="card-precio">280.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Apartamento en Nueva Andalucía">
+                    <div class="card-body">
+                        <h3 class="card-title">Apartamento en Nueva Andalucía</h3>
+                        <p class="card-zona">Nueva Andalucía, Marbella</p>
+                        <p class="card-desc">2 dormitorios, 2 baños, 85m²</p>
+                        <p class="card-precio">350.000€</p>
+                        <button class="card-btn">Ver Detalles</button>
                     </div>
                 </div>
             <?php endif; ?>
@@ -602,12 +554,12 @@ if (empty($properties)) {
         <div class="footer-content">
             <div class="footer-section">
                 <h4>Contacto</h4>
-                <p><b>Andre Richard Tell</b><br>
-                Thellsol Real Estate</p>
-                <p>Fuengirola 29640<br>
-                Málaga, Spain</p>
-                <p><a href="mailto:andre@thellsol.com">andre@thellsol.com</a><br>
-                +34 676 335 313</p>
+                <p><b>Andre Richard Tell</b><br>Thellsol Real Estate</p>
+                <p>Fuengirola 29640<br>Málaga, Spain</p>
+            </div>
+            <div class="footer-section">
+                <p style="margin-bottom: 0;">andre@thellsol.com</p>
+                <p style="margin-top: 0;">+34 676 335 313</p>
             </div>
             <div class="footer-section">
                 <h4>Enlaces Legales</h4>
@@ -615,6 +567,13 @@ if (empty($properties)) {
                 <a href="politica-cookies.html">Política de Cookies</a>
                 <a href="aviso-legal.html">Aviso Legal</a>
             </div>
+            <div class="footer-section" style="text-align: right;">
+                <a href="https://thellsol.com" target="_blank"><img src="./images/logo-thellsol.png" alt="Logo Thellsol" style="width: 120px; border-radius: 12px;"></a>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 30px; font-size: 0.95rem; color: #ccc;">
+            <span>Developed by DesArroyo Tech</span>
+            <span>thellsol.com copyright reserved 2025</span>
         </div>
     </footer>
 
@@ -622,97 +581,4 @@ if (empty($properties)) {
         <img src="./images/whatsapp-icon.png" alt="WhatsApp">
     </a>
 </body>
-<script>
-function openMobileMenu() {
-  document.getElementById('mobileMenu').classList.add('open');
-  document.getElementById('mobileMenuBg').classList.add('open');
-}
-function closeMobileMenu() {
-  document.getElementById('mobileMenu').classList.remove('open');
-  document.getElementById('mobileMenuBg').classList.remove('open');
-}
-// Banner de cookies
-(function() {
-    function setCookie(name, value, days) {
-        var expires = "";
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days*24*60*60*1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-    function getCookie(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for(var i=0;i < ca.length;i++) {
-            var c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1,c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-        }
-        return null;
-    }
-    if (!getCookie('cookies_accepted')) {
-        var banner = document.createElement('div');
-        banner.id = 'cookie-banner';
-        banner.innerHTML = `
-            <div class="cookie-banner-content">
-                Utilizamos cookies propias y de terceros para mejorar tu experiencia y analizar el uso de la web. <a href="politica-cookies.html" style="color:#0a53e4;text-decoration:underline;">Más información</a>.
-                <button id="accept-cookies-btn">Aceptar</button>
-            </div>
-        `;
-        document.body.appendChild(banner);
-        document.getElementById('accept-cookies-btn').onclick = function() {
-            setCookie('cookies_accepted', 'yes', 30);
-            banner.style.display = 'none';
-        };
-        // Estilos
-        var style = document.createElement('style');
-        style.innerHTML = `
-        #cookie-banner {
-            position: fixed;
-            left: 0; right: 0; bottom: 0;
-            background: #181e29;
-            color: #fff;
-            padding: 18px 10px 18px 10px;
-            box-shadow: 0 -2px 12px #0003;
-            z-index: 2000;
-            font-size: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .cookie-banner-content {
-            max-width: 700px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 18px;
-            justify-content: center;
-        }
-        #accept-cookies-btn {
-            background: #0a53e4;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            padding: 8px 22px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.2s;
-            box-shadow: 0 1px 4px #0002;
-        }
-        #accept-cookies-btn:hover {
-            background: #003399;
-        }
-        @media (max-width: 600px) {
-            .cookie-banner-content { font-size: 0.95rem; gap: 8px; }
-            #accept-cookies-btn { padding: 8px 12px; font-size: 0.95rem; }
-        }
-        `;
-        document.head.appendChild(style);
-    }
-})();
-</script>
 </html>
