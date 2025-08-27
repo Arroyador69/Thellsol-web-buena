@@ -7,9 +7,9 @@ class SupabaseConnection {
     private $supabaseKey;
     
     public function __construct() {
-        // Configuración de Supabase
-        $this->supabaseUrl = 'https://spdwjdrlemselkqbxau.supabase.co';
-        $this->supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwZHdqZHJsZW1zZWxrcWJ4YXVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU2MTU0MzcsImV4cCI6MjA3MTE5MTQzN30.BzX55tzKeSGEL9D7wgJG4M-DCcmQ3K4fZjcHR-LMnAs';
+        // Configuración CORRECTA de Supabase
+        $this->supabaseUrl = 'https://hhfkutuhvsjfbrwozvdq.supabase.co';
+        $this->supabaseKey = 'sb_publishable_2uC8yz0GQ17I58xtqtH6gw_5QUAc9KK';
     }
     
     // Función para hacer peticiones a Supabase

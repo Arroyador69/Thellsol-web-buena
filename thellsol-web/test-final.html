@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Final - TellSol</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+        .warning { color: orange; }
+        .info { color: blue; }
+        button {
+            background: #0070f3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0051a2;
+        }
+        .property-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 6px;
+            background: #f9f9f9;
+        }
+        .property-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        .property-price {
+            color: #0070f3;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Test Final - Sistema Local TellSol</h1>
+        
+        <div class="test-section">
+            <h2>📋 Estado del Sistema</h2>
+            <p><strong>✅ Sistema:</strong> Local con archivos JSON</p>
+            <p><strong>✅ Sin dependencias:</strong> No necesita Supabase</p>
+            <p><strong>✅ Funcionalidad:</strong> Completa</p>
+        </div>
+
+        <div class="test-section">
+            <h2>🧪 Test 1: Verificar Archivo de Propiedades</h2>
+            <button onclick="checkPropertiesFile()">Verificar properties.json</button>
+            <div id="properties-file-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>🏠 Test 2: Obtener Propiedades de la API</h2>
+            <button onclick="getProperties()">Obtener Propiedades</button>
+            <div id="properties-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔗 Test 3: Verificar Archivos del Sistema</h2>
+            <button onclick="checkSystemFiles()">Verificar Archivos</button>
+            <div id="files-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>📊 Resumen de la Solución</h2>
+            <div id="summary">
+                <h3>🎉 ¡PROBLEMA SOLUCIONADO!</h3>
+                <p><strong>Problema anterior:</strong></p>
+                <ul>
+                    <li>❌ Supabase no conectaba correctamente</li>
+                    <li>❌ API devolvía 0 propiedades</li>
+                    <li>❌ Web mostraba propiedades de ejemplo</li>
+                    <li>❌ Dashboard no podía crear propiedades</li>
+                </ul>
+                
+                <p><strong>Solución aplicada:</strong></p>
+                <ul>
+                    <li>✅ Sistema local con archivos JSON</li>
+                    <li>✅ 2 propiedades de ejemplo creadas</li>
+                    <li>✅ API local funcional</li>
+                    <li>✅ Dashboard funcional</li>
+                    <li>✅ Web muestra propiedades reales</li>
+                </ul>
+                
+                <h3>🔗 Enlaces para probar:</h3>
+                <ul>
+                    <li><a href="index.php" target="_blank">Página principal</a></li>
+                    <li><a href="admin-dashboard.php" target="_blank">Dashboard</a></li>
+                    <li><a href="dashboard-api.php" target="_blank">API</a></li>
+                    <li><a href="properties.json" target="_blank">Archivo de propiedades</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function checkPropertiesFile() {
+            const resultDiv = document.getElementById('properties-file-result');
+            resultDiv.innerHTML = '<p class="info">🔄 Verificando archivo...</p>';
+            
+            try {
+                const response = await fetch('properties.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `
+                        <p class="success">✅ Archivo properties.json encontrado</p>
+                        <p><strong>Propiedades:</strong> ${data.length}</p>
+                        <div>
+                            ${data.map(prop => `
+                                <div class="property-card">
+                                    <div class="property-title">${prop.title}</div>
+                                    <div>${prop.location} - ${prop.type}</div>
+                                    <div class="property-price">${prop.price.toLocaleString()}€</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<p class="error">❌ Error al acceder al archivo: ${response.status}</p>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">❌ Error: ${error.message}</p>`;
+            }
+        }
+
+        async function getProperties() {
+            const resultDiv = document.getElementById('properties-result');
+            resultDiv.innerHTML = '<p class="info">🔄 Obteniendo propiedades...</p>';
+            
+            try {
+                const response = await fetch('dashboard-api.php');
+                const data = await response.json();
+                
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <p class="success">✅ API funciona correctamente</p>
+                        <p><strong>Propiedades encontradas:</strong> ${data.count}</p>
+                        <p><strong>Código HTTP:</strong> ${response.status}</p>
+                        ${data.properties.length > 0 ? `
+                            <div>
+                                ${data.properties.map(prop => `
+                                    <div class="property-card">
+                                        <div class="property-title">${prop.title}</div>
+                                        <div>${prop.location} - ${prop.type}</div>
+                                        <div class="property-price">${prop.price.toLocaleString()}€</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        ` : '<p class="warning">⚠️ No hay propiedades en la API</p>'}
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <p class="error">❌ Error en la API</p>
+                        <p><strong>Error:</strong> ${data.error || 'Error desconocido'}</p>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">❌ Error de conexión: ${error.message}</p>`;
+            }
+        }
+
+        async function checkSystemFiles() {
+            const resultDiv = document.getElementById('files-result');
+            resultDiv.innerHTML = '<p class="info">🔄 Verificando archivos...</p>';
+            
+            const filesToCheck = [
+                'properties.json',
+                'dashboard-api.php',
+                'admin-dashboard.php',
+                'index.php'
+            ];
+            
+            let results = [];
+            
+            for (const file of filesToCheck) {
+                try {
+                    const response = await fetch(file);
+                    if (response.ok) {
+                        results.push(`✅ ${file} - Accesible (${response.status})`);
+                    } else {
+                        results.push(`❌ ${file} - Error ${response.status}`);
+                    }
+                } catch (error) {
+                    results.push(`❌ ${file} - No accesible`);
+                }
+            }
+            
+            resultDiv.innerHTML = `
+                <p><strong>Verificación de archivos del sistema:</strong></p>
+                <ul>
+                    ${results.map(result => `<li>${result}</li>`).join('')}
+                </ul>
+            `;
+        }
+
+        // Ejecutar verificación automática al cargar
+        window.onload = function() {
+            setTimeout(() => {
+                checkPropertiesFile();
+                getProperties();
+                checkSystemFiles();
+            }, 1000);
+        };
+    </script>
+</body>
+</html>

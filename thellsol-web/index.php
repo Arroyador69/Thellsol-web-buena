@@ -1,7 +1,19 @@
 <?php
-// Obtener propiedades del dashboard
-require_once 'propiedades-dashboard.php';
-$properties = getDashboardProperties();
+// Obtener propiedades del dashboard usando la API
+$apiUrl = 'dashboard-api.php';
+$properties = [];
+
+try {
+    $response = file_get_contents($apiUrl);
+    if ($response !== false) {
+        $data = json_decode($response, true);
+        if ($data && $data['success']) {
+            $properties = $data['properties'] ?? [];
+        }
+    }
+} catch (Exception $e) {
+    // Error silencioso, usar propiedades de ejemplo
+}
 
 // Si no hay propiedades del dashboard, usar ejemplos
 if (empty($properties)) {

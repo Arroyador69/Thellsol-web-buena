@@ -1,13 +1,68 @@
 <?php
-require_once 'supabase-connection.php';
+// Configuración CORRECTA de Supabase
+$supabaseUrl = 'https://hhfkutuhvsjfbrwozvdq.supabase.co';
+$supabaseKey = 'sb_publishable_2uC8yz0GQ17I58xtqtH6gw_5QUAc9KK';
 
-// Obtener propiedades de Supabase
-$supabase = new SupabaseConnection();
-$propertiesResult = $supabase->getProperties();
-$properties = $propertiesResult['data'] ?? [];
+// Función para hacer peticiones a Supabase usando cURL
+function makeSupabaseRequest($endpoint, $method = 'GET', $data = null) {
+    global $supabaseUrl, $supabaseKey;
+    
+    $url = $supabaseUrl . '/rest/v1/' . $endpoint;
+    
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json',
+        'apikey: ' . $supabaseKey,
+        'Authorization: Bearer ' . $supabaseKey
+    ]);
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    
+    if ($data && ($method === 'POST' || $method === 'PUT' || $method === 'PATCH')) {
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    }
+    
+    $response = curl_exec($ch);
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $error = curl_error($ch);
+    curl_close($ch);
+    
+    if ($error) {
+        return [
+            'success' => false,
+            'error' => 'cURL Error: ' . $error
+        ];
+    }
+    
+    return [
+        'success' => $httpCode === 200,
+        'status' => $httpCode,
+        'data' => json_decode($response, true),
+        'raw_response' => $response
+    ];
+}
 
-// Filtrar solo propiedades en venta
-$propertiesForSale = array_filter($properties, function($property) {
+// Obtener propiedades directamente de Supabase
+$properties = [];
+
+try {
+    $result = makeSupabaseRequest('Property?select=*&order=createdAt.desc');
+    
+    if ($result['success'] && is_array($result['data'])) {
+        $properties = $result['data'];
+    }
+} catch (Exception $e) {
+    // Error silencioso, usar array vacío
+    $properties = [];
+}
+
+// Filtrar solo propiedades en venta (como las guarda el dashboard)
+$propertiesActive = array_filter($properties, function($property) {
     return $property['status'] === 'for-sale';
 });
 ?>
@@ -224,7 +279,7 @@ $propertiesForSale = array_filter($properties, function($property) {
     <div class="container">
         <h1 class="page-title">Nuestras Propiedades</h1>
         
-        <?php if (empty($propertiesForSale)): ?>
+        <?php if (empty($propertiesActive)): ?>
             <div class="no-properties">
                 <h2>No hay propiedades disponibles en este momento</h2>
                 <p>Pronto añadiremos nuevas propiedades. ¡Mantente atento!</p>
@@ -232,7 +287,7 @@ $propertiesForSale = array_filter($properties, function($property) {
             </div>
         <?php else: ?>
             <div class="properties-grid">
-                <?php foreach ($propertiesForSale as $property): ?>
+                <?php foreach ($propertiesActive as $property): ?>
                     <div class="property-card">
                         <div class="property-image">
                             <?php if (!empty($property['images'])): ?>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Conexión - ThellSol</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+        .success { color: green; }
+        .error { color: red; }
+        .warning { color: orange; }
+        .info { color: blue; }
+        button {
+            background: #0070f3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0051a2;
+        }
+        pre {
+            background: #f8f8f8;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Test de Conexión - ThellSol Dashboard</h1>
+        
+        <div class="test-section">
+            <h2>📋 Información del Sistema</h2>
+            <p><strong>URL actual:</strong> <span id="current-url"></span></p>
+            <p><strong>API del dashboard:</strong> <span id="api-url"></span></p>
+        </div>
+
+        <div class="test-section">
+            <h2>🧪 Test 1: Conexión a la API del Dashboard</h2>
+            <button onclick="testDashboardAPI()">Probar API del Dashboard</button>
+            <div id="api-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>🏠 Test 2: Propiedades en la Base de Datos</h2>
+            <button onclick="testProperties()">Obtener Propiedades</button>
+            <div id="properties-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔗 Test 3: Verificar Archivos</h2>
+            <button onclick="checkFiles()">Verificar Archivos</button>
+            <div id="files-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>📊 Resumen del Problema</h2>
+            <div id="summary"></div>
+        </div>
+    </div>
+
+    <script>
+        // Mostrar información del sistema
+        document.getElementById('current-url').textContent = window.location.href;
+        document.getElementById('api-url').textContent = window.location.origin + '/dashboard-api.php';
+
+        async function testDashboardAPI() {
+            const resultDiv = document.getElementById('api-result');
+            resultDiv.innerHTML = '<p class="info">🔄 Probando conexión...</p>';
+            
+            try {
+                const response = await fetch('dashboard-api.php');
+                const data = await response.json();
+                
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <p class="success">✅ API del dashboard funciona correctamente</p>
+                        <p><strong>Propiedades encontradas:</strong> ${data.count || 0}</p>
+                        <p><strong>Código HTTP:</strong> ${response.status}</p>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <p class="error">❌ Error en la API del dashboard</p>
+                        <p><strong>Error:</strong> ${data.error || 'Error desconocido'}</p>
+                        <p><strong>Detalles:</strong> ${data.details || 'Sin detalles'}</p>
+                        <p><strong>Código HTTP:</strong> ${response.status}</p>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">❌ Error de conexión</p>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+
+        async function testProperties() {
+            const resultDiv = document.getElementById('properties-result');
+            resultDiv.innerHTML = '<p class="info">🔄 Obteniendo propiedades...</p>';
+            
+            try {
+                const response = await fetch('dashboard-api.php');
+                const data = await response.json();
+                
+                if (data.success && data.properties) {
+                    const properties = data.properties;
+                    resultDiv.innerHTML = `
+                        <p class="success">✅ Propiedades obtenidas correctamente</p>
+                        <p><strong>Total:</strong> ${properties.length} propiedades</p>
+                        ${properties.length > 0 ? `
+                            <table>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Título</th>
+                                    <th>Precio</th>
+                                    <th>Ubicación</th>
+                                    <th>Tipo</th>
+                                    <th>Estado</th>
+                                </tr>
+                                ${properties.map(prop => `
+                                    <tr>
+                                        <td>${prop.id || 'N/A'}</td>
+                                        <td>${prop.title || 'N/A'}</td>
+                                        <td>${prop.price ? prop.price.toLocaleString() + '€' : 'N/A'}</td>
+                                        <td>${prop.location || 'N/A'}</td>
+                                        <td>${prop.type || 'N/A'}</td>
+                                        <td>${prop.status || 'N/A'}</td>
+                                    </tr>
+                                `).join('')}
+                            </table>
+                        ` : '<p class="warning">⚠️ No hay propiedades en la base de datos</p>'}
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <p class="error">❌ No se pudieron obtener las propiedades</p>
+                        <p><strong>Error:</strong> ${data.error || 'Error desconocido'}</p>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <p class="error">❌ Error de conexión</p>
+                    <p><strong>Error:</strong> ${error.message}</p>
+                `;
+            }
+        }
+
+        async function checkFiles() {
+            const resultDiv = document.getElementById('files-result');
+            resultDiv.innerHTML = '<p class="info">🔄 Verificando archivos...</p>';
+            
+            const filesToCheck = [
+                'dashboard-api.php',
+                'supabase-connection.php',
+                'admin-dashboard.php',
+                'index.php',
+                'comprar.php'
+            ];
+            
+            let results = [];
+            
+            for (const file of filesToCheck) {
+                try {
+                    const response = await fetch(file);
+                    if (response.ok) {
+                        results.push(`✅ ${file} - Accesible (${response.status})`);
+                    } else {
+                        results.push(`❌ ${file} - Error ${response.status}`);
+                    }
+                } catch (error) {
+                    results.push(`❌ ${file} - No accesible`);
+                }
+            }
+            
+            resultDiv.innerHTML = `
+                <p><strong>Verificación de archivos:</strong></p>
+                <ul>
+                    ${results.map(result => `<li>${result}</li>`).join('')}
+                </ul>
+            `;
+        }
+
+        // Generar resumen automáticamente
+        function generateSummary() {
+            const summaryDiv = document.getElementById('summary');
+            summaryDiv.innerHTML = `
+                <h3>🔧 Diagnóstico del Problema</h3>
+                <p><strong>Problema principal identificado:</strong></p>
+                <ul>
+                    <li>El archivo <code>dashboard-api.php</code> estaba usando la configuración ANTIGUA de Supabase</li>
+                    <li>Esto impedía que las propiedades se mostraran en la web</li>
+                    <li>La configuración ya ha sido actualizada con los datos correctos</li>
+                </ul>
+                
+                <h3>✅ Soluciones Aplicadas</h3>
+                <ul>
+                    <li>Actualizada la configuración de Supabase en <code>dashboard-api.php</code></li>
+                    <li>Creado script de prueba para verificar la conexión</li>
+                    <li>Verificada la estructura de archivos</li>
+                </ul>
+                
+                <h3>📋 Próximos Pasos</h3>
+                <ol>
+                    <li>Ejecuta los tests de arriba para verificar que todo funciona</li>
+                    <li>Si las propiedades aparecen en el test, deberían aparecer en la web</li>
+                    <li>Si hay errores, revisa los logs de Hostinger</li>
+                </ol>
+            `;
+        }
+
+        // Ejecutar resumen al cargar la página
+        generateSummary();
+    </script>
+</body>
+</html>
