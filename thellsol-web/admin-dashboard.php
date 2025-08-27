@@ -19,6 +19,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $properties = json_decode($content, true) ?: [];
         }
         
+        // Manejar subida de imágenes
+        $uploadedImages = [];
+        if (isset($_FILES['imageFiles']) && !empty($_FILES['imageFiles']['name'][0])) {
+            $uploadDir = 'images/properties/';
+            if (!file_exists($uploadDir)) {
+                mkdir($uploadDir, 0755, true);
+            }
+            
+            $files = $_FILES['imageFiles'];
+            for ($i = 0; $i < count($files['name']); $i++) {
+                if ($files['error'][$i] === UPLOAD_ERR_OK) {
+                    $fileName = $files['name'][$i];
+                    $tmpName = $files['tmp_name'][$i];
+                    $extension = pathinfo($fileName, PATHINFO_EXTENSION);
+                    $uniqueName = uniqid('prop_') . '.' . $extension;
+                    $uploadPath = $uploadDir . $uniqueName;
+                    
+                    if (move_uploaded_file($tmpName, $uploadPath)) {
+                        $uploadedImages[] = $uploadPath;
+                    }
+                }
+            }
+        }
+        
         // Crear nueva propiedad
         $newProperty = [
             'id' => time(), // ID único basado en timestamp
@@ -30,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'bathrooms' => (int)($_POST['bathrooms'] ?? 0),
             'surface' => (int)($_POST['surface'] ?? 0),
             'description' => $_POST['description'] ?? '',
-            'images' => array_filter(explode(',', $_POST['images'] ?? '')),
+            'images' => $uploadedImages, // Usar las imágenes subidas
             'status' => 'active',
             'createdAt' => date('Y-m-d H:i:s'),
             'createdBy' => $current_user['name']
@@ -394,7 +418,7 @@ if (file_exists($propertiesFile)) {
             <!-- Formulario para crear propiedades -->
             <div class="card">
                 <h2>🏠 Crear Nueva Propiedad</h2>
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="action" value="create_property">
                     
                     <div class="form-group">
@@ -566,19 +590,7 @@ if (file_exists($propertiesFile)) {
             displayImagePreview();
         }
         
-        // Modificar el envío del formulario para incluir las imágenes
-        document.querySelector('form').addEventListener('submit', function(e) {
-            // Crear campo hidden con los nombres de archivos de imagen
-            const imageNames = selectedImages.map(img => img.name).join(',');
-            
-            // Crear input hidden para las imágenes
-            const hiddenInput = document.createElement('input');
-            hiddenInput.type = 'hidden';
-            hiddenInput.name = 'images';
-            hiddenInput.value = imageNames;
-            
-            this.appendChild(hiddenInput);
-        });
+        // El formulario ya maneja la subida automáticamente con enctype="multipart/form-data"
     </script>
 </body>
 </html>

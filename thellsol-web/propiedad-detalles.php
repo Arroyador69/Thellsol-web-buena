@@ -450,7 +450,18 @@ if (empty($images)) {
 
         <div class="property-content">
             <div class="property-images">
-                <img src="<?php echo htmlspecialchars($images[0]); ?>" alt="<?php echo htmlspecialchars($property['title']); ?>" class="main-image" id="mainImage">
+                <img src="<?php 
+                    if (!empty($images) && !empty($images[0])) {
+                        $imageUrl = $images[0];
+                        if (str_contains($imageUrl, 'example.com')) {
+                            echo "images/carrusel6.jpeg"; // Usar imagen del carrusel como default
+                        } else {
+                            echo htmlspecialchars($imageUrl);
+                        }
+                    } else {
+                        echo "images/carrusel7.jpeg"; // Imagen por defecto del carrusel
+                    }
+                ?>" alt="<?php echo htmlspecialchars($property['title']); ?>" class="main-image" id="mainImage">
                 
                 <?php if (count($images) > 1): ?>
                     <div class="image-thumbnails">

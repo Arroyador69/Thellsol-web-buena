@@ -545,14 +545,15 @@ if (file_exists($propertiesFile)) {
                         <img src="<?php 
                             $images = is_array($property["images"] ?? null) ? $property["images"] : [];
                             if (!empty($images) && !empty($images[0])) {
-                                // Si la imagen empieza con http, usar directamente, sino añadir images/
                                 $imageUrl = $images[0];
-                                if (!str_starts_with($imageUrl, 'http')) {
-                                    $imageUrl = 'images/' . $imageUrl;
+                                // Si es URL de ejemplo, usar imagen por defecto
+                                if (str_contains($imageUrl, 'example.com')) {
+                                    echo "images/carrusel2.jpeg"; // Usar imagen del carrusel como default
+                                } else {
+                                    echo htmlspecialchars($imageUrl);
                                 }
-                                echo htmlspecialchars($imageUrl);
                             } else {
-                                echo "images/default-property.jpg"; // Imagen por defecto local
+                                echo "images/carrusel3.jpeg"; // Imagen por defecto del carrusel
                             }
                         ?>" class="card-img" alt="<?php echo htmlspecialchars($property['title']); ?>">
                         <div class="card-body">
