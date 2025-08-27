@@ -185,17 +185,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             text-decoration: underline;
         }
         
-        .credentials-info {
+        .login-info {
             background: #f8f9fa;
             border: 1px solid #e1e5e9;
             border-radius: 6px;
             padding: 15px;
             margin-bottom: 20px;
-            font-size: 0.85rem;
+            text-align: center;
             color: #666;
         }
         
-        .credentials-info h4 {
+        .login-info h4 {
             margin: 0 0 10px 0;
             color: #333;
             font-size: 0.9rem;
@@ -239,11 +239,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             <?php endif; ?>
             
-            <div class="credentials-info">
-                <h4>🔑 Credenciales de acceso:</h4>
-                <p><strong>Usuario Admin:</strong> andre@thellsol.com / ThellSol2025!</p>
-                <p><strong>Usuario Cliente:</strong> cliente@thellsol.com / Cliente2025!</p>
-                <p><em>Cambia estas contraseñas en el archivo auth-config.php</em></p>
+            <div class="login-info">
+                <h4>🏢 Panel de Administración</h4>
+                <p>Acceso exclusivo para administradores autorizados de TellSol Real Estate</p>
             </div>
             
             <form method="POST" action="">

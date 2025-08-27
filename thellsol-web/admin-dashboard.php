@@ -287,6 +287,75 @@ if (file_exists($propertiesFile)) {
             margin-bottom: 1rem;
         }
         
+        .image-upload-container {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            background: #fafafa;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .upload-area {
+            cursor: pointer;
+            padding: 20px;
+            transition: background 0.3s;
+        }
+        
+        .upload-area:hover {
+            background: #f0f0f0;
+        }
+        
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        .upload-note {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 5px 0 0 0;
+        }
+        
+        .image-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .preview-item {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #ddd;
+        }
+        
+        .preview-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .remove-image {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        
         @media (max-width: 768px) {
             .dashboard-grid {
                 grid-template-columns: 1fr;
@@ -376,8 +445,16 @@ if (file_exists($propertiesFile)) {
                     </div>
                     
                     <div class="form-group">
-                        <label for="images">URLs de Imágenes (separadas por comas):</label>
-                        <textarea id="images" name="images" rows="3" placeholder="https://ejemplo.com/imagen1.jpg, https://ejemplo.com/imagen2.jpg"></textarea>
+                        <label for="images">Imágenes de la Propiedad:</label>
+                        <div class="image-upload-container">
+                            <input type="file" id="imageFiles" name="imageFiles[]" multiple accept="image/*" class="file-input">
+                            <div class="upload-area" onclick="document.getElementById('imageFiles').click()">
+                                <div class="upload-icon">📷</div>
+                                <p>Haz clic para seleccionar imágenes</p>
+                                <p class="upload-note">Puedes seleccionar múltiples archivos</p>
+                            </div>
+                            <div id="imagePreview" class="image-preview"></div>
+                        </div>
                     </div>
                     
                     <button type="submit" class="btn">🏠 Crear Propiedad</button>
@@ -439,5 +516,69 @@ if (file_exists($propertiesFile)) {
             </div>
         </div>
     </div>
+    
+    <script>
+        // Sistema de subida de imágenes
+        const imageInput = document.getElementById('imageFiles');
+        const imagePreview = document.getElementById('imagePreview');
+        let selectedImages = [];
+        
+        imageInput.addEventListener('change', handleImageSelection);
+        
+        function handleImageSelection(event) {
+            const files = Array.from(event.target.files);
+            
+            files.forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const imageData = {
+                            file: file,
+                            dataUrl: e.target.result,
+                            name: file.name
+                        };
+                        selectedImages.push(imageData);
+                        displayImagePreview();
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+        
+        function displayImagePreview() {
+            imagePreview.innerHTML = '';
+            
+            selectedImages.forEach((image, index) => {
+                const previewItem = document.createElement('div');
+                previewItem.className = 'preview-item';
+                
+                previewItem.innerHTML = `
+                    <img src="${image.dataUrl}" alt="${image.name}">
+                    <button type="button" class="remove-image" onclick="removeImage(${index})">×</button>
+                `;
+                
+                imagePreview.appendChild(previewItem);
+            });
+        }
+        
+        function removeImage(index) {
+            selectedImages.splice(index, 1);
+            displayImagePreview();
+        }
+        
+        // Modificar el envío del formulario para incluir las imágenes
+        document.querySelector('form').addEventListener('submit', function(e) {
+            // Crear campo hidden con los nombres de archivos de imagen
+            const imageNames = selectedImages.map(img => img.name).join(',');
+            
+            // Crear input hidden para las imágenes
+            const hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'images';
+            hiddenInput.value = imageNames;
+            
+            this.appendChild(hiddenInput);
+        });
+    </script>
 </body>
 </html>
