@@ -204,22 +204,48 @@ if (file_exists($propertiesFile)) {
             position: relative;
             box-shadow: 0 2px 8px #0001;
         }
-        .hero-img {
+        .carousel-container {
+            position: relative;
             width: 100%;
             height: 320px;
-            object-fit: cover;
-            display: block;
+            overflow: hidden;
         }
-        .hero-text {
+        .carousel-slides {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .carousel-slide {
             position: absolute;
+            top: 0;
             left: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.6);
-            color: #fff;
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 10px 24px;
-            border-radius: 0 12px 0 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .carousel-slide.active {
+            opacity: 1;
+        }
+        .carousel-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .carousel-dot.active {
+            background: rgba(255,255,255,0.9);
         }
         .presentacion {
             max-width: 800px;
@@ -473,8 +499,23 @@ if (file_exists($propertiesFile)) {
     </div>
 
     <section class="hero">
-        <img src="./images/hero.jpg" alt="Hero" class="hero-img">
-        <div class="hero-text">Bienvenido a TellSol Real Estate</div>
+        <div class="carousel-container">
+            <div class="carousel-slides" id="carouselSlides">
+                <img src="./images/carrusel2.jpeg" alt="Costa del Sol" class="carousel-slide active">
+                <img src="./images/carrusel3.jpeg" alt="Propiedades de lujo" class="carousel-slide">
+                <img src="./images/carrusel4.jpeg" alt="Villas exclusivas" class="carousel-slide">
+                <img src="./images/carrusel5.jpeg" alt="Apartamentos modernos" class="carousel-slide">
+                <img src="./images/carrusel6.jpeg" alt="Casas con vistas al mar" class="carousel-slide">
+                <img src="./images/carrusel7.jpeg" alt="Propiedades en Fuengirola" class="carousel-slide">
+                <img src="./images/carrusel8.jpeg" alt="Inmuebles Costa del Sol" class="carousel-slide">
+                <img src="./images/carrusel9.jpeg" alt="Villas de ensueño" class="carousel-slide">
+                <img src="./images/carrusel10.jpeg" alt="Propiedades premium" class="carousel-slide">
+                <img src="./images/carrusel11.jpeg" alt="Casas de lujo" class="carousel-slide">
+                <img src="./images/carrusel12.jpeg" alt="Apartamentos exclusivos" class="carousel-slide">
+                <img src="./images/carrusel13.jpeg" alt="Real Estate Costa del Sol" class="carousel-slide">
+            </div>
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
     </section>
 
     <section class="presentacion">
@@ -586,6 +627,45 @@ function closeMobileMenu() {
         }
         document.cookie = name + "=" + (value || "")  + expires + "; path=/";
     }
+    // Carrusel de imágenes
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+    
+    // Crear dots
+    const dotsContainer = document.getElementById('carouselDots');
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'carousel-dot';
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+    }
+    
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+        });
+        
+        const dots = document.querySelectorAll('.carousel-dot');
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index);
+        });
+    }
+    
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+    }
+    
+    function goToSlide(index) {
+        currentSlide = index;
+        showSlide(currentSlide);
+    }
+    
+    // Auto-avanzar cada 4 segundos
+    setInterval(nextSlide, 4000);
+
     function getCookie(name) {
         var nameEQ = name + "=";
         var ca = document.cookie.split(';');
