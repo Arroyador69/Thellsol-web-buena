@@ -10,31 +10,7 @@ if (file_exists($propertiesFile)) {
     $properties = json_decode($content, true) ?: [];
 }
 
-// Si no hay propiedades, usar ejemplos
-if (empty($properties)) {
-    $properties = [
-        [
-            "title" => "Villa de lujo en Marbella",
-            "price" => 850000,
-            "location" => "Marbella",
-            "type" => "villa",
-            "bedrooms" => 5,
-            "bathrooms" => 4,
-            "area" => 350,
-            "status" => "active"
-        ],
-        [
-            "title" => "Apartamento moderno en Fuengirola",
-            "price" => 280000,
-            "location" => "Fuengirola",
-            "type" => "apartment",
-            "bedrooms" => 3,
-            "bathrooms" => 2,
-            "area" => 120,
-            "status" => "active"
-        ]
-    ];
-}
+// Solo mostrar propiedades creadas en el dashboard
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -492,7 +468,7 @@ if (empty($properties)) {
                 <div class="filter-group">
                     <label for="min-price">Precio mínimo</label>
                     <input type="number" id="min-price" placeholder="€">
-                </div>
+            </div>
                 
                 <div class="filter-group">
                     <label for="max-price">Precio máximo</label>
@@ -520,9 +496,9 @@ if (empty($properties)) {
             <h2>Propiedades Disponibles</h2>
             <div class="properties-count"><?php echo count($properties); ?> propiedades encontradas</div>
         </div>
-        
+
         <div class="properties-grid" id="properties-grid">
-            <?php foreach ($properties as $property): ?>
+                    <?php foreach ($properties as $property): ?>
                 <div class="property-card" data-location="<?php echo strtolower($property['location']); ?>" 
                      data-type="<?php echo $property['type']; ?>" 
                      data-price="<?php echo $property['price']; ?>"
@@ -555,7 +531,7 @@ if (empty($properties)) {
                         <p class="property-price"><?php echo number_format($property["price"]); ?>€</p>
                                                  <a href="propiedad-detalles.php?id=<?php echo urlencode($property['id'] ?? uniqid()); ?>" class="property-btn">Ver Detalles</a>
                     </div>
-                </div>
+                        </div>
             <?php endforeach; ?>
         </div>
     </main>

@@ -15,44 +15,8 @@ try {
     // Error silencioso, usar propiedades de ejemplo
 }
 
-// Si no hay propiedades del dashboard, usar ejemplos
-if (empty($properties)) {
-    $properties = [
-        [
-            'title' => 'Villa preciosa',
-            'price' => 340000,
-            'location' => 'fuengirola',
-            'type' => 'villa',
-            'bedrooms' => 4,
-            'bathrooms' => 3,
-            'area' => 250,
-            'status' => 'active',
-            'images' => '["https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"]'
-        ],
-        [
-            'title' => 'Elegante Villa con Vistas Espectaculares - Junto al Castillo Sohail, Fuengirola',
-            'price' => 1350000,
-            'location' => 'fuengirola',
-            'type' => 'villa',
-            'bedrooms' => 5,
-            'bathrooms' => 4,
-            'area' => 350,
-            'status' => 'active',
-            'images' => '["https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"]'
-        ],
-        [
-            'title' => 'Villa moderna en Benalmádena',
-            'price' => 850000,
-            'location' => 'benalmadena',
-            'type' => 'villa',
-            'bedrooms' => 4,
-            'bathrooms' => 3,
-            'area' => 280,
-            'status' => 'active',
-            'images' => '["https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"]'
-        ]
-    ];
-}
+// Si no hay propiedades del dashboard, no mostrar nada
+// (Solo mostrar propiedades creadas en el dashboard)
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -563,36 +527,11 @@ if (empty($properties)) {
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
-                <!-- Propiedades por defecto si no hay datos -->
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Apartamento en Marbella">
-                    <div class="card-body">
-                        <h3 class="card-title">Apartamento de Lujo en Marbella</h3>
-                        <p class="card-zona">Marbella, Costa del Sol</p>
-                        <p class="card-desc">3 dormitorios, 2 baños, 120m²</p>
-                        <p class="card-precio">450.000€</p>
-                        <a href="contacto.html" class="card-btn">Contactar</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Villa en Fuengirola">
-                    <div class="card-body">
-                        <h3 class="card-title">Villa con Piscina en Fuengirola</h3>
-                        <p class="card-zona">Fuengirola, Costa del Sol</p>
-                        <p class="card-desc">4 dormitorios, 3 baños, 250m²</p>
-                        <p class="card-precio">650.000€</p>
-                        <a href="contacto.html" class="card-btn">Contactar</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img" alt="Chalet en Benalmádena">
-                    <div class="card-body">
-                        <h3 class="card-title">Chalet Moderno en Benalmádena</h3>
-                        <p class="card-zona">Benalmádena, Costa del Sol</p>
-                        <p class="card-desc">5 dormitorios, 4 baños, 300m²</p>
-                        <p class="card-precio">850.000€</p>
-                        <a href="contacto.html" class="card-btn">Contactar</a>
-                    </div>
+                <!-- Solo mostrar propiedades del dashboard -->
+                <div class="card" style="text-align: center; padding: 40px; grid-column: 1 / -1;">
+                    <h3>📋 No hay propiedades publicadas</h3>
+                    <p>Las propiedades creadas en el dashboard aparecerán aquí automáticamente.</p>
+                    <a href="admin-login.php" class="card-btn">Acceder al Dashboard</a>
                 </div>
             <?php endif; ?>
         </div>

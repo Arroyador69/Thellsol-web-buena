@@ -721,7 +721,7 @@ if (empty($properties)) {
             </div>
             <ul class="nav-links">
                 <li><a href="index.php" class="nav-link active">Inicio</a></li>
-                <li><a href="comprar.php" class="nav-link">Propiedades</a></li>
+                <li><a href="occomprar.php" class="nav-link">Propiedades</a></li>
                 <li><a href="contacto.html" class="nav-link">Contacto</a></li>
                 <li><a href="informacion-legal.html" class="nav-link">Información Legal</a></li>
                 <li><a href="admin-dashboard.php" class="nav-link">Admin</a></li>
