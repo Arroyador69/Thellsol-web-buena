@@ -501,7 +501,19 @@ if (file_exists($propertiesFile)) {
             <?php if (!empty($properties)): ?>
                 <?php foreach (array_slice($properties, 0, 12) as $property): ?>
                     <div class="card">
-                        <img src="<?php echo !empty($property['images']) ? (is_array($property['images']) ? $property['images'][0] : json_decode($property['images'], true)[0]) ?? 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80' : 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'; ?>" class="card-img" alt="<?php echo htmlspecialchars($property['title']); ?>">
+                        <img src="<?php 
+                            $images = is_array($property["images"] ?? null) ? $property["images"] : [];
+                            if (!empty($images) && !empty($images[0])) {
+                                // Si la imagen empieza con http, usar directamente, sino añadir images/
+                                $imageUrl = $images[0];
+                                if (!str_starts_with($imageUrl, 'http')) {
+                                    $imageUrl = 'images/' . $imageUrl;
+                                }
+                                echo htmlspecialchars($imageUrl);
+                            } else {
+                                echo "images/default-property.jpg"; // Imagen por defecto local
+                            }
+                        ?>" class="card-img" alt="<?php echo htmlspecialchars($property['title']); ?>">
                         <div class="card-body">
                             <h3 class="card-title"><?php echo htmlspecialchars($property['title']); ?></h3>
                             <p class="card-zona"><?php echo htmlspecialchars($property['location']); ?></p>

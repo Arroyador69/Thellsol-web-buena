@@ -33,59 +33,74 @@ if (file_exists($propertiesFile)) {
             background-color: #f5f5f5;
         }
         
+        .navbar-title {
+            font-family: 'Cormorant Garamond', serif !important;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #fff;
+            text-shadow: 0 1px 2px #0002;
+        }
         .navbar {
+            width: 100%;
             background: #181e29;
-            color: white;
-            padding: 1rem 2rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            height: 54px;
+            box-sizing: border-box;
             position: sticky;
             top: 0;
             z-index: 100;
+            gap: 0;
+            position: relative;
         }
-        
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .nav-brand {
+        .navbar-left {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 10px;
+            margin-right: 18px;
+            position: absolute;
+            left: 2cm;
+            top: 0;
+            height: 54px;
         }
-        
-        .nav-logo {
-            width: 40px;
-            height: 40px;
+        .navbar-center {
+            flex: 0 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 18px;
+            position: absolute;
+            right: 2cm;
+            top: 0;
+            height: 54px;
+        }
+        .navbar-logo {
+            height: 36px;
+            width: 36px;
             border-radius: 6px;
-            background: white;
+            background: #fff;
             object-fit: contain;
         }
-        
-        .nav-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        
-        .nav-link {
-            color: white;
+        .navbar-link {
+            color: #fff;
             text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+            font-size: 15px;
+            font-weight: 500;
+            padding: 4px 10px;
+            border-radius: 3px;
+            transition: background 0.2s;
         }
-        
-        .nav-link:hover,
-        .nav-link.active {
-            background-color: #232a3a;
+        .navbar-link:hover, .navbar-link.active {
+            background: #232a3a;
         }
         
         .hero {
@@ -506,7 +521,16 @@ if (file_exists($propertiesFile)) {
                      data-bedrooms="<?php echo $property['bedrooms'] ?? 0; ?>">
                     <img src="<?php 
                         $images = is_array($property["images"] ?? null) ? $property["images"] : [];
-                        echo !empty($images) ? htmlspecialchars($images[0]) : "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80";
+                        if (!empty($images) && !empty($images[0])) {
+                            // Si la imagen empieza con http, usar directamente, sino añadir images/
+                            $imageUrl = $images[0];
+                            if (!str_starts_with($imageUrl, 'http')) {
+                                $imageUrl = 'images/' . $imageUrl;
+                            }
+                            echo htmlspecialchars($imageUrl);
+                        } else {
+                            echo "images/default-property.jpg"; // Imagen por defecto local
+                        }
                     ?>" alt="<?php echo htmlspecialchars($property["title"]); ?>" class="property-image">
                     
                     <div class="property-content">
