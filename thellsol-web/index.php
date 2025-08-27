@@ -1,22 +1,15 @@
 <?php
-// Obtener propiedades del dashboard usando la API
-$apiUrl = 'dashboard-api.php';
+// Sistema JSON directo - IGUAL QUE COMPRAR.PHP
+$propertiesFile = "properties.json";
 $properties = [];
 
-try {
-    $response = file_get_contents($apiUrl);
-    if ($response !== false) {
-        $data = json_decode($response, true);
-        if ($data && $data['success']) {
-            $properties = $data['properties'] ?? [];
-        }
-    }
-} catch (Exception $e) {
-    // Error silencioso, usar propiedades de ejemplo
+// Cargar propiedades desde el archivo JSON
+if (file_exists($propertiesFile)) {
+    $content = file_get_contents($propertiesFile);
+    $properties = json_decode($content, true) ?: [];
 }
 
-// Si no hay propiedades del dashboard, no mostrar nada
-// (Solo mostrar propiedades creadas en el dashboard)
+// Solo mostrar propiedades creadas en el dashboard
 ?>
 <!DOCTYPE html>
 <html lang="es">

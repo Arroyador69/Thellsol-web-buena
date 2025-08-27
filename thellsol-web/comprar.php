@@ -1,20 +1,14 @@
 <?php
-// Página de comprar - Sistema unificado con API
+// Página de comprar - Sistema JSON directo (IGUAL QUE INDEX)
 // Archivo: comprar.php
 
-$apiUrl = 'dashboard-api.php';
+$propertiesFile = "properties.json";
 $properties = [];
 
-try {
-    $response = file_get_contents($apiUrl);
-    if ($response !== false) {
-        $data = json_decode($response, true);
-        if ($data && $data['success']) {
-            $properties = $data['properties'] ?? [];
-        }
-    }
-} catch (Exception $e) {
-    // Error silencioso, no mostrar propiedades
+// Cargar propiedades desde el archivo JSON
+if (file_exists($propertiesFile)) {
+    $content = file_get_contents($propertiesFile);
+    $properties = json_decode($content, true) ?: [];
 }
 
 // Solo mostrar propiedades creadas en el dashboard
