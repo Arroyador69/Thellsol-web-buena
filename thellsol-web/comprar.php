@@ -451,11 +451,11 @@ $currentLang = getCurrentLanguage();
     </nav>
     <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>
     <div class="mobile-menu" id="mobileMenu">
-      <a href="index.php">Inicio</a>
-      <a href="comprar.php">Comprar</a>
-      <a href="vender.html">Vender</a>
-      <a href="informacion-legal.html">Información Legal</a>
-      <a href="contacto.html">Contacto</a>
+      <a href="index.php"><?php echo t('nav.home'); ?></a>
+      <a href="comprar.php"><?php echo t('nav.buy'); ?></a>
+      <a href="vender.html"><?php echo t('nav.sell'); ?></a>
+      <a href="informacion-legal.html"><?php echo t('nav.legal'); ?></a>
+      <a href="contacto.html"><?php echo t('nav.contact'); ?></a>
       <a href="admin-dashboard.php">Admin</a>
     </div>
 

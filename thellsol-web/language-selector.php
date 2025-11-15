@@ -1,8 +1,15 @@
 <?php
 // Componente selector de idiomas
 // Incluir este archivo en todas las páginas
+// IMPORTANTE: translations.php debe estar incluido antes de este archivo
 
-require_once 'translations.php';
+// Verificar que translations.php está cargado
+if (!function_exists('getCurrentLanguage')) {
+    require_once 'translations.php';
+}
+
+// Obtener idioma actual
+$currentLang = isset($currentLang) ? $currentLang : getCurrentLanguage();
 
 // Obtener URL actual sin parámetros de idioma
 $currentUrl = strtok($_SERVER["REQUEST_URI"], '?');
