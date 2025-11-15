@@ -436,90 +436,91 @@ $currentLang = getCurrentLanguage();
         </button>
         <div class="navbar-left">
             <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
-            <a href="index.php" class="navbar-link"><?php echo t('nav.home'); ?></a>
-            <a href="comprar.php" class="navbar-link active"><?php echo t('nav.buy'); ?></a>
-            <a href="vender.html" class="navbar-link"><?php echo t('nav.sell'); ?></a>
+            <a href="<?php echo getLangUrl('index.php'); ?>" class="navbar-link"><?php echo t('nav.home'); ?></a>
+            <a href="<?php echo getLangUrl('comprar.php'); ?>" class="navbar-link active"><?php echo t('nav.buy'); ?></a>
+            <a href="<?php echo getLangUrl('vender.html'); ?>" class="navbar-link"><?php echo t('nav.sell'); ?></a>
         </div>
         <div class="navbar-center">
             <span class="navbar-title">ThellSol Real Estate</span>
         </div>
         <div class="navbar-right">
             <?php include 'language-selector.php'; ?>
-            <a href="informacion-legal.html" class="navbar-link"><?php echo t('nav.legal'); ?></a>
-            <a href="contacto.html" class="navbar-link"><?php echo t('nav.contact'); ?></a>
+            <a href="<?php echo getLangUrl('informacion-legal.html'); ?>" class="navbar-link"><?php echo t('nav.legal'); ?></a>
+            <a href="<?php echo getLangUrl('contacto.html'); ?>" class="navbar-link"><?php echo t('nav.contact'); ?></a>
         </div>
     </nav>
     <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>
     <div class="mobile-menu" id="mobileMenu">
-      <a href="index.php"><?php echo t('nav.home'); ?></a>
-      <a href="comprar.php"><?php echo t('nav.buy'); ?></a>
-      <a href="vender.html"><?php echo t('nav.sell'); ?></a>
-      <a href="informacion-legal.html"><?php echo t('nav.legal'); ?></a>
-      <a href="contacto.html"><?php echo t('nav.contact'); ?></a>
+      <a href="<?php echo getLangUrl('index.php'); ?>"><?php echo t('nav.home'); ?></a>
+      <a href="<?php echo getLangUrl('comprar.php'); ?>"><?php echo t('nav.buy'); ?></a>
+      <a href="<?php echo getLangUrl('vender.html'); ?>"><?php echo t('nav.sell'); ?></a>
+      <a href="<?php echo getLangUrl('informacion-legal.html'); ?>"><?php echo t('nav.legal'); ?></a>
+      <a href="<?php echo getLangUrl('contacto.html'); ?>"><?php echo t('nav.contact'); ?></a>
       <a href="admin-dashboard.php">Admin</a>
     </div>
 
     <section class="hero">
-        <h1>Propiedades en Venta</h1>
-        <p>Encuentra tu hogar ideal en la Costa del Sol</p>
+        <h1><?php echo t('buy.heroTitle'); ?></h1>
+        <p><?php echo t('buy.heroSubtitle'); ?></p>
     </section>
 
     <main class="container">
         <div class="filters">
-            <h2>Filtros de Búsqueda</h2>
+            <h2><?php echo t('buy.filters'); ?></h2>
             <div class="filter-grid">
                 <div class="filter-group">
-                    <label for="location">Ubicación</label>
+                    <label for="location"><?php echo t('buy.location'); ?></label>
                     <select id="location">
-                        <option value="">Todas las ubicaciones</option>
-                        <option value="marbella">Marbella</option>
-                        <option value="fuengirola">Fuengirola</option>
-                        <option value="benalmadena">Benalmádena</option>
-                        <option value="torremolinos">Torremolinos</option>
+                        <option value=""><?php echo t('buy.allLocations'); ?></option>
+                        <option value="marbella"><?php echo t('location.marbella'); ?></option>
+                        <option value="fuengirola"><?php echo t('location.fuengirola'); ?></option>
+                        <option value="benalmadena"><?php echo t('location.benalmadena'); ?></option>
+                        <option value="torremolinos"><?php echo t('location.torremolinos'); ?></option>
+                        <option value="mijas"><?php echo t('location.mijas'); ?></option>
                     </select>
                 </div>
                 
                 <div class="filter-group">
-                    <label for="type">Tipo de Propiedad</label>
+                    <label for="type"><?php echo t('buy.propertyType'); ?></label>
                     <select id="type">
-                        <option value="">Todos los tipos</option>
-                        <option value="apartment">Apartamento</option>
-                        <option value="house">Casa</option>
-                        <option value="villa">Villa</option>
-                        <option value="chalet">Chalet</option>
+                        <option value=""><?php echo t('buy.allTypes'); ?></option>
+                        <option value="apartment"><?php echo t('property.type.apartment'); ?></option>
+                        <option value="house"><?php echo t('property.type.house'); ?></option>
+                        <option value="villa"><?php echo t('property.type.villa'); ?></option>
+                        <option value="chalet"><?php echo t('property.type.chalet'); ?></option>
                     </select>
                 </div>
                 
                 <div class="filter-group">
-                    <label for="min-price">Precio mínimo</label>
+                    <label for="min-price"><?php echo t('buy.minPrice'); ?></label>
                     <input type="number" id="min-price" placeholder="€">
             </div>
                 
                 <div class="filter-group">
-                    <label for="max-price">Precio máximo</label>
+                    <label for="max-price"><?php echo t('buy.maxPrice'); ?></label>
                     <input type="number" id="max-price" placeholder="€">
                 </div>
                 
                 <div class="filter-group">
-                    <label for="bedrooms">Habitaciones</label>
+                    <label for="bedrooms"><?php echo t('buy.rooms'); ?></label>
                     <select id="bedrooms">
-                        <option value="">Cualquier número</option>
-                        <option value="1">1 dormitorio</option>
-                        <option value="2">2 dormitorios</option>
-                        <option value="3">3 dormitorios</option>
-                        <option value="4">4+ dormitorios</option>
+                        <option value=""><?php echo t('buy.anyNumber'); ?></option>
+                        <option value="1">1 <?php echo t('buy.bedroom'); ?></option>
+                        <option value="2">2 <?php echo t('buy.bedrooms'); ?></option>
+                        <option value="3">3 <?php echo t('buy.bedrooms'); ?></option>
+                        <option value="4">4+ <?php echo t('buy.bedrooms'); ?></option>
                     </select>
                 </div>
                 
                 <div class="filter-group">
-                    <button class="filter-btn" onclick="filterProperties()">Filtrar Propiedades</button>
+                    <button class="filter-btn" onclick="filterProperties()"><?php echo t('buy.filterButton'); ?></button>
                 </div>
             </div>
         </div>
 
         <div class="properties-header">
-            <h2>Propiedades Disponibles</h2>
-            <div class="properties-count"><?php echo count($properties); ?> propiedades encontradas</div>
+            <h2><?php echo t('buy.availableProperties'); ?></h2>
+            <div class="properties-count"><?php echo count($properties); ?> <?php echo t('buy.propertiesFound'); ?></div>
         </div>
 
         <div class="properties-grid" id="properties-grid">
@@ -545,7 +546,7 @@ $currentLang = getCurrentLanguage();
                     
                     <div class="property-content">
                         <span class="property-status status-<?php echo $property['status']; ?>">
-                            <?php echo $property['status'] === 'active' ? 'En Venta' : 'Vendida'; ?>
+                            <?php echo $property['status'] === 'active' ? t('buy.forSale') : t('buy.sold'); ?>
                         </span>
                         
                         <h3 class="property-title"><?php echo htmlspecialchars($property["title"]); ?></h3>
@@ -553,10 +554,10 @@ $currentLang = getCurrentLanguage();
                         
                         <div class="property-details">
                             <?php if (!empty($property["bedrooms"])): ?>
-                                <span><?php echo $property["bedrooms"]; ?> dormitorios</span>
+                                <span><?php echo $property["bedrooms"]; ?> <?php echo $property["bedrooms"] == 1 ? t('buy.bedroom') : t('buy.bedrooms'); ?></span>
                             <?php endif; ?>
                             <?php if (!empty($property["bathrooms"])): ?>
-                                <span><?php echo $property["bathrooms"]; ?> baños</span>
+                                <span><?php echo $property["bathrooms"]; ?> <?php echo $property["bathrooms"] == 1 ? t('property.bathroom') : t('property.bathrooms'); ?></span>
                             <?php endif; ?>
                             <?php if (!empty($property["area"])): ?>
                                 <span><?php echo $property["area"]; ?>m²</span>
@@ -564,7 +565,7 @@ $currentLang = getCurrentLanguage();
                         </div>
                         
                         <p class="property-price"><?php echo number_format($property["price"]); ?>€</p>
-                                                 <a href="propiedad-detalles.php?id=<?php echo urlencode($property['id'] ?? uniqid()); ?>" class="property-btn">Ver Detalles</a>
+                        <a href="propiedad-detalles.php?id=<?php echo urlencode($property['id'] ?? uniqid()); ?><?php echo isset($_GET['lang']) ? '&lang=' . urlencode($_GET['lang']) : ''; ?>" class="property-btn"><?php echo t('buy.viewDetails'); ?></a>
                     </div>
                         </div>
             <?php endforeach; ?>
@@ -636,7 +637,8 @@ $currentLang = getCurrentLanguage();
                 }
             });
             
-            document.querySelector('.properties-count').textContent = `${visibleCount} propiedades encontradas`;
+            const propertiesFoundText = '<?php echo t("buy.propertiesFound"); ?>';
+            document.querySelector('.properties-count').textContent = `${visibleCount} ${propertiesFoundText}`;
         }
     </script>
 </body>

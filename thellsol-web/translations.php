@@ -154,5 +154,15 @@ $languages = [
     'sv' => ['name' => 'Svenska', 'flag' => '🇸🇪', 'code' => 'sv']
 ];
 
+// Función helper para mantener el idioma en los enlaces
+function getLangUrl($url) {
+    $lang = getCurrentLanguage();
+    if ($lang !== DEFAULT_LANGUAGE || isset($_GET['lang'])) {
+        $separator = strpos($url, '?') !== false ? '&' : '?';
+        return $url . $separator . 'lang=' . $lang;
+    }
+    return $url;
+}
+
 ?>
 

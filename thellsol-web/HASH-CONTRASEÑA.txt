@@ -1,0 +1,31 @@
+HASH GENERADO PARA LA CONTRASEÑA: Thellsol2314
+
+═══════════════════════════════════════════════════════════════
+
+COPIA ESTE HASH Y PÉGALO EN phpMyAdmin:
+
+$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
+
+═══════════════════════════════════════════════════════════════
+
+INSTRUCCIONES PASO A PASO:
+
+1. Ve a phpMyAdmin → Base de datos: u337903245_thellsol → Tabla: admin_users
+
+2. Haz clic en "Editar" (icono de lápiz) en la fila del usuario "andre"
+
+3. En el campo "password_hash", BORRA el texto plano "Thellsol2314"
+
+4. PEGA el hash de arriba (el que empieza con $2y$10$...)
+
+5. Haz clic en "Continuar" o "Guardar"
+
+6. ¡Listo! Ahora puedes iniciar sesión con:
+   - Email: andre@thellsol.com
+   - Contraseña: Thellsol2314
+
+═══════════════════════════════════════════════════════════════
+
+NOTA: Este hash fue generado con password_hash() de PHP y es 
+compatible con password_verify() que usa tu código de autenticación.
+

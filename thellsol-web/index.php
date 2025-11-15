@@ -485,26 +485,26 @@ $currentLang = getCurrentLanguage();
         </button>
         <div class="navbar-left">
             <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
-            <a href="index.php" class="navbar-link active"><?php echo t('nav.home'); ?></a>
-            <a href="comprar.php" class="navbar-link"><?php echo t('nav.buy'); ?></a>
-            <a href="vender.html" class="navbar-link"><?php echo t('nav.sell'); ?></a>
+            <a href="<?php echo getLangUrl('index.php'); ?>" class="navbar-link active"><?php echo t('nav.home'); ?></a>
+            <a href="<?php echo getLangUrl('comprar.php'); ?>" class="navbar-link"><?php echo t('nav.buy'); ?></a>
+            <a href="<?php echo getLangUrl('vender.html'); ?>" class="navbar-link"><?php echo t('nav.sell'); ?></a>
         </div>
         <div class="navbar-center">
             <span class="navbar-title">ThellSol Real Estate</span>
         </div>
         <div class="navbar-right">
             <?php include 'language-selector.php'; ?>
-            <a href="informacion-legal.html" class="navbar-link"><?php echo t('nav.legal'); ?></a>
-            <a href="contacto.html" class="navbar-link"><?php echo t('nav.contact'); ?></a>
+            <a href="<?php echo getLangUrl('informacion-legal.html'); ?>" class="navbar-link"><?php echo t('nav.legal'); ?></a>
+            <a href="<?php echo getLangUrl('contacto.html'); ?>" class="navbar-link"><?php echo t('nav.contact'); ?></a>
         </div>
     </nav>
     <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>
     <div class="mobile-menu" id="mobileMenu">
-      <a href="index.php"><?php echo t('nav.home'); ?></a>
-      <a href="comprar.php"><?php echo t('nav.buy'); ?></a>
-      <a href="vender.html"><?php echo t('nav.sell'); ?></a>
-      <a href="informacion-legal.html"><?php echo t('nav.legal'); ?></a>
-      <a href="contacto.html"><?php echo t('nav.contact'); ?></a>
+      <a href="<?php echo getLangUrl('index.php'); ?>"><?php echo t('nav.home'); ?></a>
+      <a href="<?php echo getLangUrl('comprar.php'); ?>"><?php echo t('nav.buy'); ?></a>
+      <a href="<?php echo getLangUrl('vender.html'); ?>"><?php echo t('nav.sell'); ?></a>
+      <a href="<?php echo getLangUrl('informacion-legal.html'); ?>"><?php echo t('nav.legal'); ?></a>
+      <a href="<?php echo getLangUrl('contacto.html'); ?>"><?php echo t('nav.contact'); ?></a>
       <a href="admin-dashboard.php">Admin</a>
     </div>
 
@@ -572,14 +572,20 @@ $currentLang = getCurrentLanguage();
                             <p class="card-desc">
                                 <?php 
                                 $desc = [];
-                                if ($property['bedrooms']) $desc[] = $property['bedrooms'] . ' dormitorios';
-                                if ($property['bathrooms']) $desc[] = $property['bathrooms'] . ' baños';
+                                if ($property['bedrooms']) {
+                                    $bedroomText = $property['bedrooms'] == 1 ? t('buy.bedroom') : t('buy.bedrooms');
+                                    $desc[] = $property['bedrooms'] . ' ' . $bedroomText;
+                                }
+                                if ($property['bathrooms']) {
+                                    $bathroomText = $property['bathrooms'] == 1 ? t('property.bathroom') : t('property.bathrooms');
+                                    $desc[] = $property['bathrooms'] . ' ' . $bathroomText;
+                                }
                                 if ($property['area']) $desc[] = $property['area'] . 'm²';
                                 echo implode(', ', $desc);
                                 ?>
                             </p>
                             <p class="card-precio"><?php echo number_format($property['price']); ?>€</p>
-                            <a href="propiedad-detalles.php?id=<?php echo urlencode($property['id']); ?>" class="card-btn"><?php echo t('home.viewDetails'); ?></a>
+                            <a href="propiedad-detalles.php?id=<?php echo urlencode($property['id']); ?><?php echo isset($_GET['lang']) ? '&lang=' . urlencode($_GET['lang']) : ''; ?>" class="card-btn"><?php echo t('home.viewDetails'); ?></a>
                         </div>
                     </div>
                 <?php endforeach; ?>

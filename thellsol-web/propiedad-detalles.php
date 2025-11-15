@@ -434,24 +434,24 @@ $currentLang = getCurrentLanguage();
     <nav class="navbar">
         <div class="navbar-left">
             <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
-            <a href="index.php" class="navbar-link"><?php echo t('nav.home'); ?></a>
-            <a href="comprar.php" class="navbar-link"><?php echo t('nav.buy'); ?></a>
-            <a href="vender.html" class="navbar-link"><?php echo t('nav.sell'); ?></a>
+            <a href="<?php echo getLangUrl('index.php'); ?>" class="navbar-link"><?php echo t('nav.home'); ?></a>
+            <a href="<?php echo getLangUrl('comprar.php'); ?>" class="navbar-link"><?php echo t('nav.buy'); ?></a>
+            <a href="<?php echo getLangUrl('vender.html'); ?>" class="navbar-link"><?php echo t('nav.sell'); ?></a>
         </div>
         <div class="navbar-center">
             <span class="navbar-title">ThellSol Real Estate</span>
         </div>
         <div class="navbar-right">
             <?php include 'language-selector.php'; ?>
-            <a href="informacion-legal.html" class="navbar-link"><?php echo t('nav.legal'); ?></a>
-            <a href="contacto.html" class="navbar-link"><?php echo t('nav.contact'); ?></a>
+            <a href="<?php echo getLangUrl('informacion-legal.html'); ?>" class="navbar-link"><?php echo t('nav.legal'); ?></a>
+            <a href="<?php echo getLangUrl('contacto.html'); ?>" class="navbar-link"><?php echo t('nav.contact'); ?></a>
         </div>
     </nav>
 
     <div class="breadcrumb">
         <div class="breadcrumb-container">
-            <a href="index.php">Inicio</a> / 
-            <a href="comprar.php">Propiedades</a> / 
+            <a href="<?php echo getLangUrl('index.php'); ?>"><?php echo t('nav.home'); ?></a> / 
+            <a href="<?php echo getLangUrl('comprar.php'); ?>"><?php echo t('breadcrumb.properties'); ?></a> / 
             <?php echo htmlspecialchars($property['title']); ?>
         </div>
     </div>
@@ -461,8 +461,13 @@ $currentLang = getCurrentLanguage();
             <h1 class="property-title"><?php echo htmlspecialchars($property['title']); ?></h1>
             <p class="property-location">📍 <?php echo htmlspecialchars($property['location']); ?></p>
             <div class="property-price"><?php echo number_format($property['price']); ?>€</div>
+            <?php
+                $isAvailable = $property['status'] === 'active';
+                $statusIcon = $isAvailable ? '✅' : '❌';
+                $statusKey = $isAvailable ? 'property.status.available' : 'property.status.sold';
+            ?>
             <span class="property-status status-<?php echo $property['status']; ?>">
-                <?php echo $property['status'] === 'active' ? '✅ Disponible' : '❌ Vendida'; ?>
+                <?php echo $statusIcon . ' ' . t($statusKey); ?>
             </span>
         </div>
 
@@ -487,57 +492,62 @@ $currentLang = getCurrentLanguage();
 
             <div class="property-info">
                 <div class="info-section">
-                    <h3>📋 Características</h3>
+                    <h3>📋 <?php echo t('property.characteristics'); ?></h3>
                     <div class="info-grid">
                         <?php if (!empty($property['bedrooms'])): ?>
                             <div class="info-item">
-                                <span class="info-label">🛏️ Dormitorios</span>
+                                <span class="info-label">🛏️ <?php echo t('buy.bedrooms'); ?></span>
                                 <span class="info-value"><?php echo $property['bedrooms']; ?></span>
                             </div>
                         <?php endif; ?>
                         
                         <?php if (!empty($property['bathrooms'])): ?>
                             <div class="info-item">
-                                <span class="info-label">🚿 Baños</span>
+                                <span class="info-label">🚿 <?php echo t('property.bathrooms'); ?></span>
                                 <span class="info-value"><?php echo $property['bathrooms']; ?></span>
                             </div>
                         <?php endif; ?>
                         
                         <?php if (!empty($property['area'])): ?>
                             <div class="info-item">
-                                <span class="info-label">📐 Superficie</span>
+                                <span class="info-label">📐 <?php echo t('property.area'); ?></span>
                                 <span class="info-value"><?php echo $property['area']; ?>m²</span>
                             </div>
                         <?php endif; ?>
                         
                         <div class="info-item">
-                            <span class="info-label">🏠 Tipo</span>
-                            <span class="info-value"><?php echo ucfirst($property['type']); ?></span>
+                            <span class="info-label">🏠 <?php echo t('property.typeLabel'); ?></span>
+                            <?php
+                                $typeKey = 'property.type.' . strtolower($property['type']);
+                            ?>
+                            <span class="info-value"><?php echo t($typeKey, ucfirst($property['type'])); ?></span>
                         </div>
                     </div>
                     
                     <?php if (!empty($property['features'])): ?>
                         <div class="info-section" style="margin-top: 20px;">
-                            <h3>✨ Características</h3>
+                            <h3>✨ <?php echo t('property.features'); ?></h3>
                             <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
                                 <?php 
                                 $featureLabels = [
-                                    'pool' => '🏊 Piscina',
-                                    'garden' => '🌳 Jardín',
-                                    'garage' => '🚗 Garaje',
-                                    'terrace' => '🏡 Terraza',
-                                    'seaView' => '🌊 Vista al mar',
-                                    'airConditioning' => '❄️ Aire acondicionado',
-                                    'elevator' => '🛗 Ascensor',
-                                    'fireplace' => '🔥 Chimenea',
-                                    'swimmingPool' => '🏊 Piscina',
-                                    'balcony' => '🪟 Balcón'
+                                    'pool' => ['icon' => '🏊', 'key' => 'property.feature.pool'],
+                                    'garden' => ['icon' => '🌳', 'key' => 'property.feature.garden'],
+                                    'garage' => ['icon' => '🚗', 'key' => 'property.feature.garage'],
+                                    'terrace' => ['icon' => '🏡', 'key' => 'property.feature.terrace'],
+                                    'seaView' => ['icon' => '🌊', 'key' => 'property.feature.seaView'],
+                                    'airConditioning' => ['icon' => '❄️', 'key' => 'property.feature.airConditioning'],
+                                    'elevator' => ['icon' => '🛗', 'key' => 'property.feature.elevator'],
+                                    'fireplace' => ['icon' => '🔥', 'key' => 'property.feature.fireplace'],
+                                    'swimmingPool' => ['icon' => '🏊', 'key' => 'property.feature.swimmingPool'],
+                                    'balcony' => ['icon' => '🪟', 'key' => 'property.feature.balcony']
                                 ];
                                 foreach ($property['features'] as $feature): 
-                                    $label = $featureLabels[$feature] ?? '✨ ' . ucfirst($feature);
+                                    $icon = $featureLabels[$feature]['icon'] ?? '✨';
+                                    $key = $featureLabels[$feature]['key'] ?? null;
+                                    $label = $key ? t($key) : ucfirst($feature);
                                 ?>
                                     <span style="background: #f0f0f0; padding: 8px 15px; border-radius: 20px; font-size: 0.9rem; color: #333;">
-                                        <?php echo $label; ?>
+                                        <?php echo $icon . ' ' . $label; ?>
                                     </span>
                                 <?php endforeach; ?>
                             </div>
@@ -546,15 +556,15 @@ $currentLang = getCurrentLanguage();
                 </div>
 
                 <div class="contact-section">
-                    <h3>💬 Contactar</h3>
-                    <p>¿Te interesa esta propiedad?<br>¡Contáctanos ahora!</p>
+                    <h3>💬 <?php echo t('property.contact'); ?></h3>
+                    <p><?php echo nl2br(t('property.contactText')); ?></p>
                     <a href="https://wa.me/34676335313?text=Hola,%20me%20interesa%20la%20propiedad:%20<?php echo urlencode($property['title']); ?>" 
                        class="contact-btn" target="_blank">
-                        📱 WhatsApp
+                        📱 <?php echo t('property.contactWhatsApp'); ?>
                     </a>
                     <a href="mailto:andre@thellsol.com?subject=Consulta%20sobre%20<?php echo urlencode($property['title']); ?>" 
                        class="contact-btn email">
-                        ✉️ Email
+                        ✉️ <?php echo t('property.contactEmail'); ?>
                     </a>
                 </div>
             </div>
@@ -562,7 +572,7 @@ $currentLang = getCurrentLanguage();
 
         <?php if (!empty($property['description'])): ?>
             <div class="property-description">
-                <h3>📝 Descripción</h3>
+                <h3>📝 <?php echo t('property.description'); ?></h3>
                 <p><?php echo nl2br(htmlspecialchars($property['description'])); ?></p>
             </div>
         <?php endif; ?>
