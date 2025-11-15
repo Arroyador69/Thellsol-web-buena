@@ -34,6 +34,7 @@ $currentLang = getCurrentLanguage();
         @keyframes slideIn { from { right: -100vw; } to { right: 0; } }
         .mobile-menu a { color: #181e29; text-decoration: none; font-size: 1.2rem; font-weight: 600; margin: 18px 0; display: block; border-radius: 6px; padding: 8px 12px; transition: background 0.2s; }
         .mobile-menu a:hover { background: #d1d1d1; }
+        .mobile-language-selector { margin-bottom: 15px; display: flex; justify-content: flex-end; }
         .vender-container { max-width: 800px; margin: 40px auto 0; background: #fff; border-radius: 12px; box-shadow: 0 2px 8px #0001; padding: 36px 32px 32px; }
         .vender-titulo { font-size: 1.5rem; font-weight: bold; text-align: center; margin-bottom: 6px; }
         .vender-sub { text-align: center; color: #888; font-size: 1.05rem; margin-bottom: 28px; }
@@ -89,6 +90,9 @@ $currentLang = getCurrentLanguage();
     </nav>
     <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>
     <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-language-selector">
+        <?php $languageSelectorClass = 'language-selector-mobile'; include 'language-selector.php'; ?>
+      </div>
       <a href="<?php echo getLangUrl('index.php'); ?>"><?php echo t('nav.home'); ?></a>
       <a href="<?php echo getLangUrl('comprar.php'); ?>"><?php echo t('nav.buy'); ?></a>
       <a href="<?php echo getLangUrl('vender.php'); ?>"><?php echo t('nav.sell'); ?></a>

@@ -386,6 +386,11 @@ $currentLang = getCurrentLanguage();
             border-bottom: 1px solid #232a3a;
             font-size: 16px;
         }
+        .mobile-language-selector {
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: flex-end;
+        }
         .mobile-menu-bg {
             position: fixed;
             top: 0;
@@ -452,12 +457,14 @@ $currentLang = getCurrentLanguage();
     </nav>
     <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>
     <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-language-selector">
+        <?php $languageSelectorClass = 'language-selector-mobile'; include 'language-selector.php'; ?>
+      </div>
       <a href="<?php echo getLangUrl('index.php'); ?>"><?php echo t('nav.home'); ?></a>
       <a href="<?php echo getLangUrl('comprar.php'); ?>"><?php echo t('nav.buy'); ?></a>
       <a href="<?php echo getLangUrl('vender.php'); ?>"><?php echo t('nav.sell'); ?></a>
       <a href="<?php echo getLangUrl('informacion-legal.php'); ?>"><?php echo t('nav.legal'); ?></a>
       <a href="<?php echo getLangUrl('contacto.php'); ?>"><?php echo t('nav.contact'); ?></a>
-      <a href="admin-dashboard.php">Admin</a>
     </div>
 
     <section class="hero">
