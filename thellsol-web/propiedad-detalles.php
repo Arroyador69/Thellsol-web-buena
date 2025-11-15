@@ -1,6 +1,7 @@
 <?php
 // Página de detalles de una propiedad específica - Sistema MySQL
 require_once 'db-config.php';
+require_once 'translations.php';
 
 $conn = getDBConnection();
 $property = null;
@@ -59,9 +60,11 @@ if ($result->num_rows === 1) {
     exit();
 }
 $stmt->close();
+
+$currentLang = getCurrentLanguage();
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="<?php echo $currentLang; ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -431,16 +434,17 @@ $stmt->close();
     <nav class="navbar">
         <div class="navbar-left">
             <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
-            <a href="index.php" class="navbar-link">Inicio</a>
-            <a href="comprar.php" class="navbar-link">Comprar</a>
-            <a href="vender.html" class="navbar-link">Vender</a>
+            <a href="index.php" class="navbar-link"><?php echo t('nav.home'); ?></a>
+            <a href="comprar.php" class="navbar-link"><?php echo t('nav.buy'); ?></a>
+            <a href="vender.html" class="navbar-link"><?php echo t('nav.sell'); ?></a>
         </div>
         <div class="navbar-center">
             <span class="navbar-title">ThellSol Real Estate</span>
         </div>
         <div class="navbar-right">
-            <a href="informacion-legal.html" class="navbar-link">Información Legal</a>
-            <a href="contacto.html" class="navbar-link">Contacto</a>
+            <?php include 'language-selector.php'; ?>
+            <a href="informacion-legal.html" class="navbar-link"><?php echo t('nav.legal'); ?></a>
+            <a href="contacto.html" class="navbar-link"><?php echo t('nav.contact'); ?></a>
         </div>
     </nav>
 
