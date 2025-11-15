@@ -27,6 +27,7 @@ $currentLang = getCurrentLanguage();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comprar Propiedades - TellSol Real Estate</title>
+    <link rel="icon" href="logo-thellsol copia.png" type="image/png">
     <style>
         * {
             margin: 0;
