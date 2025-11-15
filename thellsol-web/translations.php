@@ -47,8 +47,25 @@ function getCurrentLanguage() {
     return DEFAULT_LANGUAGE;
 }
 
+// Traducciones por defecto en español (fallback si no hay BD)
+$defaultTranslations = [
+    'nav.home' => 'Inicio',
+    'nav.buy' => 'Comprar',
+    'nav.sell' => 'Vender',
+    'nav.legal' => 'Información Legal',
+    'nav.contact' => 'Contacto',
+    'home.welcome' => 'Bienvenido a TellSol Real Estate',
+    'home.intro' => 'Somos una empresa inmobiliaria especializada en la Costa del Sol, comprometida con ofrecer el mejor servicio y las mejores propiedades a nuestros clientes.',
+    'home.presentation' => 'Con más de una década de experiencia en la Costa del Sol, me enorgullece poder ayudarte a encontrar tu hogar ideal en esta maravillosa región.',
+    'home.presentation2' => 'En TellSol, no solo vendemos propiedades; creamos relaciones duraderas basadas en la confianza, la transparencia y el compromiso con la excelencia.',
+    'home.featured' => 'Propiedades Destacadas',
+    'home.viewDetails' => 'Ver Detalles',
+    'home.noProperties' => 'Próximamente nuevas propiedades'
+];
+
 // Obtener traducción
 function t($key, $default = null) {
+    global $defaultTranslations;
     static $translations = [];
     $lang = getCurrentLanguage();
     
@@ -58,7 +75,7 @@ function t($key, $default = null) {
     }
     
     // Retornar traducción o default
-    if (isset($translations[$lang][$key])) {
+    if (isset($translations[$lang][$key]) && !empty($translations[$lang][$key])) {
         return $translations[$lang][$key];
     }
     
@@ -67,9 +84,14 @@ function t($key, $default = null) {
         if (!isset($translations['es'])) {
             $translations['es'] = loadTranslations('es');
         }
-        if (isset($translations['es'][$key])) {
+        if (isset($translations['es'][$key]) && !empty($translations['es'][$key])) {
             return $translations['es'][$key];
         }
+    }
+    
+    // Si no hay en BD, usar traducciones por defecto en español
+    if (isset($defaultTranslations[$key])) {
+        return $defaultTranslations[$key];
     }
     
     // Retornar default o la key
@@ -85,19 +107,34 @@ function loadTranslations($lang) {
         return $cache[$lang];
     }
     
-    $conn = getDBConnection();
     $translations = [];
     
-    $stmt = $conn->prepare("SELECT translation_key, translation_value FROM translations WHERE lang_code = ?");
-    $stmt->bind_param("s", $lang);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    while ($row = $result->fetch_assoc()) {
-        $translations[$row['translation_key']] = $row['translation_value'];
+    try {
+        $conn = getDBConnection();
+        
+        // Verificar que la tabla existe primero
+        $tableCheck = $conn->query("SHOW TABLES LIKE 'translations'");
+        if ($tableCheck->num_rows === 0) {
+            // Tabla no existe, retornar array vacío
+            $cache[$lang] = [];
+            return [];
+        }
+        
+        $stmt = $conn->prepare("SELECT translation_key, translation_value FROM translations WHERE lang_code = ?");
+        if ($stmt) {
+            $stmt->bind_param("s", $lang);
+            if ($stmt->execute()) {
+                $result = $stmt->get_result();
+                while ($row = $result->fetch_assoc()) {
+                    $translations[$row['translation_key']] = $row['translation_value'];
+                }
+            }
+            $stmt->close();
+        }
+    } catch (Exception $e) {
+        // Si hay error, retornar array vacío (no fallar)
+        $translations = [];
     }
-    
-    $stmt->close();
     
     // Guardar en cache
     $cache[$lang] = $translations;
