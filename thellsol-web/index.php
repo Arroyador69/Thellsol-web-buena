@@ -333,6 +333,7 @@ $currentLang = getCurrentLanguage();
             gap: 24px;
             justify-content: center;
             flex-wrap: wrap;
+            padding: 0 10px;
         }
         .card {
             background: #fff;
@@ -355,8 +356,9 @@ $currentLang = getCurrentLanguage();
             border-radius: 8px 8px 0 0;
         }
         .card-body {
-            padding: 12px 18px 0 18px;
+            padding: 12px 22px 0 22px;
             width: 100%;
+            text-align: center;
         }
         .card-title {
             font-weight: bold;
@@ -367,6 +369,7 @@ $currentLang = getCurrentLanguage();
             font-size: 0.92rem;
             color: #666;
             margin-bottom: 2px;
+            text-align: center;
         }
         .card-precio {
             color: #0070f3;

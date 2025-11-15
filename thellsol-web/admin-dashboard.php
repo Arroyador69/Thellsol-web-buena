@@ -122,8 +122,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } elseif (!isset($availableLocations[$location])) {
             $message = '<div class="alert alert-error">❌ Selecciona una ubicación válida.</div>';
         } else {
-            $stmt = $conn->prepare("UPDATE properties SET title = ?, price = ?, location = ?, type = ?, bedrooms = ?, bathrooms = ?, area = ?, description = ?, updated_at = NOW() WHERE id = ?");
-            $stmt->bind_param("sdssiiisi", $title, $price, $location, $type, $bedrooms, $bathrooms, $area, $description, $propertyId);
+            $newImageUrl = null;
+            if (isset($_FILES['editImages']) && !empty($_FILES['editImages']['name'][0])) {
+                $uploadDir = 'images/properties/';
+                if (!file_exists($uploadDir)) {
+                    mkdir($uploadDir, 0755, true);
+                }
+
+                $files = $_FILES['editImages'];
+                for ($i = 0; $i < count($files['name']); $i++) {
+                    if ($files['error'][$i] === UPLOAD_ERR_OK) {
+                        $fileName = $files['name'][$i];
+                        $tmpName = $files['tmp_name'][$i];
+                        $extension = pathinfo($fileName, PATHINFO_EXTENSION);
+                        $uniqueName = uniqid('prop_') . '.' . $extension;
+                        $uploadPath = $uploadDir . $uniqueName;
+
+                        if (move_uploaded_file($tmpName, $uploadPath)) {
+                            $newImageUrl = $uploadPath;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if ($newImageUrl !== null) {
+                $stmt = $conn->prepare("UPDATE properties SET title = ?, price = ?, location = ?, type = ?, bedrooms = ?, bathrooms = ?, area = ?, description = ?, image_url = ?, updated_at = NOW() WHERE id = ?");
+                $stmt->bind_param("sdssiiissi", $title, $price, $location, $type, $bedrooms, $bathrooms, $area, $description, $newImageUrl, $propertyId);
+            } else {
+                $stmt = $conn->prepare("UPDATE properties SET title = ?, price = ?, location = ?, type = ?, bedrooms = ?, bathrooms = ?, area = ?, description = ?, updated_at = NOW() WHERE id = ?");
+                $stmt->bind_param("sdssiiisi", $title, $price, $location, $type, $bedrooms, $bathrooms, $area, $description, $propertyId);
+            }
             
             if ($stmt->execute()) {
                 // Reemplazar características
@@ -442,6 +471,27 @@ $availableFeatures = ['pool', 'garden', 'garage', 'terrace', 'seaView', 'airCond
         .edit-form.active {
             display: block;
         }
+
+        .current-image {
+            margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .current-image img {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .form-helper {
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: 4px;
+        }
         
         .empty-state {
             text-align: center;
@@ -702,7 +752,7 @@ $availableFeatures = ['pool', 'garden', 'garage', 'terrace', 'seaView', 'airCond
                             </div>
                         </div>
                         <div class="edit-form" id="edit-form-<?php echo $property['id']; ?>">
-                            <form method="POST">
+                            <form method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="action" value="update_property">
                                 <input type="hidden" name="property_id" value="<?php echo $property['id']; ?>">
                                 
@@ -759,6 +809,20 @@ $availableFeatures = ['pool', 'garden', 'garage', 'terrace', 'seaView', 'airCond
                                 <div class="form-group">
                                     <label>Descripción:</label>
                                     <textarea name="description" rows="3"><?php echo htmlspecialchars($property['description']); ?></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Imagen principal:</label>
+                                    <div class="current-image">
+                                        <?php if (!empty($property['image_url'])): ?>
+                                            <img src="<?php echo htmlspecialchars($property['image_url']); ?>" alt="Imagen actual">
+                                            <span>Actualmente usada en la web</span>
+                                        <?php else: ?>
+                                            <span>No hay imagen asignada.</span>
+                                        <?php endif; ?>
+                                    </div>
+                                    <input type="file" name="editImages[]" accept="image/*" multiple>
+                                    <div class="form-helper">Selecciona nuevas imágenes para reemplazar la portada (la primera se usará en la web).</div>
                                 </div>
 
                                 <div class="form-group">
