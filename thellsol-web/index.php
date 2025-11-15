@@ -487,24 +487,24 @@ $currentLang = getCurrentLanguage();
             <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
             <a href="<?php echo getLangUrl('index.php'); ?>" class="navbar-link active"><?php echo t('nav.home'); ?></a>
             <a href="<?php echo getLangUrl('comprar.php'); ?>" class="navbar-link"><?php echo t('nav.buy'); ?></a>
-            <a href="<?php echo getLangUrl('vender.html'); ?>" class="navbar-link"><?php echo t('nav.sell'); ?></a>
+            <a href="<?php echo getLangUrl('vender.php'); ?>" class="navbar-link"><?php echo t('nav.sell'); ?></a>
         </div>
         <div class="navbar-center">
             <span class="navbar-title">ThellSol Real Estate</span>
         </div>
         <div class="navbar-right">
             <?php include 'language-selector.php'; ?>
-            <a href="<?php echo getLangUrl('informacion-legal.html'); ?>" class="navbar-link"><?php echo t('nav.legal'); ?></a>
-            <a href="<?php echo getLangUrl('contacto.html'); ?>" class="navbar-link"><?php echo t('nav.contact'); ?></a>
+            <a href="<?php echo getLangUrl('informacion-legal.php'); ?>" class="navbar-link"><?php echo t('nav.legal'); ?></a>
+            <a href="<?php echo getLangUrl('contacto.php'); ?>" class="navbar-link"><?php echo t('nav.contact'); ?></a>
         </div>
     </nav>
     <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>
     <div class="mobile-menu" id="mobileMenu">
       <a href="<?php echo getLangUrl('index.php'); ?>"><?php echo t('nav.home'); ?></a>
       <a href="<?php echo getLangUrl('comprar.php'); ?>"><?php echo t('nav.buy'); ?></a>
-      <a href="<?php echo getLangUrl('vender.html'); ?>"><?php echo t('nav.sell'); ?></a>
-      <a href="<?php echo getLangUrl('informacion-legal.html'); ?>"><?php echo t('nav.legal'); ?></a>
-      <a href="<?php echo getLangUrl('contacto.html'); ?>"><?php echo t('nav.contact'); ?></a>
+      <a href="<?php echo getLangUrl('vender.php'); ?>"><?php echo t('nav.sell'); ?></a>
+      <a href="<?php echo getLangUrl('informacion-legal.php'); ?>"><?php echo t('nav.legal'); ?></a>
+      <a href="<?php echo getLangUrl('contacto.php'); ?>"><?php echo t('nav.contact'); ?></a>
       <a href="admin-dashboard.php">Admin</a>
     </div>
 
@@ -594,7 +594,7 @@ $currentLang = getCurrentLanguage();
                 <div class="card" style="text-align: center; padding: 40px; grid-column: 1 / -1;">
                     <h3>🏠 <?php echo t('home.noProperties'); ?></h3>
                     <p>Estamos trabajando para ofrecerte las mejores opciones inmobiliarias en la Costa del Sol.</p>
-                    <a href="contacto.html" class="card-btn"><?php echo t('nav.contact'); ?></a>
+                    <a href="<?php echo getLangUrl('contacto.php'); ?>" class="card-btn"><?php echo t('nav.contact'); ?></a>
                 </div>
             <?php endif; ?>
         </div>
@@ -603,7 +603,7 @@ $currentLang = getCurrentLanguage();
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>Contacto</h4>
+                <h4><?php echo t('footer.contactTitle'); ?></h4>
                 <p><b>Andre Richard Tell</b><br>
                 Thellsol Real Estate</p>
                 <p>Fuengirola 29640<br>
@@ -612,10 +612,10 @@ $currentLang = getCurrentLanguage();
                 +34 676 335 313</p>
             </div>
             <div class="footer-section">
-                <h4>Enlaces Legales</h4>
-                <a href="politica-privacidad.html">Política de Privacidad</a>
-                <a href="politica-cookies.html">Política de Cookies</a>
-                <a href="aviso-legal.html">Aviso Legal</a>
+                <h4><?php echo t('footer.legalLinks'); ?></h4>
+                <a href="politica-privacidad.html"><?php echo t('footer.privacyPolicy'); ?></a>
+                <a href="politica-cookies.html"><?php echo t('footer.cookiesPolicy'); ?></a>
+                <a href="aviso-legal.html"><?php echo t('footer.legalNotice'); ?></a>
             </div>
         </div>
     </footer>
