@@ -5,8 +5,8 @@
 require_once 'db-config.php';
 
 // Idiomas disponibles
-define('AVAILABLE_LANGUAGES', ['es', 'en', 'fr', 'ru', 'sv']);
-define('DEFAULT_LANGUAGE', 'es');
+define('AVAILABLE_LANGUAGES', ['en', 'es', 'fr', 'ru', 'sv']);
+define('DEFAULT_LANGUAGE', 'en');
 
 // Iniciar sesión si no está iniciada
 if (session_status() === PHP_SESSION_NONE) {
@@ -47,20 +47,20 @@ function getCurrentLanguage() {
     return DEFAULT_LANGUAGE;
 }
 
-// Traducciones por defecto en español (fallback si no hay BD)
+// Traducciones por defecto en inglés (fallback si no hay BD)
 $defaultTranslations = [
-    'nav.home' => 'Inicio',
-    'nav.buy' => 'Comprar',
-    'nav.sell' => 'Vender',
-    'nav.legal' => 'Información Legal',
-    'nav.contact' => 'Contacto',
-    'home.welcome' => 'Bienvenido a TellSol Real Estate',
-    'home.intro' => 'Somos una empresa inmobiliaria especializada en la Costa del Sol, comprometida con ofrecer el mejor servicio y las mejores propiedades a nuestros clientes.',
-    'home.presentation' => 'Con más de una década de experiencia en la Costa del Sol, me enorgullece poder ayudarte a encontrar tu hogar ideal en esta maravillosa región.',
-    'home.presentation2' => 'En TellSol, no solo vendemos propiedades; creamos relaciones duraderas basadas en la confianza, la transparencia y el compromiso con la excelencia.',
-    'home.featured' => 'Propiedades Destacadas',
-    'home.viewDetails' => 'Ver Detalles',
-    'home.noProperties' => 'Próximamente nuevas propiedades'
+    'nav.home' => 'Home',
+    'nav.buy' => 'Buy',
+    'nav.sell' => 'Sell',
+    'nav.legal' => 'Legal Information',
+    'nav.contact' => 'Contact',
+    'home.welcome' => 'Welcome to TellSol Real Estate',
+    'home.intro' => 'We are a real estate company specialized in the Costa del Sol, committed to offering the best service and the best properties to our clients.',
+    'home.presentation' => 'With over a decade of experience in the Costa del Sol, I am proud to help you find your ideal home in this wonderful region.',
+    'home.presentation2' => 'At TellSol, we don\'t just sell properties; we create lasting relationships based on trust, transparency and commitment to excellence.',
+    'home.featured' => 'Featured Properties',
+    'home.viewDetails' => 'View Details',
+    'home.noProperties' => 'New properties coming soon'
 ];
 
 // Obtener traducción
@@ -79,17 +79,17 @@ function t($key, $default = null) {
         return $translations[$lang][$key];
     }
     
-    // Si no existe, intentar con español como fallback
-    if ($lang !== 'es') {
-        if (!isset($translations['es'])) {
-            $translations['es'] = loadTranslations('es');
+    // Si no existe, intentar con inglés como fallback
+    if ($lang !== 'en') {
+        if (!isset($translations['en'])) {
+            $translations['en'] = loadTranslations('en');
         }
-        if (isset($translations['es'][$key]) && !empty($translations['es'][$key])) {
-            return $translations['es'][$key];
+        if (isset($translations['en'][$key]) && !empty($translations['en'][$key])) {
+            return $translations['en'][$key];
         }
     }
     
-    // Si no hay en BD, usar traducciones por defecto en español
+    // Si no hay en BD, usar traducciones por defecto en inglés
     if (isset($defaultTranslations[$key])) {
         return $defaultTranslations[$key];
     }
@@ -145,10 +145,10 @@ function loadTranslations($lang) {
 // Obtener idioma actual
 $currentLang = getCurrentLanguage();
 
-// Información de idiomas
+// Información de idiomas (inglés primero como default)
 $languages = [
-    'es' => ['name' => 'Español', 'flag' => '🇪🇸', 'code' => 'es'],
     'en' => ['name' => 'English', 'flag' => '🇬🇧', 'code' => 'en'],
+    'es' => ['name' => 'Español', 'flag' => '🇪🇸', 'code' => 'es'],
     'fr' => ['name' => 'Français', 'flag' => '🇫🇷', 'code' => 'fr'],
     'ru' => ['name' => 'Русский', 'flag' => '🇷🇺', 'code' => 'ru'],
     'sv' => ['name' => 'Svenska', 'flag' => '🇸🇪', 'code' => 'sv']

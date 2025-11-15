@@ -1,0 +1,281 @@
+-- ============================================
+-- INSERTAR TODAS LAS TRADUCCIONES
+-- Tabla: translations
+-- Columnas: id, lang_code, translation_key, translation_value, created_at, updated_at
+-- Idiomas: en (English - DEFAULT), es (Español), fr (Français), ru (Русский), sv (Svenska)
+-- ============================================
+
+-- NAVEGACIÓN
+INSERT INTO translations (lang_code, translation_key, translation_value) VALUES
+('en', 'nav.home', 'Home'),
+('es', 'nav.home', 'Inicio'),
+('fr', 'nav.home', 'Accueil'),
+('ru', 'nav.home', 'Главная'),
+('sv', 'nav.home', 'Hem'),
+
+('en', 'nav.buy', 'Buy'),
+('es', 'nav.buy', 'Comprar'),
+('fr', 'nav.buy', 'Acheter'),
+('ru', 'nav.buy', 'Купить'),
+('sv', 'nav.buy', 'Köp'),
+
+('en', 'nav.sell', 'Sell'),
+('es', 'nav.sell', 'Vender'),
+('fr', 'nav.sell', 'Vendre'),
+('ru', 'nav.sell', 'Продать'),
+('sv', 'nav.sell', 'Sälj'),
+
+('en', 'nav.legal', 'Legal Information'),
+('es', 'nav.legal', 'Información Legal'),
+('fr', 'nav.legal', 'Informations Légales'),
+('ru', 'nav.legal', 'Юридическая Информация'),
+('sv', 'nav.legal', 'Juridisk Information'),
+
+('en', 'nav.contact', 'Contact'),
+('es', 'nav.contact', 'Contacto'),
+('fr', 'nav.contact', 'Contact'),
+('ru', 'nav.contact', 'Контакты'),
+('sv', 'nav.contact', 'Kontakt');
+
+-- PÁGINA INICIO
+INSERT INTO translations (lang_code, translation_key, translation_value) VALUES
+('en', 'home.welcome', 'Welcome to TellSol Real Estate'),
+('es', 'home.welcome', 'Bienvenido a TellSol Real Estate'),
+('fr', 'home.welcome', 'Bienvenue chez TellSol Real Estate'),
+('ru', 'home.welcome', 'Добро пожаловать в TellSol Real Estate'),
+('sv', 'home.welcome', 'Välkommen till TellSol Real Estate'),
+
+('en', 'home.intro', 'We are a real estate company specialized in the Costa del Sol, committed to offering the best service and the best properties to our clients.'),
+('es', 'home.intro', 'Somos una empresa inmobiliaria especializada en la Costa del Sol, comprometida con ofrecer el mejor servicio y las mejores propiedades a nuestros clientes.'),
+('fr', 'home.intro', 'Nous sommes une entreprise immobilière spécialisée dans la Costa del Sol, engagée à offrir le meilleur service et les meilleures propriétés à nos clients.'),
+('ru', 'home.intro', 'Мы - агентство недвижимости, специализирующееся на Коста-дель-Соль, стремящееся предложить лучший сервис и лучшую недвижимость нашим клиентам.'),
+('sv', 'home.intro', 'Vi är ett fastighetsföretag specialiserat på Costa del Sol, engagerade i att erbjuda den bästa servicen och de bästa fastigheterna till våra kunder.'),
+
+('en', 'home.presentation', 'With over a decade of experience in the Costa del Sol, I am proud to help you find your ideal home in this wonderful region.'),
+('es', 'home.presentation', 'Con más de una década de experiencia en la Costa del Sol, me enorgullece poder ayudarte a encontrar tu hogar ideal en esta maravillosa región.'),
+('fr', 'home.presentation', 'Avec plus d\'une décennie d\'expérience dans la Costa del Sol, je suis fier de pouvoir vous aider à trouver votre maison idéale dans cette merveilleuse région.'),
+('ru', 'home.presentation', 'Имея более десяти лет опыта на Коста-дель-Соль, я горжусь возможностью помочь вам найти идеальный дом в этом прекрасном регионе.'),
+('sv', 'home.presentation', 'Med över ett decennium av erfarenhet på Costa del Sol är jag stolt över att kunna hjälpa dig att hitta ditt ideala hem i denna underbara region.'),
+
+('en', 'home.presentation2', 'At TellSol, we don\'t just sell properties; we create lasting relationships based on trust, transparency and commitment to excellence.'),
+('es', 'home.presentation2', 'En TellSol, no solo vendemos propiedades; creamos relaciones duraderas basadas en la confianza, la transparencia y el compromiso con la excelencia.'),
+('fr', 'home.presentation2', 'Chez TellSol, nous ne vendons pas seulement des propriétés; nous créons des relations durables basées sur la confiance, la transparence et l\'engagement envers l\'excellence.'),
+('ru', 'home.presentation2', 'В TellSol мы не просто продаем недвижимость; мы создаем долгосрочные отношения, основанные на доверии, прозрачности и приверженности совершенству.'),
+('sv', 'home.presentation2', 'På TellSol säljer vi inte bara fastigheter; vi skapar varaktiga relationer baserade på förtroende, transparens och engagemang för excellens.'),
+
+('en', 'home.featured', 'Featured Properties'),
+('es', 'home.featured', 'Propiedades Destacadas'),
+('fr', 'home.featured', 'Propriétés en Vedette'),
+('ru', 'home.featured', 'Рекомендуемые Объекты'),
+('sv', 'home.featured', 'Utvalda Fastigheter'),
+
+('en', 'home.viewDetails', 'View Details'),
+('es', 'home.viewDetails', 'Ver Detalles'),
+('fr', 'home.viewDetails', 'Voir les Détails'),
+('ru', 'home.viewDetails', 'Подробнее'),
+('sv', 'home.viewDetails', 'Visa Detaljer'),
+
+('en', 'home.noProperties', 'New properties coming soon'),
+('es', 'home.noProperties', 'Próximamente nuevas propiedades'),
+('fr', 'home.noProperties', 'Nouvelles propriétés à venir'),
+('ru', 'home.noProperties', 'Скоро новые объекты'),
+('sv', 'home.noProperties', 'Nya fastigheter kommer snart');
+
+-- PÁGINA COMPRAR
+INSERT INTO translations (lang_code, translation_key, translation_value) VALUES
+('en', 'buy.title', 'Buy Properties'),
+('es', 'buy.title', 'Comprar Propiedades'),
+('fr', 'buy.title', 'Acheter des Propriétés'),
+('ru', 'buy.title', 'Купить Недвижимость'),
+('sv', 'buy.title', 'Köp Fastigheter'),
+
+('en', 'buy.filter', 'Filter Properties'),
+('es', 'buy.filter', 'Filtrar Propiedades'),
+('fr', 'buy.filter', 'Filtrer les Propriétés'),
+('ru', 'buy.filter', 'Фильтр Объектов'),
+('sv', 'buy.filter', 'Filtrera Fastigheter'),
+
+('en', 'buy.location', 'Location'),
+('es', 'buy.location', 'Ubicación'),
+('fr', 'buy.location', 'Emplacement'),
+('ru', 'buy.location', 'Местоположение'),
+('sv', 'buy.location', 'Plats'),
+
+('en', 'buy.type', 'Type'),
+('es', 'buy.type', 'Tipo'),
+('fr', 'buy.type', 'Type'),
+('ru', 'buy.type', 'Тип'),
+('sv', 'buy.type', 'Typ'),
+
+('en', 'buy.price', 'Price'),
+('es', 'buy.price', 'Precio'),
+('fr', 'buy.price', 'Prix'),
+('ru', 'buy.price', 'Цена'),
+('sv', 'buy.price', 'Pris'),
+
+('en', 'buy.bedrooms', 'Bedrooms'),
+('es', 'buy.bedrooms', 'Dormitorios'),
+('fr', 'buy.bedrooms', 'Chambres'),
+('ru', 'buy.bedrooms', 'Спальни'),
+('sv', 'buy.bedrooms', 'Sovrum'),
+
+('en', 'buy.bathrooms', 'Bathrooms'),
+('es', 'buy.bathrooms', 'Baños'),
+('fr', 'buy.bathrooms', 'Salles de Bain'),
+('ru', 'buy.bathrooms', 'Ванные'),
+('sv', 'buy.bathrooms', 'Badrum'),
+
+('en', 'buy.area', 'Area'),
+('es', 'buy.area', 'Superficie'),
+('fr', 'buy.area', 'Superficie'),
+('ru', 'buy.area', 'Площадь'),
+('sv', 'buy.area', 'Yta');
+
+-- PÁGINA VENDER
+INSERT INTO translations (lang_code, translation_key, translation_value) VALUES
+('en', 'sell.title', 'Sell your Property with ThellSol'),
+('es', 'sell.title', 'Vender tu Propiedad con ThellSol'),
+('fr', 'sell.title', 'Vendez votre Propriété avec ThellSol'),
+('ru', 'sell.title', 'Продайте свою Недвижимость с ThellSol'),
+('sv', 'sell.title', 'Sälj din Fastighet med ThellSol'),
+
+('en', 'sell.subtitle', 'Secure, fast and uncomplicated process'),
+('es', 'sell.subtitle', 'Proceso seguro, rápido y sin complicaciones'),
+('fr', 'sell.subtitle', 'Processus sûr, rapide et sans complications'),
+('ru', 'sell.subtitle', 'Безопасный, быстрый и простой процесс'),
+('sv', 'sell.subtitle', 'Säker, snabb och okomplicerad process'),
+
+('en', 'sell.description', 'At ThellSol Real Estate, we understand that selling a property can be a complex process. That\'s why we offer a complete and professional service that will accompany you every step of the way.'),
+('es', 'sell.description', 'En ThellSol Real Estate, entendemos que vender una propiedad puede ser un proceso complejo. Por eso, ofrecemos un servicio completo y profesional que te acompañará en cada paso del camino.'),
+('fr', 'sell.description', 'Chez ThellSol Real Estate, nous comprenons que vendre une propriété peut être un processus complexe. C\'est pourquoi nous offrons un service complet et professionnel qui vous accompagnera à chaque étape.'),
+('ru', 'sell.description', 'В ThellSol Real Estate мы понимаем, что продажа недвижимости может быть сложным процессом. Поэтому мы предлагаем полный и профессиональный сервис, который будет сопровождать вас на каждом этапе.'),
+('sv', 'sell.description', 'På ThellSol Real Estate förstår vi att sälja en fastighet kan vara en komplex process. Därför erbjuder vi en komplett och professionell service som kommer att följa dig varje steg på vägen.');
+
+-- PÁGINA CONTACTO
+INSERT INTO translations (lang_code, translation_key, translation_value) VALUES
+('en', 'contact.title', 'Contact'),
+('es', 'contact.title', 'Contacto'),
+('fr', 'contact.title', 'Contact'),
+('ru', 'contact.title', 'Контакты'),
+('sv', 'contact.title', 'Kontakt'),
+
+('en', 'contact.name', 'Name'),
+('es', 'contact.name', 'Nombre'),
+('fr', 'contact.name', 'Nom'),
+('ru', 'contact.name', 'Имя'),
+('sv', 'contact.name', 'Namn'),
+
+('en', 'contact.email', 'Email'),
+('es', 'contact.email', 'Email'),
+('fr', 'contact.email', 'Email'),
+('ru', 'contact.email', 'Email'),
+('sv', 'contact.email', 'E-post'),
+
+('en', 'contact.message', 'Message'),
+('es', 'contact.message', 'Mensaje'),
+('fr', 'contact.message', 'Message'),
+('ru', 'contact.message', 'Сообщение'),
+('sv', 'contact.message', 'Meddelande'),
+
+('en', 'contact.send', 'Send'),
+('es', 'contact.send', 'Enviar'),
+('fr', 'contact.send', 'Envoyer'),
+('ru', 'contact.send', 'Отправить'),
+('sv', 'contact.send', 'Skicka');
+
+-- PÁGINA INFORMACIÓN LEGAL
+INSERT INTO translations (lang_code, translation_key, translation_value) VALUES
+('en', 'legal.title', 'Legal Information'),
+('es', 'legal.title', 'Información Legal'),
+('fr', 'legal.title', 'Informations Légales'),
+('ru', 'legal.title', 'Юридическая Информация'),
+('sv', 'legal.title', 'Juridisk Information'),
+
+('en', 'legal.privacy', 'Privacy Policy'),
+('es', 'legal.privacy', 'Política de Privacidad'),
+('fr', 'legal.privacy', 'Politique de Confidentialité'),
+('ru', 'legal.privacy', 'Политика Конфиденциальности'),
+('sv', 'legal.privacy', 'Integritetspolicy'),
+
+('en', 'legal.cookies', 'Cookie Policy'),
+('es', 'legal.cookies', 'Política de Cookies'),
+('fr', 'legal.cookies', 'Politique des Cookies'),
+('ru', 'legal.cookies', 'Политика Cookie'),
+('sv', 'legal.cookies', 'Cookiepolicy'),
+
+('en', 'legal.terms', 'Legal Notice'),
+('es', 'legal.terms', 'Aviso Legal'),
+('fr', 'legal.terms', 'Avis Légal'),
+('ru', 'legal.terms', 'Юридическое Уведомление'),
+('sv', 'legal.terms', 'Juridiskt Meddelande');
+
+-- FOOTER
+INSERT INTO translations (lang_code, translation_key, translation_value) VALUES
+('en', 'footer.contact', 'Contact'),
+('es', 'footer.contact', 'Contacto'),
+('fr', 'footer.contact', 'Contact'),
+('ru', 'footer.contact', 'Контакты'),
+('sv', 'footer.contact', 'Kontakt'),
+
+('en', 'footer.legal', 'Legal Links'),
+('es', 'footer.legal', 'Enlaces Legales'),
+('fr', 'footer.legal', 'Liens Légaux'),
+('ru', 'footer.legal', 'Юридические Ссылки'),
+('sv', 'footer.legal', 'Juridiska Länkar');
+
+-- PROPIEDADES
+INSERT INTO translations (lang_code, translation_key, translation_value) VALUES
+('en', 'property.bedrooms', 'Bedrooms'),
+('es', 'property.bedrooms', 'Dormitorios'),
+('fr', 'property.bedrooms', 'Chambres'),
+('ru', 'property.bedrooms', 'Спальни'),
+('sv', 'property.bedrooms', 'Sovrum'),
+
+('en', 'property.bathrooms', 'Bathrooms'),
+('es', 'property.bathrooms', 'Baños'),
+('fr', 'property.bathrooms', 'Salles de Bain'),
+('ru', 'property.bathrooms', 'Ванные'),
+('sv', 'property.bathrooms', 'Badrum'),
+
+('en', 'property.area', 'Area'),
+('es', 'property.area', 'Superficie'),
+('fr', 'property.area', 'Superficie'),
+('ru', 'property.area', 'Площадь'),
+('sv', 'property.area', 'Yta'),
+
+('en', 'property.type', 'Type'),
+('es', 'property.type', 'Tipo'),
+('fr', 'property.type', 'Type'),
+('ru', 'property.type', 'Тип'),
+('sv', 'property.type', 'Typ'),
+
+('en', 'property.description', 'Description'),
+('es', 'property.description', 'Descripción'),
+('fr', 'property.description', 'Description'),
+('ru', 'property.description', 'Описание'),
+('sv', 'property.description', 'Beskrivning'),
+
+('en', 'property.features', 'Features'),
+('es', 'property.features', 'Características'),
+('fr', 'property.features', 'Caractéristiques'),
+('ru', 'property.features', 'Характеристики'),
+('sv', 'property.features', 'Funktioner'),
+
+('en', 'property.contact', 'Contact'),
+('es', 'property.contact', 'Contactar'),
+('fr', 'property.contact', 'Contacter'),
+('ru', 'property.contact', 'Связаться'),
+('sv', 'property.contact', 'Kontakta'),
+
+('en', 'property.interest', 'Are you interested in this property?'),
+('es', 'property.interest', '¿Te interesa esta propiedad?'),
+('fr', 'property.interest', 'Cette propriété vous intéresse?'),
+('ru', 'property.interest', 'Вас интересует этот объект?'),
+('sv', 'property.interest', 'Är du intresserad av denna fastighet?'),
+
+('en', 'property.contactNow', 'Contact us now!'),
+('es', 'property.contactNow', '¡Contáctanos ahora!'),
+('fr', 'property.contactNow', 'Contactez-nous maintenant!'),
+('ru', 'property.contactNow', 'Свяжитесь с нами сейчас!'),
+('sv', 'property.contactNow', 'Kontakta oss nu!');
+
