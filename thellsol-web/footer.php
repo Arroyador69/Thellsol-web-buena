@@ -82,6 +82,14 @@ if (!defined('THELLSOL_FOOTER_STYLES')) {
         font-size: 0.95rem;
         color: #9aa4c2;
     }
+    .thellsol-footer-bottom a {
+        color: #9aa4c2;
+        text-decoration: none;
+        font-weight: 600;
+    }
+    .thellsol-footer-bottom a:hover {
+        color: #ffffff;
+    }
     @media (max-width: 600px) {
         .thellsol-footer-card {
             padding: 24px;
@@ -117,7 +125,11 @@ if (!defined('THELLSOL_FOOTER_STYLES')) {
             </div>
         </div>
         <div class="thellsol-footer-bottom">
-            <span><?php echo t('footer.developedBy'); ?></span>
+            <span>
+                <a href="https://desarroyo.tech" target="_blank" rel="noopener">
+                    <?php echo t('footer.developedBy'); ?>
+                </a>
+            </span>
             <span><?php echo t('footer.copyrightPrefix'); ?> <?php echo $currentYear; ?></span>
         </div>
     </div>
