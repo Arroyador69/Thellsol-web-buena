@@ -14,6 +14,20 @@ echo ".info{background:#d1ecf1;color:#0c5460;padding:10px;border-radius:5px;marg
 echo "</style></head><body>";
 echo "<h1>🌍 Insertando Traducciones</h1>";
 
+// Verificar conexión primero
+if ($conn->connect_error) {
+    echo "<div class='error'>❌ Error de conexión: " . $conn->connect_error . "</div>";
+    exit;
+}
+
+// Verificar que la tabla existe
+$tableCheck = $conn->query("SHOW TABLES LIKE 'translations'");
+if ($tableCheck->num_rows === 0) {
+    echo "<div class='error'>❌ La tabla 'translations' no existe. Ejecuta primero create-translations-table.sql</div>";
+    exit;
+}
+echo "<div class='success'>✅ Tabla 'translations' encontrada</div>";
+
 // Array con todas las traducciones
 $translations = [
     // NAVEGACIÓN
@@ -286,34 +300,63 @@ $translations = [
 // Preparar statement
 $stmt = $conn->prepare("INSERT INTO translations (lang_code, translation_key, translation_value) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE translation_value = VALUES(translation_value)");
 
+if (!$stmt) {
+    echo "<div class='error'>❌ Error al preparar statement: " . $conn->error . "</div>";
+    exit;
+}
+
 $inserted = 0;
 $updated = 0;
 $errors = 0;
+$errorDetails = [];
 
-foreach ($translations as $translation) {
+foreach ($translations as $index => $translation) {
+    if (!isset($translation[0]) || !isset($translation[1]) || !isset($translation[2])) {
+        $errors++;
+        $errorDetails[] = "Índice $index: Array incompleto";
+        continue;
+    }
+    
     $stmt->bind_param("sss", $translation[0], $translation[1], $translation[2]);
     
     if ($stmt->execute()) {
-        if ($conn->affected_rows === 1) {
+        $affected = $conn->affected_rows;
+        if ($affected === 1) {
             $inserted++;
-        } else {
+        } elseif ($affected === 2) {
             $updated++;
         }
     } else {
         $errors++;
-        echo "<div class='error'>❌ Error: " . $stmt->error . " (Key: {$translation[1]}, Lang: {$translation[0]})</div>";
+        $errorDetails[] = "Error en traducción #$index (Key: {$translation[1]}, Lang: {$translation[0]}): " . $stmt->error;
+        if ($errors <= 5) {
+            echo "<div class='error'>❌ Error: " . $stmt->error . " (Key: {$translation[1]}, Lang: {$translation[0]})</div>";
+        }
     }
+    
+    // Resetear statement para siguiente iteración
+    $stmt->reset();
 }
 
 $stmt->close();
 
-echo "<div class='success'>✅ Insertadas: $inserted traducciones</div>";
+echo "<div class='success'>✅ Insertadas: $inserted traducciones nuevas</div>";
 if ($updated > 0) {
-    echo "<div class='info'>ℹ️ Actualizadas: $updated traducciones</div>";
+    echo "<div class='info'>ℹ️ Actualizadas: $updated traducciones existentes</div>";
 }
 if ($errors > 0) {
-    echo "<div class='error'>❌ Errores: $errors</div>";
+    echo "<div class='error'>❌ Errores: $errors traducciones</div>";
+    if (count($errorDetails) > 0 && count($errorDetails) <= 10) {
+        echo "<details><summary>Ver detalles de errores</summary><pre>";
+        foreach ($errorDetails as $detail) {
+            echo $detail . "\n";
+        }
+        echo "</pre></details>";
+    }
 }
+
+$total = $inserted + $updated;
+echo "<div class='info'>📊 Total procesadas: $total traducciones</div>";
 
 // Verificar traducciones por idioma
 echo "<hr><h2>📊 Verificación por idioma:</h2>";
