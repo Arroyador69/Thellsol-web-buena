@@ -1,20 +1,28 @@
 <?php
-// Página de comprar - Sistema JSON directo (IGUAL QUE INDEX)
+// Página de comprar - Sistema MySQL
 // Archivo: comprar.php
+require_once 'db-config.php';
+require_once 'translations.php';
 
-$propertiesFile = "properties.json";
+$conn = getDBConnection();
 $properties = [];
 
-// Cargar propiedades desde el archivo JSON
-if (file_exists($propertiesFile)) {
-    $content = file_get_contents($propertiesFile);
-    $properties = json_decode($content, true) ?: [];
+// Cargar todas las propiedades activas desde MySQL
+$result = $conn->query("SELECT * FROM properties WHERE status = 'active' ORDER BY created_at DESC");
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        // Convertir image_url a array para compatibilidad con el código existente
+        $row['images'] = !empty($row['image_url']) ? [$row['image_url']] : [];
+        // Mapear campos para compatibilidad
+        $row['surface'] = $row['area'];
+        $properties[] = $row;
+    }
 }
 
-// Solo mostrar propiedades creadas en el dashboard
+$currentLang = getCurrentLanguage();
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="<?php echo $currentLang; ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -428,16 +436,17 @@ if (file_exists($propertiesFile)) {
         </button>
         <div class="navbar-left">
             <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
-            <a href="index.php" class="navbar-link">Inicio</a>
-            <a href="comprar.php" class="navbar-link active">Comprar</a>
-            <a href="vender.html" class="navbar-link">Vender</a>
+            <a href="index.php" class="navbar-link"><?php echo t('nav.home'); ?></a>
+            <a href="comprar.php" class="navbar-link active"><?php echo t('nav.buy'); ?></a>
+            <a href="vender.html" class="navbar-link"><?php echo t('nav.sell'); ?></a>
         </div>
         <div class="navbar-center">
             <span class="navbar-title">ThellSol Real Estate</span>
         </div>
         <div class="navbar-right">
-            <a href="informacion-legal.html" class="navbar-link">Información Legal</a>
-            <a href="contacto.html" class="navbar-link">Contacto</a>
+            <?php include 'language-selector.php'; ?>
+            <a href="informacion-legal.html" class="navbar-link"><?php echo t('nav.legal'); ?></a>
+            <a href="contacto.html" class="navbar-link"><?php echo t('nav.contact'); ?></a>
         </div>
     </nav>
     <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>

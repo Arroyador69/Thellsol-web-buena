@@ -1,18 +1,27 @@
 <?php
-// Sistema JSON directo - IGUAL QUE COMPRAR.PHP
-$propertiesFile = "properties.json";
+// Sistema MySQL - Cargar propiedades desde base de datos
+require_once 'db-config.php';
+require_once 'translations.php';
+
+$conn = getDBConnection();
 $properties = [];
 
-// Cargar propiedades desde el archivo JSON
-if (file_exists($propertiesFile)) {
-    $content = file_get_contents($propertiesFile);
-    $properties = json_decode($content, true) ?: [];
+// Cargar propiedades activas desde MySQL
+$result = $conn->query("SELECT * FROM properties WHERE status = 'active' ORDER BY created_at DESC LIMIT 12");
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        // Convertir image_url a array para compatibilidad con el código existente
+        $row['images'] = !empty($row['image_url']) ? [$row['image_url']] : [];
+        // Mapear campos para compatibilidad
+        $row['surface'] = $row['area'];
+        $properties[] = $row;
+    }
 }
 
-// Solo mostrar propiedades creadas en el dashboard
+$currentLang = getCurrentLanguage();
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="<?php echo $currentLang; ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -476,25 +485,26 @@ if (file_exists($propertiesFile)) {
         </button>
         <div class="navbar-left">
             <img src="./images/logo-thellsol.png" alt="Logo Thellsol" class="navbar-logo" />
-            <a href="index.php" class="navbar-link active">Inicio</a>
-            <a href="comprar.php" class="navbar-link">Comprar</a>
-            <a href="vender.html" class="navbar-link">Vender</a>
+            <a href="index.php" class="navbar-link active"><?php echo t('nav.home'); ?></a>
+            <a href="comprar.php" class="navbar-link"><?php echo t('nav.buy'); ?></a>
+            <a href="vender.html" class="navbar-link"><?php echo t('nav.sell'); ?></a>
         </div>
         <div class="navbar-center">
             <span class="navbar-title">ThellSol Real Estate</span>
         </div>
         <div class="navbar-right">
-            <a href="informacion-legal.html" class="navbar-link">Información Legal</a>
-            <a href="contacto.html" class="navbar-link">Contacto</a>
+            <?php include 'language-selector.php'; ?>
+            <a href="informacion-legal.html" class="navbar-link"><?php echo t('nav.legal'); ?></a>
+            <a href="contacto.html" class="navbar-link"><?php echo t('nav.contact'); ?></a>
         </div>
     </nav>
     <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>
     <div class="mobile-menu" id="mobileMenu">
-      <a href="index.php">Inicio</a>
-      <a href="comprar.php">Comprar</a>
-      <a href="vender.html">Vender</a>
-      <a href="informacion-legal.html">Información Legal</a>
-      <a href="contacto.html">Contacto</a>
+      <a href="index.php"><?php echo t('nav.home'); ?></a>
+      <a href="comprar.php"><?php echo t('nav.buy'); ?></a>
+      <a href="vender.html"><?php echo t('nav.sell'); ?></a>
+      <a href="informacion-legal.html"><?php echo t('nav.legal'); ?></a>
+      <a href="contacto.html"><?php echo t('nav.contact'); ?></a>
       <a href="admin-dashboard.php">Admin</a>
     </div>
 
@@ -519,17 +529,17 @@ if (file_exists($propertiesFile)) {
     </section>
 
     <section class="presentacion">
-        <h2>Bienvenido a TellSol Real Estate</h2>
-        <p class="intro">Somos una empresa inmobiliaria especializada en la Costa del Sol, comprometida con ofrecer el mejor servicio y las mejores propiedades a nuestros clientes.</p>
+        <h2><?php echo t('home.welcome'); ?></h2>
+        <p class="intro"><?php echo t('home.intro'); ?></p>
         <div class="presentacion-fotos">
             <img src="./images/andre-tell.jpg" alt="André Tell" class="presentacion-foto">
             <img src="./images/logo-thellsol.png" alt="Logo TellSol" class="presentacion-logo">
         </div>
         <div class="presentacion-texto">
-            Con más de una década de experiencia en la Costa del Sol, me enorgullece poder ayudarte a encontrar tu hogar ideal en esta maravillosa región. Desde las playas de Fuengirola hasta las calles históricas de Málaga, cada rincón de nuestra zona tiene algo especial que ofrecer.
+            <?php echo t('home.presentation'); ?> Desde las playas de Fuengirola hasta las calles históricas de Málaga, cada rincón de nuestra zona tiene algo especial que ofrecer.
         </div>
         <div class="presentacion-texto">
-            En TellSol, no solo vendemos propiedades; creamos relaciones duraderas basadas en la confianza, la transparencia y el compromiso con la excelencia. Mi equipo y yo estamos aquí para guiarte en cada paso del camino.
+            <?php echo t('home.presentation2'); ?> Mi equipo y yo estamos aquí para guiarte en cada paso del camino.
         </div>
         <div class="presentacion-firma">André Tell</div>
         <div class="presentacion-cargo">Fundador & CEO, Thellsol Real Estate</div>
@@ -537,7 +547,7 @@ if (file_exists($propertiesFile)) {
 
     <!-- Propiedades destacadas -->
     <section class="destacadas">
-        <h3>Propiedades Destacadas</h3>
+        <h3><?php echo t('home.featured'); ?></h3>
         <div class="cards">
             <?php if (!empty($properties)): ?>
                 <?php foreach (array_slice($properties, 0, 12) as $property): ?>
@@ -569,16 +579,16 @@ if (file_exists($propertiesFile)) {
                                 ?>
                             </p>
                             <p class="card-precio"><?php echo number_format($property['price']); ?>€</p>
-                            <a href="propiedad-detalles.php?id=<?php echo urlencode($property['id']); ?>" class="card-btn">Ver Detalles</a>
+                            <a href="propiedad-detalles.php?id=<?php echo urlencode($property['id']); ?>" class="card-btn"><?php echo t('home.viewDetails'); ?></a>
                         </div>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
                 <!-- Mensaje cuando no hay propiedades -->
                 <div class="card" style="text-align: center; padding: 40px; grid-column: 1 / -1;">
-                    <h3>🏠 Próximamente nuevas propiedades</h3>
+                    <h3>🏠 <?php echo t('home.noProperties'); ?></h3>
                     <p>Estamos trabajando para ofrecerte las mejores opciones inmobiliarias en la Costa del Sol.</p>
-                    <a href="contacto.html" class="card-btn">Contactar</a>
+                    <a href="contacto.html" class="card-btn"><?php echo t('nav.contact'); ?></a>
                 </div>
             <?php endif; ?>
         </div>

@@ -1,23 +1,27 @@
 <?php
 require_once 'auth-config.php';
+require_once 'db-config.php';
 $current_user = require_auth();
 
-// Sistema JSON LOCAL
-$propertiesFile = "properties.json";
+$conn = getDBConnection();
+$message = '';
 
 // Manejar acciones POST
-$message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
     
     // Crear propiedad
     if ($action === 'create_property') {
-        // Cargar propiedades existentes
-        $properties = [];
-        if (file_exists($propertiesFile)) {
-            $content = file_get_contents($propertiesFile);
-            $properties = json_decode($content, true) ?: [];
-        }
+        $title = trim($_POST['title'] ?? '');
+        $price = floatval($_POST['price'] ?? 0);
+        $location = trim($_POST['location'] ?? '');
+        $type = trim($_POST['type'] ?? '');
+        $bedrooms = intval($_POST['bedrooms'] ?? 0);
+        $bathrooms = intval($_POST['bathrooms'] ?? 0);
+        $area = intval($_POST['surface'] ?? 0);
+        $description = trim($_POST['description'] ?? '');
+        $status = 'active';
+        $features = $_POST['features'] ?? []; // Array de características
         
         // Manejar subida de imágenes
         $uploadedImages = [];
@@ -43,66 +47,84 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
         
-        // Crear nueva propiedad
-        $newProperty = [
-            'id' => time(), // ID único basado en timestamp
-            'title' => $_POST['title'] ?? '',
-            'price' => (int)($_POST['price'] ?? 0),
-            'location' => $_POST['location'] ?? '',
-            'type' => $_POST['type'] ?? '',
-            'bedrooms' => (int)($_POST['bedrooms'] ?? 0),
-            'bathrooms' => (int)($_POST['bathrooms'] ?? 0),
-            'surface' => (int)($_POST['surface'] ?? 0),
-            'description' => $_POST['description'] ?? '',
-            'images' => $uploadedImages, // Usar las imágenes subidas
-            'status' => 'active',
-            'createdAt' => date('Y-m-d H:i:s'),
-            'createdBy' => $current_user['name']
-        ];
+        // Guardar primera imagen en image_url (compatible con estructura MySQL)
+        $imageUrl = !empty($uploadedImages) ? $uploadedImages[0] : null;
         
-        $properties[] = $newProperty;
+        // Insertar propiedad en MySQL
+        $stmt = $conn->prepare("INSERT INTO properties (title, price, location, type, bedrooms, bathrooms, area, description, image_url, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())");
+        $stmt->bind_param("sdssiiisss", $title, $price, $location, $type, $bedrooms, $bathrooms, $area, $description, $imageUrl, $status);
         
-        // Guardar en JSON
-        if (file_put_contents($propertiesFile, json_encode($properties, JSON_PRETTY_PRINT))) {
+        if ($stmt->execute()) {
+            $propertyId = $conn->insert_id;
+            
+            // Guardar características (features)
+            if (!empty($features) && is_array($features)) {
+                $featureStmt = $conn->prepare("INSERT INTO features (property_id, feature_name) VALUES (?, ?)");
+                foreach ($features as $feature) {
+                    $feature = trim($feature);
+                    if (!empty($feature)) {
+                        $featureStmt->bind_param("is", $propertyId, $feature);
+                        $featureStmt->execute();
+                    }
+                }
+                $featureStmt->close();
+            }
+            
             $message = '<div class="alert alert-success">✅ Propiedad creada exitosamente!</div>';
         } else {
-            $message = '<div class="alert alert-error">❌ Error al guardar la propiedad.</div>';
+            $message = '<div class="alert alert-error">❌ Error al guardar la propiedad: ' . $conn->error . '</div>';
         }
+        $stmt->close();
     }
     
     // Eliminar propiedad
     if ($action === 'delete_property') {
-        $propertyId = $_POST['property_id'] ?? '';
-        if (!empty($propertyId)) {
-            $properties = [];
-            if (file_exists($propertiesFile)) {
-                $content = file_get_contents($propertiesFile);
-                $properties = json_decode($content, true) ?: [];
-            }
+        $propertyId = intval($_POST['property_id'] ?? 0);
+        
+        if ($propertyId > 0) {
+            // Primero eliminar características asociadas
+            $deleteFeatures = $conn->prepare("DELETE FROM features WHERE property_id = ?");
+            $deleteFeatures->bind_param("i", $propertyId);
+            $deleteFeatures->execute();
+            $deleteFeatures->close();
             
-            // Filtrar propiedades (eliminar la seleccionada)
-            $properties = array_filter($properties, function($prop) use ($propertyId) {
-                return $prop['id'] != $propertyId;
-            });
+            // Luego eliminar la propiedad
+            $deleteProperty = $conn->prepare("DELETE FROM properties WHERE id = ?");
+            $deleteProperty->bind_param("i", $propertyId);
             
-            // Reindexar array
-            $properties = array_values($properties);
-            
-            if (file_put_contents($propertiesFile, json_encode($properties, JSON_PRETTY_PRINT))) {
+            if ($deleteProperty->execute()) {
                 $message = '<div class="alert alert-success">✅ Propiedad eliminada exitosamente!</div>';
             } else {
-                $message = '<div class="alert alert-error">❌ Error al eliminar la propiedad.</div>';
+                $message = '<div class="alert alert-error">❌ Error al eliminar la propiedad: ' . $conn->error . '</div>';
             }
+            $deleteProperty->close();
         }
     }
 }
 
-// Cargar propiedades para mostrar
+// Cargar propiedades desde MySQL
 $properties = [];
-if (file_exists($propertiesFile)) {
-    $content = file_get_contents($propertiesFile);
-    $properties = json_decode($content, true) ?: [];
+$result = $conn->query("SELECT * FROM properties ORDER BY created_at DESC");
+if ($result) {
+    while ($row = $result->fetch_assoc()) {
+        // Cargar características para cada propiedad
+        $featuresResult = $conn->prepare("SELECT feature_name FROM features WHERE property_id = ?");
+        $featuresResult->bind_param("i", $row['id']);
+        $featuresResult->execute();
+        $featuresData = $featuresResult->get_result();
+        $features = [];
+        while ($featureRow = $featuresData->fetch_assoc()) {
+            $features[] = $featureRow['feature_name'];
+        }
+        $featuresResult->close();
+        
+        $row['features'] = $features;
+        $properties[] = $row;
+    }
 }
+
+// Lista de características disponibles
+$availableFeatures = ['pool', 'garden', 'garage', 'terrace', 'seaView', 'airConditioning', 'elevator', 'fireplace', 'swimmingPool', 'balcony'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -231,6 +253,23 @@ if (file_exists($propertiesFile)) {
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
         
+        .features-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .feature-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .feature-checkbox input[type="checkbox"] {
+            width: auto;
+        }
+        
         .btn {
             background: #667eea;
             color: white;
@@ -294,6 +333,12 @@ if (file_exists($propertiesFile)) {
         .property-meta {
             color: #666;
             font-size: 0.9rem;
+        }
+        
+        .property-features {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #888;
         }
         
         .property-actions {
@@ -428,7 +473,7 @@ if (file_exists($propertiesFile)) {
                     
                     <div class="form-group">
                         <label for="price">Precio (€):</label>
-                        <input type="number" id="price" name="price" required>
+                        <input type="number" id="price" name="price" step="0.01" required>
                     </div>
                     
                     <div class="form-group">
@@ -440,11 +485,11 @@ if (file_exists($propertiesFile)) {
                         <label for="type">Tipo de Propiedad:</label>
                         <select id="type" name="type" required>
                             <option value="">Seleccionar tipo</option>
-                            <option value="apartamento">Apartamento</option>
+                            <option value="apartment">Apartamento</option>
                             <option value="villa">Villa</option>
-                            <option value="casa">Casa</option>
+                            <option value="house">Casa</option>
                             <option value="penthouse">Penthouse</option>
-                            <option value="estudio">Estudio</option>
+                            <option value="studio">Estudio</option>
                         </select>
                     </div>
                     
@@ -466,6 +511,32 @@ if (file_exists($propertiesFile)) {
                     <div class="form-group">
                         <label for="description">Descripción:</label>
                         <textarea id="description" name="description" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Características:</label>
+                        <div class="features-group">
+                            <?php 
+                            $featureLabels = [
+                                'pool' => 'Piscina',
+                                'garden' => 'Jardín',
+                                'garage' => 'Garaje',
+                                'terrace' => 'Terraza',
+                                'seaView' => 'Vista al mar',
+                                'airConditioning' => 'Aire acondicionado',
+                                'elevator' => 'Ascensor',
+                                'fireplace' => 'Chimenea',
+                                'swimmingPool' => 'Piscina',
+                                'balcony' => 'Balcón'
+                            ];
+                            foreach ($availableFeatures as $feature): 
+                            ?>
+                                <div class="feature-checkbox">
+                                    <input type="checkbox" id="feature_<?php echo $feature; ?>" name="features[]" value="<?php echo $feature; ?>">
+                                    <label for="feature_<?php echo $feature; ?>"><?php echo $featureLabels[$feature] ?? ucfirst($feature); ?></label>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
                     
                     <div class="form-group">
@@ -518,12 +589,17 @@ if (file_exists($propertiesFile)) {
                             <div class="property-info">
                                 <h4><?php echo htmlspecialchars($property['title']); ?></h4>
                                 <div class="property-meta">
-                                    <strong>€<?php echo number_format($property['price']); ?></strong> - 
+                                    <strong>€<?php echo number_format($property['price'], 2); ?></strong> - 
                                     <?php echo htmlspecialchars($property['location']); ?> - 
                                     <?php echo htmlspecialchars($property['type']); ?> - 
-                                    <?php echo $property['bedrooms']; ?> dorm, <?php echo $property['bathrooms']; ?> baños, <?php echo $property['surface']; ?>m²
+                                    <?php echo $property['bedrooms']; ?> dorm, <?php echo $property['bathrooms']; ?> baños, <?php echo $property['area']; ?>m²
                                     <br>
-                                    <small>Creado: <?php echo $property['createdAt']; ?> por <?php echo htmlspecialchars($property['createdBy']); ?></small>
+                                    <?php if (!empty($property['features'])): ?>
+                                        <div class="property-features">
+                                            <strong>Características:</strong> <?php echo implode(', ', $property['features']); ?>
+                                        </div>
+                                    <?php endif; ?>
+                                    <small>Creado: <?php echo date('d/m/Y H:i', strtotime($property['created_at'])); ?></small>
                                 </div>
                             </div>
                             <div class="property-actions">
@@ -589,8 +665,6 @@ if (file_exists($propertiesFile)) {
             selectedImages.splice(index, 1);
             displayImagePreview();
         }
-        
-        // El formulario ya maneja la subida automáticamente con enctype="multipart/form-data"
     </script>
 </body>
 </html>

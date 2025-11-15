@@ -1,32 +1,33 @@
 <?php
-// CONFIGURACIÓN SIMPLE DE USUARIOS
+// CONFIGURACIÓN DE USUARIOS CON MYSQL
 session_start();
+require_once 'db-config.php';
 
-// Usuarios autorizados (sistema simple)
-$users = [
-    'andre@thellsol.com' => [
-        'password' => 'ThellSol2025!', 
-        'name' => 'Andre Tell', 
-        'role' => 'Admin'
-    ],
-    'cliente@thellsol.com' => [
-        'password' => 'Cliente2025!', 
-        'name' => 'Cliente', 
-        'role' => 'Editor'
-    ]
-];
-
-// Función para verificar credenciales
+// Función para verificar credenciales desde MySQL
 function verify_user($email, $password) {
-    global $users;
+    $conn = getDBConnection();
     
-    if (isset($users[$email]) && $users[$email]['password'] === $password) {
-        return [
-            'email' => $email,
-            'name' => $users[$email]['name'],
-            'role' => $users[$email]['role']
-        ];
+    // Buscar usuario por email
+    $stmt = $conn->prepare("SELECT id, username, password_hash, email FROM admin_users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result->num_rows === 1) {
+        $user = $result->fetch_assoc();
+        
+        // Verificar contraseña usando password_verify (compatible con password_hash)
+        if (password_verify($password, $user['password_hash'])) {
+            return [
+                'id' => $user['id'],
+                'email' => $user['email'],
+                'name' => $user['username'],
+                'role' => 'Admin' // Por defecto Admin, puedes agregar campo role a la tabla si lo necesitas
+            ];
+        }
     }
+    
+    $stmt->close();
     return false;
 }
 

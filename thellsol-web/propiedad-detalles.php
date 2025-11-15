@@ -1,50 +1,64 @@
 <?php
-// Página de detalles de una propiedad específica
-$propertiesFile = "properties.json";
-$properties = [];
+// Página de detalles de una propiedad específica - Sistema MySQL
+require_once 'db-config.php';
+
+$conn = getDBConnection();
 $property = null;
 
 // Obtener ID de la propiedad de la URL
-$propertyId = $_GET['id'] ?? '';
+$propertyId = intval($_GET['id'] ?? 0);
 
-if (empty($propertyId)) {
-    header('Location: comprar.php');
+if ($propertyId <= 0) {
+    header('Location: index.php');
     exit();
 }
 
-// Cargar propiedades
-if (file_exists($propertiesFile)) {
-    $content = file_get_contents($propertiesFile);
-    $properties = json_decode($content, true) ?: [];
+// Cargar propiedad desde MySQL
+$stmt = $conn->prepare("SELECT * FROM properties WHERE id = ? AND status = 'active'");
+$stmt->bind_param("i", $propertyId);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows === 1) {
+    $property = $result->fetch_assoc();
     
-    // Buscar la propiedad específica
-    foreach ($properties as $prop) {
-        if ($prop['id'] === $propertyId) {
-            $property = $prop;
-            break;
-        }
+    // Cargar características (features) de la propiedad
+    $featuresStmt = $conn->prepare("SELECT feature_name FROM features WHERE property_id = ?");
+    $featuresStmt->bind_param("i", $propertyId);
+    $featuresStmt->execute();
+    $featuresResult = $featuresStmt->get_result();
+    $features = [];
+    while ($featureRow = $featuresResult->fetch_assoc()) {
+        $features[] = $featureRow['feature_name'];
     }
-}
-
-if (!$property) {
-    header('Location: comprar.php');
+    $featuresStmt->close();
+    $property['features'] = $features;
+    
+    // Procesar imágenes
+    $images = [];
+    if (!empty($property['image_url'])) {
+        $images = [$property['image_url']];
+    }
+    
+    // Si no hay imágenes, usar imágenes del carrusel como default
+    if (empty($images)) {
+        $images = [
+            "images/carrusel2.jpeg",
+            "images/carrusel3.jpeg", 
+            "images/carrusel4.jpeg",
+            "images/carrusel5.jpeg",
+            "images/carrusel6.jpeg"
+        ];
+    }
+    
+    // Mapear campos para compatibilidad
+    $property['surface'] = $property['area'];
+} else {
+    $stmt->close();
+    header('Location: index.php');
     exit();
 }
-
-// Procesar imágenes
-$images = [];
-if (isset($property['images'])) {
-    if (is_array($property['images'])) {
-        $images = $property['images'];
-    } else {
-        $images = json_decode($property['images'], true) ?: [];
-    }
-}
-
-// Si no hay imágenes, usar imagen por defecto
-if (empty($images)) {
-    $images = ["https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"];
-}
+$stmt->close();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -450,18 +464,10 @@ if (empty($images)) {
 
         <div class="property-content">
             <div class="property-images">
-                <img src="<?php 
-                    if (!empty($images) && !empty($images[0])) {
-                        $imageUrl = $images[0];
-                        if (str_contains($imageUrl, 'example.com')) {
-                            echo "images/carrusel6.jpeg"; // Usar imagen del carrusel como default
-                        } else {
-                            echo htmlspecialchars($imageUrl);
-                        }
-                    } else {
-                        echo "images/carrusel7.jpeg"; // Imagen por defecto del carrusel
-                    }
-                ?>" alt="<?php echo htmlspecialchars($property['title']); ?>" class="main-image" id="mainImage">
+                <img src="<?php echo htmlspecialchars($images[0]); ?>" 
+                     alt="<?php echo htmlspecialchars($property['title']); ?>" 
+                     class="main-image" 
+                     id="mainImage">
                 
                 <?php if (count($images) > 1): ?>
                     <div class="image-thumbnails">
@@ -505,6 +511,34 @@ if (empty($images)) {
                             <span class="info-value"><?php echo ucfirst($property['type']); ?></span>
                         </div>
                     </div>
+                    
+                    <?php if (!empty($property['features'])): ?>
+                        <div class="info-section" style="margin-top: 20px;">
+                            <h3>✨ Características</h3>
+                            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+                                <?php 
+                                $featureLabels = [
+                                    'pool' => '🏊 Piscina',
+                                    'garden' => '🌳 Jardín',
+                                    'garage' => '🚗 Garaje',
+                                    'terrace' => '🏡 Terraza',
+                                    'seaView' => '🌊 Vista al mar',
+                                    'airConditioning' => '❄️ Aire acondicionado',
+                                    'elevator' => '🛗 Ascensor',
+                                    'fireplace' => '🔥 Chimenea',
+                                    'swimmingPool' => '🏊 Piscina',
+                                    'balcony' => '🪟 Balcón'
+                                ];
+                                foreach ($property['features'] as $feature): 
+                                    $label = $featureLabels[$feature] ?? '✨ ' . ucfirst($feature);
+                                ?>
+                                    <span style="background: #f0f0f0; padding: 8px 15px; border-radius: 20px; font-size: 0.9rem; color: #333;">
+                                        <?php echo $label; ?>
+                                    </span>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
                 <div class="contact-section">
