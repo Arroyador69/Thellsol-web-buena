@@ -2,13 +2,36 @@
 require_once 'db-config.php';
 require_once 'translations.php';
 $currentLang = getCurrentLanguage();
+
+$legalNoticeSections = [
+    [
+        'title' => 'legalNotice.section1.title',
+        'paragraphs' => ['legalNotice.section1.body']
+    ],
+    [
+        'title' => 'legalNotice.section2.title',
+        'paragraphs' => ['legalNotice.section2.body']
+    ],
+    [
+        'title' => 'legalNotice.section3.title',
+        'paragraphs' => ['legalNotice.section3.body']
+    ],
+    [
+        'title' => 'legalNotice.section4.title',
+        'paragraphs' => ['legalNotice.section4.body']
+    ],
+    [
+        'title' => 'legalNotice.section5.title',
+        'paragraphs' => ['legalNotice.section5.body']
+    ]
+];
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $currentLang; ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo t('contact.metaTitle'); ?></title>
+    <title><?php echo t('legalNotice.metaTitle'); ?></title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="logo-thellsol copia.png" type="image/png">
     <style>
@@ -32,19 +55,10 @@ $currentLang = getCurrentLanguage();
         @keyframes slideIn { from { right: -100vw; } to { right: 0; } }
         .mobile-menu a { color: #181e29; text-decoration: none; font-size: 1.2rem; font-weight: 600; margin: 18px 0; display: block; border-radius: 6px; padding: 8px 12px; transition: background 0.2s; }
         .mobile-menu a:hover { background: #d1d1d1; }
-        .contact-hero { width: 100%; max-width: 900px; margin: 24px auto 0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px #0001; }
-        .contact-hero-img { width: 100%; height: 180px; object-fit: cover; display: block; }
-        .contact-card { max-width: 400px; margin: 32px auto 0; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #0001; padding: 24px 24px 18px; }
-        .contact-card h3 { margin-top: 0; font-size: 1.05rem; font-weight: bold; margin-bottom: 16px; }
-        .contact-card p { margin: 0 0 8px 0; color: #222; font-size: 0.98rem; }
-        .contact-card a { color: #0a53e4; text-decoration: none; word-break: break-all; }
-        .contact-card a:hover { text-decoration: underline; }
-        .footer { background: #181e29; color: #fff; padding: 40px 20px; margin-top: 60px; }
-        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-        .footer-section h4 { margin: 0 0 20px 0; font-size: 1.1rem; color: #fff; }
-        .footer-section p { margin: 0 0 10px 0; color: #ccc; font-size: 0.9rem; }
-        .footer-section a { color: #ccc; text-decoration: none; display: block; margin-bottom: 8px; font-size: 0.9rem; }
-        .footer-section a:hover { color: #fff; }
+        .legal-content { max-width: 850px; margin: 40px auto; padding: 0 20px; }
+        .legal-content h1 { color: #181e29; margin-bottom: 30px; }
+        .legal-content h2 { color: #181e29; margin: 30px 0 15px 0; }
+        .legal-content p { color: #333; line-height: 1.65; margin-bottom: 15px; }
         .whatsapp-button { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 2px 10px rgba(0,0,0,0.2); transition: transform 0.2s; z-index: 1000; }
         .whatsapp-button:hover { transform: scale(1.1); }
         .whatsapp-button img { width: 35px; height: 35px; }
@@ -74,7 +88,7 @@ $currentLang = getCurrentLanguage();
         <div class="navbar-right">
             <?php include 'language-selector.php'; ?>
             <a href="<?php echo getLangUrl('informacion-legal.php'); ?>" class="navbar-link"><?php echo t('nav.legal'); ?></a>
-            <a href="<?php echo getLangUrl('contacto.php'); ?>" class="navbar-link active"><?php echo t('nav.contact'); ?></a>
+            <a href="<?php echo getLangUrl('contacto.php'); ?>" class="navbar-link"><?php echo t('nav.contact'); ?></a>
         </div>
     </nav>
     <div class="mobile-menu-bg" id="mobileMenuBg" onclick="closeMobileMenu()"></div>
@@ -86,19 +100,14 @@ $currentLang = getCurrentLanguage();
       <a href="<?php echo getLangUrl('contacto.php'); ?>"><?php echo t('nav.contact'); ?></a>
     </div>
 
-    <div class="contact-hero">
-        <img src="./images/carrusel3.jpeg" alt="<?php echo t('contact.heroAlt'); ?>" class="contact-hero-img" />
-    </div>
-
-    <div class="contact-card">
-        <h3><?php echo t('contact.infoTitle'); ?></h3>
-        <p><b>Andre Richard Tell</b><br>Thellsol Real Estate</p>
-        <p><b><?php echo t('contact.addressLabel'); ?></b><br>
-        Fuengirola 29640<br>
-        Málaga, Spain</p>
-        <p><b><?php echo t('contact.contactLabel'); ?></b><br>
-        <a href="mailto:andre@thellsol.com">andre@thellsol.com</a><br>
-        +34 676 335 313</p>
+    <div class="legal-content">
+        <h1><?php echo t('legalNotice.title'); ?></h1>
+        <?php foreach ($legalNoticeSections as $section): ?>
+            <h2><?php echo t($section['title']); ?></h2>
+            <?php foreach ($section['paragraphs'] as $paragraphKey): ?>
+                <p><?php echo t($paragraphKey); ?></p>
+            <?php endforeach; ?>
+        <?php endforeach; ?>
     </div>
 
     <?php include 'footer.php'; ?>

@@ -572,27 +572,7 @@ $currentLang = getCurrentLanguage();
         </div>
     </main>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>TellSol Real Estate</h4>
-                <p>Tu socio de confianza en la Costa del Sol</p>
-                <p>Especialistas en propiedades de lujo</p>
-            </div>
-            <div class="footer-section">
-                <h4><?php echo t('footer.contactTitle'); ?></h4>
-                <p>Email: info@thellsol.com</p>
-                <p>Teléfono: +34 123 456 789</p>
-                <p>WhatsApp: +34 123 456 789</p>
-            </div>
-            <div class="footer-section">
-                <h4><?php echo t('footer.legalLinks'); ?></h4>
-                <a href="politica-privacidad.html"><?php echo t('footer.privacyPolicy'); ?></a>
-                <a href="politica-cookies.html"><?php echo t('footer.cookiesPolicy'); ?></a>
-                <a href="aviso-legal.html"><?php echo t('footer.legalNotice'); ?></a>
-            </div>
-        </div>
-    </footer>
+    <?php include 'footer.php'; ?>
 
     <script>
         function openMobileMenu() {

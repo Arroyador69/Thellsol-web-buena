@@ -222,22 +222,7 @@ $currentLang = getCurrentLanguage();
         </form>
     </div>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4><?php echo t('footer.contactTitle'); ?></h4>
-                <p><b>Andre Richard Tell</b><br>Thellsol Real Estate</p>
-                <p>Fuengirola 29640<br>Málaga, Spain</p>
-                <p><a href="mailto:andre@thellsol.com">andre@thellsol.com</a><br>+34 676 335 313</p>
-            </div>
-            <div class="footer-section">
-                <h4><?php echo t('footer.legalLinks'); ?></h4>
-                <a href="politica-privacidad.html"><?php echo t('footer.privacyPolicy'); ?></a>
-                <a href="politica-cookies.html"><?php echo t('footer.cookiesPolicy'); ?></a>
-                <a href="aviso-legal.html"><?php echo t('footer.legalNotice'); ?></a>
-            </div>
-        </div>
-    </footer>
+    <?php include 'footer.php'; ?>
 
     <a href="https://wa.me/34676335313" class="whatsapp-button" target="_blank">
         <img src="./images/whatsapp-icon.png" alt="WhatsApp">
@@ -285,7 +270,7 @@ $currentLang = getCurrentLanguage();
             return null;
         }
         if (!getCookie('cookies_accepted')) {
-            document.getElementById('cookie-text').innerHTML = cookieMessage + ' <a href="politica-cookies.html" style="color:#0a53e4;text-decoration:underline;">' + cookieMoreInfo + '</a>.';
+            document.getElementById('cookie-text').innerHTML = cookieMessage + ' <a href="politica-cookies.php" style="color:#0a53e4;text-decoration:underline;">' + cookieMoreInfo + '</a>.';
             document.getElementById('accept-cookies-btn').textContent = cookieAccept;
             var banner = document.getElementById('cookie-banner');
             banner.style.display = 'flex';
