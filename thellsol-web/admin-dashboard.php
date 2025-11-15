@@ -6,6 +6,29 @@ $current_user = require_auth();
 $conn = getDBConnection();
 $message = '';
 
+// Catalogos fijos
+$availableLocations = [
+    'marbella' => 'Marbella',
+    'fuengirola' => 'Fuengirola',
+    'benalmadena' => 'Benalmádena',
+    'torremolinos' => 'Torremolinos',
+    'mijas' => 'Mijas'
+];
+
+$availableFeatures = ['pool', 'garden', 'garage', 'terrace', 'seaView', 'airConditioning', 'elevator', 'fireplace', 'swimmingPool', 'balcony'];
+$featureLabels = [
+    'pool' => 'Piscina',
+    'garden' => 'Jardín',
+    'garage' => 'Garaje',
+    'terrace' => 'Terraza',
+    'seaView' => 'Vista al mar',
+    'airConditioning' => 'Aire acondicionado',
+    'elevator' => 'Ascensor',
+    'fireplace' => 'Chimenea',
+    'swimmingPool' => 'Piscina',
+    'balcony' => 'Balcón'
+];
+
 // Manejar acciones POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
@@ -14,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($action === 'create_property') {
         $title = trim($_POST['title'] ?? '');
         $price = floatval($_POST['price'] ?? 0);
-        $location = trim($_POST['location'] ?? '');
+        $location = strtolower(trim($_POST['location'] ?? ''));
         $type = trim($_POST['type'] ?? '');
         $bedrooms = intval($_POST['bedrooms'] ?? 0);
         $bathrooms = intval($_POST['bathrooms'] ?? 0);
@@ -23,60 +46,112 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $status = 'active';
         $features = $_POST['features'] ?? []; // Array de características
         
-        // Manejar subida de imágenes
-        $uploadedImages = [];
-        if (isset($_FILES['imageFiles']) && !empty($_FILES['imageFiles']['name'][0])) {
-            $uploadDir = 'images/properties/';
-            if (!file_exists($uploadDir)) {
-                mkdir($uploadDir, 0755, true);
-            }
-            
-            $files = $_FILES['imageFiles'];
-            for ($i = 0; $i < count($files['name']); $i++) {
-                if ($files['error'][$i] === UPLOAD_ERR_OK) {
-                    $fileName = $files['name'][$i];
-                    $tmpName = $files['tmp_name'][$i];
-                    $extension = pathinfo($fileName, PATHINFO_EXTENSION);
-                    $uniqueName = uniqid('prop_') . '.' . $extension;
-                    $uploadPath = $uploadDir . $uniqueName;
-                    
-                    if (move_uploaded_file($tmpName, $uploadPath)) {
-                        $uploadedImages[] = $uploadPath;
-                    }
-                }
-            }
-        }
-        
-        // Guardar primera imagen en image_url (compatible con estructura MySQL)
-        $imageUrl = !empty($uploadedImages) ? $uploadedImages[0] : null;
-        
-        // Insertar propiedad en MySQL
-        $stmt = $conn->prepare("INSERT INTO properties (title, price, location, type, bedrooms, bathrooms, area, description, image_url, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())");
-        $stmt->bind_param("sdssiiisss", $title, $price, $location, $type, $bedrooms, $bathrooms, $area, $description, $imageUrl, $status);
-        
-        if ($stmt->execute()) {
-            $propertyId = $conn->insert_id;
-            
-            // Guardar características (features)
-            if (!empty($features) && is_array($features)) {
-                $featureStmt = $conn->prepare("INSERT INTO features (property_id, feature_name) VALUES (?, ?)");
-                foreach ($features as $feature) {
-                    $feature = trim($feature);
-                    if (!empty($feature)) {
-                        $featureStmt->bind_param("is", $propertyId, $feature);
-                        $featureStmt->execute();
-                    }
-                }
-                $featureStmt->close();
-            }
-            
-            $message = '<div class="alert alert-success">✅ Propiedad creada exitosamente!</div>';
+        if (!isset($availableLocations[$location])) {
+            $message = '<div class="alert alert-error">❌ Selecciona una ubicación válida.</div>';
         } else {
-            $message = '<div class="alert alert-error">❌ Error al guardar la propiedad: ' . $conn->error . '</div>';
+            // Manejar subida de imágenes
+            $uploadedImages = [];
+            if (isset($_FILES['imageFiles']) && !empty($_FILES['imageFiles']['name'][0])) {
+                $uploadDir = 'images/properties/';
+                if (!file_exists($uploadDir)) {
+                    mkdir($uploadDir, 0755, true);
+                }
+                
+                $files = $_FILES['imageFiles'];
+                for ($i = 0; $i < count($files['name']); $i++) {
+                    if ($files['error'][$i] === UPLOAD_ERR_OK) {
+                        $fileName = $files['name'][$i];
+                        $tmpName = $files['tmp_name'][$i];
+                        $extension = pathinfo($fileName, PATHINFO_EXTENSION);
+                        $uniqueName = uniqid('prop_') . '.' . $extension;
+                        $uploadPath = $uploadDir . $uniqueName;
+                        
+                        if (move_uploaded_file($tmpName, $uploadPath)) {
+                            $uploadedImages[] = $uploadPath;
+                        }
+                    }
+                }
+            }
+            
+            // Guardar primera imagen en image_url (compatible con estructura MySQL)
+            $imageUrl = !empty($uploadedImages) ? $uploadedImages[0] : null;
+            
+            // Insertar propiedad en MySQL
+            $stmt = $conn->prepare("INSERT INTO properties (title, price, location, type, bedrooms, bathrooms, area, description, image_url, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())");
+            $stmt->bind_param("sdssiiisss", $title, $price, $location, $type, $bedrooms, $bathrooms, $area, $description, $imageUrl, $status);
+            
+            if ($stmt->execute()) {
+                $propertyId = $conn->insert_id;
+                
+                // Guardar características (features)
+                if (!empty($features) && is_array($features)) {
+                    $featureStmt = $conn->prepare("INSERT INTO features (property_id, feature_name) VALUES (?, ?)");
+                    foreach ($features as $feature) {
+                        $feature = trim($feature);
+                        if (!empty($feature)) {
+                            $featureStmt->bind_param("is", $propertyId, $feature);
+                            $featureStmt->execute();
+                        }
+                    }
+                    $featureStmt->close();
+                }
+                
+                $message = '<div class="alert alert-success">✅ Propiedad creada exitosamente!</div>';
+            } else {
+                $message = '<div class="alert alert-error">❌ Error al guardar la propiedad: ' . $conn->error . '</div>';
+            }
+            $stmt->close();
         }
-        $stmt->close();
     }
-    
+
+    // Actualizar propiedad
+    if ($action === 'update_property') {
+        $propertyId = intval($_POST['property_id'] ?? 0);
+        $title = trim($_POST['title'] ?? '');
+        $price = floatval($_POST['price'] ?? 0);
+        $location = strtolower(trim($_POST['location'] ?? ''));
+        $type = trim($_POST['type'] ?? '');
+        $bedrooms = intval($_POST['bedrooms'] ?? 0);
+        $bathrooms = intval($_POST['bathrooms'] ?? 0);
+        $area = intval($_POST['surface'] ?? 0);
+        $description = trim($_POST['description'] ?? '');
+        $features = $_POST['features'] ?? [];
+        
+        if ($propertyId <= 0) {
+            $message = '<div class="alert alert-error">❌ Propiedad no válida.</div>';
+        } elseif (!isset($availableLocations[$location])) {
+            $message = '<div class="alert alert-error">❌ Selecciona una ubicación válida.</div>';
+        } else {
+            $stmt = $conn->prepare("UPDATE properties SET title = ?, price = ?, location = ?, type = ?, bedrooms = ?, bathrooms = ?, area = ?, description = ?, updated_at = NOW() WHERE id = ?");
+            $stmt->bind_param("sdssiiisi", $title, $price, $location, $type, $bedrooms, $bathrooms, $area, $description, $propertyId);
+            
+            if ($stmt->execute()) {
+                // Reemplazar características
+                $deleteFeatures = $conn->prepare("DELETE FROM features WHERE property_id = ?");
+                $deleteFeatures->bind_param("i", $propertyId);
+                $deleteFeatures->execute();
+                $deleteFeatures->close();
+                
+                if (!empty($features) && is_array($features)) {
+                    $featureStmt = $conn->prepare("INSERT INTO features (property_id, feature_name) VALUES (?, ?)");
+                    foreach ($features as $feature) {
+                        $feature = trim($feature);
+                        if (!empty($feature)) {
+                            $featureStmt->bind_param("is", $propertyId, $feature);
+                            $featureStmt->execute();
+                        }
+                    }
+                    $featureStmt->close();
+                }
+                
+                $message = '<div class="alert alert-success">✅ Propiedad actualizada correctamente.</div>';
+            } else {
+                $message = '<div class="alert alert-error">❌ Error al actualizar: ' . $conn->error . '</div>';
+            }
+            $stmt->close();
+        }
+    }
+
     // Eliminar propiedad
     if ($action === 'delete_property') {
         $propertyId = intval($_POST['property_id'] ?? 0);
@@ -292,6 +367,15 @@ $availableFeatures = ['pool', 'garden', 'garage', 'terrace', 'seaView', 'airCond
         .btn-danger:hover {
             background: #c82333;
         }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+        }
         
         .alert {
             padding: 1rem;
@@ -344,6 +428,19 @@ $availableFeatures = ['pool', 'garden', 'garage', 'terrace', 'seaView', 'airCond
         .property-actions {
             display: flex;
             gap: 0.5rem;
+        }
+
+        .edit-form {
+            display: none;
+            margin-top: 1rem;
+            background: #fff;
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .edit-form.active {
+            display: block;
         }
         
         .empty-state {
@@ -478,7 +575,12 @@ $availableFeatures = ['pool', 'garden', 'garage', 'terrace', 'seaView', 'airCond
                     
                     <div class="form-group">
                         <label for="location">Ubicación:</label>
-                        <input type="text" id="location" name="location" required>
+                        <select id="location" name="location" required>
+                            <option value="">Seleccionar ubicación</option>
+                            <?php foreach ($availableLocations as $locValue => $locLabel): ?>
+                                <option value="<?php echo $locValue; ?>"><?php echo $locLabel; ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                     
                     <div class="form-group">
@@ -516,21 +618,7 @@ $availableFeatures = ['pool', 'garden', 'garage', 'terrace', 'seaView', 'airCond
                     <div class="form-group">
                         <label>Características:</label>
                         <div class="features-group">
-                            <?php 
-                            $featureLabels = [
-                                'pool' => 'Piscina',
-                                'garden' => 'Jardín',
-                                'garage' => 'Garaje',
-                                'terrace' => 'Terraza',
-                                'seaView' => 'Vista al mar',
-                                'airConditioning' => 'Aire acondicionado',
-                                'elevator' => 'Ascensor',
-                                'fireplace' => 'Chimenea',
-                                'swimmingPool' => 'Piscina',
-                                'balcony' => 'Balcón'
-                            ];
-                            foreach ($availableFeatures as $feature): 
-                            ?>
+                            <?php foreach ($availableFeatures as $feature): ?>
                                 <div class="feature-checkbox">
                                     <input type="checkbox" id="feature_<?php echo $feature; ?>" name="features[]" value="<?php echo $feature; ?>">
                                     <label for="feature_<?php echo $feature; ?>"><?php echo $featureLabels[$feature] ?? ucfirst($feature); ?></label>
@@ -585,24 +673,26 @@ $availableFeatures = ['pool', 'garden', 'garage', 'terrace', 'seaView', 'airCond
                     </div>
                 <?php else: ?>
                     <?php foreach ($properties as $property): ?>
+                        <?php $propertyFeatures = $property['features'] ?? []; ?>
                         <div class="property-item">
                             <div class="property-info">
                                 <h4><?php echo htmlspecialchars($property['title']); ?></h4>
                                 <div class="property-meta">
                                     <strong>€<?php echo number_format($property['price'], 2); ?></strong> - 
-                                    <?php echo htmlspecialchars($property['location']); ?> - 
+                                    <?php echo htmlspecialchars($availableLocations[$property['location']] ?? ucfirst($property['location'])); ?> - 
                                     <?php echo htmlspecialchars($property['type']); ?> - 
                                     <?php echo $property['bedrooms']; ?> dorm, <?php echo $property['bathrooms']; ?> baños, <?php echo $property['area']; ?>m²
                                     <br>
-                                    <?php if (!empty($property['features'])): ?>
+                                    <?php if (!empty($propertyFeatures)): ?>
                                         <div class="property-features">
-                                            <strong>Características:</strong> <?php echo implode(', ', $property['features']); ?>
+                                            <strong>Características:</strong> <?php echo implode(', ', $propertyFeatures); ?>
                                         </div>
                                     <?php endif; ?>
                                     <small>Creado: <?php echo date('d/m/Y H:i', strtotime($property['created_at'])); ?></small>
                                 </div>
                             </div>
                             <div class="property-actions">
+                                <button type="button" class="btn" onclick="toggleEditForm(<?php echo $property['id']; ?>)">✏️ Editar</button>
                                 <a href="propiedad-detalles.php?id=<?php echo $property['id']; ?>" target="_blank" class="btn" style="text-decoration: none;">👁️ Ver</a>
                                 <form method="POST" style="display: inline;" onsubmit="return confirm('¿Estás seguro de eliminar esta propiedad?')">
                                     <input type="hidden" name="action" value="delete_property">
@@ -610,6 +700,86 @@ $availableFeatures = ['pool', 'garden', 'garage', 'terrace', 'seaView', 'airCond
                                     <button type="submit" class="btn btn-danger">🗑️ Eliminar</button>
                                 </form>
                             </div>
+                        </div>
+                        <div class="edit-form" id="edit-form-<?php echo $property['id']; ?>">
+                            <form method="POST">
+                                <input type="hidden" name="action" value="update_property">
+                                <input type="hidden" name="property_id" value="<?php echo $property['id']; ?>">
+                                
+                                <div class="form-group">
+                                    <label>Título:</label>
+                                    <input type="text" name="title" value="<?php echo htmlspecialchars($property['title']); ?>" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Precio (€):</label>
+                                    <input type="number" name="price" step="0.01" value="<?php echo htmlspecialchars($property['price']); ?>" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Ubicación:</label>
+                                    <select name="location" required>
+                                        <?php foreach ($availableLocations as $locValue => $locLabel): ?>
+                                            <option value="<?php echo $locValue; ?>" <?php echo $property['location'] === $locValue ? 'selected' : ''; ?>>
+                                                <?php echo $locLabel; ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Tipo:</label>
+                                    <select name="type" required>
+                                        <?php
+                                        $types = ['apartment' => 'Apartamento', 'villa' => 'Villa', 'house' => 'Casa', 'penthouse' => 'Penthouse', 'studio' => 'Estudio'];
+                                        foreach ($types as $typeVal => $typeLabel):
+                                        ?>
+                                            <option value="<?php echo $typeVal; ?>" <?php echo $property['type'] === $typeVal ? 'selected' : ''; ?>>
+                                                <?php echo $typeLabel; ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Dormitorios:</label>
+                                    <input type="number" name="bedrooms" min="0" value="<?php echo $property['bedrooms']; ?>" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Baños:</label>
+                                    <input type="number" name="bathrooms" min="0" value="<?php echo $property['bathrooms']; ?>" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Superficie (m²):</label>
+                                    <input type="number" name="surface" min="0" value="<?php echo $property['area']; ?>" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Descripción:</label>
+                                    <textarea name="description" rows="3"><?php echo htmlspecialchars($property['description']); ?></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Características:</label>
+                                    <div class="features-group">
+                                        <?php foreach ($availableFeatures as $feature): ?>
+                                            <div class="feature-checkbox">
+                                                <input type="checkbox" id="edit-feature-<?php echo $property['id']; ?>-<?php echo $feature; ?>" name="features[]" value="<?php echo $feature; ?>" <?php echo in_array($feature, $propertyFeatures) ? 'checked' : ''; ?>>
+                                                <label for="edit-feature-<?php echo $property['id']; ?>-<?php echo $feature; ?>">
+                                                    <?php echo $featureLabels[$feature] ?? ucfirst($feature); ?>
+                                                </label>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                </div>
+
+                                <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                                    <button type="submit" class="btn">💾 Guardar cambios</button>
+                                    <button type="button" class="btn btn-secondary" onclick="toggleEditForm(<?php echo $property['id']; ?>)">✖️ Cancelar</button>
+                                </div>
+                            </form>
                         </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -664,6 +834,13 @@ $availableFeatures = ['pool', 'garden', 'garage', 'terrace', 'seaView', 'airCond
         function removeImage(index) {
             selectedImages.splice(index, 1);
             displayImagePreview();
+        }
+
+        function toggleEditForm(id) {
+            const form = document.getElementById('edit-form-' + id);
+            if (form) {
+                form.classList.toggle('active');
+            }
         }
     </script>
 </body>
